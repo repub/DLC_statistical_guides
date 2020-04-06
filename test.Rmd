@@ -1,0 +1,9 @@
+```{r}
+beer <- read.csv("data/beer_to_clean.csv", row.names=NULL)
+```
+
+First, to get familiar with our data we should check the size of our dataset.  If we use the `dim()` function we can see the dimensions of our dataset.
+
+```{r}
+dim(beer)
+```
