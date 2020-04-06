@@ -1,3 +1,3 @@
 name: Tyler Garner
-	markdown: kramdown
+markdown: kramdown
 theme: jekyll-theme-cayman
