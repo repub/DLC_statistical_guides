@@ -605,10 +605,10 @@ values.
 ``` r
 median.abv <- rep(0, length(style.list))
 for(i in 1:length(style.list)){
-  median.abv[i] <- median(beer.for$beer_abv[beer.for$beer_style == style.list[i]], na.rm=TRUE)
+  median.abv[i] <- median(beer$beer_abv[beer$beer_style == style.list[i]], na.rm=TRUE)
 }
 
-beer.for$beer_abv[beer.na] <- median.abv
+beer$beer_abv[beer.na] <- median.abv
 ```
 
 Above, we make a list of *0’s* with the length of our vector of `NA`
