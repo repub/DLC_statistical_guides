@@ -20,6 +20,13 @@ limited to):
   - Formatting consistent variable schemes, removing unwanted variables,
     and generating new variables
 
+Here, we will go over some methods to identify and handle these issues
+in addition to some basics on:
+
+  - Loops and apply functions
+  - Pipes
+  - Pattern recognition and substitution
+
 Before we attempt to clean our data we should first summarize and
 explore our dataset to get familiar with it and spot any possible errors
 or inconsistencies.
@@ -211,6 +218,10 @@ only one outlier here. Note that we needed to set the `na.rm` option to
 `TRUE`. We have missing values in this variable which we will cover in a
 moment.
 
+*Note: You may sometimes see `TRUE` and `FALSE` in `R` simplified to `T`
+and `F`, however [this is not
+recommended](https://www.r-bloggers.com/r-tip-avoid-using-t-and-f-as-synonyms-for-true-and-false/)*
+
 But what if we were unfamiliar with beer and did not know if 15 was a
 normal ABV or not? Instead of a threshold we set we could use
 statistical methods to determine if we have an outlier, such as the
@@ -258,7 +269,8 @@ One approach is to use some simple math and logic. If we know that the
 scale is in increments of 0.5, then if we divide each score by 0.5 then
 they should all be whole numbers, and thus will not have remainders in
 their division. Therefore, we can divide all of the values by 0.5 then
-add up each time the remainder is not 0 as shown in the code below.
+add up each time the remainder is not 0 as shown in the code below (in
+`R` we use `%%` to give the remainder of division).
 
 ``` r
 sum(beer$review_aroma %% 0.5 > 0)
@@ -314,7 +326,7 @@ From this output we have three different types of data in our dataframe:
   - Numeric (num) which is also known as Double
   - Factor
 
-At first look it appears that Factors are Strings (or known in R as
+At first look it appears that Factors are Strings (or known in `R` as
 Characters), however that is not the case. Instead, Factors are
 categorized data which fall into a number of levels. For example, if we
 observe `brewery_name` in our output above we see the variable is of the

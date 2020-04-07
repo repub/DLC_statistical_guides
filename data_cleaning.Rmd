@@ -26,6 +26,12 @@ The first thing with any dataset, whether we collected the data ourselves or ret
 - Dealing with incorrect, mislabeled, and outlying data points
 - Formatting consistent variable schemes, removing unwanted variables, and generating new variables
 
+Here, we will go over some methods to identify and handle these issues in addition to some basics on:
+
+- Loops and apply functions
+- Pipes
+- Pattern recognition and substitution
+
 Before we attempt to clean our data we should first summarize and explore our dataset to get familiar with it and spot any possible errors or inconsistencies.
 
 ## Summarizing and Exploring Data
@@ -101,6 +107,8 @@ sum(beer$beer_abv > 30, na.rm=TRUE)
 
 Only one beer is above our threshold, so again it looks like we have only one outlier here. Note that we needed to set the `na.rm` option to `TRUE`.  We have missing values in this variable which we will cover in a moment.
 
+*Note: You may sometimes see `TRUE` and `FALSE` in `R` simplified to `T` and `F`, however [this is not recommended](https://www.r-bloggers.com/r-tip-avoid-using-t-and-f-as-synonyms-for-true-and-false/)*
+
 But what if we were unfamiliar with beer and did not know if 15 was a normal ABV or not?  Instead of a threshold we set we could use statistical methods to determine if we have an outlier, such as the [Grubb's test](https://www.statisticshowto.com/grubbs-test/) or the [generalized extreme studentized deviate test](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35h3.htm), which we will cover another time.  We can also identify outliers visually by plotting our data in boxplots, scatterplots, histograms, *etc*.  These will be covered in Exploratory Data Analysis.  How we will deal with this outlier will be explored in the next section.
 
 Before moving forward we should bring up the `attach()` function which allows `R` to access variables directly from their names (without having to first type `beer$`).  So, we could alternatively run the code above as:
@@ -115,7 +123,7 @@ Notice, we no longer need to include `beer$` before the variable name and we get
 
 Looking through the other variables in our summary statistics we notice the ratings for each type of review are on a scale from 1 to 5 in increments of 0.5.  Are we certain that there are not any incorrect values here?  The minimum and maximum values look fine, and so do the quartiles.  The means are not divisible by 0.5, however that is not a concern since it is a measure of the average score.  What else can we do to make sure there are no obvious issues in this variable?
 
-One approach is to use some simple math and logic.  If we know that the scale is in increments of 0.5, then if we divide each score by 0.5 then they should all be whole numbers, and thus will not have remainders in their division.  Therefore, we can divide all of the values by 0.5 then add up each time the remainder is not 0 as shown in the code below.
+One approach is to use some simple math and logic.  If we know that the scale is in increments of 0.5, then if we divide each score by 0.5 then they should all be whole numbers, and thus will not have remainders in their division.  Therefore, we can divide all of the values by 0.5 then add up each time the remainder is not 0 as shown in the code below (in `R` we use `%%` to give the remainder of division).
 
 ```{r}
 sum(beer$review_aroma %% 0.5 > 0)
@@ -141,7 +149,7 @@ From this output we have three different types of data in our dataframe:
 - Numeric (num) which is also known as Double
 - Factor
 
-At first look it appears that Factors are Strings (or known in R as Characters), however that is not the case.  Instead, Factors are categorized data which fall into a number of levels.  For example, if we observe `brewery_name` in our output above we see the variable is of the Factor type with 5 levels.  We can use the `levels()` command to look further.
+At first look it appears that Factors are Strings (or known in `R` as Characters), however that is not the case.  Instead, Factors are categorized data which fall into a number of levels.  For example, if we observe `brewery_name` in our output above we see the variable is of the Factor type with 5 levels.  We can use the `levels()` command to look further.
 
 ```{r}
 levels(beer$brewery_name)
