@@ -379,6 +379,22 @@ While we would have preferred to have surveyed each reviewer on their overall li
 
 \newline
 
+#### Formatting dates and times
+
+Looking back at our summary statistics, we can see that the `time` variable is filled with large numbers that really do not mean anything to us.  That is because the times were recorded with "Epoch" or "UNIX" time stamps.  
+
+Let us go ahead and convert our `time` variable to a format more umeaningful to us.  To do so, we can use the `as.POSIXct()` function and set our origin to January 1st, 1970 (this is not always the origin but is usually a safe bet).
+
+```{r}
+beer$time <- as.POSIXct(beer$time, origin="1970-01-01")
+
+head(beer$time, 3)
+```
+
+Now we have actual dates and times that we can understand.  While this appears to have been a simple fix, [dealing with dates and times can get very complicated](http://uc-r.github.io/dates/) and could be a post in itself (and may well be down the line).  So for now I have linked more resources for formatting and using dates and times in `R` at the end.
+
+\newline
+
 #### Recoding mislabeled data
 
 Another problem we will commonly run across is mislabeled data, either mislabeled when the data was originally recorded or possibly during some format conversion.  As we can see in our data some of our mislabeling probably fall in the later category.  In particular, the "o" with an umlaut (&ouml;) in the name Tr&ouml;egs is replaced with other characters.  We could try to fix this by adding back the &ouml;, however we could continue to run into the same issue down the road and it would be much easier to just change it to a regular "o" for data analysis.
@@ -481,6 +497,12 @@ Data adapted from: https://www.kaggle.com/rdoume/beerreviews
 [Pipes in `R`](https://r4ds.had.co.nz/pipes.html)
 
 [Ways to deal with missing data](https://measuringu.com/handle-missing-data/)
+
+[Using Dates and Times in `R`](https://www.r-bloggers.com/using-dates-and-times-in-r/)
+
+[Date Formats in `R`](https://www.r-bloggers.com/date-formats-in-r/)
+
+[Dates and Times in `R`](https://www.stat.berkeley.edu/~s133/dates.html)
 
 [Data cleaning in python with Pandas](https://www.dataoptimal.com/data-cleaning-with-python-2018/)
 

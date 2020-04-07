@@ -816,6 +816,32 @@ overall liking of the beers, at least we can now get some idea of how
 beers are scored overall and which attributes are most important in that
 score.
 
+#### Formatting dates and times
+
+Looking back at our summary statistics, we can see that the `time`
+variable is filled with large numbers that really do not mean anything
+to us. That is because the times were recorded with “Epoch” or “UNIX”
+time stamps.
+
+Let us go ahead and convert our `time` variable to a format more
+umeaningful to us. To do so, we can use the `as.POSIXct()` function and
+set our origin to January 1st, 1970 (this is not always the origin but
+is usually a safe bet).
+
+``` r
+beer$time <- as.POSIXct(beer$time, origin="1970-01-01")
+
+head(beer$time, 3)
+```
+
+    ## [1] "2002-02-11 15:31:03 EST" "2002-02-14 08:15:42 EST" "2002-02-17 09:37:52 EST"
+
+Now we have actual dates and times that we can understand. While this
+appears to have been a simple fix, [dealing with dates and times can get
+very complicated](http://uc-r.github.io/dates/) and could be a post in
+itself (and may well be down the line). So for now I have linked more
+resources for formatting and using dates and times in `R` at the end.
+
 #### Recoding mislabeled data
 
 Another problem we will commonly run across is mislabeled data, either
@@ -916,21 +942,29 @@ Now, let us take one “final” look at our data again using the
 summary(beer)
 ```
 
-    ##       time                              brewery                              name                                 style     
-    ##  Min.   :1.013e+09   Troegs Brewing Company : 646   HopDevil Ale               : 118   American IPA                  : 169  
-    ##  1st Qu.:1.167e+09   Yuengling Brewery      : 186   Storm King Stout           : 116   American Amber / Red Ale      : 149  
-    ##  Median :1.240e+09   Yards Brewing Company  : 103   Prima Pils                 : 105   German Pilsener               : 146  
-    ##  Mean   :1.220e+09   Victory Brewing Company:1007   Hop Wallop                 :  89   Russian Imperial Stout        : 125  
-    ##  3rd Qu.:1.284e+09   Voodoo Brewing Company :  58   Troegs Nugget Nectar       :  88   American Double / Imperial IPA:  94  
-    ##  Max.   :1.326e+09                                  Yuengling Traditional Lager:  80   Belgian Strong Dark Ale       :  81  
-    ##                                                     (Other)                    :1404   (Other)                       :1236  
-    ##       abv             aroma         appearance        palate          taste           total          average     
-    ##  Min.   : 3.300   Min.   :1.000   Min.   :1.500   Min.   :1.000   Min.   :1.000   Min.   : 5.00   Min.   :1.250  
-    ##  1st Qu.: 5.300   1st Qu.:3.500   1st Qu.:3.500   1st Qu.:3.500   1st Qu.:3.500   1st Qu.:14.50   1st Qu.:3.625  
-    ##  Median : 7.000   Median :4.000   Median :4.000   Median :4.000   Median :4.000   Median :16.00   Median :4.000  
-    ##  Mean   : 7.226   Mean   :3.812   Mean   :3.919   Mean   :3.847   Mean   :3.908   Mean   :15.49   Mean   :3.872  
-    ##  3rd Qu.: 8.700   3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.500   3rd Qu.:16.50   3rd Qu.:4.125  
-    ##  Max.   :15.000   Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :20.00   Max.   :5.000  
+    ##       time                                        brewery                              name     
+    ##  Min.   :2002-02-11 15:31:03   Troegs Brewing Company : 646   HopDevil Ale               : 118  
+    ##  1st Qu.:2006-12-27 09:01:46   Yuengling Brewery      : 186   Storm King Stout           : 116  
+    ##  Median :2009-04-12 08:53:40   Yards Brewing Company  : 103   Prima Pils                 : 105  
+    ##  Mean   :2008-08-30 21:34:59   Victory Brewing Company:1007   Hop Wallop                 :  89  
+    ##  3rd Qu.:2010-09-10 07:53:46   Voodoo Brewing Company :  58   Troegs Nugget Nectar       :  88  
+    ##  Max.   :2012-01-10 13:57:33                                  Yuengling Traditional Lager:  80  
+    ##                                                               (Other)                    :1404  
+    ##                             style           abv             aroma         appearance        palate          taste      
+    ##  American IPA                  : 169   Min.   : 3.300   Min.   :1.000   Min.   :1.500   Min.   :1.000   Min.   :1.000  
+    ##  American Amber / Red Ale      : 149   1st Qu.: 5.300   1st Qu.:3.500   1st Qu.:3.500   1st Qu.:3.500   1st Qu.:3.500  
+    ##  German Pilsener               : 146   Median : 7.000   Median :4.000   Median :4.000   Median :4.000   Median :4.000  
+    ##  Russian Imperial Stout        : 125   Mean   : 7.226   Mean   :3.812   Mean   :3.919   Mean   :3.847   Mean   :3.908  
+    ##  American Double / Imperial IPA:  94   3rd Qu.: 8.700   3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.500  
+    ##  Belgian Strong Dark Ale       :  81   Max.   :15.000   Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
+    ##  (Other)                       :1236                                                                                   
+    ##      total          average     
+    ##  Min.   : 5.00   Min.   :1.250  
+    ##  1st Qu.:14.50   1st Qu.:3.625  
+    ##  Median :16.00   Median :4.000  
+    ##  Mean   :15.49   Mean   :3.872  
+    ##  3rd Qu.:16.50   3rd Qu.:4.125  
+    ##  Max.   :20.00   Max.   :5.000  
     ## 
 
 From the summary table, it looks like we ahve cleaned up a lot of the
@@ -1048,6 +1082,13 @@ management](https://bookdown.org/rdpeng/rprogdatascience/managing-data-frames-wi
 
 [Ways to deal with missing
 data](https://measuringu.com/handle-missing-data/)
+
+[Using Dates and Times in
+`R`](https://www.r-bloggers.com/using-dates-and-times-in-r/)
+
+[Date Formats in `R`](https://www.r-bloggers.com/date-formats-in-r/)
+
+[Dates and Times in `R`](https://www.stat.berkeley.edu/~s133/dates.html)
 
 [Data cleaning in python with
 Pandas](https://www.dataoptimal.com/data-cleaning-with-python-2018/)
