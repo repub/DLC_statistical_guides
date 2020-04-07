@@ -1,6 +1,7 @@
-Data Cleaning
-================
-Published: 4/6/2020
+
+# Data Cleaning
+
+###### Published: 6 April 2020
 
 The first thing with any dataset, whether we collected the data
 ourselves or retrieve it from another source, is to thoroughly check the

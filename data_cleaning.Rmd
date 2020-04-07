@@ -1,11 +1,9 @@
 ---
-title: "Data Cleaning"
 knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,  
     encoding=encoding,
     output_file=file.path(dirname(input_file), out_dir, 'data_cleaning.md')) })
-date: "Published: 4/6/2020"
 output: github_document
 ---
 
@@ -13,6 +11,12 @@ output: github_document
 knitr::opts_chunk$set(echo=TRUE, fig.align=TRUE)
 options(width=125)
 ```
+
+# Data Cleaning
+
+###### Published: 6 April 2020
+
+\newline
 
 The first thing with any dataset, whether we collected the data ourselves or retrieve it from another source, is to thoroughly check the quality of and clean our data.  In fact, [preparing raw data is the most time consuming part of data analysis](https://visit.figure-eight.com/rs/416-ZBE-142/images/CrowdFlower_DataScienceReport_2016.pdf). It is important that we [follow certain steps to clean our data](https://sunscrapers.com/blog/why-is-clean-data-so-important-for-analytics-and-business-intelligence/) to reduce issues during data analysis, which include (but not always limited to):
 
