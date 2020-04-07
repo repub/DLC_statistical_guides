@@ -55,20 +55,13 @@ respectively.
 head(beer)
 ```
 
-    ##   X            brewery_name review_time review_aroma review_appearance
-    ## 1 1 TrÃ¶egs Brewing Company  1275968124          3.0               4.5
-    ## 2 2 Victory Brewing Company  1182930981          4.5               4.0
-    ## 3 3 Victory Brewing Company  1193519101          4.0               1.5
-    ## 4 4 Victory Brewing Company  1157967909          4.5               4.0
-    ## 5 5 Victory Brewing Company  1263695148          3.5               4.0
-    ## 6 6 TrÃ¶egs Brewing Company  1204151979          5.0               4.0
-    ##                 beer_style review_palate review_taste               beer_name
-    ## 1            Oatmeal Stout           3.5          3.0 TrÃ¶egs Java Head Stout
-    ## 2             American IPA           4.0          4.5            HopDevil Ale
-    ## 3                   Tripel           4.0          4.0           Golden Monkey
-    ## 4             American IPA           3.5          4.0            HopDevil Ale
-    ## 5             American IPA           3.5          4.0            HopDevil Ale
-    ## 6 American Amber / Red Ale           4.0          4.5   TrÃ¶egs Nugget Nectar
+    ##   X            brewery_name review_time review_aroma review_appearance               beer_style review_palate review_taste               beer_name
+    ## 1 1 TrÃ¶egs Brewing Company  1275968124          3.0               4.5            Oatmeal Stout           3.5          3.0 TrÃ¶egs Java Head Stout
+    ## 2 2 Victory Brewing Company  1182930981          4.5               4.0             American IPA           4.0          4.5            HopDevil Ale
+    ## 3 3 Victory Brewing Company  1193519101          4.0               1.5                   Tripel           4.0          4.0           Golden Monkey
+    ## 4 4 Victory Brewing Company  1157967909          4.5               4.0             American IPA           3.5          4.0            HopDevil Ale
+    ## 5 5 Victory Brewing Company  1263695148          3.5               4.0             American IPA           3.5          4.0            HopDevil Ale
+    ## 6 6 TrÃ¶egs Brewing Company  1204151979          5.0               4.0 American Amber / Red Ale           4.0          4.5   TrÃ¶egs Nugget Nectar
     ##   beer_abv
     ## 1      7.5
     ## 2      6.7
@@ -81,14 +74,10 @@ head(beer)
 tail(beer, 3)
 ```
 
-    ##         X            brewery_name review_time review_aroma review_appearance
-    ## 2019 2019 Victory Brewing Company  1277167012          3.5               5.0
-    ## 2020 2020 Victory Brewing Company  1283660248          3.5               3.5
-    ## 2021 2021 Victory Brewing Company  1280612077          4.0               3.5
-    ##                          beer_style review_palate review_taste     beer_name
-    ## 2019                    Belgian IPA             3          3.0    Wild Devil
-    ## 2020 American Double / Imperial IPA             4          4.5    Hop Wallop
-    ## 2021                         Tripel             4          3.0 Golden Monkey
+    ##         X            brewery_name review_time review_aroma review_appearance                     beer_style review_palate review_taste     beer_name
+    ## 2019 2019 Victory Brewing Company  1277167012          3.5               5.0                    Belgian IPA             3          3.0    Wild Devil
+    ## 2020 2020 Victory Brewing Company  1283660248          3.5               3.5 American Double / Imperial IPA             4          4.5    Hop Wallop
+    ## 2021 2021 Victory Brewing Company  1280612077          4.0               3.5                         Tripel             4          3.0 Golden Monkey
     ##      beer_abv
     ## 2019      6.7
     ## 2020      8.5
@@ -103,16 +92,15 @@ much as you like to view more or less rows, but we will continue to use
 
 While both the `head()` and `tail()` function provide the column names,
 we can use a separate function `names()` (or alternatively `colnames()`)
-to return only those column names.
+to return only those column
+    names.
 
 ``` r
 names(beer)
 ```
 
-    ##  [1] "X"                 "brewery_name"      "review_time"      
-    ##  [4] "review_aroma"      "review_appearance" "beer_style"       
-    ##  [7] "review_palate"     "review_taste"      "beer_name"        
-    ## [10] "beer_abv"
+    ##  [1] "X"                 "brewery_name"      "review_time"       "review_aroma"      "review_appearance" "beer_style"        "review_palate"    
+    ##  [8] "review_taste"      "beer_name"         "beer_abv"
 
 For this dataset the column names are fairly straight-forward.
 `brewery_name` is the name of the brewery, `review_appearance` is the
@@ -146,9 +134,8 @@ beer <- beer[, 2:10]
 names(beer)
 ```
 
-    ## [1] "brewery_name"      "review_time"       "review_aroma"     
-    ## [4] "review_appearance" "beer_style"        "review_palate"    
-    ## [7] "review_taste"      "beer_name"         "beer_abv"
+    ## [1] "brewery_name"      "review_time"       "review_aroma"      "review_appearance" "beer_style"        "review_palate"     "review_taste"     
+    ## [8] "beer_name"         "beer_abv"
 
 However, make sure to only run either command once\! Running the first
 command a second time would delete the `brewery_name` column (which
@@ -164,22 +151,14 @@ do with the `summary()`
 summary(beer)
 ```
 
-    ##                   brewery_name   review_time         review_aroma  
-    ##  TrÃ¶egs Brewing Company: 653   Min.   :1.013e+09   Min.   :1.000  
-    ##  Victory Brewing Company:1018   1st Qu.:1.168e+09   1st Qu.:3.500  
-    ##  Voodoo Brewing Company :  59   Median :1.240e+09   Median :4.000  
-    ##  Yards Brewing Co.      : 105   Mean   :1.220e+09   Mean   :3.813  
-    ##  Yuengling Brewery      : 186   3rd Qu.:1.284e+09   3rd Qu.:4.000  
-    ##                                 Max.   :1.326e+09   Max.   :5.000  
-    ##                                                                    
-    ##  review_appearance                          beer_style   review_palate  
-    ##  Min.   :1.500     American IPA                  : 172   Min.   :1.000  
-    ##  1st Qu.:3.500     American Amber / Red Ale      : 152   1st Qu.:3.500  
-    ##  Median :4.000     German Pilsener               : 146   Median :4.000  
-    ##  Mean   :3.918     Russian Imperial Stout        : 126   Mean   :3.847  
-    ##  3rd Qu.:4.000     American Double / Imperial IPA:  95   3rd Qu.:4.000  
-    ##  Max.   :5.000     Belgian Strong Dark Ale       :  81   Max.   :5.000  
-    ##                    (Other)                       :1249                  
+    ##                   brewery_name   review_time         review_aroma   review_appearance                          beer_style   review_palate  
+    ##  TrÃ¶egs Brewing Company: 653   Min.   :1.013e+09   Min.   :1.000   Min.   :1.500     American IPA                  : 172   Min.   :1.000  
+    ##  Victory Brewing Company:1018   1st Qu.:1.168e+09   1st Qu.:3.500   1st Qu.:3.500     American Amber / Red Ale      : 152   1st Qu.:3.500  
+    ##  Voodoo Brewing Company :  59   Median :1.240e+09   Median :4.000   Median :4.000     German Pilsener               : 146   Median :4.000  
+    ##  Yards Brewing Co.      : 105   Mean   :1.220e+09   Mean   :3.813   Mean   :3.918     Russian Imperial Stout        : 126   Mean   :3.847  
+    ##  Yuengling Brewery      : 186   3rd Qu.:1.284e+09   3rd Qu.:4.000   3rd Qu.:4.000     American Double / Imperial IPA:  95   3rd Qu.:4.000  
+    ##                                 Max.   :1.326e+09   Max.   :5.000   Max.   :5.000     Belgian Strong Dark Ale       :  81   Max.   :5.000  
+    ##                                                                                       (Other)                       :1249                  
     ##   review_taste                         beer_name       beer_abv     
     ##  Min.   :1.000   HopDevil Ale               : 121   Min.   : 3.300  
     ##  1st Qu.:3.500   Storm King Stout           : 117   1st Qu.: 5.300  
@@ -345,9 +324,7 @@ further.
 levels(beer$brewery_name)
 ```
 
-    ## [1] "TrÃ¶egs Brewing Company" "Victory Brewing Company"
-    ## [3] "Voodoo Brewing Company"  "Yards Brewing Co."      
-    ## [5] "Yuengling Brewery "
+    ## [1] "TrÃ¶egs Brewing Company" "Victory Brewing Company" "Voodoo Brewing Company"  "Yards Brewing Co."       "Yuengling Brewery "
 
 Now, we see that each of the 5 levels of the `brewery_name` variable is
 the name of one of our 5 breweries. We can also see there are some
@@ -380,10 +357,8 @@ the total number of “NA” values in each
 colSums(is.na(beer))
 ```
 
-    ##      brewery_name       review_time      review_aroma review_appearance 
-    ##                 0                 0                 0                 0 
-    ##        beer_style     review_palate      review_taste         beer_name 
-    ##                 0                 0                 0                 0 
+    ##      brewery_name       review_time      review_aroma review_appearance        beer_style     review_palate      review_taste         beer_name 
+    ##                 0                 0                 0                 0                 0                 0                 0                 0 
     ##          beer_abv 
     ##                17
 
@@ -439,8 +414,7 @@ different function, `which()`, to instead show each duplicated
 which(duplicated(beer))
 ```
 
-    ##  [1] 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015
-    ## [16] 2016 2017 2018 2019 2020 2021
+    ##  [1] 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015 2016 2017 2018 2019 2020 2021
 
 How convenient\! We could easily remove those 21 rows similar to how we
 removed the `X` column above, but what if the duplicates were
@@ -515,10 +489,8 @@ max.abv
 beer[max.abv, ]
 ```
 
-    ##                brewery_name review_time review_aroma review_appearance
-    ## 121 Victory Brewing Company  1325017838          3.5                 4
-    ##     beer_style review_palate review_taste         beer_name beer_abv
-    ## 121     Tripel           3.5            3 Tettnager Trippel       89
+    ##                brewery_name review_time review_aroma review_appearance beer_style review_palate review_taste         beer_name beer_abv
+    ## 121 Victory Brewing Company  1325017838          3.5                 4     Tripel           3.5            3 Tettnager Trippel       89
 
 The “*Tettnager Trippel*” in row 121 contains our outlier. To correct
 it, we can first start by looking to see if there are any other
@@ -529,10 +501,8 @@ it, we can first start by looking to see if there are any other
 beer[beer$beer_name == "Tettnager Trippel", ]
 ```
 
-    ##                brewery_name review_time review_aroma review_appearance
-    ## 121 Victory Brewing Company  1325017838          3.5                 4
-    ##     beer_style review_palate review_taste         beer_name beer_abv
-    ## 121     Tripel           3.5            3 Tettnager Trippel       89
+    ##                brewery_name review_time review_aroma review_appearance beer_style review_palate review_taste         beer_name beer_abv
+    ## 121 Victory Brewing Company  1325017838          3.5                 4     Tripel           3.5            3 Tettnager Trippel       89
 
 It looks like there is only one observation for this beer, so we have a
 few choices. We could:
@@ -694,8 +664,7 @@ colnames(beer) <- c("brewery", "time", "aroma", "appearance", "style", "palate",
 names(beer)
 ```
 
-    ## [1] "brewery"    "time"       "aroma"      "appearance" "style"     
-    ## [6] "palate"     "taste"      "name"       "abv"
+    ## [1] "brewery"    "time"       "aroma"      "appearance" "style"      "palate"     "taste"      "name"       "abv"
 
 Much better\!
 
@@ -716,14 +685,10 @@ beer <- beer[, c(2, 1, 8, 5, 9, 3:4, 6:7)]
 head(beer, 3)
 ```
 
-    ##         time                 brewery                    name         style abv
-    ## 1 1275968124 TrÃ¶egs Brewing Company TrÃ¶egs Java Head Stout Oatmeal Stout 7.5
-    ## 2 1182930981 Victory Brewing Company            HopDevil Ale  American IPA 6.7
-    ## 3 1193519101 Victory Brewing Company           Golden Monkey        Tripel 9.5
-    ##   aroma appearance palate taste
-    ## 1   3.0        4.5    3.5   3.0
-    ## 2   4.5        4.0    4.0   4.5
-    ## 3   4.0        1.5    4.0   4.0
+    ##         time                 brewery                    name         style abv aroma appearance palate taste
+    ## 1 1275968124 TrÃ¶egs Brewing Company TrÃ¶egs Java Head Stout Oatmeal Stout 7.5   3.0        4.5    3.5   3.0
+    ## 2 1182930981 Victory Brewing Company            HopDevil Ale  American IPA 6.7   4.5        4.0    4.0   4.5
+    ## 3 1193519101 Victory Brewing Company           Golden Monkey        Tripel 9.5   4.0        1.5    4.0   4.0
 
 What we have done now is move our unique identifier (`time`) to the
 first column, descriptive variables to the following columns, and our
@@ -771,14 +736,10 @@ beer <- beer[order(beer$time), ]
 head(beer, 3)
 ```
 
-    ##            time            brewery                           name
-    ## 1558 1013459463 Yuengling Brewery           Yuengling Black & Tan
-    ## 1669 1013692542 Yuengling Brewery  Yuengling Porter (Dark Brewed)
-    ## 1172 1013956672 Yuengling Brewery          Yuengling Premium Beer
-    ##                    style abv aroma appearance palate taste
-    ## 1558         Black & Tan 4.7   4.0          5    4.0   4.5
-    ## 1669     American Porter 4.7   3.0          4    3.5   3.5
-    ## 1172 American Pale Lager 4.4   3.5          4    3.5   4.0
+    ##            time            brewery                           name               style abv aroma appearance palate taste
+    ## 1558 1013459463 Yuengling Brewery           Yuengling Black & Tan         Black & Tan 4.7   4.0          5    4.0   4.5
+    ## 1669 1013692542 Yuengling Brewery  Yuengling Porter (Dark Brewed)     American Porter 4.7   3.0          4    3.5   3.5
+    ## 1172 1013956672 Yuengling Brewery          Yuengling Premium Beer American Pale Lager 4.4   3.5          4    3.5   4.0
 
 Now that our rows are ordered by `time` you might notice that our
 rownames are no longer in order. We can easily rename (or renumber) the
@@ -790,27 +751,19 @@ rownames(beer) <- seq(1:2000)
 head(beer, 3)
 ```
 
-    ##         time            brewery                           name
-    ## 1 1013459463 Yuengling Brewery           Yuengling Black & Tan
-    ## 2 1013692542 Yuengling Brewery  Yuengling Porter (Dark Brewed)
-    ## 3 1013956672 Yuengling Brewery          Yuengling Premium Beer
-    ##                 style abv aroma appearance palate taste
-    ## 1         Black & Tan 4.7   4.0          5    4.0   4.5
-    ## 2     American Porter 4.7   3.0          4    3.5   3.5
-    ## 3 American Pale Lager 4.4   3.5          4    3.5   4.0
+    ##         time            brewery                           name               style abv aroma appearance palate taste
+    ## 1 1013459463 Yuengling Brewery           Yuengling Black & Tan         Black & Tan 4.7   4.0          5    4.0   4.5
+    ## 2 1013692542 Yuengling Brewery  Yuengling Porter (Dark Brewed)     American Porter 4.7   3.0          4    3.5   3.5
+    ## 3 1013956672 Yuengling Brewery          Yuengling Premium Beer American Pale Lager 4.4   3.5          4    3.5   4.0
 
 ``` r
 tail(beer, 3)
 ```
 
-    ##            time                 brewery                  name
-    ## 1998 1325767873 TrÃ¶egs Brewing Company      TrÃ¶egs Pale Ale
-    ## 1999 1326068736 Victory Brewing Company         Dark Intrigue
-    ## 2000 1326221853      Yuengling Brewery  Yuengling Light Lager
-    ##                        style abv aroma appearance palate taste
-    ## 1998 American Pale Ale (APA) 5.4   3.5          4    4.0   4.0
-    ## 1999  Russian Imperial Stout 9.1   4.0          4    4.0   4.0
-    ## 2000             Light Lager 3.4   3.0          3    2.5   2.5
+    ##            time                 brewery                  name                   style abv aroma appearance palate taste
+    ## 1998 1325767873 TrÃ¶egs Brewing Company      TrÃ¶egs Pale Ale American Pale Ale (APA) 5.4   3.5          4    4.0   4.0
+    ## 1999 1326068736 Victory Brewing Company         Dark Intrigue  Russian Imperial Stout 9.1   4.0          4    4.0   4.0
+    ## 2000 1326221853      Yuengling Brewery  Yuengling Light Lager             Light Lager 3.4   3.0          3    2.5   2.5
 
 The `seq()` function above generates a sequence from 1 to 2000 at
 increments of 1 for our new row names. Now our row labels and `time` are
@@ -830,14 +783,10 @@ beer$average <- beer$total / 4
 head(beer, 3)
 ```
 
-    ##         time            brewery                           name
-    ## 1 1013459463 Yuengling Brewery           Yuengling Black & Tan
-    ## 2 1013692542 Yuengling Brewery  Yuengling Porter (Dark Brewed)
-    ## 3 1013956672 Yuengling Brewery          Yuengling Premium Beer
-    ##                 style abv aroma appearance palate taste total average
-    ## 1         Black & Tan 4.7   4.0          5    4.0   4.5  17.5   4.375
-    ## 2     American Porter 4.7   3.0          4    3.5   3.5  14.0   3.500
-    ## 3 American Pale Lager 4.4   3.5          4    3.5   4.0  15.0   3.750
+    ##         time            brewery                           name               style abv aroma appearance palate taste total average
+    ## 1 1013459463 Yuengling Brewery           Yuengling Black & Tan         Black & Tan 4.7   4.0          5    4.0   4.5  17.5   4.375
+    ## 2 1013692542 Yuengling Brewery  Yuengling Porter (Dark Brewed)     American Porter 4.7   3.0          4    3.5   3.5  14.0   3.500
+    ## 3 1013956672 Yuengling Brewery          Yuengling Premium Beer American Pale Lager 4.4   3.5          4    3.5   4.0  15.0   3.750
 
 Notice that since we reordered our variables we could use `[, 6:9]` to
 indicate the review variables rather than `[, c(3,4,7,8)]` if we had
@@ -874,9 +823,7 @@ beer$brewery <- recode_factor(beer$brewery,
 levels(beer$brewery)
 ```
 
-    ## [1] "Troegs Brewing Company"  "Yuengling Brewery"      
-    ## [3] "Yards Brewing Company"   "Victory Brewing Company"
-    ## [5] "Voodoo Brewing Company"
+    ## [1] "Troegs Brewing Company"  "Yuengling Brewery"       "Yards Brewing Company"   "Victory Brewing Company" "Voodoo Brewing Company"
 
 On top of changing the special characters that represent the “ö” to an
 “o”, we also removed the space after “Yuengling Brewery” and spelled
@@ -942,43 +889,28 @@ Finally, we use `sum()` and `grepl()` commands to add up each time
 the “TrÃ¶egs”.
 
 Now, let us take one “final” look at our data again using the
-`summary()` function.
+`summary()`
+    function.
 
 ``` r
 summary(beer)
 ```
 
-    ##       time                              brewery    
-    ##  Min.   :1.013e+09   Troegs Brewing Company : 646  
-    ##  1st Qu.:1.167e+09   Yuengling Brewery      : 186  
-    ##  Median :1.240e+09   Yards Brewing Company  : 103  
-    ##  Mean   :1.220e+09   Victory Brewing Company:1007  
-    ##  3rd Qu.:1.284e+09   Voodoo Brewing Company :  58  
-    ##  Max.   :1.326e+09                                 
-    ##                                                    
-    ##                           name                                 style     
-    ##  HopDevil Ale               : 118   American IPA                  : 169  
-    ##  Storm King Stout           : 116   American Amber / Red Ale      : 149  
-    ##  Prima Pils                 : 105   German Pilsener               : 146  
-    ##  Hop Wallop                 :  89   Russian Imperial Stout        : 125  
-    ##  Troegs Nugget Nectar       :  88   American Double / Imperial IPA:  94  
-    ##  Yuengling Traditional Lager:  80   Belgian Strong Dark Ale       :  81  
-    ##  (Other)                    :1404   (Other)                       :1236  
-    ##       abv             aroma         appearance        palate     
-    ##  Min.   : 3.300   Min.   :1.000   Min.   :1.500   Min.   :1.000  
-    ##  1st Qu.: 5.300   1st Qu.:3.500   1st Qu.:3.500   1st Qu.:3.500  
-    ##  Median : 7.000   Median :4.000   Median :4.000   Median :4.000  
-    ##  Mean   : 7.226   Mean   :3.812   Mean   :3.919   Mean   :3.847  
-    ##  3rd Qu.: 8.700   3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.000  
-    ##  Max.   :15.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
-    ##                                                                  
-    ##      taste           total          average     
-    ##  Min.   :1.000   Min.   : 5.00   Min.   :1.250  
-    ##  1st Qu.:3.500   1st Qu.:14.50   1st Qu.:3.625  
-    ##  Median :4.000   Median :16.00   Median :4.000  
-    ##  Mean   :3.908   Mean   :15.49   Mean   :3.872  
-    ##  3rd Qu.:4.500   3rd Qu.:16.50   3rd Qu.:4.125  
-    ##  Max.   :5.000   Max.   :20.00   Max.   :5.000  
+    ##       time                              brewery                              name                                 style           abv        
+    ##  Min.   :1.013e+09   Troegs Brewing Company : 646   HopDevil Ale               : 118   American IPA                  : 169   Min.   : 3.300  
+    ##  1st Qu.:1.167e+09   Yuengling Brewery      : 186   Storm King Stout           : 116   American Amber / Red Ale      : 149   1st Qu.: 5.300  
+    ##  Median :1.240e+09   Yards Brewing Company  : 103   Prima Pils                 : 105   German Pilsener               : 146   Median : 7.000  
+    ##  Mean   :1.220e+09   Victory Brewing Company:1007   Hop Wallop                 :  89   Russian Imperial Stout        : 125   Mean   : 7.226  
+    ##  3rd Qu.:1.284e+09   Voodoo Brewing Company :  58   Troegs Nugget Nectar       :  88   American Double / Imperial IPA:  94   3rd Qu.: 8.700  
+    ##  Max.   :1.326e+09                                  Yuengling Traditional Lager:  80   Belgian Strong Dark Ale       :  81   Max.   :15.000  
+    ##                                                     (Other)                    :1404   (Other)                       :1236                   
+    ##      aroma         appearance        palate          taste           total          average     
+    ##  Min.   :1.000   Min.   :1.500   Min.   :1.000   Min.   :1.000   Min.   : 5.00   Min.   :1.250  
+    ##  1st Qu.:3.500   1st Qu.:3.500   1st Qu.:3.500   1st Qu.:3.500   1st Qu.:14.50   1st Qu.:3.625  
+    ##  Median :4.000   Median :4.000   Median :4.000   Median :4.000   Median :16.00   Median :4.000  
+    ##  Mean   :3.812   Mean   :3.919   Mean   :3.847   Mean   :3.908   Mean   :15.49   Mean   :3.872  
+    ##  3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.500   3rd Qu.:16.50   3rd Qu.:4.125  
+    ##  Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :20.00   Max.   :5.000  
     ## 
 
 From the summary table, it looks like we ahve cleaned up a lot of the
@@ -992,39 +924,28 @@ let us take a look at the `style` column using the `levels()`
 levels(beer$style)
 ```
 
-    ##  [1] "Altbier"                             "American Adjunct Lager"             
-    ##  [3] "American Amber / Red Ale"            "American Amber / Red Lager"         
-    ##  [5] "American Barleywine"                 "American Black Ale"                 
-    ##  [7] "American Blonde Ale"                 "American Brown Ale"                 
-    ##  [9] "American Double / Imperial IPA"      "American Double / Imperial Stout"   
-    ## [11] "American IPA"                        "American Pale Ale (APA)"            
-    ## [13] "American Pale Lager"                 "American Porter"                    
-    ## [15] "American Stout"                      "American Strong Ale"                
-    ## [17] "American Wild Ale"                   "Baltic Porter"                      
-    ## [19] "Belgian IPA"                         "Belgian Pale Ale"                   
-    ## [21] "Belgian Strong Dark Ale"             "Belgian Strong Pale Ale"            
-    ## [23] "Black & Tan"                         "Bock"                               
-    ## [25] "California Common / Steam Beer"      "Czech Pilsener"                     
-    ## [27] "Doppelbock"                          "Dortmunder / Export Lager"          
-    ## [29] "Dubbel"                              "Dunkelweizen"                       
-    ## [31] "Eisbock"                             "English Bitter"                     
-    ## [33] "English Brown Ale"                   "English Dark Mild Ale"              
-    ## [35] "English India Pale Ale (IPA)"        "English Pale Mild Ale"              
-    ## [37] "English Porter"                      "English Stout"                      
-    ## [39] "English Strong Ale"                  "Extra Special / Strong Bitter (ESB)"
-    ## [41] "German Pilsener"                     "Hefeweizen"                         
-    ## [43] "Herbed / Spiced Beer"                "Irish Dry Stout"                    
-    ## [45] "KÃ¶lsch"                             "Keller Bier / Zwickel Bier"         
-    ## [47] "Lambic - Fruit"                      "Light Lager"                        
-    ## [49] "MÃ¤rzen / Oktoberfest"               "Maibock / Helles Bock"              
-    ## [51] "Milk / Sweet Stout"                  "Munich Dunkel Lager"                
-    ## [53] "Munich Helles Lager"                 "Oatmeal Stout"                      
-    ## [55] "Pumpkin Ale"                         "Quadrupel (Quad)"                   
-    ## [57] "Rauchbier"                           "Roggenbier"                         
-    ## [59] "Russian Imperial Stout"              "Rye Beer"                           
-    ## [61] "Saison / Farmhouse Ale"              "Smoked Beer"                        
-    ## [63] "Tripel"                              "Vienna Lager"                       
-    ## [65] "Weizenbock"                          "Winter Warmer"                      
+    ##  [1] "Altbier"                             "American Adjunct Lager"              "American Amber / Red Ale"           
+    ##  [4] "American Amber / Red Lager"          "American Barleywine"                 "American Black Ale"                 
+    ##  [7] "American Blonde Ale"                 "American Brown Ale"                  "American Double / Imperial IPA"     
+    ## [10] "American Double / Imperial Stout"    "American IPA"                        "American Pale Ale (APA)"            
+    ## [13] "American Pale Lager"                 "American Porter"                     "American Stout"                     
+    ## [16] "American Strong Ale"                 "American Wild Ale"                   "Baltic Porter"                      
+    ## [19] "Belgian IPA"                         "Belgian Pale Ale"                    "Belgian Strong Dark Ale"            
+    ## [22] "Belgian Strong Pale Ale"             "Black & Tan"                         "Bock"                               
+    ## [25] "California Common / Steam Beer"      "Czech Pilsener"                      "Doppelbock"                         
+    ## [28] "Dortmunder / Export Lager"           "Dubbel"                              "Dunkelweizen"                       
+    ## [31] "Eisbock"                             "English Bitter"                      "English Brown Ale"                  
+    ## [34] "English Dark Mild Ale"               "English India Pale Ale (IPA)"        "English Pale Mild Ale"              
+    ## [37] "English Porter"                      "English Stout"                       "English Strong Ale"                 
+    ## [40] "Extra Special / Strong Bitter (ESB)" "German Pilsener"                     "Hefeweizen"                         
+    ## [43] "Herbed / Spiced Beer"                "Irish Dry Stout"                     "KÃ¶lsch"                            
+    ## [46] "Keller Bier / Zwickel Bier"          "Lambic - Fruit"                      "Light Lager"                        
+    ## [49] "MÃ¤rzen / Oktoberfest"               "Maibock / Helles Bock"               "Milk / Sweet Stout"                 
+    ## [52] "Munich Dunkel Lager"                 "Munich Helles Lager"                 "Oatmeal Stout"                      
+    ## [55] "Pumpkin Ale"                         "Quadrupel (Quad)"                    "Rauchbier"                          
+    ## [58] "Roggenbier"                          "Russian Imperial Stout"              "Rye Beer"                           
+    ## [61] "Saison / Farmhouse Ale"              "Smoked Beer"                         "Tripel"                             
+    ## [64] "Vienna Lager"                        "Weizenbock"                          "Winter Warmer"                      
     ## [67] "Witbier"
 
 Uh oh, we have a few more instances where special characters did not
