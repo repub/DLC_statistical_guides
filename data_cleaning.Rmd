@@ -268,7 +268,7 @@ Here, we use the `$` operator after `beer` to tell `R` we are only working with 
 
 Alternatively, we could try to make our replacement values a little bit more accurate by using prior information.  For instance, we could replace the `NA` values with the median ABV for the respective style of beer.  That is, for our first observation with a `NA` we want to replace it with the median ABV for "Hefewizen", then the second observation with the median ABV for "German Pilsner", and so forth.  This would (ideally) be a slightly more accurate correction since different beer styles can vary in their range of ABVs.  To do this, we could use a `for()` loop.
 
-```{r, eval=FALSE}
+```{r}
 beer.na <- which(is.na(beer$beer_abv))
 style.list <- as.character(beer$beer_style[beer.na])
 ```
@@ -289,9 +289,6 @@ Above, we make a list of *0's* with the length of our vector of `NA` values.  Th
 While this method works, the `for()` loop above is clunky and [many suggest avoiding](https://www.r-bloggers.com/for-loops-and-how-to-avoid-them/) `for()` loops in `R` as [much as possible](https://rpubs.com/markpayne/132503).  So, alternatively we can use the `sapply()` function to calculate the median value for each item in our list we made above.
 
 ```{r}
-beer.na <- which(is.na(beer$beer_abv))
-style.list <- as.character(beer$beer_style[beer.na])
-
 median.abv <- sapply(style.list, function(x) median(beer$beer_abv[beer$beer_style == x], na.rm=TRUE))
 
 beer$beer_abv[beer.na] <- median.abv
@@ -299,7 +296,7 @@ beer$beer_abv[beer.na] <- median.abv
 sum(is.na(beer))
 ```
 
-First we make our two lists that indicate the rows where we have `NA` values and which `beer_style` they correspond to.  Then, we completely replaced the `for()` loop from the previous code with the `sapply()` function.  Then, we replace the `NA` values in the dataframe with the median ABVs and use the `sum()` and `is.na()` functions to show that we no longer have missing values.
+First, we use the vector we made earlier that has the styles of beer we are interested in to apply our function to collect the median ABV for each style.  Then, we write our function to replace the `NA` values in the dataframe with the median ABVs and use the `sum()` and `is.na()` functions to show that we no longer have missing values.
 
 Alternatively, we could remove all of our observations that have missing values.  In our dataset, that would be 17 deletions of 2000 observations, so only 0.85% of our data, which could be reasonable.  However, in many situations deleting whole observations would be a much more significant loss of data so it would not be a viable option versus the other methods listed above (or others).
 

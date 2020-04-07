@@ -624,12 +624,10 @@ avoiding](https://www.r-bloggers.com/for-loops-and-how-to-avoid-them/)
 `for()` loops in `R` as [much as
 possible](https://rpubs.com/markpayne/132503). So, alternatively we can
 use the `sapply()` function to calculate the median value for each item
-in our list we made above.
+in our list we made
+above.
 
 ``` r
-beer.na <- which(is.na(beer$beer_abv))
-style.list <- as.character(beer$beer_style[beer.na])
-
 median.abv <- sapply(style.list, function(x) median(beer$beer_abv[beer$beer_style == x], na.rm=TRUE))
 
 beer$beer_abv[beer.na] <- median.abv
@@ -639,12 +637,11 @@ sum(is.na(beer))
 
     ## [1] 0
 
-First we make our two lists that indicate the rows where we have `NA`
-values and which `beer_style` they correspond to. Then, we completely
-replaced the `for()` loop from the previous code with the `sapply()`
-function. Then, we replace the `NA` values in the dataframe with the
-median ABVs and use the `sum()` and `is.na()` functions to show that we
-no longer have missing values.
+First, we use the vector we made earlier that has the styles of beer we
+are interested in to apply our function to collect the median ABV for
+each style. Then, we write our function to replace the `NA` values in
+the dataframe with the median ABVs and use the `sum()` and `is.na()`
+functions to show that we no longer have missing values.
 
 Alternatively, we could remove all of our observations that have missing
 values. In our dataset, that would be 17 deletions of 2000 observations,
