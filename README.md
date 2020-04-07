@@ -1,4 +1,4 @@
-# Comprehensive Data Analysis in `R`
+# Comprehensive Data Analysis in R
 
 While there are plenty of resources for data science, during my studies I have found that many are lacking in content (What is the point of a blog post on data cleaning if the data is already cleaned?) or context (What are the assumptions of this test? Why not link to other resources?).  I then found myself bouncing around from Google search to textbook to blog post in order to garner the information I needed.  Here, I hope to detail the fundamentals of data analysis and statistics to build a comprehensive 'one-stop-shop' for others interested in learning data science, with the term comprehensive aimed at:
 
