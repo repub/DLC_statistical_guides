@@ -1,0 +1,12 @@
+name: "CDAR"
+output_dir: "docs"
+navbar:
+  title: "CDAR"
+  left:
+  - text: "Home"
+   href: index.html
+  - text: "Data Cleaning"
+   href: data_cleaning.html
+output:
+  html_document:
+ theme: cosmo
