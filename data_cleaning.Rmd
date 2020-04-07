@@ -2,9 +2,9 @@
 title: "Data Cleaning"
 knit: (function(input_file, encoding) {
   out_dir <- 'docs';
-  rmarkdown::render(input_file,
- encoding=encoding,
- output_file=file.path(dirname(input_file), out_dir, 'data_cleaning.md'))})
+  rmarkdown::render(input_file,  
+    encoding=encoding,
+    output_file=file.path(dirname(input_file), out_dir, 'data_cleaning.md')) })
 date: "Published: 4/6/2020"
 output: github_document
 ---
