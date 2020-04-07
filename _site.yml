@@ -9,4 +9,4 @@ navbar:
    href: data_cleaning.html
 output:
   html_document:
- theme: cosmo
+ theme: jekyll-theme-slate
