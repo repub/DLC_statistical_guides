@@ -1,0 +1,180 @@
+---
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,  
+    encoding=encoding,
+    output_file=file.path(dirname(input_file), out_dir, 'EDA.md')) })
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, fig.align=TRUE)
+options(width=125)
+```
+
+# Exploratory Data Analysis
+
+###### Published: 7 April 2020
+
+\newline
+
+```{r}
+setwd("~/CDAR")
+beer <- read.csv("data/beer_EDA.csv")
+```
+
+```{r}
+summary(beer)
+```
+
+
+```{r}
+if(!require(gridExtra)){install.packages("gridExtra")+library(gridExtra)}
+plot.new()
+grid.table(t(summary(beer)))
+```
+
+```{r}
+library(tidyverse)
+library(ggpubr)
+
+ggqqplot(beer$abv, color="steelblue") +
+  theme_bw()
+
+ggqqplot(beer, x="abv", color="brewery", ggtheme = theme_bw())
+
+
+ggplot(beer, aes(sample=abv)) +
+  geom_qq() +
+  geom_qq_line()
+```
+
+
+```{r}
+ggplot(beer, aes(x=abv)) +
+  geom_histogram(bins=20) +
+  theme_bw()
+
+ggplot(beer, aes(x=abv)) +
+  geom_histogram(bins=100) +
+  theme_bw()
+
+ggplot(beer, aes(x=abv, fill=brewery)) +
+  geom_histogram(bins=30) +
+  facet_wrap(~brewery) +
+  theme_bw()
+```
+
+```{r}
+ggplot(beer, aes(x=abv, colour=brewery)) +
+  geom_freqpoly(binwidth=0.1) +
+  theme_bw() +
+  theme(legend.position="bottom") +
+  guides(colour=guide_legend(nrow=2, byrow=TRUE))
+```
+
+```{r}
+ggplot(beer, aes(x=taste, fill=brewery)) +
+  geom_bar(position="stack") +
+  theme_bw()
+
+ggplot(beer, aes(x=taste, fill=brewery)) +
+  geom_bar(position="fill") +
+  theme_bw()
+```
+
+
+```{r}
+ggplot(beer, aes(x=total, fill=brewery)) +
+  geom_bar(position="stack") +
+  theme_bw()
+
+ggplot(beer, aes(x=total, fill=brewery)) +
+  geom_bar(position="fill") +
+  theme_bw()
+```
+
+```{r}
+barplot(table(beer$overall))
+```
+
+
+```{r}
+beer[, c(3,7:11)] %>%
+  gather(-brewery, key="var", value="value") %>%
+  ggplot(aes(x=value, fill=brewery)) +
+  geom_bar(position="stack") +
+  facet_wrap(~var, scales="free") +
+  theme_bw()
+
+beer[, c(3,7:11)] %>%
+  gather(-brewery, key="var", value="value") %>%
+  ggplot(aes(x=value, fill=brewery)) +
+  geom_bar(position="fill") +
+  facet_wrap(~var, scales="free") +
+  theme_bw()
+```
+
+
+```{r}
+ggplot(beer, aes(x=abv, y=brewery)) +
+  geom_boxplot() +
+  theme_bw()
+
+ggplot(beer, aes(x=abv, y=brewery)) +
+  geom_boxplot() +
+  geom_jitter(shape=16, cex=0.1) +
+  theme_bw()
+
+ggplot(beer, aes(x=abv, y=brewery)) +
+  geom_boxplot() +
+  geom_jitter(shape=16, cex=0.1, position=position_jitter(0.2)) +
+  theme_bw()
+```
+
+```{r}
+ggplot(beer) +
+  geom_count(aes(x=brewery, y=style)) +
+  theme_bw()
+```
+
+```{r}
+plot(beer$time, beer$total)
+beer$Date <- as.Date(beer$time)
+
+ggplot(beer, aes(x=Date, y=total)) +
+  geom_point(color="slateblue") +
+  geom_smooth(method='lm', se=FALSE) +
+  theme_bw()
+```
+
+
+```{r}
+brewery.lm <- lm(as.numeric(beer$brewery)~abv, beer)
+summary(brewery.lm)
+
+anova(brewery.lm)
+
+```
+
+```{r}
+sum(beer$brewery=="Victory Brewing Company")
+
+time.lm <- lm(beer$total[beer$brewery=="Victory Brewing Company"]~seq(1:sum(beer$brewery=="Victory Brewing Company")))
+summary(time.lm)
+
+plot(ts(beer$total[beer$brewery=="Victory Brewing Company"]))
+abline(lm(beer$total[beer$brewery=="Victory Brewing Company"]~seq(1:sum(beer$brewery=="Victory Brewing Company"))))
+
+plot(ts(beer$total[beer$brewery=="Victory Brewing Company"]))
+abline(lm(beer$total[beer$brewery=="Victory Brewing Company"]~seq(1:sum(beer$brewery=="Victory Brewing Company"))))
+
+company.levels <- levels(beer$brewery)
+company <- company.levels[5]
+plot(ts(beer$total[beer$brewery==company]))
+abline(lm(beer$total[beer$brewery==company]~seq(1:sum(beer$brewery==company))), col="red")
+time.lm <- lm(beer$total[beer$brewery==company]~seq(1:sum(beer$brewery==company)))
+summary(time.lm)
+print(company)
+```
+
