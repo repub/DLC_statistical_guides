@@ -16,6 +16,8 @@ CO2.plot + geom_point()
 
 <img src="/home/tyler/CDAR/docs/CO2_Plot_files/figure-markdown_github/geom_point-1.png" style="display: block; margin: auto auto auto 0;" />
 
+![image1](./CO2_Plot_files/figure-markdown_github/geom_point-1.png)
+
 Because the CO2 concentrations are pre-defined and not continuous, we could also display a boxplot to better see the distribution of our data. To do so, we can use the same ggplot object with `geom_boxplot()` and set `group` to the seven CO2 concentrations in our dataset.
 
 ``` r
