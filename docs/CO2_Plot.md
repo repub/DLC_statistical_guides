@@ -14,7 +14,7 @@ CO2.plot <- ggplot(CO2, aes(x=conc, y=uptake))
 CO2.plot + geom_point()
 ```
 
-<img src="/home/tyler/CDAR/docs/CO2_Plot_files/figure-markdown_github/geom_point-1.png" style="display: block; margin: auto auto auto 0;" />
+<img src="docs/CO2_Plot_files/figure-markdown_github/geom_point-1.png" style="display: block; margin: auto auto auto 0;" />
 
 <!-- ![image1](./docs/CO2_Plot_files/figure-markdown_github/geom_point-1.png) -->
 Because the CO2 concentrations are pre-defined and not continuous, we could also display a boxplot to better see the distribution of our data. To do so, we can use the same ggplot object with `geom_boxplot()` and set `group` to the seven CO2 concentrations in our dataset.
@@ -23,7 +23,7 @@ Because the CO2 concentrations are pre-defined and not continuous, we could also
 CO2.plot + geom_boxplot(aes(group=conc))
 ```
 
-<img src="/home/tyler/CDAR/docs/CO2_Plot_files/figure-markdown_github/geom_boxplot-1.png" style="display: block; margin: auto auto auto 0;" />
+<img src="docs/CO2_Plot_files/figure-markdown_github/geom_boxplot-1.png" style="display: block; margin: auto auto auto 0;" />
 
 Overall, there appears to be some increasing trend in CO2 uptake as CO2 concentration increases. However, we have other factors that are so far not included in our plot that we should take into account, namely the origin of the plant and their treatment.
 
@@ -35,7 +35,7 @@ CO2.plot <- CO2.plot + geom_point(aes(color=Treatment, pch=Type))
 CO2.plot
 ```
 
-<img src="/home/tyler/CDAR/docs/CO2_Plot_files/figure-markdown_github/geom_point_colors-1.png" style="display: block; margin: auto auto auto 0;" />
+<img src="docs/CO2_Plot_files/figure-markdown_github/geom_point_colors-1.png" style="display: block; margin: auto auto auto 0;" />
 
 *Note: When you assign an object in R you can surround the line with parenthesis* `()` *to also print the object rather than calling it in a new line. This will be done in the following code blocks.*
 
@@ -47,7 +47,7 @@ Next, to better see the trends in our data it can be useful to display lines for
                                         color=Treatment, lty=Type)))
 ```
 
-<img src="/home/tyler/CDAR/docs/CO2_Plot_files/figure-markdown_github/geom_point_lines-1.png" style="display: block; margin: auto auto auto 0;" />
+<img src="docs/CO2_Plot_files/figure-markdown_github/geom_point_lines-1.png" style="display: block; margin: auto auto auto 0;" />
 
 By setting `group` to the interaction of *Treatment* and *Type*, `stat_summary()` knows to calculate the mean of each of our four groups. We further identify *Treatment* to be represented by color and *Type* by the type of line (either solid or dashed by default).
 
@@ -60,7 +60,7 @@ It will be clearer if we give our plot proper titles.
        y="CO2 Uptake Rate (umol/m^2 sec)"))
 ```
 
-<img src="/home/tyler/CDAR/docs/CO2_Plot_files/figure-markdown_github/geom_point_labs-1.png" style="display: block; margin: auto auto auto 0;" />
+<img src="docs/CO2_Plot_files/figure-markdown_github/geom_point_labs-1.png" style="display: block; margin: auto auto auto 0;" />
 
 `labs()` is a simple way to add titles to our plot.
 
@@ -73,7 +73,7 @@ However, it would be better if we use some simple formatting changes.
        y=bquote("CO"[2]~"Uptake Rate ("*mu*"mol/"*m^2*"s)")))
 ```
 
-<img src="/home/tyler/CDAR/docs/CO2_Plot_files/figure-markdown_github/geom_point_labs2-1.png" style="display: block; margin: auto auto auto 0;" />
+<img src="docs/CO2_Plot_files/figure-markdown_github/geom_point_labs2-1.png" style="display: block; margin: auto auto auto 0;" />
 
 As you may notice, our previous labels were replaced by similar text but with updated formatting. By using `bquote()` we can add simple formatting changes such as superscripts (`^`), subscripts (`[]`), and italics (`italic()`) among many other formatting options. `expression()` is an alternative method to formatting text that is popular as well.
 
@@ -87,7 +87,7 @@ We can further refine our plot by changing the size, transparency, and outline o
   theme_bw()
 ```
 
-<img src="/home/tyler/CDAR/docs/CO2_Plot_files/figure-markdown_github/geom_point_scheme-1.png" style="display: block; margin: auto auto auto 0;" />
+<img src="docs/CO2_Plot_files/figure-markdown_github/geom_point_scheme-1.png" style="display: block; margin: auto auto auto 0;" />
 
 The first `geom_point()` is the same as above except we add `cex` to increase the size of our points and `alpha` to make them slightly transparent to better see points that overlap. In the second `geom_point()` command we draw black outlines for our points by changing the shapes of our points to unfilled circles and triangles using `pch`. In `scale_color_brewer()` we use a preset color scheme to change the colors that represent *Treatment* to two shades of blue. Finally, `theme_bw()` sets the plotting theme to one of the default themes provided by `ggplot2`.
 
@@ -105,7 +105,7 @@ ggplot(CO2, aes(x=factor(conc), y=uptake)) +
   theme(legend.position="bottom")
 ```
 
-<img src="/home/tyler/CDAR/docs/CO2_Plot_files/figure-markdown_github/geom_point_full-1.png" style="display: block; margin: auto auto auto 0;" />
+<img src="docs/CO2_Plot_files/figure-markdown_github/geom_point_full-1.png" style="display: block; margin: auto auto auto 0;" />
 
 Alternatively, we could use boxplots to display the centrality and distribution of our data. An example of some code to do this that keeps most of the same formatting as our prevoius plots is given below.
 
@@ -121,7 +121,7 @@ ggplot(CO2, aes(x=factor(conc), y=uptake)) +
   theme(legend.position="bottom")
 ```
 
-<img src="/home/tyler/CDAR/docs/CO2_Plot_files/figure-markdown_github/geom_boxplot_full-1.png" style="display: block; margin: auto auto auto 0;" />
+<img src="docs/CO2_Plot_files/figure-markdown_github/geom_boxplot_full-1.png" style="display: block; margin: auto auto auto 0;" />
 
 *Note: the conc varaible is numeric and not a factor, which can cause some issues when trying to plot with* `geom_boxplot()`*. An easy way to fix this without altering our dataframe is to use* `factor()` *to read conc as a factor while plotting.*
 
