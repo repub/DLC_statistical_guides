@@ -12,8 +12,8 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, fig.path="imgs/",
-                      fig.show='hold')
+knitr::opts_chunk$set(echo=TRUE, fig.path="imgs/", fig.align='center',
+                      fig.width=6, fig.height=4, fig.show='hold')
 options(width=125)
 ```
 
