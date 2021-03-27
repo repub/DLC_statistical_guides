@@ -1,0 +1,51 @@
+---
+title: "CO2 EDA"
+author: "tylerbg"
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='CO2_Plot.md') })
+output: github_document
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, fig.align='center', fig.path="./imgs/")
+options(width=125)
+```
+
+# Exploratory Data Analysis of CO2
+
+```{r info}
+?CO2
+```
+
+```{r summary}
+summary(CO2)
+```
+
+```{r str}
+str(CO2)
+```
+
+```{r hist}
+hist(CO2$uptake)
+```
+
+```{r}
+qqnorm(CO2$uptake)
+qqline(CO2$uptake)
+```
+
+
+```{r}
+plot(CO2$conc, CO2$uptake)
+abline(lm(uptake~conc, CO2))
+```
+
+```{r}
+plot(CO2$conc, CO2$uptake, col=CO2$Treatment, pch=CO2$Type)
+```
+
