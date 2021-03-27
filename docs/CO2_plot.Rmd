@@ -5,8 +5,8 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
     encoding=encoding,
-    output_file='CO2_Plot.md') })
-output: github_document
+    output_file='CO2_Plot.html') })
+output: html_document
 editor_options:
   chunk_output_type: console
 ---
