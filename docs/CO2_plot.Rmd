@@ -1,6 +1,4 @@
 ---
-title: "CO2 plotting"
-author: "tylerbg"
 knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,

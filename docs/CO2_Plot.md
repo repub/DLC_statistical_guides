@@ -1,6 +1,3 @@
-CO2 plotting
-================
-tylerbg
 
 # Plotting CO<sub>2</sub> concentrations and CO<sub>2</sub> uptake
 
