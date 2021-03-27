@@ -2,7 +2,7 @@ CO2 plotting
 ================
 tylerbg
 
-![testimg](./imgs/geom_boxplot_full-1.png){:height="6in" width="4ins"}
+![testimg](./imgs/geom_boxplot_full-1.png){:height="100%" width="100%"}
 
 # Plotting CO<sub>2</sub> concentrations and CO<sub>2</sub> uptake
 

@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo=TRUE, fig.path="imgs/", fig.align='center',
 options(width=125)
 ```
 
-![testimg](./imgs/geom_boxplot_full-1.png){:height="6in" width="4ins"}
+![testimg](./imgs/geom_boxplot_full-1.png){:height="100%" width="100%"}
 
 # Plotting CO<sub>2</sub> concentrations and CO<sub>2</sub> uptake
 
