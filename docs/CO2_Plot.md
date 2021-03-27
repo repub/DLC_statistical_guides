@@ -2,6 +2,8 @@ CO2 plotting
 ================
 tylerbg
 
+![testimg](./imgs/geom_boxplot_full-1.png){:height="6in" width="4in"}
+
 # Plotting CO<sub>2</sub> concentrations and CO<sub>2</sub> uptake
 
 To see how CO<sub>2</sub> uptake rates may change by the concentration of CO<sub>2</sub> we can simply make a plot of the two variables. While we can choose to do this using the plotting tools in base `R`, the `ggplot2` package provides a popular graphical language that many prefer to use. After installing and loading `ggplot2` we can create a basic ggplot object with concentration on the x- and uptake on the y-axis, then use `geom_point()` to define the layout of our ggplot layer.
