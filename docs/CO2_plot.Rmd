@@ -12,7 +12,7 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, fig.align='center', fig.path="./imgs/",
+knitr::opts_chunk$set(echo=TRUE, fig.align='center', fig.path="imgs/",
                       fig.width=6, fig.height=4, fig.show='hold')
 options(width=125)
 ```
