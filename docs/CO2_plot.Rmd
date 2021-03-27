@@ -13,7 +13,7 @@ editor_options:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, fig.align='center', fig.path="./imgs/",
-                      fig.width=8, fig.height=6, fig.show='hold')
+                      fig.show='hold')
 options(width=125)
 ```
 
