@@ -9,4 +9,4 @@ While there are plenty of resources for data science, during my studies I have f
 Of course, not every possible scenario can be described and I do not claim to be an expert.  I too am regularly learning new ways to code in `R` and methods in data science (and both are constantly under development). That said, I plan for all of the posts here to be living, meaning that they will be continuously updated as I discover new information.  So, if you spot any errors, have more thorough/clear explanations or resources, if you know a better way to code, or if you have any topic requests please let me know!  I can be contacted at: `tbg5023 AT psu DOT edu`.
 
 ### [Data Cleaning](https://tylerbg.github.io/CDAR/docs/data_cleaning)
-### [CO2 plotting](https://tylerbg.github.io/CDAR/docs/CO2_Plot.md)
+### [CO2 plotting](https://tylerbg.github.io/CDAR/docs/CO2_Plot)
