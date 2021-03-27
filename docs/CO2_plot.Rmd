@@ -12,7 +12,8 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, fig.align='center', fig.path="./imgs/")
+knitr::opts_chunk$set(echo=TRUE, fig.align='center', fig.path="./imgs/",
+                      fig.width=4, fig.height=3, fig.show='hold')
 options(width=125)
 ```
 
@@ -26,6 +27,7 @@ library(ggplot2)
 CO2.plot <- ggplot(CO2, aes(x=conc, y=uptake))
 
 CO2.plot + geom_point()
+CO2.plot
 ```
 
 Because our x variable is not continuous but a discrete set of 7 concentrations, we could also display a boxplot to get an idea on the distribution of our data.  To do so, we can use the same ggplot object with `geom_boxplot()` and set `group` to the seven CO2 concentrations in our dataset.

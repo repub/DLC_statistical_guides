@@ -12,9 +12,10 @@ library(ggplot2)
 CO2.plot <- ggplot(CO2, aes(x=conc, y=uptake))
 
 CO2.plot + geom_point()
+CO2.plot
 ```
 
-<img src="./imgs/geom_point-1.png" style="display: block; margin: auto;" />
+<img src="./imgs/geom_point-1.png" style="display: block; margin: auto;" /><img src="./imgs/geom_point-2.png" style="display: block; margin: auto;" />
 
 Because our x variable is not continuous but a discrete set of 7 concentrations, we could also display a boxplot to get an idea on the distribution of our data. To do so, we can use the same ggplot object with `geom_boxplot()` and set `group` to the seven CO2 concentrations in our dataset.
 
