@@ -14,7 +14,7 @@ editor_options:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, fig.align='center', fig.path="imgs/",
                       fig.width=6, fig.height=4, fig.show='hold')
-options(width=125)
+options(width=1000)
 ```
 
 # Plotting CO<sub>2</sub> concentrations and CO<sub>2</sub> uptake
