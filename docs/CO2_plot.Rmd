@@ -12,9 +12,9 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, fig.align='center', fig.path="imgs/",
+knitr::opts_chunk$set(echo=TRUE, fig.path="imgs/",
                       fig.show='hold')
-options(width=1000)
+options(width=125)
 ```
 
 # Plotting CO<sub>2</sub> concentrations and CO<sub>2</sub> uptake
