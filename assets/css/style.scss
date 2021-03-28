@@ -6,3 +6,7 @@
 .inner {
   max-width: 150%;
 }
+
+.page {
+  width: calc(100% - #{$right-sidebar-width-narrow});
+}
