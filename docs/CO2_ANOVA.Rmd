@@ -1,0 +1,90 @@
+---
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='CO2_ANOVA.md') })
+output: github_document
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, fig.path="imgs/", #out.width='100%',
+                      fig.width=6, fig.height=4, fig.show='hold',
+                      fig.align='center')
+options(width=100)
+```
+
+# Analyzing `CO2` with linear regression and ANOVA
+
+To determine which, if any, of the variables have a significant relationship with CO<sub>2</sub> uptake we can use two powerful statistical tools, linear regression and Analysis of Variance (ANOVA).
+
+Although the conc variable has 7 distinct levels, molecular concentrations are continuous and it would be sensible to model conc as a continuous variable instead of a categorical one.  
+
+<center>
+$$ y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + ... + \beta_n x_{in} + \epsilon_i$$
+</center>
+
+- $y_i$ is the response variable
+- $x_i$ are our predictor variables
+- $\beta$ are coefficients for the predictor variables and the intercept
+- $\epsilon_i$ is the error term
+
+In our case, our equation will look like:
+
+$$y_{i,Uptake} = \beta_0 + \beta_1x_{i,Concentration} + \beta_2x_{i,Treatment} + \beta_3x_{i,Type} + \epsilon_i$$
+
+When using categorical data to fit a linear regression model we would need to [recode the variables](https://stats.idre.ucla.edu/spss/faq/coding-systems-for-categorical-variables-in-regression-analysis/) to numerical values so that they may be entered into the regression equation.  Thankfully, `R` automatically dummy codes factors when they are added to regression model, so we can go ahead and generate and analyze our model using the following code.
+
+```{r}
+CO2.lm <- lm(uptake~Type+Treatment+conc, data=CO2)
+
+summary(CO2.lm)
+```
+
+Looking at our summary statistics we can see that the linear model has a statistically significant fit (p < 2.2e-16) with a fairly high R<sup>2</sup> (0.6839) and adjusted R<sup>2</sup> (0.6721).  From the p-values for our estimated coefficients (`Pr(>|t|)`), we can see that each of our variables are significant predictors of CO<sub>2</sub> uptake.  Therefore, we can conclude that our three predictor variables, concentration, Treatment, and Type, are significant predictors of CO<sub>2</sub> uptake.  We can then rewrite our regression equation to:
+
+$$y_{i,Uptake} = 29.260 + 0.018x_{i,Concentration} - 6.860x_{i,Treatment} - 12.660x_{i,Type}$$
+
+To see how `R` coded the categorical variables we can call `$xlevels` from the `lm()` object we just created.
+
+```{r}
+CO2.lm$xlevels
+```
+
+From the output we can see that for the Type and Treatment variables "Quebec" and "nonchilled" are first followed by "Mississippi" and "chilled", respectively.  Knowing that R uses dummy coding for factors in regression we can conclude that the first levels are coded as 0 and the second as 1 for the two variables, which we can see further when we use `summary()` to see the results of our regression model.
+
+Notice that the Type and Treatment variables are concatenated with "Mississippi" and "chilled", respectively.  When Type is "Quebec", the dummy code is 0 and therefor the value will be 0 in the regression equation ($\beta_3*x_{i,Type}=-12.659 * 0 = 0$).  Conversely, when Type is "Mississippi" which is dummy coded to 1 the value for that variable will equal the estimated coefficient ($\beta_3*x_{i,Type}=-12.659 * 1 = -12.659$).  If we happened to have a third level in Type, the value for that factor would be double the estimated coefficient, triple for a fourth level, and so forth.
+
+
+
+
+
+
+```{r}
+CO2.aov <- aov(CO2.lm)
+```
+
+
+
+```{r}
+anova(CO2.aov)
+```
+
+\newline
+\newline
+
+### Other Resources
+
+[STHDA: One-Way ANOVA Test in R](http://www.sthda.com/english/wiki/one-way-anova-test-in-r)
+
+[Scribbr: ANOVA in R: A step-by-step guide](https://www.scribbr.com/statistics/anova-in-r/)
+
+[Data Analysis in R: Understanding ANOVA in R](https://bookdown.org/steve_midway/DAR/understanding-anova-in-r.html)
+
+[Datanovia: ANOVA in R](https://www.datanovia.com/en/lessons/anova-in-r/)
+
+[Applied Statistics with R: Analysis of Variance](https://daviddalpiaz.github.io/appliedstats/analysis-of-variance.html)
+
+[Penn State: Regression Methods](https://online.stat.psu.edu/stat501/lesson/welcome-stat-501)
