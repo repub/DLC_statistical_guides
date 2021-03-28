@@ -2,29 +2,3 @@
 ---
 
 @import "{{ site.theme }}";
-
-.inner {
-  max-width: 200%;
-}
-
-.page {
-  margin-left: 0;
-  margin-right:0;
-  width: 150%;
-  
-  .page__content {
-      width: 150%;
-    }
-  
-  .page__inner-wrap {
-
-
-    .page__content {
-      width: 150%;
-    }
-    
-    .page__meta,
-    .page__share {
-    }
-  }
-}
