@@ -14,9 +14,9 @@ Although the conc variable has 7 distinct levels, molecular concentrations are c
 
 In our case, our equation will look like:
 
-<center>
+<p align="center">
 <i> y<sub>i,uptake</sub> = β<sub>0</sub> + β<sub>conc</sub>x<sub>i,conc</sub> + β<sub>Treatment</sub>x<sub>i,Treatment</sub> + β<sub>Type</sub>x<sub>i,Type</sub> + ε<sub>i</sub>
-</center>
+</p>
 </i>
 
 When using categorical data to fit a linear regression model we would need to [recode the variables](https://stats.idre.ucla.edu/spss/faq/coding-systems-for-categorical-variables-in-regression-analysis/) to numerical values so that they may be entered into the regression equation. Thankfully, `R` automatically dummy codes factors when they are added to regression model, so we can go ahead and generate and analyze our model using the following code.
