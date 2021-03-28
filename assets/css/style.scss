@@ -4,7 +4,7 @@
 @import "{{ site.theme }}";
 
 .inner {
-  max-width: 100%;
+  max-width: 200%;
 }
 
 .page {
@@ -12,7 +12,7 @@
     float: left;
     margin-left: 0;
     margin-right: 0;
-    width: 100%;
+    width: 150%;
     clear: both;
 
     .page__content,
@@ -22,7 +22,7 @@
       float: left;
       margin-left: 0;
       margin-right: 0;
-      width: 100%;
+      width: 150%;
       clear: both;
     }
   }
