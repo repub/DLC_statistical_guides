@@ -12,6 +12,9 @@ Although the conc variable has 7 distinct levels, molecular concentrations are c
 -   <i>β</i> are coefficients for the predictor variables and the intercept
 -   <i>ε<sub>i</sub></i> is the error term
 
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+*y*<sub>*i*</sub> = *β*<sub>0</sub> + *β*<sub>1</sub>*x*<sub>*i*, 1</sub> + *β*<sub>2</sub>*x*<sub>*i*, 2</sub>...+*β*<sub>*n*</sub>*x*<sub>*i*, *n*</sub>
+
 In our case, our equation will look like:
 
 <center>
