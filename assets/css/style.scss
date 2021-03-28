@@ -11,6 +11,10 @@
   margin-left: 0;
   margin-right:0;
   
+  .page__content {
+      width: 150%;
+    }
+  
   .page__inner-wrap {
     float: left;
     margin-left: 0;
@@ -18,7 +22,10 @@
     width: 150%;
     clear: both;
 
-    .page__content,
+    .page__content {
+      width: 150%;
+    }
+    
     .page__meta,
     .page__share {
       position: relative;
