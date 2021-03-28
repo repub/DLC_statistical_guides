@@ -20,18 +20,12 @@ To determine which, if any, of the variables have a significant relationship wit
 
 Although the conc variable has 7 distinct levels, molecular concentrations are continuous and it would be sensible to model conc as a continuous variable instead of a categorical one.  
 
-<i>y<sub>i</sub> = &beta;<sub>0</sub> + &beta;<sub>1</sub>x<sub>i,1</sub> + &beta;<sub>2</sub>x<sub>i,2</sub> + ... + &beta;<sub>n</sub>x<sub>i,n</sub> + &epsilon;<sub>i</sub></i>
+$$y_i = {\beta}_0 + {\beta}_1 x_{i,1} + {\beta}_2 x_{i,2}... + {\beta}_n x_{i,n} + {\epsilon}_i$$
 
-- <i>y<sub>i</sub></i> is the response variable
-- <i>x<sub>i</sub></i> are our predictor variables
-- <i>&beta;</i> are coefficients for the predictor variables and the intercept
-- <i>&epsilon;<sub>i</sub></i> is the error term
-
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-
-$$y_i = {\beta}_0 + {\beta}_1 x_{i,1} + {\beta}_2 x_{i,2}... + {\beta}_n x_{i,n}$$
-
-
+- $y_i$ is the response variable
+- $x_i$ are our predictor variables
+- ${\beta}$ are coefficients for the predictor variables and the intercept
+- ${\epsilon}_i$ is the error term
 
 In our case, our equation will look like:
 
