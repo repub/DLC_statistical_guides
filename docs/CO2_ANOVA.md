@@ -5,10 +5,7 @@ To determine which, if any, of the variables have a significant relationship wit
 
 Although the conc variable has 7 distinct levels, molecular concentrations are continuous and it would be sensible to model conc as a continuous variable instead of a categorical one.
 
-<center>
-<i>y<sub>i</sub> = β<sub>0</sub> + β<sub>1</sub>x<sub>i,1</sub> + β<sub>2</sub>x<sub>i,2</sub> + ... + β<sub>n</sub>x<sub>i,n</sub> + ε<sub>i</sub>
-</center>
-</i>
+<i>y<sub>i</sub> = β<sub>0</sub> + β<sub>1</sub>x<sub>i,1</sub> + β<sub>2</sub>x<sub>i,2</sub> + ... + β<sub>n</sub>x<sub>i,n</sub> + ε<sub>i</sub></i>
 
 -   <i>y<sub>i</sub></i> is the response variable
 -   <i>x<sub>i</sub></i> are our predictor variables
