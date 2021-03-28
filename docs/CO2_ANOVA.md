@@ -6,16 +6,21 @@ To determine which, if any, of the variables have a significant relationship wit
 Although the conc variable has 7 distinct levels, molecular concentrations are continuous and it would be sensible to model conc as a continuous variable instead of a categorical one.
 
 <center>
-*y*<sub>*i*</sub> = *β*<sub>0</sub> + *β*<sub>1</sub>*x*<sub>*i*1</sub> + *β*<sub>2</sub>*x*<sub>*i*2</sub> + ... + *β*<sub>*n*</sub>*x*<sub>*i**n*</sub> + *ϵ*<sub>*i*</sub>
+<i> y<sub>i</sub> = β<sub>0</sub> + β<sub>1</sub>x<sub>i,1</sub> + β<sub>2</sub>x<sub>i,2</sub> + ... + β<sub>n</sub>x<sub>i,n</sub> + ε<sub>i</sub>
 </center>
--   *y*<sub>*i*</sub> is the response variable
--   *x*<sub>*i*</sub> are our predictor variables
--   *β* are coefficients for the predictor variables and the intercept
--   *ϵ*<sub>*i*</sub> is the error term
+</i>
+
+-   <i>y<sub>i</sub></i> is the response variable
+-   <i>x<sub>i</sub></i> are our predictor variables
+-   <i>β</i> are coefficients for the predictor variables and the intercept
+-   <i>ε<sub>i</sub></i> is the error term
 
 In our case, our equation will look like:
 
-*y*<sub>*i*, *U**p**t**a**k**e*</sub> = *β*<sub>0</sub> + *β*<sub>1</sub>*x*<sub>*i*, *C**o**n**c**e**n**t**r**a**t**i**o**n*</sub> + *β*<sub>2</sub>*x*<sub>*i*, *T**r**e**a**t**m**e**n**t*</sub> + *β*<sub>3</sub>*x*<sub>*i*, *T**y**p**e*</sub> + *ϵ*<sub>*i*</sub>
+<center>
+<i> y<sub>i,uptake</sub> = β<sub>0</sub> + β<sub>conc</sub>x<sub>i,conc</sub> + β<sub>Treatment</sub>x<sub>i,Treatment</sub> + β<sub>Type</sub>x<sub>i,Type</sub> + ε<sub>i</sub>
+</center>
+</i>
 
 When using categorical data to fit a linear regression model we would need to [recode the variables](https://stats.idre.ucla.edu/spss/faq/coding-systems-for-categorical-variables-in-regression-analysis/) to numerical values so that they may be entered into the regression equation. Thankfully, `R` automatically dummy codes factors when they are added to regression model, so we can go ahead and generate and analyze our model using the following code.
 
@@ -48,7 +53,10 @@ summary(CO2.lm)
 
 Looking at our summary statistics we can see that the linear model has a statistically significant fit (p &lt; 2.2e-16) with a fairly high R<sup>2</sup> (0.6839) and adjusted R<sup>2</sup> (0.6721). From the p-values for our estimated coefficients (`Pr(>|t|)`), we can see that each of our variables are significant predictors of CO<sub>2</sub> uptake. Therefore, we can conclude that our three predictor variables, concentration, Treatment, and Type, are significant predictors of CO<sub>2</sub> uptake. We can then rewrite our regression equation to:
 
-*y*<sub>*i*, *U**p**t**a**k**e*</sub> = 29.260 + 0.018*x*<sub>*i*, *C**o**n**c**e**n**t**r**a**t**i**o**n*</sub> − 6.860*x*<sub>*i*, *T**r**e**a**t**m**e**n**t*</sub> − 12.660*x*<sub>*i*, *T**y**p**e*</sub>
+<center>
+<i> y<sub>i,uptake</sub> = 29.260 + 0.018x<sub>i,conc</sub> - 6.860x<sub>i,Treatment</sub> - 12.660x<sub>i,Type</sub>
+</center>
+</i>
 
 To see how `R` coded the categorical variables we can call `$xlevels` from the `lm()` object we just created.
 
