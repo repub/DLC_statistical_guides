@@ -5,16 +5,16 @@ To determine which, if any, of the variables have a significant relationship wit
 
 Although the conc variable has 7 distinct levels, molecular concentrations are continuous and it would be sensible to model conc as a continuous variable instead of a categorical one.
 
-*y*<sub>*i*</sub> = *β*<sub>0</sub> + *β*<sub>1</sub>*x*<sub>*i*, 1</sub> + *β*<sub>2</sub>*x*<sub>*i*, 2</sub> + ... + *β*<sub>*n*</sub>*x*<sub>*i*, *n*</sub> + *ϵ*<sub>*i*</sub>
+***y***<sub>***i***</sub> ***=*** ***β***<sub>***0***</sub> ***+*** ***β***<sub>***1***</sub>***x***<sub>***i******,*** ***1***</sub> ***+*** ***β***<sub>***2***</sub>***x***<sub>***i******,*** ***2***</sub> ***+*** ***.******.******.*** ***+*** ***β***<sub>***n***</sub>***x***<sub>***i******,*** ***n***</sub> ***+*** ***ϵ***<sub>***i***</sub>
 
--   *y*<sub>*i*</sub> is the response variable
--   *x*<sub>*i*</sub> are our predictor variables
--   *β* are coefficients for the predictor variables and the intercept
--   *ϵ*<sub>*i*</sub> is the error term
+-   ***y***<sub>***i***</sub> is the response variable
+-   ***x***<sub>***i***</sub> are our predictor variables
+-   ***β*** are coefficients for the predictor variables and the intercept
+-   ***ϵ***<sub>***i***</sub> is the error term
 
 In our case, our equation will look like:
 
-*y*<sub>*i*, *U**p**t**a**k**e*</sub> = *β*<sub>0</sub> + *β*<sub>*T**r**e**a**t**m**e**n**t*</sub>*x*<sub>*i*, *T**r**e**a**t**m**e**n**t*</sub> + *β*<sub>*T**y**p**e*</sub>*x*<sub>*i*, *T**y**p**e*</sub> + *β*<sub>*c**o**n**c*</sub>*x*<sub>*i*, *c**o**n**c*</sub> + *ϵ*<sub>*i*</sub>
+***y***<sub>***i******,*** ***U******p******t******a******k******e***</sub> ***=*** ***β***<sub>***0***</sub> ***+*** ***β***<sub>***T******r******e******a******t******m******e******n******t***</sub>***x***<sub>***i******,*** ***T******r******e******a******t******m******e******n******t***</sub> ***+*** ***β***<sub>***T******y******p******e***</sub>***x***<sub>***i******,*** ***T******y******p******e***</sub> ***+*** ***β***<sub>***c******o******n******c***</sub>***x***<sub>***i******,*** ***c******o******n******c***</sub> ***+*** ***ϵ***<sub>***i***</sub>
 
 When using categorical data to fit a linear regression model we would need to [recode the variables](https://stats.idre.ucla.edu/spss/faq/coding-systems-for-categorical-variables-in-regression-analysis/) to numerical values so that they may be entered into the regression equation. Thankfully, `R` automatically dummy codes factors when they are added to regression model, so we can go ahead and generate and analyze our model using the following code.
 
@@ -47,7 +47,7 @@ summary(CO2.lm)
 
 Looking at our summary statistics we can see that the linear model has a statistically significant fit (p &lt; 2.2e-16) with a fairly high R<sup>2</sup> (0.6839) and adjusted R<sup>2</sup> (0.6721). From the p-values for our estimated coefficients (`Pr(>|t|)`), we can see that each of our variables are significant predictors of CO<sub>2</sub> uptake. Therefore, we can conclude that our three predictor variables, concentration, Treatment, and Type, are significant predictors of CO<sub>2</sub> uptake. We can then rewrite our regression equation to:
 
-*y*<sub>*i*, *U**p**t**a**k**e*</sub> = 29.260 + 0.018*x*<sub>*i*, *T**r**e**a**t**m**e**n**t*</sub> − 6.860*x*<sub>*i*, *T**y**p**e*</sub> − 12.660*x*<sub>*i*, *c**o**n**c*</sub>
+***y***<sub>***i******,*** ***U******p******t******a******k******e***</sub> ***=*** ***29.260*** ***+*** ***0.018******x***<sub>***i******,*** ***T******r******e******a******t******m******e******n******t***</sub> ***−*** ***6.860******x***<sub>***i******,*** ***T******y******p******e***</sub> ***−*** ***12.660******x***<sub>***i******,*** ***c******o******n******c***</sub>
 
 To see how `R` coded the categorical variables we can call `$xlevels` from the `lm()` object we just created.
 
@@ -63,7 +63,7 @@ CO2.lm$xlevels
 
 From the output we can see that for the Type and Treatment variables "Quebec" and "nonchilled" are first followed by "Mississippi" and "chilled", respectively. Knowing that R uses dummy coding for factors in regression we can conclude that the first levels are coded as 0 and the second as 1 for the two variables, which we can see further when we use `summary()` to see the results of our regression model.
 
-Notice that the Type and Treatment variables are concatenated with "Mississippi" and "chilled", respectively. When Type is "Quebec", the dummy code is 0 and therefor the value will be 0 in the regression equation (*β*<sub>3</sub> \* *x*<sub>*i*, *T**y**p**e*</sub> = −12.659 \* 0 = 0). Conversely, when Type is "Mississippi" which is dummy coded to 1 the value for that variable will equal the estimated coefficient (*β*<sub>3</sub> \* *x*<sub>*i*, *T**y**p**e*</sub> = −12.659 \* 1 = −12.659). If we happened to have a third level in Type, the value for that factor would be double the estimated coefficient, triple for a fourth level, and so forth.
+Notice that the Type and Treatment variables are concatenated with "Mississippi" and "chilled", respectively. When Type is "Quebec", the dummy code is 0 and therefor the value will be 0 in the regression equation (***β***<sub>***3***</sub> ***\**** ***x***<sub>***i******,*** ***T******y******p******e***</sub> ***=*** ***−******12.659*** ***\**** ***0*** ***=*** ***0***). Conversely, when Type is "Mississippi" which is dummy coded to 1 the value for that variable will equal the estimated coefficient (***β***<sub>***3***</sub> ***\**** ***x***<sub>***i******,*** ***T******y******p******e***</sub> ***=*** ***−******12.659*** ***\**** ***1*** ***=*** ***−******12.659***). If we happened to have a third level in Type, the value for that factor would be double the estimated coefficient, triple for a fourth level, and so forth.
 
 ``` r
 CO2.aov <- aov(CO2.lm)
@@ -96,4 +96,4 @@ anova(CO2.aov)
 
 [Applied Statistics with R: Analysis of Variance](https://daviddalpiaz.github.io/appliedstats/analysis-of-variance.html)
 
-[Penn State: Regression Methods](https://online.stat.psu.edu/stat501/lesson/welcome-stat-501)
+[**Penn State:** Regression Methods](https://online.stat.psu.edu/stat501/lesson/welcome-stat-501)
