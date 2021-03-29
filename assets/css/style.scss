@@ -4,5 +4,9 @@
 @import "{{ site.theme }}";
 
 body{
-  width: 50%;
+  div{
+    section{
+      width: 200%;
+    }
+  }
 }
