@@ -3,6 +3,11 @@
 
 @import "{{ site.theme }}";
 
-.inner {
-  max-width: 65%;
+
+.wrapper{
+  width: 1180px;
+}
+
+section{
+  width: 820px;
 }
