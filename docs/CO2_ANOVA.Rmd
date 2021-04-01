@@ -14,67 +14,72 @@ knitr::opts_chunk$set(echo=TRUE)
 options(width=100)
 ```
 
-# Analyzing `CO2` with linear regression and ANOVA
+# Analyzing `CO2` with ANOVA and ANCOVA
 
-To determine which, if any, of the variables have a significant relationship with CO<sub>2</sub> uptake we can use two powerful statistical tools, linear regression and Analysis of Variance (ANOVA).
+In an ANOVA model each of our predictor variables are of the categorical type. 
 
+A three factor ANOVA with interactions follows the following formula:
 
+$${y_{ijkl} = {\mu}_{...} + {\alpha}_i + {\beta}_j + {\gamma}_k + (\alpha\beta)_{ij} + (\alpha\gamma)_{ik} + (\beta\gamma)_{jk} + (\alpha\beta\gamma)_{ijk} + {\epsilon}_{ijkl}}$$
 
-In our case with two categorical and one continuous variable, our equation will look like:
+Where:
 
-$$y_{i, \textit{uptake}} = {\beta}_0 + {\beta}_\textit{Treatment} x_{i,\textit{Treatment}} + {\beta}_\textit{Type} x_{i,\textit{Type}} + {\beta}_\textit{conc} x_{i,\textit{conc}} + {\epsilon}_i$$
+- $y_{ijkl}$ is the response for $i$, $j$, and $k$ factor levels and $l$ observations,
+- ${\mu}_{...}$ is the grand mean,
+- ${\alpha}$, $\beta$, $\gamma$ are factors with $i$, $j$, and $k$ levels respectively,
+- $(\alpha\beta)$, $(\alpha\gamma)$, $(\beta\gamma)$, and $(\alpha\beta\gamma)$ are interactions between the factors, and
+- $\epsilon$ is the error term for $i$, $j$, and $k$ factor levels and $l$ observations.
 
-When using categorical data to fit a linear regression model we would need to [recode the variables](https://stats.idre.ucla.edu/spss/faq/coding-systems-for-categorical-variables-in-regression-analysis/) to numerical values so that they may be entered into the regression equation.  Thankfully, `R` automatically dummy codes factors when they are added to regression model, so we can go ahead and generate and analyze our model using the following code.
-
-```{r}
-CO2.lm <- lm(uptake~Type+Treatment+conc, data=CO2)
-
-summary(CO2.lm)
-```
-
-Looking at our summary statistics we can see that the linear model has a statistically significant fit (p < 2.2e-16) with a fairly high R<sup>2</sup> (0.6839) and adjusted R<sup>2</sup> (0.6721).  From the p-values for our estimated coefficients (`Pr(>|t|)`), we can see that each of our variables are significant predictors of CO<sub>2</sub> uptake.  Therefore, we can conclude that our three predictor variables, `conc`, `Treatment`, and `Type`, are significant predictors of `uptake`.  We can then take the significant coefficients to rewrite the linear regression equation to:
-
-$${y_{i, \textit{uptake}} = 29.260 + 0.018 x_{i,\textit{Treatment}} - 6.860 x_{i,\textit{Type}} - 12.660 x_{i,\textit{conc}}}$$
-
-To see how `R` coded the categorical variables we can call `$xlevels` from the `lm()` object we just created.
-
-```{r}
-CO2.lm$xlevels
-```
-
-From the output we can see that for the Type and Treatment variables `Quebec` and `nonchilled` are first followed by `Mississippi` and `chilled`, respectively.  Knowing that R uses dummy coding for factors in regression we can conclude that the first levels are coded as 0 and the second as 1 for the two variables, which we can see further when we use `summary()` to see the results of our regression model.
-
-Notice that the Type and Treatment variables are concatenated with `Mississippi` and `chilled`, respectively.  When Type is `Quebec`, the dummy code is 0 and therefor the value will be 0 in the regression equation ($\beta_3 * x_{i,\textit{Type}} = -12.659 * 0 = 0$).  Conversely, when Type is `Mississippi` which is dummy coded to 1 the value for that variable will equal the estimated coefficient ($\beta_3 * x_{i,\textit{Type}}=-12.659 * 1 = -12.659$).  If we happened to have a third level in Type, the value for that factor would be double the estimated coefficient, triple for a fourth level, and so forth.
-
-```{r}
-CO2.lm <- lm(uptake~Type*Treatment+conc, data=CO2)
-
-summary(CO2.lm)
-```
-
-
-
-
-
-```{r}
-CO2.aov <- aov(CO2.lm)
-```
-
-Although the `conc` variable has 7 distinct levels, molecular concentrations are continuous and it would be sensible to model conc as a continuous variable instead of a categorical one. We can easily do this without making changes to the data by calling `factor()` on the variable within the model formula.
+In the `CO2` dataset the `conc` variable represents molecular concentrations of which are continuous, however because 7 distinct concentrations were used in this study it could be sensible to model `conc` as a categorical variable with 7 levels.  We can easily do this without making changes to the data by calling `factor()` on the variable within the model formula.  We can then use `summary()`, or alternatively `anova()`, to print out the ANOVA table for our fitted model.
 
 ```{r}
 CO2.aov <- aov(uptake~Type*Treatment*factor(conc), data=CO2)
+
+summary(CO2.aov)
 ```
 
 *Note: Because linear regression and ANOVA are only different in language but not math, you could also use `aov()` on a previously fit `lm()` object.*
 
-Using `summary()`, or alternatively `anova()`, we can print out the ANOVA table for our fitted linear model.
+*Note: I have seen others suggest that both `aov()` and `anova()` fit an ANOVA model in `R`, but that is not exactly true.  While `anova()` prints an ANOVA table from a fitted model, only `aov()` actually fits an ANOVA model in base `R`.*
+
+We can see that just like in the [linear regression model](https://tylerbg.github.io/CDAR/docs/CO2_LR) each of the three variables are statistically significant.
+
+Because some of our interaction are not statistically significant we may want to remove them from the model to make a simpler, reduced model.  While we could rewrite our formula in `aov()` with only the significant factors and interaction we could also just use `update` to remove the insignificant interactions from the model we already fit.
 
 ```{r}
+CO2.aov <- update(CO2.aov, .~.-Treatment:factor(conc)-Type:Treatment:factor(conc))
+
 summary(CO2.aov)
 ```
 
-*Note: I have seen others suggest that both `aov()` and `anova()` fit an ANOVA model in `R`, but that is not exactly true.  While `anova()` prints an ANOVA table from a fitted model, only `aov()` actually fits an ANOVA model in base `R`.*
+But what if we did want to treat `conc` as a continuous variable?  While we could then fit a [linear regression model](https://tylerbg.github.io/CDAR/docs/CO2_LR), we could instead treat `conc` as a covariate in an ANCOVA.  In `R`, `aov()` will automatically treat a numerical variable as a covariate so we do not have to do much to change our code except leaving `conc` as a numerical variable.
+
+```{r}
+CO2.ancova <- aov(uptake~Type*Treatment*conc, data=CO2)
+
+summary(CO2.ancova)
+```
+
+There is one issue here however in that both `summary()` and `anova()` in base `R` use the type I sum of squares.  With the ANCOVA we instead need to use the type III errors, otherwise we may be return incorrect statistical results and come to incorrect conclusions.  [While we can change from type I to III sum of squares in base `R`](https://mcfromnz.wordpress.com/2011/03/02/anova-type-iiiiii-ss-explained/) it is actually much easier to instead use the `Anova()` function from the `car` library to do this for us.
+
+```{r}
+#!if(require(car))(install.packages("car"))(library(car))
+
+library(car)
+
+Anova(CO2.ancova, type="3")
+```
+
+
+```{r}
+CO2.ancova2 <- update(CO2.ancova, .~.-Type:Treatment:conc)
+
+Anova(CO2.ancova2, type="3")
+```
+
+
+
+
 
 
 

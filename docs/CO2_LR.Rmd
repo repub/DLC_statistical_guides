@@ -3,7 +3,7 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
     encoding=encoding,
-    output_file='CO2_ANOVA.md') })
+    output_file='CO2_LR.md') })
 output: github_document
 editor_options:
   chunk_output_type: console
@@ -29,6 +29,7 @@ Where:
 In our case with two categorical and one continuous variable, our equation will look like:
 
 $$y_{i, \textit{uptake}} = {\beta}_0 + {\beta}_\textit{Treatment} x_{i,\textit{Treatment}} + {\beta}_\textit{Type} x_{i,\textit{Type}} + {\beta}_\textit{conc} x_{i,\textit{conc}} + {\epsilon}_i$$
+
 When we wish to include categorical data (factors) in a linear regression model we need to [recode the variables](https://stats.idre.ucla.edu/spss/faq/coding-systems-for-categorical-variables-in-regression-analysis/) to numerical values so that they may be entered into the regression equation and solved for.  Conveniently, `R` automatically dummy codes factors when they are included in a regresson model, so we can go ahead to fit and analyze the model using the following code.
 
 ```{r}
@@ -64,7 +65,7 @@ The `*` is the simplest way to include interaction terms and because very useful
 
 Interaction terms are the product of a coefficient and the variables invovled in the interaction, which would make our regression equation for modeling CO<sub>2</sub> uptake:
 
-$$y_{i, \textit{uptake}} = {\beta}_0 + {\beta}_\textit{Treatment} x_{i,\textit{Treatment}} + {\beta}_\textit{Type} x_{i,\textit{Type}} + {\beta}_\textit{conc} x_{i,\textit{conc}} + \beta_\textit{Type*Treatment}x_{i, \textit{Type}}x_{i, \textit{Treatment}} + {\epsilon}_i$$
+$$y_{i, \textit{uptake}} = {\beta}_0 + {\beta}_\textit{Type} x_{i,\textit{Type}} + {\beta}_\textit{Treatment} x_{i,\textit{Treatment}} + {\beta}_\textit{conc} x_{i,\textit{conc}} + \beta_\textit{Type*Treatment}x_{i, \textit{Type}}x_{i, \textit{Treatment}} + {\epsilon}_i$$
 
 We code this in `R` and print a summary of the results with:
 
@@ -77,11 +78,15 @@ summary(CO2.lm)
 
 The new model that includes the interaction term is still statistically significant (`p < 2.2e-16`), however we achieved a slightly higher R<sup>2</sup> and adjusted R<sup>2</sup> and we should note that the estimates for the coefficients and their test statistics have changed.  In particular, `Treatment` is no longer statistically significant although the interaction term between `Type` and `Treatment` is.  This indicates that there is an interaction between these two factors, and even though `Treatment` is no longer statistically significant conventionally we should keep it in our model since it has a significant interaction with another variable.
 
-Now that we know that there is an interaction between at least two of our variables our interpretation fo the linear regression model that predicts `uptake` changes.  Specifically, we cannot claim that when our `Treatment` variable changes from `Quebec` to `Mississippi` the expected change in `uptake` decreases by 9.381 umol/m<sup>2</sup></b> (the coefficient for `Treatment` in our model with the interaction) when all other variables are constant because when the `Treatment` variable changes so does its respective interaction with `Type`.
+Our regression equation now has the the formula:
+
+$$y_{i, \textit{uptake}} = 27.621 - 9.381 x_{i,\textit{Type}} - 3.581 x_{i,\textit{Treatment}} + 0.018 x_{i,\textit{conc}} - 6.557 x_{i, \textit{Type}}x_{i, \textit{Treatment}} + {\epsilon}_i$$
+
+Now that we know that there is an interaction between at least two of our variables our interpretation for the linear regression model that predicts `uptake` changes.  Specifically, we cannot claim that when our `Treatment` variable changes from `Quebec` to `Mississippi` the expected change in `uptake` decreases by 9.381 umol/m<sup>2</sup></b> (the coefficient for `Treatment` in our model with the interaction) when all other variables are constant because when the `Treatment` variable changes so does its respective interaction with `Type`.  Instead, the expected value for `uptake` changes by -9.381 - 6.557 * `Treatment` umol/m<sup>2</sup></b>. 
 
 From the exploratory plots of our data we may also be interested if there are any interactions between our two categorical factors (`Type` and `Treatment`) and `conc`.  
 
-*Note: The results from the linear regression model using `lm()` are the same as those from the ANOVA model using `aov()` for the model without interactions.  However, you might notice that the model with the `Type x Treatment` interaction term has different statistical results between the summary for `lm()` and `aov()`.  This is because of the types of [sum of squares]()*
+*Note: The results from the linear regression model using `lm()` are the same as those from the ANOVA model using `aov()` for the model without interactions.  However, you might notice that the model with the `Type x Treatment` interaction term has different statistical results between the summary for `lm()` and `aov()`.  This is because of the types of [sum of squares](https://www.r-bloggers.com/2011/03/anova-%E2%80%93-type-iiiiii-ss-explained/) used.*
 
 \newline
 \newline
