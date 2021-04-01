@@ -20,11 +20,11 @@ In an ANOVA model each of our predictor variables are of the categorical type.
 
 A three factor ANOVA with interactions follows the following formula:
 
-$${y_{ijkl} = {\mu}_{...} + {\alpha}_i + {\beta}_j + {\gamma}_k + (\alpha\beta)_{ij} + (\alpha\gamma)_{ik} + (\beta\gamma)_{jk} + (\alpha\beta\gamma)_{ijk} + {\epsilon}_{ijkl}}$$
+$${y_\textit{ijkl} = {\mu}_{...} + {\alpha}_i + {\beta}_j + {\gamma}_k + ({\alpha}{\beta})_\textit{ij} + (\alpha \gamma)_\textit{ik} + (\beta\gamma)_\textit{jk} + (\alpha\beta\gamma)_\textit{ijk} + {\epsilon}_\textit{ijkl}}$$
 
 Where:
 
-- $y_{ijkl}$ is the response for $i$, $j$, and $k$ factor levels and $l$ observations,
+- $y_\textit{ijkl}$ is the response for $i$, $j$, and $k$ factor levels and $l$ observations,
 - ${\mu}_{...}$ is the grand mean,
 - ${\alpha}$, $\beta$, $\gamma$ are factors with $i$, $j$, and $k$ levels respectively,
 - $(\alpha\beta)$, $(\alpha\gamma)$, $(\beta\gamma)$, and $(\alpha\beta\gamma)$ are interactions between the factors, and
@@ -44,32 +44,39 @@ summary(CO2.aov)
 
 We can see that just like in the [linear regression model](https://tylerbg.github.io/CDAR/docs/CO2_LR) each of the three variables are statistically significant.
 
-Because some of our interaction are not statistically significant we may want to remove them from the model to make a simpler, reduced model.  While we could rewrite our formula in `aov()` with only the significant factors and interaction we could also just use `update` to remove the insignificant interactions from the model we already fit.
+Because some of our interaction are not statistically significant we may want to remove them from the model to make a simpler, reduced model.  We should start by first removing the highest order interaction (`Type:Treatment:factor(conc)`) and refitting the model.  While we could rewrite our formula in `aov()` with only the significant factors and interactions we could also just use `update` to remove the insignificant interactions from the model we already fit.
 
 ```{r}
-CO2.aov <- update(CO2.aov, .~.-Treatment:factor(conc)-Type:Treatment:factor(conc))
+CO2.aov <- update(CO2.aov, .~.-Type:Treatment:factor(conc))
 
 summary(CO2.aov)
 ```
+
+In the reduced model the interaction between `Treatment` and `conc` is still insignificant, so we can again use `update()` to further reduce the ANOVA model.
+
+```{r}
+CO2.aov <- update(CO2.aov, .~.-Treatment:factor(conc))
+
+summary(CO2.aov)
+```
+
+We now see that each of our variables, `Type`, `Treatment`, and `conc`, and the interactions between `Type` and `Treatment` as well as `Type` and `conc` are statistically significant in the three-way ANOVA model.  
 
 But what if we did want to treat `conc` as a continuous variable?  While we could then fit a [linear regression model](https://tylerbg.github.io/CDAR/docs/CO2_LR), we could instead treat `conc` as a covariate in an ANCOVA.  In `R`, `aov()` will automatically treat a numerical variable as a covariate so we do not have to do much to change our code except leaving `conc` as a numerical variable.
 
 ```{r}
 CO2.ancova <- aov(uptake~Type*Treatment*conc, data=CO2)
-
-summary(CO2.ancova)
 ```
 
-There is one issue here however in that both `summary()` and `anova()` in base `R` use the type I sum of squares.  With the ANCOVA we instead need to use the type III errors, otherwise we may be return incorrect statistical results and come to incorrect conclusions.  [While we can change from type I to III sum of squares in base `R`](https://mcfromnz.wordpress.com/2011/03/02/anova-type-iiiiii-ss-explained/) it is actually much easier to instead use the `Anova()` function from the `car` library to do this for us.
+There is one issue here however in that both `summary()` and `anova()` in base `R` use the type I sum of squares.  With the ANCOVA we instead need to use the type III errors, otherwise we may be return incorrect statistical results that may lead to faulty conclusions.  [While we can change from type I to III sum of squares in base `R`](https://mcfromnz.wordpress.com/2011/03/02/anova-type-iiiiii-ss-explained/) it is actually much easier to instead use the `Anova()` function from the `car` library to do this for us.
 
 ```{r}
-#!if(require(car))(install.packages("car"))(library(car))
-
 library(car)
 
 Anova(CO2.ancova, type="3")
 ```
 
+While there is a lot to look at in our summary statistics for the ANCOVA model we just fit, we should turn our focus to the highest order interaction, `Type:Treatment:conc`.  Because the interaction term here is statistically insignificant we can conclude that an interaction between these three variables does not exist and remove it from our model to make a simpler model.  We can again use `update()` to do so.
 
 ```{r}
 CO2.ancova2 <- update(CO2.ancova, .~.-Type:Treatment:conc)
@@ -77,9 +84,17 @@ CO2.ancova2 <- update(CO2.ancova, .~.-Type:Treatment:conc)
 Anova(CO2.ancova2, type="3")
 ```
 
+We now see that of our three remaining interaction terms the `Treatment:conc` interaction is the only that is not statistically significant.  We can therefore further reduce our model.
 
+```{r}
+CO2.ancova3 <- update(CO2.ancova2, .~.-Treatment:conc)
 
+Anova(CO2.ancova3, type="3")
+```
 
+In this reduced ANCOVA model we see that both the `Type:Treatment` and `Type:conc` interaction terms are statistically significant.  Even though the variable `Type` is not statistically significant, because it does have a statistically significant interaction term with other variables in the model conventionally we should keep the term in our model.  
+
+*Note: To observe the similarities between ANOVA, ANCOVA, and linear regression models try fitting a linear regression with `lm()` using the variables and interactions in the final ANCOVA model and printing summary statistics for the model.*
 
 
 
@@ -97,3 +112,5 @@ Anova(CO2.ancova2, type="3")
 [Datanovia: ANOVA in R](https://www.datanovia.com/en/lessons/anova-in-r/)
 
 [Applied Statistics with R: Analysis of Variance](https://daviddalpiaz.github.io/appliedstats/analysis-of-variance.html)
+
+[R-bloggers: 3-way ANOVA](https://www.r-bloggers.com/2017/02/raccoon-ch-2-4-3-way-anova/)

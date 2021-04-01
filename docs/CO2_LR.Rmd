@@ -16,7 +16,7 @@ options(width=100)
 
 # Analyzing `CO2` with linear regression
 
-The linear regression equation model has the equation:
+Linear regression models have the standard equation:
 
 $${y_i = {\beta}_0 + {\beta}_1 x_{i,1} + {\beta}_2 x_{i,2} + ... + {\beta}_n x_{i,n} + {\epsilon}_i}$$
 
@@ -26,7 +26,7 @@ Where:
 - ${\beta}$ are coefficients for $n$ predictor variables and the intercept, $\beta_0$,
 - ${\epsilon}_i$ is the error term for $i$ observations.
 
-In our case with two categorical and one continuous variable, our equation will look like:
+In our case, fitting the response, `uptake`, with two categorical (`Type` and `Treatment`) and one continuous variable (`conc`) will have the equation:
 
 $$y_{i, \textit{uptake}} = {\beta}_0 + {\beta}_\textit{Treatment} x_{i,\textit{Treatment}} + {\beta}_\textit{Type} x_{i,\textit{Type}} + {\beta}_\textit{conc} x_{i,\textit{conc}} + {\epsilon}_i$$
 
@@ -56,12 +56,12 @@ Notice that the Type and Treatment variables are concatenated with `Mississippi`
 
 Therefore, we can conclude that when `Type` is `Mississippi`, `uptake` is reduced by 12.660 umol/m<sup>2</sup> compared to when `Type` is `Quebec` when the other variables remain constant.  Similarly, `chilled` decreases `uptake` by 6.860 umol/m<sup>2</sup> compared to `nonchilled` while `Type` and `conc` remain constant.
 
-However, if we take a look back at our plots we may be convinced that there is an [interaction](https://online.stat.psu.edu/stat501/lesson/8/8.6) in the data, particularly between our two categorical variables `Type` and `Treatment`.  Information may be lost by not including this interaction in our model, so we should fit a new model that includes an interaction term and assess its significance (or lack thereof).  We can include interaction terms in `R` formulas two ways:
+However, if we take a look back at our plots we may be convinced that there is an [interaction](https://online.stat.psu.edu/stat501/lesson/8/8.6) in the data, particularly between our two categorical variables `Type` and `Treatment`.  Information may be lost by not including this interaction in our model, so we should fit a linear regression model that includes an interaction term and assess its significance (or lack thereof).  We can include interaction terms in `R` formulas two ways:
 
 - Use `*` between variables to include their stadard terms and interaction terms (`Type*Treatment)`).
 - Use `+` for standard variable terms and `:` for interaction terms (`Type+Treatment+Type:Treatment`).
 
-The `*` is the simplest way to include interaction terms and because very useful when we have a lot of terms to include where the `+` and `:` method would take a lot of typing and increase our chance for errors.
+The `*` is the simplest way to include variables with interactions and becomes very useful when we have a lot of terms to include where the `+` and `:` method would take a lot of typing and increase our chance for errors.
 
 Interaction terms are the product of a coefficient and the variables invovled in the interaction, which would make our regression equation for modeling CO<sub>2</sub> uptake:
 
@@ -69,26 +69,37 @@ $$y_{i, \textit{uptake}} = {\beta}_0 + {\beta}_\textit{Type} x_{i,\textit{Type}}
 
 We code this in `R` and print a summary of the results with:
 
-
 ```{r}
 CO2.lm <- lm(uptake~Type*Treatment+conc, data=CO2)
 
 summary(CO2.lm)
 ```
 
-The new model that includes the interaction term is still statistically significant (`p < 2.2e-16`), however we achieved a slightly higher R<sup>2</sup> and adjusted R<sup>2</sup> and we should note that the estimates for the coefficients and their test statistics have changed.  In particular, `Treatment` is no longer statistically significant although the interaction term between `Type` and `Treatment` is.  This indicates that there is an interaction between these two factors, and even though `Treatment` is no longer statistically significant conventionally we should keep it in our model since it has a significant interaction with another variable.
+The new model that includes the interaction term is still statistically significant (`p < 2.2e-16`), however we achieved a slightly higher R<sup>2</sup> and adjusted R<sup>2</sup> to indicate that we have a slightly better fitting model when including the interaction term.  We should also note that the estimates for the coefficients and their test statistics have changed.  In particular, `Treatment` is no longer statistically significant although the interaction term between `Type` and `Treatment` is.  This indicates that there is an interaction between these two factors, and even though `Treatment` is no longer statistically significant conventionally we should keep it in our model since it has a significant interaction with another variable.
 
-Our regression equation now has the the formula:
+Our regression equation can now be written as:
 
 $$y_{i, \textit{uptake}} = 27.621 - 9.381 x_{i,\textit{Type}} - 3.581 x_{i,\textit{Treatment}} + 0.018 x_{i,\textit{conc}} - 6.557 x_{i, \textit{Type}}x_{i, \textit{Treatment}} + {\epsilon}_i$$
 
 Now that we know that there is an interaction between at least two of our variables our interpretation for the linear regression model that predicts `uptake` changes.  Specifically, we cannot claim that when our `Treatment` variable changes from `Quebec` to `Mississippi` the expected change in `uptake` decreases by 9.381 umol/m<sup>2</sup></b> (the coefficient for `Treatment` in our model with the interaction) when all other variables are constant because when the `Treatment` variable changes so does its respective interaction with `Type`.  Instead, the expected value for `uptake` changes by -9.381 - 6.557 * `Treatment` umol/m<sup>2</sup></b>. 
 
-From the exploratory plots of our data we may also be interested if there are any interactions between our two categorical factors (`Type` and `Treatment`) and `conc`.  
+Like any other statistical model there is some degree of error in our estimation, so we may be interested in how confident we are in our estimates.  Using `confint()` we can print the 95% confidence intervals for the estimates of our regression coefficients.
 
-*Note: The results from the linear regression model using `lm()` are the same as those from the ANOVA model using `aov()` for the model without interactions.  However, you might notice that the model with the `Type x Treatment` interaction term has different statistical results between the summary for `lm()` and `aov()`.  This is because of the types of [sum of squares](https://www.r-bloggers.com/2011/03/anova-%E2%80%93-type-iiiiii-ss-explained/) used.*
+```{r}
+confint(CO2.lm)
+```
+
+When interpreting the confidence intervals we can state that **with 95% confidence a unit increase in `conc` increases `uptake` by between 0.013 and 0.022 umol/m<sup>2</sup></b> when all other variables remain constant**.
+
+From the exploratory plots of our data we may also be interested if there are any interactions between our two categorical factors (`Type` and `Treatment`) and `conc`.  Try fitting and interpreting a linear regression model that has these interactions and compare them to the results from [an ANOVA or ANCOVA model](https://tylerbg.github.io/CDAR/docs/CO2_ANOVA).
+
+*Note: The results from the linear regression model using `lm()` are the same as those from the ANOVA model using `aov()` for the model without interactions.  However, you might notice that the model with the `Type x Treatment` interaction term has different statistical results between the summaries for `lm()` and `aov()`.  This is because of the types of [sum of squares](https://www.r-bloggers.com/2011/03/anova-%E2%80%93-type-iiiiii-ss-explained/) used where the model summary for `aov()` uses type I and for `lm()` uses type III sum of squares.*
 
 \newline
 \newline
 
 [Penn State: Regression Methods](https://online.stat.psu.edu/stat501/lesson/welcome-stat-501)
+
+[STHDA: Multiple Linear Regression in R](http://www.sthda.com/english/articles/40-regression-analysis/168-multiple-linear-regression-in-r/)
+
+[Applied Statistics with R: Multiple Linear Regression](https://daviddalpiaz.github.io/appliedstats/multiple-linear-regression.html)

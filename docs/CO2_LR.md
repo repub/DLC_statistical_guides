@@ -1,30 +1,17 @@
 
 # Analyzing `CO2` with linear regression
 
-The linear regression equation model has the
-equation:
+Linear regression models have the standard equation:
 
-\[{y_i = {\beta}_0 + {\beta}_1 x_{i,1} + {\beta}_2 x_{i,2} + ... + {\beta}_n x_{i,n} + {\epsilon}_i}\]
+*y*<sub>*i*</sub> = *β*<sub>0</sub> + *β*<sub>1</sub>*x*<sub>*i*, 1</sub> + *β*<sub>2</sub>*x*<sub>*i*, 2</sub> + ... + *β*<sub>*n*</sub>*x*<sub>*i*, *n*</sub> + *ϵ*<sub>*i*</sub>
 
-Where: - \(y_i\) is the response variable with \(i\) observations, -
-\(x_i\) are predictor variables for an \(n\) number of predictors and
-\(i\) observations, - \({\beta}\) are coefficients for \(n\) predictor
-variables and the intercept, \(\beta_0\), - \({\epsilon}_i\) is the
-error term for \(i\) observations.
+Where: - *y*<sub>*i*</sub> is the response variable with *i* observations, - *x*<sub>*i*</sub> are predictor variables for an *n* number of predictors and *i* observations, - *β* are coefficients for *n* predictor variables and the intercept, *β*<sub>0</sub>, - *ϵ*<sub>*i*</sub> is the error term for *i* observations.
 
-In our case with two categorical and one continuous variable, our
-equation will look
-like:
+In our case, fitting the response, `uptake`, with two categorical (`Type` and `Treatment`) and one continuous variable (`conc`) will have the equation:
 
-\[y_{i, \textit{uptake}} = {\beta}_0 + {\beta}_\textit{Treatment} x_{i,\textit{Treatment}} + {\beta}_\textit{Type} x_{i,\textit{Type}} + {\beta}_\textit{conc} x_{i,\textit{conc}} + {\epsilon}_i\]
+*y*<sub>*i*, *uptake*</sub> = *β*<sub>0</sub> + *β*<sub>*Treatment*</sub>*x*<sub>*i*, *Treatment*</sub> + *β*<sub>*Type*</sub>*x*<sub>*i*, *Type*</sub> + *β*<sub>*conc*</sub>*x*<sub>*i*, *conc*</sub> + *ϵ*<sub>*i*</sub>
 
-When we wish to include categorical data (factors) in a linear
-regression model we need to [recode the
-variables](https://stats.idre.ucla.edu/spss/faq/coding-systems-for-categorical-variables-in-regression-analysis/)
-to numerical values so that they may be entered into the regression
-equation and solved for. Conveniently, `R` automatically dummy codes
-factors when they are included in a regresson model, so we can go ahead
-to fit and analyze the model using the following code.
+When we wish to include categorical data (factors) in a linear regression model we need to [recode the variables](https://stats.idre.ucla.edu/spss/faq/coding-systems-for-categorical-variables-in-regression-analysis/) to numerical values so that they may be entered into the regression equation and solved for. Conveniently, `R` automatically dummy codes factors when they are included in a regresson model, so we can go ahead to fit and analyze the model using the following code.
 
 ``` r
 # Fit a linear model with uptake as the response variable
@@ -55,27 +42,11 @@ summary(CO2.lm)
     ## Multiple R-squared:  0.6839, Adjusted R-squared:  0.6721 
     ## F-statistic:  57.7 on 3 and 80 DF,  p-value: < 2.2e-16
 
-Taking a quick look at the summary statistics we can see that the linear
-model has a statistically significant fit overall (`p < 2.2e-16`) with a
-reasonably high R<sup>2</sup> (0.6839) and [adjusted
-R<sup>2</sup>](https://online.stat.psu.edu/stat501/lesson/10/10.3)
-(0.6721). From the p-values for our estimated coefficients (`Pr(>|t|)`),
-we can see that each of the estimated coefficients are significant
-predictors of CO<sub>2</sub> uptake. Therefore, we can conclude that our
-three predictors variables, `conc`, `Treatment`, and `Type`, are
-significant predictors of `uptake` and we can insert the coefficients
-into the linear regression equation
-to:
+Taking a quick look at the summary statistics we can see that the linear model has a statistically significant fit overall (`p < 2.2e-16`) with a reasonably high R<sup>2</sup> (0.6839) and [adjusted R<sup>2</sup>](https://online.stat.psu.edu/stat501/lesson/10/10.3) (0.6721). From the p-values for our estimated coefficients (`Pr(>|t|)`), we can see that each of the estimated coefficients are significant predictors of CO<sub>2</sub> uptake. Therefore, we can conclude that our three predictors variables, `conc`, `Treatment`, and `Type`, are significant predictors of `uptake` and we can insert the coefficients into the linear regression equation to:
 
-\[{y_{i, \textit{uptake}} = 29.260 - 12.660 x_{i,\textit{Type}} - 6.860 x_{i,\textit{Treatment}}  + 0.018 x_{i,\textit{conc}}}\]
+*y*<sub>*i*, *uptake*</sub> = 29.260 − 12.660*x*<sub>*i*, *Type*</sub> − 6.860*x*<sub>*i*, *Treatment*</sub> + 0.018*x*<sub>*i*, *conc*</sub>
 
-From these results we can conclude that <b> when `Type` and `Treatment`
-remain unchanged, for every one unit increase in `conc`, `uptake`
-increases by 0.018 umol/m<sup>2</sup></b>. While it is easy to make
-conclusions for continuous variables like `conc`, the categorical
-variables `Type` and `Treatment` take slightly more work. First, we need
-to see how `R` coded the categorical variables which we can do by
-calling `$xlevels` from the `lm()` object we just created.
+From these results we can conclude that <b> when `Type` and `Treatment` remain unchanged, for every one unit increase in `conc`, `uptake` increases by 0.018 umol/m<sup>2</sup></b>. While it is easy to make conclusions for continuous variables like `conc`, the categorical variables `Type` and `Treatment` take slightly more work. First, we need to see how `R` coded the categorical variables which we can do by calling `$xlevels` from the `lm()` object we just created.
 
 ``` r
 CO2.lm$xlevels
@@ -87,54 +58,22 @@ CO2.lm$xlevels
     ## $Treatment
     ## [1] "nonchilled" "chilled"
 
-From the output we can see that for the Type and Treatment variables
-`Quebec` and `nonchilled` are first followed by `Mississippi` and
-`chilled`, respectively. Knowing that R uses dummy coding for factors in
-regression we can surmise that the first levels are coded as 0 and the
-second as 1 for the two variables, which we can confirm when we use
-`summary()` to see the results of our regression model.
+From the output we can see that for the Type and Treatment variables `Quebec` and `nonchilled` are first followed by `Mississippi` and `chilled`, respectively. Knowing that R uses dummy coding for factors in regression we can surmise that the first levels are coded as 0 and the second as 1 for the two variables, which we can confirm when we use `summary()` to see the results of our regression model.
 
-Notice that the Type and Treatment variables are concatenated with
-`Mississippi` and `chilled`, respectively. When Type is `Quebec`, the
-dummy code is 0 and therefor the value will be 0 in the regression
-equation (\(\beta_3 * x_{i,\textit{Type}} = -12.659 * 0 = 0\)).
-Conversely, when Type is `Mississippi` which is dummy coded to 1 the
-value for that variable will equal the estimated coefficient
-(\(\beta_3 * x_{i,\textit{Type}}=-12.659 * 1 = -12.659\)). If we
-happened to have a third level in Type, the value for that factor would
-be double the estimated coefficient, triple for a fourth level, and so
-forth.
+Notice that the Type and Treatment variables are concatenated with `Mississippi` and `chilled`, respectively. When Type is `Quebec`, the dummy code is 0 and therefor the value will be 0 in the regression equation (*β*<sub>3</sub> \* *x*<sub>*i*, *Type*</sub> = −12.659 \* 0 = 0). Conversely, when Type is `Mississippi` which is dummy coded to 1 the value for that variable will equal the estimated coefficient (*β*<sub>3</sub> \* *x*<sub>*i*, *Type*</sub> = −12.659 \* 1 = −12.659). If we happened to have a third level in Type, the value for that factor would be double the estimated coefficient, triple for a fourth level, and so forth.
 
-Therefore, we can conclude that when `Type` is `Mississippi`, `uptake`
-is reduced by 12.660 umol/m<sup>2</sup> compared to when `Type` is
-`Quebec` when the other variables remain constant. Similarly, `chilled`
-decreases `uptake` by 6.860 umol/m<sup>2</sup> compared to `nonchilled`
-while `Type` and `conc` remain constant.
+Therefore, we can conclude that when `Type` is `Mississippi`, `uptake` is reduced by 12.660 umol/m<sup>2</sup> compared to when `Type` is `Quebec` when the other variables remain constant. Similarly, `chilled` decreases `uptake` by 6.860 umol/m<sup>2</sup> compared to `nonchilled` while `Type` and `conc` remain constant.
 
-However, if we take a look back at our plots we may be convinced that
-there is an
-[interaction](https://online.stat.psu.edu/stat501/lesson/8/8.6) in the
-data, particularly between our two categorical variables `Type` and
-`Treatment`. Information may be lost by not including this interaction
-in our model, so we should fit a new model that includes an interaction
-term and assess its significance (or lack thereof). We can include
-interaction terms in `R` formulas two ways:
+However, if we take a look back at our plots we may be convinced that there is an [interaction](https://online.stat.psu.edu/stat501/lesson/8/8.6) in the data, particularly between our two categorical variables `Type` and `Treatment`. Information may be lost by not including this interaction in our model, so we should fit a linear regression model that includes an interaction term and assess its significance (or lack thereof). We can include interaction terms in `R` formulas two ways:
 
-  - Use `*` between variables to include their stadard terms and
-    interaction terms (`Type*Treatment)`).
-  - Use `+` for standard variable terms and `:` for interaction terms
-    (`Type+Treatment+Type:Treatment`).
+-   Use `*` between variables to include their stadard terms and interaction terms (`Type*Treatment)`).
+-   Use `+` for standard variable terms and `:` for interaction terms (`Type+Treatment+Type:Treatment`).
 
-The `*` is the simplest way to include interaction terms and because
-very useful when we have a lot of terms to include where the `+` and `:`
-method would take a lot of typing and increase our chance for errors.
+The `*` is the simplest way to include variables with interactions and becomes very useful when we have a lot of terms to include where the `+` and `:` method would take a lot of typing and increase our chance for errors.
 
-Interaction terms are the product of a coefficient and the variables
-invovled in the interaction, which would make our regression equation
-for modeling CO<sub>2</sub>
-uptake:
+Interaction terms are the product of a coefficient and the variables invovled in the interaction, which would make our regression equation for modeling CO<sub>2</sub> uptake:
 
-\[y_{i, \textit{uptake}} = {\beta}_0 + {\beta}_\textit{Type} x_{i,\textit{Type}} + {\beta}_\textit{Treatment} x_{i,\textit{Treatment}} + {\beta}_\textit{conc} x_{i,\textit{conc}} + \beta_\textit{Type*Treatment}x_{i, \textit{Type}}x_{i, \textit{Treatment}} + {\epsilon}_i\]
+*y*<sub>*i*, *uptake*</sub> = *β*<sub>0</sub> + *β*<sub>*Type*</sub>*x*<sub>*i*, *Type*</sub> + *β*<sub>*Treatment*</sub>*x*<sub>*i*, *Treatment*</sub> + *β*<sub>*conc*</sub>*x*<sub>*i*, *conc*</sub> + *β*<sub>*Type\*Treatment*</sub>*x*<sub>*i*, *Type*</sub>*x*<sub>*i*, *Treatment*</sub> + *ϵ*<sub>*i*</sub>
 
 We code this in `R` and print a summary of the results with:
 
@@ -166,45 +105,35 @@ summary(CO2.lm)
     ## Multiple R-squared:  0.7072, Adjusted R-squared:  0.6923 
     ## F-statistic: 47.69 on 4 and 79 DF,  p-value: < 2.2e-16
 
-The new model that includes the interaction term is still statistically
-significant (`p < 2.2e-16`), however we achieved a slightly higher
-R<sup>2</sup> and adjusted R<sup>2</sup> and we should note that the
-estimates for the coefficients and their test statistics have changed.
-In particular, `Treatment` is no longer statistically significant
-although the interaction term between `Type` and `Treatment` is. This
-indicates that there is an interaction between these two factors, and
-even though `Treatment` is no longer statistically significant
-conventionally we should keep it in our model since it has a significant
-interaction with another variable.
+The new model that includes the interaction term is still statistically significant (`p < 2.2e-16`), however we achieved a slightly higher R<sup>2</sup> and adjusted R<sup>2</sup> to indicate that we have a slightly better fitting model when including the interaction term. We should also note that the estimates for the coefficients and their test statistics have changed. In particular, `Treatment` is no longer statistically significant although the interaction term between `Type` and `Treatment` is. This indicates that there is an interaction between these two factors, and even though `Treatment` is no longer statistically significant conventionally we should keep it in our model since it has a significant interaction with another variable.
 
-Our regression equation now has the the
-formula:
+Our regression equation can now be written as:
 
-\[y_{i, \textit{uptake}} = 27.621 - 9.381 x_{i,\textit{Type}} - 3.581 x_{i,\textit{Treatment}} + 0.018 x_{i,\textit{conc}} - 6.557 x_{i, \textit{Type}}x_{i, \textit{Treatment}} + {\epsilon}_i\]
+*y*<sub>*i*, *uptake*</sub> = 27.621 − 9.381*x*<sub>*i*, *Type*</sub> − 3.581*x*<sub>*i*, *Treatment*</sub> + 0.018*x*<sub>*i*, *conc*</sub> − 6.557*x*<sub>*i*, *Type*</sub>*x*<sub>*i*, *Treatment*</sub> + *ϵ*<sub>*i*</sub>
 
-Now that we know that there is an interaction between at least two of
-our variables our interpretation for the linear regression model that
-predicts `uptake` changes. Specifically, we cannot claim that when our
-`Treatment` variable changes from `Quebec` to `Mississippi` the expected
-change in `uptake` decreases by 9.381 umol/m<sup>2</sup></b> (the
-coefficient for `Treatment` in our model with the interaction) when all
-other variables are constant because when the `Treatment` variable
-changes so does its respective interaction with `Type`. Instead, the
-expected value for `uptake` changes by -9.381 - 6.557 \* `Treatment`
-umol/m<sup>2</sup></b>.
+Now that we know that there is an interaction between at least two of our variables our interpretation for the linear regression model that predicts `uptake` changes. Specifically, we cannot claim that when our `Treatment` variable changes from `Quebec` to `Mississippi` the expected change in `uptake` decreases by 9.381 umol/m<sup>2</sup></b> (the coefficient for `Treatment` in our model with the interaction) when all other variables are constant because when the `Treatment` variable changes so does its respective interaction with `Type`. Instead, the expected value for `uptake` changes by -9.381 - 6.557 \* `Treatment` umol/m<sup>2</sup></b>.
 
-From the exploratory plots of our data we may also be interested if
-there are any interactions between our two categorical factors (`Type`
-and `Treatment`) and `conc`.
+Like any other statistical model there is some degree of error in our estimation, so we may be interested in how confident we are in our estimates. Using `confint()` we can print the 95% confidence intervals for the estimates of our regression coefficients.
 
-*Note: The results from the linear regression model using `lm()` are the
-same as those from the ANOVA model using `aov()` for the model without
-interactions. However, you might notice that the model with the `Type x
-Treatment` interaction term has different statistical results between
-the summary for `lm()` and `aov()`. This is because of the types of [sum
-of
-squares](https://www.r-bloggers.com/2011/03/anova-%E2%80%93-type-iiiiii-ss-explained/)
-used.*
+``` r
+confint(CO2.lm)
+```
 
-[Penn State: Regression
-Methods](https://online.stat.psu.edu/stat501/lesson/welcome-stat-501)
+    ##                                         2.5 %      97.5 %
+    ## (Intercept)                       24.38018449 30.86087131
+    ## TypeMississippi                  -13.06564481 -5.69625995
+    ## Treatmentchilled                  -7.26564481  0.10374005
+    ## conc                               0.01330188  0.02215929
+    ## TypeMississippi:Treatmentchilled -11.76808486 -1.34620085
+
+When interpreting the confidence intervals we can state that **with 95% confidence a unit increase in `conc` increases `uptake` by between 0.013 and 0.022 umol/m<sup>2</sup></b> when all other variables remain constant**.
+
+From the exploratory plots of our data we may also be interested if there are any interactions between our two categorical factors (`Type` and `Treatment`) and `conc`. Try fitting and interpreting a linear regression model that has these interactions and compare them to the results from [an ANOVA or ANCOVA model](https://tylerbg.github.io/CDAR/docs/CO2_ANOVA).
+
+*Note: The results from the linear regression model using `lm()` are the same as those from the ANOVA model using `aov()` for the model without interactions. However, you might notice that the model with the `Type x Treatment` interaction term has different statistical results between the summaries for `lm()` and `aov()`. This is because of the types of [sum of squares](https://www.r-bloggers.com/2011/03/anova-%E2%80%93-type-iiiiii-ss-explained/) used where the model summary for `aov()` uses type I and for `lm()` uses type III sum of squares.*
+
+[Penn State: Regression Methods](https://online.stat.psu.edu/stat501/lesson/welcome-stat-501)
+
+[STHDA: Multiple Linear Regression in R](http://www.sthda.com/english/articles/40-regression-analysis/168-multiple-linear-regression-in-r/)
+
+[Applied Statistics with R: Multiple Linear Regression](https://daviddalpiaz.github.io/appliedstats/multiple-linear-regression.html)
