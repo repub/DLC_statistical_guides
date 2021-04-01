@@ -126,6 +126,22 @@ ggplot(CO2, aes(x=factor(conc), y=uptake)) +
 
 *Note: the conc varaible is numeric and not a factor, which can cause some issues when trying to plot with* `geom_boxplot()`*.  An easy way to fix this without altering our dataframe is to use* `factor()` *to read conc as a factor while plotting.*
 
+Alternatively, we can use `facet_wrap()` to make two side-by-side boxplots that separate one of our factors.
+
+```{r geom_boxplot_full}
+ggplot(CO2, aes(x=factor(conc), y=uptake)) +
+  geom_boxplot(aes(fill=Treatment)) +
+  scale_fill_brewer(palette="Paired") +
+  facet_wrap(~Type) +
+  labs(title=bquote("Cold Tolerance of"~italic("Echinochloa crus-galli")),
+       x=bquote("CO"[2]~"Concentration (mL/L)"),
+       y=bquote("CO"[2]~"Uptake Rate ("*mu*"mol/"*m^2*"s)")) +
+  theme_bw(base_size=12) +
+  theme(legend.position="bottom",
+        plot.title=element_text(hjust=0.5))
+```
+
+
 \newline
 \newline
 

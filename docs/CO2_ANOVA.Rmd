@@ -17,16 +17,10 @@ options(width=100)
 # Analyzing `CO2` with linear regression and ANOVA
 
 To determine which, if any, of the variables have a significant relationship with CO<sub>2</sub> uptake we can use two powerful statistical tools, linear regression and Analysis of Variance (ANOVA).
-<p style="text-align: center;">
-$$y_i = {\beta}_0 + {\beta}_1 x_{i,1} + {\beta}_2 x_{i,2} + ... + {\beta}_n x_{i,n} + {\epsilon}_i$$
-</p>
 
-- $y_i$ is the response variable
-- $x_i$ are our predictor variables
-- ${\beta}$ are coefficients for the predictor variables and the intercept
-- ${\epsilon}_i$ is the error term
 
-In our case, our equation will look like:
+
+In our case with two categorical and one continuous variable, our equation will look like:
 
 $$y_{i, \textit{uptake}} = {\beta}_0 + {\beta}_\textit{Treatment} x_{i,\textit{Treatment}} + {\beta}_\textit{Type} x_{i,\textit{Type}} + {\beta}_\textit{conc} x_{i,\textit{conc}} + {\epsilon}_i$$
 
@@ -52,6 +46,11 @@ From the output we can see that for the Type and Treatment variables `Quebec` an
 
 Notice that the Type and Treatment variables are concatenated with `Mississippi` and `chilled`, respectively.  When Type is `Quebec`, the dummy code is 0 and therefor the value will be 0 in the regression equation ($\beta_3 * x_{i,\textit{Type}} = -12.659 * 0 = 0$).  Conversely, when Type is `Mississippi` which is dummy coded to 1 the value for that variable will equal the estimated coefficient ($\beta_3 * x_{i,\textit{Type}}=-12.659 * 1 = -12.659$).  If we happened to have a third level in Type, the value for that factor would be double the estimated coefficient, triple for a fourth level, and so forth.
 
+```{r}
+CO2.lm <- lm(uptake~Type*Treatment+conc, data=CO2)
+
+summary(CO2.lm)
+```
 
 
 
@@ -93,5 +92,3 @@ summary(CO2.aov)
 [Datanovia: ANOVA in R](https://www.datanovia.com/en/lessons/anova-in-r/)
 
 [Applied Statistics with R: Analysis of Variance](https://daviddalpiaz.github.io/appliedstats/analysis-of-variance.html)
-
-[Penn State: Regression Methods](https://online.stat.psu.edu/stat501/lesson/welcome-stat-501)

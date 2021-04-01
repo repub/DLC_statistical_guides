@@ -1,6 +1,4 @@
 ---
-title: "CO2 EDA"
-author: "tylerbg"
 knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
@@ -12,11 +10,15 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, fig.align='center', fig.path="./imgs/")
-options(width=125)
+knitr::opts_chunk$set(echo=TRUE, fig.path="imgs/", #out.width='100%',
+                      fig.width=6, fig.height=4, fig.show='hold',
+                      fig.align='center')
+options(width=100)
 ```
 
 # Exploratory Data Analysis of CO2
+
+We can k
 
 ```{r info}
 ?CO2
