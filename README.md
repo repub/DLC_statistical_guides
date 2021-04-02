@@ -12,6 +12,7 @@ Of course, not every possible scenario can be described and I do not claim to be
 ### [Data Cleaning](https://tylerbg.github.io/CDAR/docs/data_cleaning)
 
 ## Analysis of the CO2 dataset
+### [CO2 EDA](https://tylerbg.github.io/CDAR/docs/CO2_EDA)
 ### [CO2 Plotting](https://tylerbg.github.io/CDAR/docs/CO2_Plot)
 ### [CO2 Linear Regression](https://tylerbg.github.io/CDAR/docs/CO2_LR)
 ### [CO2 ANOVA and ANCOVA](https://tylerbg.github.io/CDAR/docs/CO2_ANOVA)
