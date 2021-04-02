@@ -32,7 +32,7 @@ Where:
 
 In the `CO2` dataset the `conc` variable represents molecular concentrations of which are continuous, however because 7 distinct concentrations were used in this study it could be sensible to model `conc` as a categorical variable with 7 levels.  We can easily do this without making changes to the data by calling `factor()` on the variable within the model formula.  We can then use `summary()`, or alternatively `anova()`, to print out the ANOVA table for our fitted model.
 
-```{r}
+```{r aov1}
 CO2.aov <- aov(uptake~Type*Treatment*factor(conc), data=CO2)
 
 summary(CO2.aov)
@@ -46,31 +46,31 @@ We can see that just like in the [linear regression model](https://tylerbg.githu
 
 Because some of our interaction are not statistically significant we may want to remove them from the model to make a simpler, reduced model.  We should start by first removing the highest order interaction (`Type:Treatment:factor(conc)`) and refitting the model.  While we could rewrite our formula in `aov()` with only the significant factors and interactions we could also just use `update` to remove the insignificant interactions from the model we already fit.
 
-```{r}
-CO2.aov <- update(CO2.aov, .~.-Type:Treatment:factor(conc))
+```{r aov2}
+CO2.aov2 <- update(CO2.aov, .~.-Type:Treatment:factor(conc))
 
-summary(CO2.aov)
+summary(CO2.aov2)
 ```
 
 In the reduced model the interaction between `Treatment` and `conc` is still insignificant, so we can again use `update()` to further reduce the ANOVA model.
 
-```{r}
-CO2.aov <- update(CO2.aov, .~.-Treatment:factor(conc))
+```{r aov3}
+CO2.aov3 <- update(CO2.aov2, .~.-Treatment:factor(conc))
 
-summary(CO2.aov)
+summary(CO2.aov3)
 ```
 
 We now see that each of our variables, `Type`, `Treatment`, and `conc`, and the interactions between `Type` and `Treatment` as well as `Type` and `conc` are statistically significant in the three-way ANOVA model.  
 
 But what if we did want to treat `conc` as a continuous variable?  While we could then fit a [linear regression model](https://tylerbg.github.io/CDAR/docs/CO2_LR), we could instead treat `conc` as a covariate in an ANCOVA.  In `R`, `aov()` will automatically treat a numerical variable as a covariate so we do not have to do much to change our code except leaving `conc` as a numerical variable.
 
-```{r}
+```{r ancova1}
 CO2.ancova <- aov(uptake~Type*Treatment*conc, data=CO2)
 ```
 
 There is one issue here however in that both `summary()` and `anova()` in base `R` use the type I sum of squares.  With the ANCOVA we instead need to use the type III errors, otherwise we may be return incorrect statistical results that may lead to faulty conclusions.  [While we can change from type I to III sum of squares in base `R`](https://mcfromnz.wordpress.com/2011/03/02/anova-type-iiiiii-ss-explained/) it is actually much easier to instead use the `Anova()` function from the `car` library to do this for us.
 
-```{r}
+```{r ancova_summary}
 library(car)
 
 Anova(CO2.ancova, type="3")
@@ -78,7 +78,7 @@ Anova(CO2.ancova, type="3")
 
 While there is a lot to look at in our summary statistics for the ANCOVA model we just fit, we should turn our focus to the highest order interaction, `Type:Treatment:conc`.  Because the interaction term here is statistically insignificant we can conclude that an interaction between these three variables does not exist and remove it from our model to make a simpler model.  We can again use `update()` to do so.
 
-```{r}
+```{r ancova2}
 CO2.ancova2 <- update(CO2.ancova, .~.-Type:Treatment:conc)
 
 Anova(CO2.ancova2, type="3")
@@ -86,7 +86,7 @@ Anova(CO2.ancova2, type="3")
 
 We now see that of our three remaining interaction terms the `Treatment:conc` interaction is the only that is not statistically significant.  We can therefore further reduce our model.
 
-```{r}
+```{r ancova3}
 CO2.ancova3 <- update(CO2.ancova2, .~.-Treatment:conc)
 
 Anova(CO2.ancova3, type="3")

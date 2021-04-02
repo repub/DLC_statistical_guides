@@ -44,9 +44,9 @@ We can see that just like in the [linear regression model](https://tylerbg.githu
 Because some of our interaction are not statistically significant we may want to remove them from the model to make a simpler, reduced model. We should start by first removing the highest order interaction (`Type:Treatment:factor(conc)`) and refitting the model. While we could rewrite our formula in `aov()` with only the significant factors and interactions we could also just use `update` to remove the insignificant interactions from the model we already fit.
 
 ``` r
-CO2.aov <- update(CO2.aov, .~.-Type:Treatment:factor(conc))
+CO2.aov2 <- update(CO2.aov, .~.-Type:Treatment:factor(conc))
 
-summary(CO2.aov)
+summary(CO2.aov2)
 ```
 
     ##                        Df Sum Sq Mean Sq F value   Pr(>F)    
@@ -63,9 +63,9 @@ summary(CO2.aov)
 In the reduced model the interaction between `Treatment` and `conc` is still insignificant, so we can again use `update()` to further reduce the ANOVA model.
 
 ``` r
-CO2.aov <- update(CO2.aov, .~.-Treatment:factor(conc))
+CO2.aov3 <- update(CO2.aov2, .~.-Treatment:factor(conc))
 
-summary(CO2.aov)
+summary(CO2.aov3)
 ```
 
     ##                   Df Sum Sq Mean Sq F value   Pr(>F)    

@@ -46,7 +46,9 @@ We can better see the distribution of our variables using the `summary()` comman
 summary(CO2)
 ```
 
-Because both `Type` and `Treatment` are factors `R` prints out the number of times each of the factor levels are present in the dataset (42 times for each level in both factors).  The numerical variables, `conc` and `uptake`, have statistics of their distributions printed out, namely their minimum and maximum values, 1<sup>st</sup>, 2<sup>nd</sup> (median), and 3<sup>rd</sup> quartiles, and their average (mean) value.  We can also use some simple plots in base `R` to graphically observe the relationships between the variables.  Using `plot()` with provide a set of scatterplots that plot each variable against one another.
+Because both `Type` and `Treatment` are factors `R` prints out the number of times each of the factor levels are present in the dataset (42 times for each level in both factors).  The numerical variables, `conc` and `uptake`, have statistics of their distributions printed out, namely their minimum and maximum values, 1<sup>st</sup>, 2<sup>nd</sup> (median), and 3<sup>rd</sup> quartiles, and their average (mean) value.
+
+One of the best mathods to explore the dataset is to plot the data in various ways.  There are many types of plots and tools for plotting with the two most common using the base `R` plotting devices and `ggplot()`.  Here, we will use base `R` as it is relativelly simple to use for EDA and later use `ggplot()` when we are looking to make presentable figures to present our results.  To being, we can use `plot()` to provide a set of scatterplots that plot each variable against one another.
 
 ```{r}
 plot(CO2)
@@ -61,23 +63,37 @@ boxplot(CO2$uptake)
 par(mfrow=c(1,1))
 ```
 
+I strongly suggest to use both histograms and boxplots (in addition to other plots) when performing EDA to assess the distributions of variable as each independently present important information.  For instance, the boxplot shows the quartiles, ranges, and apparent outliers in the data that are not as easy to interpret in histograms.  Alternatively, histograms show a different side of the distribution of the data by placing data points in bins so we can see the type of distribution (normal, uniform, etc.) present in the variable that can easily be mistaken in a boxplot
+
+For instance, if we only observed the boxplot for `conc` we may go on to assume that the data is evently distributed around the median, however when we look at the histogram of the same data we see that there appears to be two different peaks (the [bimodal distribution](https://www.statisticshowto.com/what-is-a-bimodal-distribution/)) where the data converge.
+
 If we want to determine if a variable follows a normal distribution, `qqnorm()` followed by `qqline()` will print out a normalized Q-Q plot.
 
-```{r}
+```{r qqnorm}
 qqnorm(CO2$uptake)
 qqline(CO2$uptake)
 ```
 
+We can also use statistics to evaluate the distributions of our variables.  For instance, the `shapiro.test()` funciton will perform a Shapiro-Wilk test for normality where an insignificant test statistic indicates that the variable is normally distributed.
+
+```{r shapiro_test}
+shapiro.test(CO2$uptake)
+```
+
+From the results of the Shapiro-Wilk test we can see that the `uptake` variable is not normally distributed as the p-value for the test is statistically significant (p=0.00079).
 
 ```{r}
 plot(CO2$conc, CO2$uptake)
 abline(lm(uptake~conc, CO2))
 ```
 
-
 \newline
 \newline
 
 ### Other Resources
+
+[Penn State: Exploratory Data Analysis](https://online.stat.psu.edu/stat508/lesson/1b)
+
+[R for Data Science](https://r4ds.had.co.nz/exploratory-data-analysis.html)
 
 [STHDA: Exploratory Data Analysis](http://www.sthda.com/english/wiki/exploratory-data-analysis)

@@ -34,7 +34,7 @@ $$y_{i, \textit{uptake}} = {\beta}_0 + {\beta}_\textit{Treatment} x_{i,\textit{T
 
 When we wish to include categorical data (factors) in a linear regression model we need to [recode the variables](https://stats.idre.ucla.edu/spss/faq/coding-systems-for-categorical-variables-in-regression-analysis/) to numerical values so that they may be entered into the regression equation and solved for.  Conveniently, `R` automatically dummy codes factors when they are included in a regresson model, so we can go ahead to fit and analyze the model using the following code.
 
-```{r}
+```{r lm1}
 # Fit a linear model with uptake as the response variable
 CO2.lm <- lm(uptake~Type+Treatment+conc, data=CO2)
 
@@ -48,7 +48,7 @@ $${y_{i, \textit{uptake}} = 29.260 - 12.660 x_{i,\textit{Type}} - 6.860 x_{i,\te
 
 From these results we can conclude that <b> when `Type` and `Treatment` remain unchanged, for every one unit increase in `conc`, `uptake` increases by 0.018 umol/m<sup>2</sup></b>.  While it is easy to make conclusions for continuous variables like `conc`, the categorical variables `Type` and `Treatment` take slightly more work.  First, we need to see how `R` coded the categorical variables which we can do by calling `$xlevels` from the `lm()` object we just created.
 
-```{r}
+```{r lm_xlevels}
 CO2.lm$xlevels
 ```
 
@@ -71,7 +71,7 @@ $$y_{i, \textit{uptake}} = {\beta}_0 + {\beta}_\textit{Type} x_{i,\textit{Type}}
 
 We code this in `R` and print a summary of the results with:
 
-```{r}
+```{r lm2}
 CO2.lm2 <- lm(uptake~Type*Treatment+conc, data=CO2)
 
 summary(CO2.lm2)
@@ -81,7 +81,7 @@ The new model that includes the interaction term is still statistically signific
 
 We can also compare our first model without interactions against our new model that includes the `Type:Treatment` interaction to see if there is a statistically significant improvement in the model with `anova()`.
 
-```{r}
+```{r anova_lm}
 anova(CO2.lm, CO2.lm2)
 ```
 
@@ -95,7 +95,7 @@ Now that we know that there is an interaction between at least two of our variab
 
 Like any other statistical model there is some degree of error in our estimation, so we may be interested in how confident we are in our estimates.  Using `confint()` we can print the 95% confidence intervals for the estimates of our regression coefficients.
 
-```{r}
+```{r confint}
 confint(CO2.lm2)
 ```
 
@@ -103,7 +103,7 @@ When interpreting the confidence intervals we can state that **with 95% confiden
 
 We may also be interested into how well our model fits the data to determine if the linear regression appropriately fits or if a different approach may be necessary.  There are many methods of analyzing the fit of a model, one common and simple approach is to [assess the plots of the residual errors](https://data.library.virginia.edu/diagnostic-plots/).  In `R`, using the `plot()` function on an `lm()` object automatically generates four diagnostic residuals plots.
 
-```{r}
+```{r residual_plots}
 par(mfrow=c(2,2)) # Change graphics to a 2x2 graphical matrix
 plot(CO2.lm2) # Plot residuals
 par(mfrow=c(1,1)) # Return graphics to default

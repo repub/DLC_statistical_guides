@@ -154,7 +154,7 @@ plot(CO2.lm2) # Plot residuals
 par(mfrow=c(1,1)) # Return graphics to default
 ```
 
-<img src="imgs/CO2_LR/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+<img src="imgs/CO2_LR/residual_plots-1.png" style="display: block; margin: auto;" />
 
 In the first plot the residuals appear to be randomly distributed along the fitted values, suggesting that there is a linear relationship between `uptake` and the other variables in our model. There is some tailing in the Normal Q-Q plot, so the residuals may not follow a perfectly normal distribution. In the Scale-Location plot the residuals appear to have a relatively horizontal spread so we can assume that there is equal variance. In the final plot, all of the residuals are within the Cook's distance so we can assume there are no points with high leverage affecting the fit of our model. So while the our model may not have a perfect fit (which is extremely rare when working with real-world data) the linear regression model does appear to fit well for our data.
 
