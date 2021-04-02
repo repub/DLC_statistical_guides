@@ -41,10 +41,29 @@ summary(CO2.aov)
 
 We can see that just like in the [linear regression model](https://tylerbg.github.io/CDAR/docs/CO2_LR) each of the three variables are statistically significant.
 
-Because some of our interaction are not statistically significant we may want to remove them from the model to make a simpler, reduced model. While we could rewrite our formula in `aov()` with only the significant factors and interaction we could also just use `update` to remove the insignificant interactions from the model we already fit.
+Because some of our interaction are not statistically significant we may want to remove them from the model to make a simpler, reduced model. We should start by first removing the highest order interaction (`Type:Treatment:factor(conc)`) and refitting the model. While we could rewrite our formula in `aov()` with only the significant factors and interactions we could also just use `update` to remove the insignificant interactions from the model we already fit.
 
 ``` r
-CO2.aov <- update(CO2.aov, .~.-Treatment:factor(conc)-Type:Treatment:factor(conc))
+CO2.aov <- update(CO2.aov, .~.-Type:Treatment:factor(conc))
+
+summary(CO2.aov)
+```
+
+    ##                        Df Sum Sq Mean Sq F value   Pr(>F)    
+    ## Type                    1   3366    3366 357.655  < 2e-16 ***
+    ## Treatment               1    988     988 105.007 5.76e-15 ***
+    ## factor(conc)            6   4069     678  72.065  < 2e-16 ***
+    ## Type:Treatment          1    226     226  23.988 7.27e-06 ***
+    ## Type:factor(conc)       6    374      62   6.632 1.88e-05 ***
+    ## Treatment:factor(conc)  6    101      17   1.789    0.116    
+    ## Residuals              62    583       9                     
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+In the reduced model the interaction between `Treatment` and `conc` is still insignificant, so we can again use `update()` to further reduce the ANOVA model.
+
+``` r
+CO2.aov <- update(CO2.aov, .~.-Treatment:factor(conc))
 
 summary(CO2.aov)
 ```
@@ -59,31 +78,17 @@ summary(CO2.aov)
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
+We now see that each of our variables, `Type`, `Treatment`, and `conc`, and the interactions between `Type` and `Treatment` as well as `Type` and `conc` are statistically significant in the three-way ANOVA model.
+
 But what if we did want to treat `conc` as a continuous variable? While we could then fit a [linear regression model](https://tylerbg.github.io/CDAR/docs/CO2_LR), we could instead treat `conc` as a covariate in an ANCOVA. In `R`, `aov()` will automatically treat a numerical variable as a covariate so we do not have to do much to change our code except leaving `conc` as a numerical variable.
 
 ``` r
 CO2.ancova <- aov(uptake~Type*Treatment*conc, data=CO2)
-
-summary(CO2.ancova)
 ```
 
-    ##                     Df Sum Sq Mean Sq F value   Pr(>F)    
-    ## Type                 1   3366    3366 100.416 1.52e-15 ***
-    ## Treatment            1    988     988  29.482 6.51e-07 ***
-    ## conc                 1   2285    2285  68.177 3.55e-12 ***
-    ## Type:Treatment       1    226     226   6.735   0.0113 *  
-    ## Type:conc            1    208     208   6.206   0.0149 *  
-    ## Treatment:conc       1     32      32   0.951   0.3326    
-    ## Type:Treatment:conc  1     56      56   1.657   0.2019    
-    ## Residuals           76   2547      34                     
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-There is one issue here however in that both `summary()` and `anova()` in base `R` use the type I sum of squares. With the ANCOVA we instead need to use the type III errors, otherwise we may be return incorrect statistical results and come to incorrect conclusions. [While we can change from type I to III sum of squares in base `R`](https://mcfromnz.wordpress.com/2011/03/02/anova-type-iiiiii-ss-explained/) it is actually much easier to instead use the `Anova()` function from the `car` library to do this for us.
+There is one issue here however in that both `summary()` and `anova()` in base `R` use the type I sum of squares. With the ANCOVA we instead need to use the type III errors, otherwise we may be return incorrect statistical results that may lead to faulty conclusions. [While we can change from type I to III sum of squares in base `R`](https://mcfromnz.wordpress.com/2011/03/02/anova-type-iiiiii-ss-explained/) it is actually much easier to instead use the `Anova()` function from the `car` library to do this for us.
 
 ``` r
-#!if(require(car))(install.packages("car"))(library(car))
-
 library(car)
 ```
 
@@ -109,6 +114,8 @@ Anova(CO2.ancova, type="3")
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
+While there is a lot to look at in our summary statistics for the ANCOVA model we just fit, we should turn our focus to the highest order interaction, `Type:Treatment:conc`. Because the interaction term here is statistically insignificant we can conclude that an interaction between these three variables does not exist and remove it from our model to make a simpler model. We can again use `update()` to do so.
+
 ``` r
 CO2.ancova2 <- update(CO2.ancova, .~.-Type:Treatment:conc)
 
@@ -130,6 +137,32 @@ Anova(CO2.ancova2, type="3")
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
+We now see that of our three remaining interaction terms the `Treatment:conc` interaction is the only that is not statistically significant. We can therefore further reduce our model.
+
+``` r
+CO2.ancova3 <- update(CO2.ancova2, .~.-Treatment:conc)
+
+Anova(CO2.ancova3, type="3")
+```
+
+    ## Anova Table (Type III tests)
+    ## 
+    ## Response: uptake
+    ##                Sum Sq Df  F value    Pr(>F)    
+    ## (Intercept)    6417.7  1 190.0025 < 2.2e-16 ***
+    ## Type            112.1  1   3.3179   0.07236 .  
+    ## Treatment       134.6  1   3.9863   0.04936 *  
+    ## conc           1935.9  1  57.3141 6.357e-11 ***
+    ## Type:Treatment  225.7  1   6.6829   0.01160 *  
+    ## Type:conc       208.0  1   6.1580   0.01523 *  
+    ## Residuals      2634.6 78                       
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+In this reduced ANCOVA model we see that both the `Type:Treatment` and `Type:conc` interaction terms are statistically significant. Even though the variable `Type` is not statistically significant, because it does have a statistically significant interaction term with other variables in the model conventionally we should keep the term in our model.
+
+*Note: To observe the similarities between ANOVA, ANCOVA, and linear regression models try fitting a linear regression with `lm()` using the variables and interactions in the final ANCOVA model and printing summary statistics for the model.*
+
 ### Other Resources
 
 [STHDA: One-Way ANOVA Test in R](http://www.sthda.com/english/wiki/one-way-anova-test-in-r)
@@ -141,3 +174,5 @@ Anova(CO2.ancova2, type="3")
 [Datanovia: ANOVA in R](https://www.datanovia.com/en/lessons/anova-in-r/)
 
 [Applied Statistics with R: Analysis of Variance](https://daviddalpiaz.github.io/appliedstats/analysis-of-variance.html)
+
+[R-bloggers: 3-way ANOVA](https://www.r-bloggers.com/2017/02/raccoon-ch-2-4-3-way-anova/)

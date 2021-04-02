@@ -96,8 +96,6 @@ In this reduced ANCOVA model we see that both the `Type:Treatment` and `Type:con
 
 *Note: To observe the similarities between ANOVA, ANCOVA, and linear regression models try fitting a linear regression with `lm()` using the variables and interactions in the final ANCOVA model and printing summary statistics for the model.*
 
-
-
 \newline
 \newline
 

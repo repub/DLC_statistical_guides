@@ -10,9 +10,9 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, fig.path="imgs/", #out.width='100%',
-                      fig.width=6, fig.height=4, fig.show='hold',
-                      fig.align='center')
+knitr::opts_chunk$set(echo=TRUE, fig.path="imgs/CO2_Plot/",
+                      fig.width=6, fig.height=4,
+                      fig.show='hold', fig.align='center')
 options(width=100)
 ```
 
@@ -128,7 +128,7 @@ ggplot(CO2, aes(x=factor(conc), y=uptake)) +
 
 Alternatively, we can use `facet_wrap()` to make two side-by-side boxplots that separate one of our factors.
 
-```{r geom_boxplot_full}
+```{r geom_boxplot_facet}
 ggplot(CO2, aes(x=factor(conc), y=uptake)) +
   geom_boxplot(aes(fill=Treatment)) +
   scale_fill_brewer(palette="Paired") +

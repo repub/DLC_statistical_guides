@@ -10,7 +10,9 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE)
+knitr::opts_chunk$set(echo=TRUE, fig.path="imgs/CO2_LR/",
+                      fig.width=6, fig.height=6,
+                      fig.show='hold', fig.align='center')
 options(width=100)
 ```
 
@@ -70,12 +72,20 @@ $$y_{i, \textit{uptake}} = {\beta}_0 + {\beta}_\textit{Type} x_{i,\textit{Type}}
 We code this in `R` and print a summary of the results with:
 
 ```{r}
-CO2.lm <- lm(uptake~Type*Treatment+conc, data=CO2)
+CO2.lm2 <- lm(uptake~Type*Treatment+conc, data=CO2)
 
-summary(CO2.lm)
+summary(CO2.lm2)
 ```
 
 The new model that includes the interaction term is still statistically significant (`p < 2.2e-16`), however we achieved a slightly higher R<sup>2</sup> and adjusted R<sup>2</sup> to indicate that we have a slightly better fitting model when including the interaction term.  We should also note that the estimates for the coefficients and their test statistics have changed.  In particular, `Treatment` is no longer statistically significant although the interaction term between `Type` and `Treatment` is.  This indicates that there is an interaction between these two factors, and even though `Treatment` is no longer statistically significant conventionally we should keep it in our model since it has a significant interaction with another variable.
+
+We can also compare our first model without interactions against our new model that includes the `Type:Treatment` interaction to see if there is a statistically significant improvement in the model with `anova()`.
+
+```{r}
+anova(CO2.lm, CO2.lm2)
+```
+
+The second model that includes the interaction term has a significantly reduced RSS (residual sum of squares) as indicated by the p-value (`Pr(>F)`).  We can therefore conclude that the linear model is improved by adding the `Type:Treatment` interaction term.  If we did not see a statistically significant improvement in the model we should instead stick with the simpler model.
 
 Our regression equation can now be written as:
 
@@ -86,10 +96,20 @@ Now that we know that there is an interaction between at least two of our variab
 Like any other statistical model there is some degree of error in our estimation, so we may be interested in how confident we are in our estimates.  Using `confint()` we can print the 95% confidence intervals for the estimates of our regression coefficients.
 
 ```{r}
-confint(CO2.lm)
+confint(CO2.lm2)
 ```
 
-When interpreting the confidence intervals we can state that **with 95% confidence a unit increase in `conc` increases `uptake` by between 0.013 and 0.022 umol/m<sup>2</sup></b> when all other variables remain constant**.
+When interpreting the confidence intervals we can state that **with 95% confidence a unit increase in `conc` increases `uptake` by between 0.013 and 0.022 umol/m<sup>2</sup> when all other variables remain constant**.
+
+We may also be interested into how well our model fits the data to determine if the linear regression appropriately fits or if a different approach may be necessary.  There are many methods of analyzing the fit of a model, one common and simple approach is to [assess the plots of the residual errors](https://data.library.virginia.edu/diagnostic-plots/).  In `R`, using the `plot()` function on an `lm()` object automatically generates four diagnostic residuals plots.
+
+```{r}
+par(mfrow=c(2,2)) # Change graphics to a 2x2 graphical matrix
+plot(CO2.lm2) # Plot residuals
+par(mfrow=c(1,1)) # Return graphics to default
+```
+
+In the first plot the residuals appear to be randomly distributed along the fitted values, suggesting that there is a linear relationship between `uptake` and the other variables in our model.  There is some tailing in the Normal Q-Q plot, so the residuals may not follow a perfectly normal distribution.  In the Scale-Location plot the residuals appear to have a relatively horizontal spread so we can assume that there is equal variance.  In the final plot, all of the residuals are within the Cook's distance so we can assume there are no points with high leverage affecting the fit of our model.  So while the our model may not have a perfect fit (which is extremely rare when working with real-world data) the linear regression model does appear to fit well for our data.
 
 From the exploratory plots of our data we may also be interested if there are any interactions between our two categorical factors (`Type` and `Treatment`) and `conc`.  Try fitting and interpreting a linear regression model that has these interactions and compare them to the results from [an ANOVA or ANCOVA model](https://tylerbg.github.io/CDAR/docs/CO2_ANOVA).
 
@@ -97,6 +117,8 @@ From the exploratory plots of our data we may also be interested if there are an
 
 \newline
 \newline
+
+### Other Resources
 
 [Penn State: Regression Methods](https://online.stat.psu.edu/stat501/lesson/welcome-stat-501)
 
