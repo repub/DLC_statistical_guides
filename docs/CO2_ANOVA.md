@@ -161,6 +161,17 @@ Anova(CO2.ancova3, type="3")
 
 In this reduced ANCOVA model we see that both the `Type:Treatment` and `Type:conc` interaction terms are statistically significant. Even though the variable `Type` is not statistically significant, because it does have a statistically significant interaction term with other variables in the model conventionally we should keep the term in our model.
 
+``` r
+par(mfrow=c(2,2))
+plot(CO2.ancova3)
+```
+
+![](CO2_ANOVA_files/figure-markdown_github/unnamed-chunk-1-1.png)
+
+``` r
+par(mfrow=c(1,1))
+```
+
 *Note: To observe the similarities between ANOVA, ANCOVA, and linear regression models try fitting a linear regression with `lm()` using the variables and interactions in the final ANCOVA model and printing summary statistics for the model.*
 
 ### Other Resources

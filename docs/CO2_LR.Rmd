@@ -109,7 +109,14 @@ plot(CO2.lm2) # Plot residuals
 par(mfrow=c(1,1)) # Return graphics to default
 ```
 
-In the first plot the residuals appear to be randomly distributed along the fitted values, suggesting that there is a linear relationship between `uptake` and the other variables in our model.  There is some tailing in the Normal Q-Q plot, so the residuals may not follow a perfectly normal distribution.  In the Scale-Location plot the residuals appear to have a relatively horizontal spread so we can assume that there is equal variance.  In the final plot, all of the residuals are within the Cook's distance so we can assume there are no points with high leverage affecting the fit of our model.  So while the our model may not have a perfect fit (which is extremely rare when working with real-world data) the linear regression model does appear to fit well for our data.
+Although making conclusions from plots of the residuals can be somewhat subjective, they are useful in assessing the fit of the model.  An example of this assessment is:
+
+- **Residuals vs Fitted**: the residuals appear to be randomly distributed along the fitted values, suggesting that there is a linear relationship between `uptake` and the other variables in our model.
+- **Normal Q-Q**: there is some tailing in the Normal Q-Q plot, so the residuals may not follow a perfectly normal distribution.
+- **Scale-Location**: the residuals appear to have a relatively horizontal spread so we can assume that there is equal variance.
+- **Residuals vs Leverage**: all of the residuals are within the Cook's distance so we can assume there are no points with high leverage affecting the fit of our model.
+
+So while the our model may not have a perfect fit (which is extremely rare when working with real-world data) the linear regression model does appear to fit well for our data.
 
 From the exploratory plots of our data we may also be interested if there are any interactions between our two categorical factors (`Type` and `Treatment`) and `conc`.  Try fitting and interpreting a linear regression model that has these interactions and compare them to the results from [an ANOVA or ANCOVA model](https://tylerbg.github.io/CDAR/docs/CO2_ANOVA).
 
