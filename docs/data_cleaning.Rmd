@@ -1,20 +1,22 @@
 ---
 knit: (function(input_file, encoding) {
   out_dir <- 'docs';
-  rmarkdown::render(input_file,  
+  rmarkdown::render(input_file,
     encoding=encoding,
-    output_file=file.path(dirname(input_file), out_dir, 'data_cleaning.md')) })
+    output_file='data_cleaning.md') })
 output: github_document
+editor_options:
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, fig.align=TRUE)
-options(width=125)
+knitr::opts_chunk$set(echo=TRUE, fig.path="imgs/data_cleaning/",
+                      fig.width=6, fig.height=4,
+                      fig.show='hold', fig.align='center')
+options(width=100)
 ```
 
 # Data Cleaning
-
-###### Published: 6 April 2020
 
 \newline
 
@@ -39,7 +41,7 @@ Before we attempt to clean our data we should first summarize and explore our da
 First, let us set up our working directory and load it.  Our data is stored as a *.csv* file in the "*data/*" folder, so we can access it using the `read.csv()` function.
 
 ```{r}
-setwd("~/CDAR")
+setwd("~/CDAR/docs/")
 beer <- read.csv("data/beer_to_clean.csv")
 ```
 

@@ -164,13 +164,10 @@ In this reduced ANCOVA model we see that both the `Type:Treatment` and `Type:con
 ``` r
 par(mfrow=c(2,2))
 plot(CO2.ancova3)
-```
-
-![](CO2_ANOVA_files/figure-markdown_github/unnamed-chunk-1-1.png)
-
-``` r
 par(mfrow=c(1,1))
 ```
+
+<img src="imgs/CO2_ANOVA/unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
 
 *Note: To observe the similarities between ANOVA, ANCOVA, and linear regression models try fitting a linear regression with `lm()` using the variables and interactions in the final ANCOVA model and printing summary statistics for the model.*
 
