@@ -19,17 +19,35 @@
 <table>
     <tbody>
         <tr>
-            <td><b>Comparing Two Proportions</b></td>
+            <td><b>Proportion Tests</b></td>
             <td colspan=3></td>
         </tr>
         <tr>
-            <td rowspan=2><a href=https://online.stat.psu.edu/stat501/lesson/15/15.4>Poisson Regression</a></td>
+            <td>Comparing Two Proportions</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href=https://online.stat.psu.edu/stat504/lesson/3/3.3>Fisher's Exact Test</a></td>
             <td>Minitab</td>
             <td>SPSS</td>
             <td>R</td>
         </tr>
         <tr>
-            <td rowspan=2>Negative Binomial Regression</td>
+            <td><a href=https://online.stat.psu.edu/stat500/lesson/8>Chi-square Test</a></td>
+            <td>Minitab</td>
+            <td>SPSS</td>
+            <td>R</td>
+        </tr>
+        <tr>
+            <td><a href=https://online.stat.psu.edu/stat501/lesson/15/15.4>Poisson Regression</a></td>
+            <td>Minitab</td>
+            <td>SPSS</td>
+            <td>R</td>
+        </tr>
+        <tr>
+            <td>Negative Binomial Regression</td>
             <td></td>
             <td></td>
             <td></td>
