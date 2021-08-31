@@ -28,5 +28,11 @@
             <td>SPSS</td>
             <td>R</td>
         </tr>
+        <tr>
+            <td rowspan=2>Negative Binomial Regression</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
     </tbody>
 </table>
