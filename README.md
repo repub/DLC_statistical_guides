@@ -20,17 +20,13 @@
     <tbody>
         <tr>
             <td><b>Comparing Two Proportions</b></td>
-            <td rowspan=3></td>
-        </tr>
-        <tr>
-            <td>L3 Name B</td>
+            <td colspan=3></td>
         </tr>
         <tr>
             <td rowspan=2><a href=https://online.stat.psu.edu/stat501/lesson/15/15.4>Poisson Regression</a></td>
-            <td>L3 Name C</td>
-        </tr>
-        <tr>
-            <td>L3 Name D</td>
+            <td>Minitab</td>
+            <td>SPSS</td>
+            <td>R</td>
         </tr>
     </tbody>
 </table>
