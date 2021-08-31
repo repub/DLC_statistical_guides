@@ -34,7 +34,7 @@
             <td>L3 Name B</td>
         </tr>
         <tr>
-            <td rowspan=2>L2 Name B</td>
+            <td rowspan=2>[Poisson Regression](https://online.stat.psu.edu/stat501/lesson/15/15.4)</td>
             <td>L3 Name C</td>
         </tr>
         <tr>
