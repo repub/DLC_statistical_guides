@@ -1,6 +1,6 @@
 # Data Learning Center Statistical Resources
 
-| Proportion Tests | | | |
+| Proportion Tests | |||
 | :---: | :---: | :---: | :---: |
 | Comparing Two Proportions | | | |
 | [Fisher's Exact Test](https://online.stat.psu.edu/stat504/lesson/3/3.3) | | | |
