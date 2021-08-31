@@ -1,0 +1,38 @@
+---
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='one-way-ANOVA.md') })
+output: github_document
+editor_options:
+  chunk_output_type: console
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, fig.path="imgs/one-way-ANOVA/",
+                      fig.width=6, fig.height=4,
+                      fig.show='hold', fig.align='center')
+options(width=100)
+```
+
+# One-way Analysis of Variance (ANOVA)
+
+### ANOVA hypotheses
+
+Null hypothesis: the means of each group are equal.
+Alternative hypothesis: at least one of the group means is not equal to the others.
+
+### ANOVA assumptions
+
+- independence of observations
+- approximately normally distributed
+- homogeneity of variance (variances are equal)
+
+```{r}
+aov.fit <- aov(weight ~ group, data = PlantGrowth)
+summary(aov.fit)
+
+TukeyHSD(aov.fit)
+```
+
