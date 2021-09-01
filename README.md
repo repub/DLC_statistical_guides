@@ -13,7 +13,7 @@
             <td></td>
         </tr>
         <tr>
-            <td><a href"=https://online.stat.psu.edu/stat504/lesson/3/3.3">Fisher's Exact Test</a></td>
+            <td><a href="https://online.stat.psu.edu/stat504/lesson/3/3.3">Fisher's Exact Test</a></td>
             <td></td>
             <td></td>
             <td></td>
