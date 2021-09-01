@@ -7,7 +7,7 @@
             <td colspan=3></td>
         </tr>
         <tr>
-            <td>Comparing Two Proportions</td>
+            <td><a href="https://online.stat.psu.edu/stat415/lesson/9/9.4">Comparing Two Proportions</a></td>
             <td></td>
             <td></td>
             <td></td>
