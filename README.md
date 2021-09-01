@@ -8,21 +8,21 @@
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat415/lesson/9/9.4">Comparing Two Proportions</a></td>
-            <td><a href="https://support.minitab.com/en-us/minitab/20/help-and-how-to/statistics/basic-statistics/how-to/2-proportions/before-you-start/example/">Minitab</a></td>
-            <td></td>
-            <td></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/20/help-and-how-to/statistics/basic-statistics/how-to/2-proportions/before-you-start/example/">Minitab</a></center></td>
+            <td><center></center></td>
+            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/two-proportions">R</a></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat504/lesson/3/3.3">Fisher's Exact Test</a></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat500/lesson/8">Chi-square Test</a></td>
-            <td><a href="https://support.minitab.com/en-us/minitab/19/help-and-how-to/statistics/tables/how-to/chi-square-test-for-association/before-you-start/example/ ">Minitab</a></td>
-            <td></td>
-            <td></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/19/help-and-how-to/statistics/tables/how-to/chi-square-test-for-association/before-you-start/example/ ">Minitab</a></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
         </tr>
         <tr>
             <td><b>Tests Comparing Means</b></td>
@@ -30,21 +30,21 @@
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat555/node/36/ ">2-sample T-test</a></td>
-            <td><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/inference/how-to/two-samples/2-sample-t/before-you-start/example/ ">Minitab</a></td>
-            <td></td>
-            <td></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/inference/how-to/two-samples/2-sample-t/before-you-start/example/ ">Minitab</a></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat500/lesson/10/10.1">One-way ANOVA</a></td>
-            <td><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/anova/how-to/one-way-anova/before-you-start/example/">Minitab</a></td>
-            <td></td>
-            <td><a href="https://tylerbg.github.io/DLC_stat_resources/docs/one-way-ANOVA">R</a></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/anova/how-to/one-way-anova/before-you-start/example/">Minitab</a></center></td>
+            <td><center></center></td>
+            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/one-way-ANOVA">R</a></center></td>
         </tr>
         <tr>
             <td>Two-way ANOVA</td>
-            <td><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/anova/how-to/two-way-anova/before-you-start/example/ ">Minitab</a></td>
-            <td></td>
-            <td></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/anova/how-to/two-way-anova/before-you-start/example/ ">Minitab</a></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
         </tr>
         <tr>
             <td><b>Regression & Generalized Linear Models (GLMs)</b></td>
@@ -52,39 +52,39 @@
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat501/lesson/1">Simple Linear Regression</a></td>
-            <td><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/regression/how-to/simple-regression/before-you-start/example/">Minitab</a></td>
-            <td></td>
-            <td></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/regression/how-to/simple-regression/before-you-start/example/">Minitab</a></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat501/lesson/5">Multiple Linear Regression</a></td>
-            <td><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/regression/how-to/multiple-regression/before-you-start/example/ ">Minitab</a></td>
-            <td></td>
-            <td></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/regression/how-to/multiple-regression/before-you-start/example/ ">Minitab</a></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat501/lesson/15/15.1">Logistic (Logit) Regression</a></td>
-            <td><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/regression/how-to/binary-logistic-regression/before-you-start/example/">Minitab</a></td>
-            <td></td>
-            <td></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/regression/how-to/binary-logistic-regression/before-you-start/example/">Minitab</a></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat501/lesson/15/15.2">Multinomial Logistic Regression</a></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat501/lesson/15/15.4">Poisson Regression</a></td>
-            <td><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/regression/how-to/fit-poisson-model/before-you-start/example/">Minitab</a></td>
-            <td></td>
-            <td></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/regression/how-to/fit-poisson-model/before-you-start/example/">Minitab</a></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
         </tr>
         <tr>
             <td>Negative Binomial Regression</td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
         </tr>
     </tbody>
 </table>
