@@ -1,4 +1,4 @@
-# Data Learning Center Statistical Resources
+# Links to Statistical Resources
 
 <table>
     <tbody>
