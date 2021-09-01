@@ -10,7 +10,7 @@ editor_options:
 ---
   
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, fig.path="imgs/one-way-ANOVA/",
+knitr::opts_chunk$set(echo=TRUE, fig.path="images/R/one-way-ANOVA/",
                       fig.width=6, fig.height=4,
                       fig.show='hold', fig.align='center')
 options(width=100)
