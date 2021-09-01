@@ -20,7 +20,7 @@
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat500/lesson/8">Chi-square Test</a></td>
-            <td></td>
+            <td><a href="https://support.minitab.com/en-us/minitab/19/help-and-how-to/statistics/tables/how-to/chi-square-test-for-association/before-you-start/example/ ">Minitab</a></td>
             <td></td>
             <td></td>
         </tr>
@@ -29,8 +29,8 @@
             <td colspan=3></td>
         </tr>
         <tr>
-            <td>T-test</td>
-            <td></td>
+            <td><a href="https://online.stat.psu.edu/stat555/node/36/ ">2-sample T-test</a></td>
+            <td><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/inference/how-to/two-samples/2-sample-t/before-you-start/example/ ">Minitab</a></td>
             <td></td>
             <td></td>
         </tr>
@@ -42,23 +42,29 @@
         </tr>
         <tr>
             <td>Two-way ANOVA</td>
-            <td></td>
+            <td><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/anova/how-to/two-way-anova/before-you-start/example/ ">Minitab</a></td>
             <td></td>
             <td></td>
         </tr>
         <tr>
-            <td><b>Generalized Linear Models (GLMs)</b></td>
+            <td><b>Regression & Generalized Linear Models (GLMs)</b></td>
             <td colspan=3><center><a href="https://online.stat.psu.edu/stat504/lesson/6/6.1">Introduction to GLMs</a></center></td>
         </tr>
         <tr>
-            <td>Linear Regression</td>
+            <td><a href="https://online.stat.psu.edu/stat501/lesson/1">Simple Linear Regression</a></td>
+            <td><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/regression/how-to/simple-regression/before-you-start/example/">Minitab</a></td>
             <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="https://online.stat.psu.edu/stat501/lesson/5">Multiple Linear Regression</a></td>
+            <td><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/regression/how-to/multiple-regression/before-you-start/example/ ">Minitab</a></td>
             <td></td>
             <td></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat501/lesson/15/15.1">Logistic (Logit) Regression</a></td>
-            <td></td>
+            <td><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/regression/how-to/binary-logistic-regression/before-you-start/example/">Minitab</a></td>
             <td></td>
             <td></td>
         </tr>
@@ -70,7 +76,7 @@
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat501/lesson/15/15.4">Poisson Regression</a></td>
-            <td></td>
+            <td><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/regression/how-to/fit-poisson-model/before-you-start/example/">Minitab</a></td>
             <td></td>
             <td></td>
         </tr>
