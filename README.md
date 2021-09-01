@@ -8,7 +8,7 @@
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat415/lesson/9/9.4">Comparing Two Proportions</a></td>
-            <td></td>
+            <td><a href="https://support.minitab.com/en-us/minitab/20/help-and-how-to/statistics/basic-statistics/how-to/2-proportions/before-you-start/example/">Minitab</a></td>
             <td></td>
             <td></td>
         </tr>
