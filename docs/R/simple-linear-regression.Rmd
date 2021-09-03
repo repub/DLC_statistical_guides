@@ -1,0 +1,42 @@
+---
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs/R';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='simple-linear-regression.md') })
+output: github_document
+editor_options:
+  chunk_output_type: console
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, fig.path="img/simple-linear-regression/",
+                      fig.width=6, fig.height=4,
+                      fig.show='hold', fig.align='center')
+options(width=100)
+```
+
+# Simple Linear Regression
+
+### [ANOVA hypotheses](https://online.stat.psu.edu/stat500/lesson/10/10.2)
+
+&nbsp;&nbsp;&nbsp;&nbsp;**Null hypothesis:** The correlation coefficient ($\rho$) for the two variables is equal to 0.
+
+<center>
+$H_0:\rho=0$
+</center>
+
+&nbsp;&nbsp;&nbsp;&nbsp;**Alternative hypothesis:** The correlation between the two variables is not equal to 0.
+
+<center>
+$H_A:\rho\neq0$ or $H_A:\rho\gt0$ or $\rho\lt0$
+</center>
+
+
+
+### [ANOVA assumptions](https://online.stat.psu.edu/stat500/lesson/10/10.2/10.2.1)
+
+- The predictor and response variables have a **linear relationship**.
+- The errors of **independent**, **normally distributed**, and have **equal variances**.
+
+### Entering the data in R
