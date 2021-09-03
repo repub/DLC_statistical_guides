@@ -3,21 +3,24 @@
 
 ### [ANOVA hypotheses](https://online.stat.psu.edu/stat500/lesson/10/10.2)
 
-     **Null hypothesis:** the means of each group are equal.  
-     **Alternative hypothesis:** at least one of the group means is not
+    **Null hypothesis:** the means of each group are equal.  
+    **Alternative hypothesis:** at least one of the group means is not
 equal to the others.
 
 ### [ANOVA assumptions](https://online.stat.psu.edu/stat500/lesson/10/10.2/10.2.1)
 
--   The observations are **independent**
--   Each factor is approximately **normally distributed**
--   The distributions the factors have **equal variances**
+-   The observations are **independent**.
+-   Each factor is approximately **normally distributed**.
+-   The distributions the factors have **equal variances**.
 
 ### Entering the data in R
 
-Typically, we would load our data into R from a previously generated
-file, but for this example we can manually input the data into a data
-frame with the following code.
+    For this tutorial we will be using a simple dataset from the [PSU
+STAT 500 Applied Statistics
+course](https://online.stat.psu.edu/stat500/lesson/10/10.1). Typically,
+we would load our data into R from a previously generated file, however
+for this example we will manually input the data into a data frame with
+the following code.
 
 ``` r
 lab_precise <- data.frame(tar_mg = c(10.21, 10.25, 10.24, 9.80, 9.77, 9.73,
@@ -28,10 +31,18 @@ lab_precise <- data.frame(tar_mg = c(10.21, 10.25, 10.24, 9.80, 9.77, 9.73,
                                     rep("Brand C", 6)))
 ```
 
+Using the `data.frame()` function we create a data frame with two
+columns, one labeled *tar\_mg* with the tar content from each sample and
+the second *Brand* which indicates which cigarette brand each
+measurement came from. Note that the data frame is currently in long
+format which is preferred in many R functions compared to the wide
+format as shown in the [PSU STAT 500
+example](https://online.stat.psu.edu/stat500/lesson/10/10.1).
+
 ### Fitting an one-way ANOVA in R
 
-Now that we have our data, we can fit an ANOVA model using the `aov()`
-function in R with the following syntax:
+    Now that we have our data, we can fit an ANOVA model using the
+`aov()` function in R with the following syntax:
 
 -   A formula for our model with the response on the left and the factor
     names to the right of a `~`
@@ -43,9 +54,9 @@ aov.fit <- aov(tar_mg ~ Brand, data = lab_precise)
 
 ### Interpreting the results
 
-To summarize the results of the ANOVA model we can use the `summary()`
-or alternatively `anova()` function with the fitted model as the only
-argument.
+    To summarize the results of the ANOVA model we can use the
+`summary()` or alternatively `anova()` function with the fitted model as
+the only argument.
 
 ``` r
 summary(aov.fit)
@@ -57,13 +68,13 @@ summary(aov.fit)
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-From the summary of the ANOVA model we see that our factor, *Brand*, has
-a p-value well below our threshold of 0.05. This tells us that the mean
-tar content for at least one of the brands of cigarettes is different
-from the others. To determine which of the means are different from one
-another we follow up the ANOVA with a post-hoc test, in this case we are
-using a Tukey’s honestly significant difference test (Tukey HSD) with
-the `TukeyHSD()` function.
+    From the summary of the ANOVA model we see that our factor, *Brand*,
+has a p-value well below our threshold of 0.05. This tells us that the
+mean tar content for at least one of the brands of cigarettes is
+different from the others. To determine which of the means are different
+from one another we follow up the ANOVA with a post-hoc test, in this
+case we are using a Tukey’s honestly significant difference test (Tukey
+HSD) with the `TukeyHSD()` function.
 
 ``` r
 TukeyHSD(aov.fit)
@@ -80,7 +91,7 @@ TukeyHSD(aov.fit)
     ## Brand C-Brand A    2 1.5459914 2.454009 0.0000000
     ## Brand C-Brand B    1 0.5459914 1.454009 0.0001132
 
-From the Tukey HSD post-hoc test we see that the p-values for each
+    From the Tukey HSD post-hoc test we see that the p-values for each
 comparison are below 0.05, meaning that each brand of cigarettes is
 significantly different from one another.
 
