@@ -1,6 +1,6 @@
 ---
 knit: (function(input_file, encoding) {
-  out_dir <- 'docs';
+  out_dir <- 'docs/R';
   rmarkdown::render(input_file,
     encoding=encoding,
     output_file='one-way-ANOVA.md') })
@@ -10,7 +10,7 @@ editor_options:
 ---
   
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, fig.path="images/R/one-way-ANOVA/",
+knitr::opts_chunk$set(echo=TRUE, fig.path="images/one-way-ANOVA/",
                       fig.width=6, fig.height=4,
                       fig.show='hold', fig.align='center')
 options(width=100)

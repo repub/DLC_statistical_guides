@@ -1,0 +1,65 @@
+---
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs/R';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='two-proportions.md') })
+output: github_document
+editor_options:
+  chunk_output_type: console
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, fig.path="img/two-proportions/",
+                      fig.width=6, fig.height=4,
+                      fig.show='hold', fig.align='center')
+options(width=100)
+```
+
+# Comparing Two Proportions in R
+
+#### Hypotheses
+
+&nbsp;&nbsp;&nbsp;&nbsp;**Null hypothesis:** the two proportions are equal.  
+&nbsp;&nbsp;&nbsp;&nbsp;**Alternative hypothesis:** the two proportions are not equal.
+
+#### Assumptions
+
+- The data was gathered by **simple random sampling**.
+- The two samples are **independent**.
+- Both groups follow a **binomial distribution**.
+
+### Entering the data in R
+
+&nbsp;&nbsp;&nbsp;&nbsp;For this R tutorial we will use the example from [Penn State's Introduction to Mathematical Statistics course](https://online.stat.psu.edu/stat415/lesson/9/9.4).  Assume that 800 adult Americans were polled on the question: "Should the federal tax on cigarettes be raised to pay for health care reform?".  We can simply input the total number of people polled in each group (n) and the respective counts of yes answers (y) into R as follows:
+
+```{r}
+n1 <- 605
+n2 <- 195
+y1 <- 351
+y2 <- 41
+```
+
+#### Running the test & interpreting the results
+
+&nbsp;&nbsp;&nbsp;&nbsp;Running the test in R using `prop.test()` is very simple as it does not require us to calculate the proportions before hand and only uses one line of code:
+
+```{r}
+prop.test(x = c(y1, y2), n = c(n1, n2))
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;The p-value for our test is extremely small and well below 0.05, so we can conclude that there is a statistically significant difference between the two proportions. Specifically, the proportion of smokers who answered 'yes' to the survey question is significantly lower than the proportion of non-smokers who answered 'yes'.
+
+&nbsp;&nbsp;&nbsp;&nbsp;*Note that the test statistic for our test is slightly different than in the STAT 415 example. This is because `prop.test()` uses the Yates' continuity correction by default. By setting `correct = FALSE` within prop.test() you can not apply the correction to result in the test statistic calculated in the original example.*
+
+### Full code block
+
+```{r eval=FALSE}
+n1 <- 605
+n2 <- 195
+y1 <- 351
+y2 <- 41
+
+prop.test(x = c(y1, y2), n = c(n1, n2))
+```
+

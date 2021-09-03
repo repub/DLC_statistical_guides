@@ -17,5 +17,5 @@ course](https://online.stat.psu.edu/stat415/lesson/9/9.4). Assume that
 on cigarettes be raised to pay for health care reform?”.
 
 <p align="center">
-![Results](./images/SPSS/two-proportions/two-prop-result.PNG "fig:")
+![Results](./img/two-proportions/two-prop-result.PNG "fig:")
 </p>
