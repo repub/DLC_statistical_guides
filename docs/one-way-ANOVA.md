@@ -20,9 +20,12 @@ file, but for this example we can manually input the data into a data
 frame with the following code.
 
 ``` r
-lab_precise <- data.frame(tar_mg = c(10.21, 10.25, 10.24, 9.80, 9.77, 9.73, 11.32, 11.20, 11.40,
-                                     10.50, 10.68, 10.90, 11.60, 11.90, 11.80, 12.30, 12.20, 12.20),
-                          Brand = c(rep("Brand A", 6), rep("Brand B", 6), rep("Brand C", 6)))
+lab_precise <- data.frame(tar_mg = c(10.21, 10.25, 10.24, 9.80, 9.77, 9.73,
+                                     11.32, 11.20, 11.40, 10.50, 10.68, 10.90,
+                                     11.60, 11.90, 11.80, 12.30, 12.20, 12.20),
+                          Brand = c(rep("Brand A", 6),
+                                    rep("Brand B", 6),
+                                    rep("Brand C", 6)))
 ```
 
 ### Fitting an one-way ANOVA in R
@@ -85,9 +88,12 @@ significantly different from one another.
 
 ``` r
 # Enter the data
-lab_precise <- data.frame(tar_mg = c(10.21, 10.25, 10.24, 9.80, 9.77, 9.73, 11.32, 11.20, 11.40,
-                                     10.50, 10.68, 10.90, 11.60, 11.90, 11.80, 12.30, 12.20, 12.20),
-                          Brand = c(rep("Brand A", 6), rep("Brand B", 6), rep("Brand C", 6)))
+lab_precise <- data.frame(tar_mg = c(10.21, 10.25, 10.24, 9.80, 9.77, 9.73,
+                                     11.32, 11.20, 11.40, 10.50, 10.68, 10.90,
+                                     11.60, 11.90, 11.80, 12.30, 12.20, 12.20),
+                          Brand = c(rep("Brand A", 6),
+                                    rep("Brand B", 6),
+                                    rep("Brand C", 6)))
 
 # Fit a one-way ANOVA model
 aov.fit <- aov(tar_mg ~ Brand, data = lab_precise)
