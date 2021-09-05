@@ -16,7 +16,7 @@
             <td><a href="https://online.stat.psu.edu/stat504/lesson/3/3.3">Fisher's Exact Test</a></td>
             <td><center></center></td>
             <td><center></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/fisher-exact-test">R</a></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat500/lesson/8">Chi-square Test</a></td>
