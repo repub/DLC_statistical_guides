@@ -1,7 +1,7 @@
 
-# Simple Linear Regression
+# Simple Linear Regression (SLR)
 
-### [ANOVA hypotheses](https://online.stat.psu.edu/stat500/lesson/10/10.2)
+### [SLR hypotheses](https://online.stat.psu.edu/stat501/lesson/1/1.9)
 
     **Null hypothesis:** The correlation coefficient (*ρ*) for the two
 variables is equal to 0.  
@@ -14,21 +14,22 @@ variables is equal to 0.  
     **Alternative hypothesis:** The correlation between the two
 variables is not equal to 0.  
 <center>
-<i>H<sub>A</sub>: ρ ≠ 0, or H<sub>A</sub>: ρ &gt; 0 or ρ &lt; 0</i>
+<i>H<sub>A</sub>: ρ ≠ 0, </i>or<i> H<sub>A</sub>: ρ &gt; 0 or ρ &lt;
+0</i>
 </center>
 
  
 
-### [ANOVA assumptions](https://online.stat.psu.edu/stat500/lesson/10/10.2/10.2.1)
+### [SLR assumptions](https://online.stat.psu.edu/stat501/lesson/4/4.1)
 
 -   The predictor and response variables have a **linear relationship**.
--   The errors of **independent**, **normally distributed**, and have
+-   The errors are **independent**, **normally distributed**, and have
     **equal variances**.
 
 ### Loading the data in R
 
     In this example we will be using a sample dataset offered in
-[Example 1.2 of the STAT 501 Regression Methods
+[Example 1-2 of the STAT 501 Regression Methods
 course](https://online.stat.psu.edu/stat501/lesson/1/1.7) where we will
 fit a linear model to assess the relationship between a building’s
 height and the number of stories that building has. First, we will need
@@ -45,9 +46,9 @@ bldgstories <- read.table("dat/bldgstories.txt", header = TRUE)
     Now that the dataset is loaded, you can view a brief summary of the
 dataset using the `summary()` function on the assigned object.
 
-### Fitting a linear model
+### Fitting a SLR model
 
-     fit a linear regression model we can use the `lm()` function in R
+    To fit a linear regression model we can use the `lm()` function in R
 where the response variable is to the left of, and predictor variable to
 the right of a `~` as follows:
 

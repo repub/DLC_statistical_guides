@@ -16,9 +16,9 @@ knitr::opts_chunk$set(echo=TRUE, fig.path="img/simple-linear-regression/",
 options(width=100)
 ```
 
-# Simple Linear Regression
+# Simple Linear Regression (SLR)
 
-### [ANOVA hypotheses](https://online.stat.psu.edu/stat500/lesson/10/10.2)
+### [SLR hypotheses](https://online.stat.psu.edu/stat501/lesson/1/1.9)
 
 &nbsp;&nbsp;&nbsp;&nbsp;**Null hypothesis:** The correlation coefficient ($\rho$) for the two variables is equal to 0.
 &nbsp;
@@ -27,18 +27,18 @@ options(width=100)
 
 &nbsp;&nbsp;&nbsp;&nbsp;**Alternative hypothesis:** The correlation between the two variables is not equal to 0.
 &nbsp;
-<center><i>H<sub>A</sub>: &#961; &#8800; 0, or H<sub>A</sub>: &#961; &gt; 0 or &#961; &lt; 0</i></center>
+<center><i>H<sub>A</sub>: &#961; &#8800; 0, </i>or<i> H<sub>A</sub>: &#961; &gt; 0 or &#961; &lt; 0</i></center>
 &nbsp;
 
 
-### [ANOVA assumptions](https://online.stat.psu.edu/stat500/lesson/10/10.2/10.2.1)
+### [SLR assumptions](https://online.stat.psu.edu/stat501/lesson/4/4.1)
 
 - The predictor and response variables have a **linear relationship**.
-- The errors of **independent**, **normally distributed**, and have **equal variances**.
+- The errors are **independent**, **normally distributed**, and have **equal variances**.
 
 ### Loading the data in R
 
-&nbsp;&nbsp;&nbsp;&nbsp;In this example we will be using a sample dataset offered in [Example 1.2 of the STAT 501 Regression Methods course](https://online.stat.psu.edu/stat501/lesson/1/1.7) where we will fit a linear model to assess the relationship between a building's height and the number of stories that building has. First, we will need to read the file into R which has a number of functions to do so. In our case, the dataset is in a tabular format, so we will use the `read.table()` function to read the dataset into R. Note that our dataset has header information, so we should include the `header = TRUE` option.
+&nbsp;&nbsp;&nbsp;&nbsp;In this example we will be using a sample dataset offered in [Example 1-2 of the STAT 501 Regression Methods course](https://online.stat.psu.edu/stat501/lesson/1/1.7) where we will fit a linear model to assess the relationship between a building's height and the number of stories that building has. First, we will need to read the file into R which has a number of functions to do so. In our case, the dataset is in a tabular format, so we will use the `read.table()` function to read the dataset into R. Note that our dataset has header information, so we should include the `header = TRUE` option.
 
 ```{r}
 bldgstories <- read.table("dat/bldgstories.txt", header = TRUE)
@@ -46,9 +46,9 @@ bldgstories <- read.table("dat/bldgstories.txt", header = TRUE)
 
 &nbsp;&nbsp;&nbsp;&nbsp;Now that the dataset is loaded, you can view a brief summary of the dataset using the `summary()` function on the assigned object.
 
-### Fitting a linear model
+### Fitting a SLR model
 
-&nbsp;&nbsp;&nbsp;&nbsp; fit a linear regression model we can use the `lm()` function in R where the response variable is to the left of, and predictor variable to the right of a `~` as follows:
+&nbsp;&nbsp;&nbsp;&nbsp;To fit a linear regression model we can use the `lm()` function in R where the response variable is to the left of, and predictor variable to the right of a `~` as follows:
 
 ```{r}
 fit.lm <- lm(HGHT ~ STORIES, data = bldgstories)
