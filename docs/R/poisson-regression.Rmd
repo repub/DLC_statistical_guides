@@ -1,0 +1,39 @@
+---
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs/R';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='poisson-regression.md') })
+output: github_document
+editor_options:
+  chunk_output_type: console
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, fig.path="img/poisson-regression/",
+                      fig.width=6, fig.height=4,
+                      fig.show='hold', fig.align='center')
+options(width=100)
+```
+
+# Poisson Regression
+
+### Load the data
+
+```{r}
+crab <- read.table("dat/crab.txt", row.names = 1)
+
+colnames(crab) <- c("C", "S", "W", "Wt", "Sa")
+```
+
+### Fit a Poisson regression model
+
+```{r}
+crab.pois <- glm(Sa ~ factor(C) + factor(S) + W + Wt,
+                 data = crab,
+                 family = poisson)
+```
+
+### Interpret the results
+
+### Full code block
