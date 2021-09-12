@@ -77,3 +77,13 @@ remiss.fit2 <- glm(REMISS ~ LI, data = remiss, family = binomial)
 summary(remiss.fit2)
 ```
 
+```{r eval = FALSE, echo = FALSE}
+plot(remiss$LI, remiss$REMISS, pch = 19, col = "steelblue",
+     xlab = "Percentage labeling index of the bone marrow leukemia cells (LI)",
+     ylab = "Probability of leukemia remission (REMISS)",
+     main = "Line plot of the fitted binary logistic regression model")
+LI <- remiss$LI
+curve(predict(remiss.fit2, data.frame(LI=x), type="resp"), add = TRUE,
+      col = "tomato", lwd = 2)
+```
+
