@@ -22,7 +22,7 @@
             <td><a href="https://online.stat.psu.edu/stat500/lesson/8">Chi-square Test</a></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/19/help-and-how-to/statistics/tables/how-to/chi-square-test-for-association/before-you-start/example/ ">Minitab</a></center></td>
             <td><center></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/chi-sq-test">R</a></center></td>
         </tr>
         <tr>
             <td><b>Tests Comparing Means</b></td>
