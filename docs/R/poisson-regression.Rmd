@@ -3,14 +3,14 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs/R';
   rmarkdown::render(input_file,
     encoding=encoding,
-    output_file='poisson-regression.md') })
+    output_file='Poisson-regression.md') })
 output: github_document
 editor_options:
   chunk_output_type: console
 ---
   
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, fig.path="img/poisson-regression/",
+knitr::opts_chunk$set(echo=TRUE, fig.path="img/Poisson-regression/",
                       fig.width=6, fig.height=4,
                       fig.show='hold', fig.align='center')
 options(width=100)
@@ -18,22 +18,78 @@ options(width=100)
 
 # Poisson Regression
 
+
+
 ### Load the data
+
+&nbsp;&nbsp;&nbsp;&nbsp;Here, we will use a dataset provided in [STAT 501 Regression Methods](https://online.stat.psu.edu/stat504/lesson/9/9.2) that observed the relationship between the number of male crabs attaching to a female crab's nest (*Satellites*) and characteristics of the female crab that include the color (*Color*), spine condition (*Spine*), weight (*Weight*), and carapace width (*Width*).
+
+To read the data into R, we can use the `read.table()` function and set `row.names = 1` so that the first column of the data (the observation number) is set as a rown name instead of its own variable.
 
 ```{r}
 crab <- read.table("dat/crab.txt", row.names = 1)
-
-colnames(crab) <- c("C", "S", "W", "Wt", "Sa")
 ```
+
+Because the dataset did not originally include the variable (column) names, we need to add them which we can do by wrapping our data in `colnames()` and assigning column names with `c()`.
+
+```{r}
+colnames(crab) <- c("Color", "Spine", "Width", "Weight", "Satellites")
+```
+
+It is important to look at the structure of our dataset to make sure that it is read by R in the way we want it. Using the `str()` function we can see some features of our data. 
+
+```{r}
+str(crab)
+```
+
+Importantly, the *Color*, *Spine*, and *Satellites* variables are all read as integers while the *Width* and *Weight* are read as numerical. The issue here is that color and spine condition are not actually integers, only coded in that way. We will want to keep this in mind when we fit our model so that we correctly code our variable types.
 
 ### Fit a Poisson regression model
 
+
+
 ```{r}
-crab.pois <- glm(Sa ~ factor(C) + factor(S) + W + Wt,
+crab.pois <- glm(Satellites ~ factor(Color) + factor(Spine) + Weight + Width,
                  data = crab,
                  family = poisson)
+
+crab.pois <- glm(Satellites ~ factor(Color), data = crab, family = poisson)
+
+C1 = 1*(crab$C == 1)
+C2 = 1*(crab$C == 2)
+C3 = 1*(crab$C == 3)
+C4 = 1*(crab$C == 4)
+
+Sa = crab$Satellites
+W = crab$Width
+Wt = crab$Weight
+Sp = crab$Spine
+model <- glm(Sa ~ Sp + W + C1 + C2 + C3, family = quasipoisson)
+vif(model)
+
+model <- glm(Sa ~ W, family = poisson)
+summary(model)
+
 ```
 
 ### Interpret the results
+
+```{r}
+summary(crab.pois)
+```
+
+```{r}
+
+pchisq(crab.pois$deviance, crab.pois$df.residual)
+
+influence(crab.pois)
+plot(influence(crab.pois)$pear.res)
+
+crab.pois <- glm(Sa ~ factor(C) + factor(S) + W + Wt,
+                 data = crab,
+                 family = quasipoisson)
+summary(crab.pois)$dispersion
+```
+
 
 ### Full code block
