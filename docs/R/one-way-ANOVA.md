@@ -8,7 +8,7 @@ contains measurements of tar content as measured by Lab Precise from
 three cigarette brands. A barplot presenting the means and standard
 deviations of the tar content from each brand is shown below.
 
-<img src="img/one-way-ANOVA/unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+<img src="img/one-way-ANOVA/bargraph-1.png" style="display: block; margin: auto;" />
 
     From briefly observing the barplot, there does appear to be a
 difference in tar content among the three cigarette brands. However, we
@@ -104,7 +104,7 @@ par(mfrow = c(2,2))
 plot(aov.fit)
 ```
 
-<img src="img/one-way-ANOVA/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+<img src="img/one-way-ANOVA/diagnostics-1.png" style="display: block; margin: auto;" />
 
     The four plots provided are the Residuals vs Fitted, Normal Q-Q,
 Scale-Location, and Leverage plots. While each plot gives us important

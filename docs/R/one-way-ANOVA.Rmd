@@ -24,7 +24,7 @@ options(width=100)
 
 ```
 
-```{r echo = FALSE}
+```{r bargraph, echo = FALSE}
 y_means <- aggregate(lab_precise$Tar_mg, list(lab_precise$Brand), FUN = mean)
 y_sds <- aggregate(lab_precise$Tar_mg, list(lab_precise$Brand), FUN = sd)
 
@@ -97,7 +97,7 @@ aov.fit <- aov(Tar_mg ~ Brand, data = lab_precise)
 
 &nbsp;&nbsp;&nbsp;&nbsp;Before we begin interpreting the results of the model we should first check to see how well the model fits. A simple qualitative way to do so is to check [diagnostic plots of the residuals](https://online.stat.psu.edu/stat462/node/117/). Using the `plot()` function we can observe four of these types of diagnostic plots. We can observe them separately or put them together in one plot using `par(mfrow = c(2,2))`.
 
-```{r, fig.height = 6}
+```{r diagnostics, fig.height = 6}
 par(mfrow = c(2,2))
 plot(aov.fit)
 ```
