@@ -133,15 +133,18 @@ lab_precise <- data.frame(Tar_mg = c(10.21, 10.25, 10.24, 9.80, 9.77, 9.73,
                                            rep("Brand B", 6),
                                            rep("Brand C", 6))))
 
+# Check assumption of equal variances among the factors
+bartlett.test(Tar_mg ~ Brand, data = lab_precise)
+
 # Fit a one-way ANOVA model
 aov.fit <- aov(Tar_mg ~ Brand, data = lab_precise)
-
-# Summarize the results of the ANOVA model
-summary(aov.fit)
 
 # Generate diagnostic plots to assess the fit of the ANOVA model
 par(mfrow = c(2,2))
 plot(aov.fit)
+
+# Summarize the results of the ANOVA model
+summary(aov.fit)
 
 # Perform and summarize a Tukey HSD post-hoc test
 TukeyHSD(aov.fit)
