@@ -1,5 +1,5 @@
 
-# One-way Aanalysis of Variance (ANOVA)
+# One-way Analysis of Variance (ANOVA)
 
     For this tutorial we will be using a sample dataset from the [PSU
 STAT 500 Applied Statistics
