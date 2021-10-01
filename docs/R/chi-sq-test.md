@@ -1,5 +1,5 @@
 
-# The Chi-square (Χ<sup>2</sub>) Test
+# The Chi-square (Χ<sup>2</sup>) Test
 
     When our data includes two categorical variables, we can determine
 if there is a statistically significant relationship (or alternatively

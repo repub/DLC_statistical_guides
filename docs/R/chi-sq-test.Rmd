@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo=TRUE, fig.path="img/chi-sq-test/",
 options(width=100)
 ```
 
-# The Chi-square (&Chi;<sup>2</sub>) Test
+# The Chi-square (&Chi;<sup>2</sup>) Test
 
 &nbsp;&nbsp;&nbsp;&nbsp;When our data includes two categorical variables, we can determine if there is a statistically significant relationship (or alternatively dependence) between them with the Chi-square (&Chi;<sup>2</sup>) test. WIth the &Chi;<sup>2</sup> test, we compare the observed counts (our data) with the expected counts if the data came from the same distributions.
 
