@@ -1,0 +1,66 @@
+---
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs/R';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='T-tests.md') })
+output: github_document
+editor_options:
+  chunk_output_type: console
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, fig.path="img/T-tests/",
+                      fig.width=6, fig.height=4,
+                      fig.show='hold', fig.align='center')
+options(width=100)
+```
+
+# T-tests
+
+### T-test for one mean
+
+```{r}
+x <- c(161, 108, 148, 107, 104, 124, 152, 152)
+
+t.test(x, mu = 120, alternative = "greater")
+```
+
+### Two-sample t-test
+
+```{r}
+dinopis <- c(12.9, 10.2, 7.4, 7, 10.5, 11.9, 7.1, 9.9, 14.4, 11.3)
+menneus <- c(10.2, 6.9, 10.9, 11, 10.1, 5.3, 7.5, 10.3, 9.2, 8.8)
+
+t.test(dinopis, menneus)
+t.test(dinopis, menneus, var.equal = TRUE)
+```
+
+### Paired t-test
+
+```{r}
+Lab_1 <- c(258, 259, 256, 274, 268, 253, 270, 260, 258, 262)
+Lab_2 <- c(273, 277, 289, 279, 273, 278, 266, 283, 271, 267)
+
+t.test(Lab_1, Lab_2, paired = TRUE)
+```
+
+
+```{r}
+PSU_Lab <- c(258, 259, 256, 274, 268, 253, 270, 260, 258, 262)
+
+t.test(PSU_Lab, mu = 260, alternative = "greater")
+```
+
+```{r}
+Wisc_Lab <- c(273, 277, 289, 279, 273, 278, 266, 283, 271, 267)
+
+t.test(PSU_Lab, Wisc_Lab)
+```
+
+```{r}
+PSU_FollowUp <- c(262, 258, 267, 281, 259, 255, 264, 261, 258, 265)
+
+t.test(PSU_Lab, PSU_FollowUp, paired = TRUE)
+```
+
