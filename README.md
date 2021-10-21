@@ -29,7 +29,7 @@
             <td colspan=3></td>
         </tr>
         <tr>
-            <td><a href="https://online.stat.psu.edu/stat555/node/36/ ">2-sample T-test</a></td>
+            <td><a href="https://online.stat.psu.edu/stat415/lesson/11">2-sample T-test</a></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/inference/how-to/two-samples/2-sample-t/before-you-start/example/ ">Minitab</a></center></td>
             <td><center></center></td>
             <td><center></center></td>
