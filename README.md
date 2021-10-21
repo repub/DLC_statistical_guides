@@ -25,7 +25,7 @@
             <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/chi-sq-test">R</a></center></td>
         </tr>
         <tr>
-            <td><b>Tests Comparing Means</b></td>
+            <td><b>Parametric Tests</b></td>
             <td colspan=3></td>
         </tr>
         <tr>
@@ -45,6 +45,22 @@
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/anova/how-to/two-way-anova/before-you-start/example/ ">Minitab</a></center></td>
             <td><center></center></td>
             <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/two-way-ANOVA">R</a></center></td>
+        </tr>
+        <tr>
+            <td><b>Non-parametric Tests</b></td>
+            <td colspan=3></td>
+        </tr>
+        <tr>
+            <td><a>Mann Whitney U Test</a></td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
+        </tr>
+        <tr>
+            <td><a>Kruskal-Wallis Test</a></td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
         </tr>
         <tr>
             <td><b>Linear Regression & Generalized Linear Models (GLMs)</b></td>
