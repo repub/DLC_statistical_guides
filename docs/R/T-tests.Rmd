@@ -18,7 +18,11 @@ options(width=100)
 
 # T-tests
 
+&emsp;When we are interested in testing one mean against a single value or the equality of two means we can rely on the t-test. While there are different forms of the t-test, they all are based on the t-distribution for a given mean and variance.
+
 ### T-test for one mean
+
+&emsp;The simplest form of the t-test is when we have one sample for which we want to determine if the group is significantly different from some predetermined value.  
 
 ```{r}
 x <- c(161, 108, 148, 107, 104, 124, 152, 152)
