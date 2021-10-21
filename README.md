@@ -47,7 +47,7 @@
             <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/two-way-ANOVA">R</a></center></td>
         </tr>
         <tr>
-            <td><b>Regression & Generalized Linear Models (GLMs)</b></td>
+            <td><b>Linear Regression & Generalized Linear Models (GLMs)</b></td>
             <td colspan=3><center><a href="https://online.stat.psu.edu/stat504/lesson/6/6.1">Introduction to GLMs</a></center></td>
         </tr>
         <tr>
