@@ -20,14 +20,14 @@ options(width=100)
 
 ### [MLR hypotheses](https://online.stat.psu.edu/stat501/lesson/5/5.3)
 
-&nbsp;&nbsp;&nbsp;&nbsp;**Null hypothesis:** The estimated coefficient ($\beta$) for variable *i* is equal to 0.
+&emsp;**Null hypothesis:** The estimated coefficient ($\beta$) for variable *i* is equal to 0.
 &nbsp;
-<center><i>H<sub>0</sub>: &#946;<sub>i</sub> = 0</i></center>
+<center><i>H<sub>0</sub></i>:<i> &#946;<sub>i</sub> </i>=<i> 0</i></center>
 &nbsp;
 
-&nbsp;&nbsp;&nbsp;&nbsp;**Alternative hypothesis:** $\beta_i$ is not equal to 0.
+&emsp;**Alternative hypothesis:** $\beta_i$ is not equal to 0.
 &nbsp;
-<center><i>H<sub>A</sub>: &#946;<sub>i</sub> &#8800; 0, </i>or<i> H<sub>A</sub>: &#946;<sub>i</sub> &gt; 0 or &#946;<sub>i</sub> &lt; 0</i></center>
+<center><i>H<sub>A</sub></i>:<i> &#946;<sub>i</sub> </i>&#8800;<i> 0</i>, or<i> H<sub>A</sub></i>:<i> &#946;<sub>i</sub> </i>&gt;<i> 0 </i>or<i> &#946;<sub>i</sub> </i>&lt;<i> 0</i></center>
 &nbsp;
 
 
@@ -38,7 +38,7 @@ options(width=100)
 
 ### Loading the data in R
 
-&nbsp;&nbsp;&nbsp;&nbsp;In this example we will be using a dataset provided in [Example 5-1 of the STAT 501 Regression Methods course](https://online.stat.psu.edu/stat501/lesson/5/5.1) that includes data on participant's performance IQ score (*PIQ*), brain size (*Brain*), and two variables on body size, *Height* and *Weight*.
+&emsp;In this example we will be using a dataset provided in [Example 5-1 of the STAT 501 Regression Methods course](https://online.stat.psu.edu/stat501/lesson/5/5.1) that includes data on participant's performance IQ score (*PIQ*), brain size (*Brain*), and two variables on body size, *Height* and *Weight*.
 
 ```{r echo = FALSE, ref.label = 'read.table'}
 ```
@@ -47,13 +47,13 @@ options(width=100)
 plot(iqsize)
 ```
 
-From the three physical attributes of each participant we look to find a relationship with their `PIQ`. We will first load the data into R using the `read.table()` function.
+&emsp;From the three physical attributes of each participant we look to find a relationship with their `PIQ`. We will first load the data into R using the `read.table()` function.
 
 ```{r read.table}
 iqsize <- read.table("dat/iqsize.txt", header = TRUE)
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;Now that the dataset is loaded, you can get some information on the dataset using the `summary()` and `str()` functions on `iqsize`.
+&emsp;Now that the dataset is loaded, you can get some information on the dataset using the `summary()` and `str()` functions on `iqsize`.
 
 ```{r}
 summary(iqsize)
@@ -62,7 +62,7 @@ str(iqsize)
 
 ### Fitting a MLR model
 
-&nbsp;&nbsp;&nbsp;&nbsp;To fit a linear regression model we can use the `lm()` function in R where the response variable *PIQ* is to the left of of the `~` and the predictor variables *Brain*, *Height*, and *Weight* are to the right and separated by `+`. Alternatively, instead of listing each predictor variable we could use `.` on the right of the `~` to tell R to include all other variables in the data frame as a predictor variable.
+&emsp;To fit a linear regression model we can use the `lm()` function in R where the response variable *PIQ* is to the left of of the `~` and the predictor variables *Brain*, *Height*, and *Weight* are to the right and separated by `+`. Alternatively, instead of listing each predictor variable we could use `.` on the right of the `~` to tell R to include all other variables in the data frame as a predictor variable.
 
 ```{r}
 fit.lm <- lm(PIQ ~ Brain + Height + Weight, data = iqsize)
@@ -74,13 +74,13 @@ The `summary()` output includes some descriptive statistics of each of the four 
 
 ### Interpreting the results
 
-&nbsp;&nbsp;&nbsp;&nbsp;Using the `summary()` function we can print out summary statistics of our MLR model.
+&emsp;Using the `summary()` function we can print out summary statistics of our MLR model.
 
 ```{r}
 summary(fit.lm)
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;From the summary statistics we can fist note that *PIQ* can be predicted by the variables included in our model as the p-value for the MLR model is below 0.05, although the r<sup>2</sup> is ~3 to say that relationship is weak. Further, the *Brain* and *Height* variables are statistically significant predictors of *PIQ* given by the p-values for their coefficients (`Pr(>|t|)` column) being below 0.05. Conversely, the *Weight* variable is not statistically significant and even close to 1, so we could conclude that the weight of the participant has no relationship with their performance IQ score.
+&emsp;From the summary statistics we can fist note that *PIQ* can be predicted by the variables included in our model as the p-value for the MLR model is below 0.05, although the r<sup>2</sup> is ~3 to say that relationship is weak. Further, the *Brain* and *Height* variables are statistically significant predictors of *PIQ* given by the p-values for their coefficients (`Pr(>|t|)` column) being below 0.05. Conversely, the *Weight* variable is not statistically significant and even close to 1, so we could conclude that the weight of the participant has no relationship with their performance IQ score.
 
 ### Full code block
 

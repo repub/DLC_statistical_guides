@@ -1,0 +1,61 @@
+---
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs/R';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='multinomial-logistic-regression.md') })
+output: github_document
+editor_options:
+  chunk_output_type: console
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, fig.path="img/multinomial-logistic-regression/",
+                      fig.width=6, fig.height=4,
+                      fig.show='hold', fig.align='center')
+options(width=100)
+```
+
+# Multinomial Logistic Regression in R
+
+&emsp;In this tutorial we will be using one of the more widely applied datasets for learning regression and machine learning, the `iris` dataset.
+
+```{r}
+iris
+str(iris)
+```
+
+
+```{r, echo = FALSE}
+library(tidyverse)
+iris %>% group_by(Species) %>%
+  summarize(`Sepal Length` = mean(Sepal.Length),
+            `Sepal Width` = mean(Sepal.Width),
+            `Petal Length` = mean(Petal.Length),
+            `Petal Width` = mean(Petal.Width))
+```
+
+The dataset includes measurements of the lengths and widths of sepals (green outer part of a flower) and petals from three species of flowers. With multinomial logistic regression we can fit a model to see which of these measurements are significant predictors for these species.
+
+```{r}
+library(nnet)
+
+species.fit <- multinom(Species ~ ., data = iris)
+```
+
+```{r}
+summary(species.fit)
+```
+
+```{r}
+z.scores <- coef(species.fit) / summary(species.fit)$standard.errors
+(p.values <- (1 - pnorm(abs(z.scores), 0, 1)) * 2)
+```
+
+```{r}
+iris$Species <- relevel(iris$Species, ref = "setosa")
+species.fit <- multinom(Species ~ ., data = iris)
+z.scores <- coef(species.fit) / summary(species.fit)$standard.errors
+(p.values <- (1 - pnorm(abs(z.scores), 0, 1)) * 2)
+```
+

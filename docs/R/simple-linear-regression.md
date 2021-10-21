@@ -142,7 +142,7 @@ height of that building is increased by 11.2924. We can write this out
 mathematically as:
 
 <center>
-<i>Height</i> = <i>11.2924 </i>\*<i> Stories </i>+<i> 90.3096</i>
+<i>Height</i> = <i>11.2924 </i>x<i> Stories </i>+<i> 90.3096</i>
 </center>
 
  
@@ -153,7 +153,7 @@ predict the height of a building that has 52 stories our calculation
 would be:
 
 <center>
-<i>Height</i> = <i>11.2924 </i>\*<i> 52 </i>+<i> 90.3096 </i>=<i><b>
+<i>Height</i> = <i>11.2924 </i>x<i> 52 </i>+<i> 90.3096 </i>=<i><b>
 677.5144 </b></i>
 </center>
 

@@ -3,18 +3,19 @@
 
 ### [MLR hypotheses](https://online.stat.psu.edu/stat501/lesson/5/5.3)
 
-    **Null hypothesis:** The estimated coefficient (*β*) for variable
-*i* is equal to 0.  
+ **Null hypothesis:** The estimated coefficient (*β*) for variable *i*
+is equal to 0.  
 <center>
-<i>H<sub>0</sub>: β<sub>i</sub> = 0</i>
+<i>H<sub>0</sub></i>:<i> β<sub>i</sub> </i>=<i> 0</i>
 </center>
 
  
 
-    **Alternative hypothesis:** *β*<sub>*i*</sub> is not equal to 0.  
+ **Alternative hypothesis:** *β*<sub>*i*</sub> is not equal to 0.  
 <center>
-<i>H<sub>A</sub>: β<sub>i</sub> ≠ 0, </i>or<i> H<sub>A</sub>:
-β<sub>i</sub> &gt; 0 or β<sub>i</sub> &lt; 0</i>
+<i>H<sub>A</sub></i>:<i> β<sub>i</sub> </i>≠<i> 0</i>, or<i>
+H<sub>A</sub></i>:<i> β<sub>i</sub> </i>&gt;<i> 0 </i>or<i>
+β<sub>i</sub> </i>&lt;<i> 0</i>
 </center>
 
  
@@ -27,23 +28,23 @@
 
 ### Loading the data in R
 
-    In this example we will be using a dataset provided in [Example 5-1
-of the STAT 501 Regression Methods
+ In this example we will be using a dataset provided in [Example 5-1 of
+the STAT 501 Regression Methods
 course](https://online.stat.psu.edu/stat501/lesson/5/5.1) that includes
 data on participant’s performance IQ score (*PIQ*), brain size
 (*Brain*), and two variables on body size, *Height* and *Weight*.
 
 <img src="img/multiple-linear-regression/unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
 
-From the three physical attributes of each participant we look to find a
-relationship with their `PIQ`. We will first load the data into R using
-the `read.table()` function.
+ From the three physical attributes of each participant we look to find
+a relationship with their `PIQ`. We will first load the data into R
+using the `read.table()` function.
 
 ``` r
 iqsize <- read.table("dat/iqsize.txt", header = TRUE)
 ```
 
-    Now that the dataset is loaded, you can get some information on the
+ Now that the dataset is loaded, you can get some information on the
 dataset using the `summary()` and `str()` functions on `iqsize`.
 
 ``` r
@@ -70,7 +71,7 @@ str(iqsize)
 
 ### Fitting a MLR model
 
-    To fit a linear regression model we can use the `lm()` function in R
+ To fit a linear regression model we can use the `lm()` function in R
 where the response variable *PIQ* is to the left of of the `~` and the
 predictor variables *Brain*, *Height*, and *Weight* are to the right and
 separated by `+`. Alternatively, instead of listing each predictor
@@ -89,8 +90,8 @@ the data frame is set up.
 
 ### Interpreting the results
 
-    Using the `summary()` function we can print out summary statistics
-of our MLR model.
+ Using the `summary()` function we can print out summary statistics of
+our MLR model.
 
 ``` r
 summary(fit.lm)
@@ -117,7 +118,7 @@ summary(fit.lm)
     ## Multiple R-squared:  0.2949, Adjusted R-squared:  0.2327 
     ## F-statistic: 4.741 on 3 and 34 DF,  p-value: 0.007215
 
-    From the summary statistics we can fist note that *PIQ* can be
+ From the summary statistics we can fist note that *PIQ* can be
 predicted by the variables included in our model as the p-value for the
 MLR model is below 0.05, although the r<sup>2</sup> is \~3 to say that
 relationship is weak. Further, the *Brain* and *Height* variables are
