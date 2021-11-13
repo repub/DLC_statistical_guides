@@ -10,19 +10,19 @@
             <td><a href="https://online.stat.psu.edu/stat415/lesson/9/9.4">Comparing Two Proportions</a></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/20/help-and-how-to/statistics/basic-statistics/how-to/2-proportions/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/SPSS/two-proportions">SPSS</a></center></td>
-            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/two-proportions">R</a></center></td>
+            <td><center></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat504/lesson/3/3.3">Fisher's Exact Test</a></td>
             <td><center></center></td>
             <td><center></center></td>
-            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/fisher-exact-test">R</a></center></td>
+            <td><center></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat500/lesson/8">Chi-square Test</a></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/19/help-and-how-to/statistics/tables/how-to/chi-square-test-for-association/before-you-start/example/ ">Minitab</a></center></td>
             <td><center></center></td>
-            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/chi-sq-test">R</a></center></td>
+            <td><center></center></td>
         </tr>
         <tr>
             <td><b>Parametric Tests</b></td>
@@ -32,7 +32,7 @@
             <td><a href="https://online.stat.psu.edu/stat415/lesson/11">T-tests</a></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/inference/how-to/two-samples/2-sample-t/before-you-start/example/ ">Minitab</a></center></td>
             <td><center></center></td>
-            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/T-tests">R</a></center></td>
+            <td><center></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat500/lesson/10/10.1">One-way ANOVA</a></td>
@@ -44,7 +44,7 @@
             <td><a href="https://online.stat.psu.edu/stat504/lesson/two-way-anova-example">Two-way ANOVA</a></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/anova/how-to/two-way-anova/before-you-start/example/ ">Minitab</a></center></td>
             <td><center></center></td>
-            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/two-way-ANOVA">R</a></center></td>
+            <td><center></center></td>
         </tr>
         <tr>
             <td><b>Non-parametric Tests</b></td>
@@ -76,13 +76,13 @@
             <td><a href="https://online.stat.psu.edu/stat501/lesson/5">Multiple Linear Regression</a></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/regression/how-to/multiple-regression/before-you-start/example/ ">Minitab</a></center></td>
             <td><center></center></td>
-            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/multiple-linear-regression">R</a></center></td>
+            <td><center></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat501/lesson/15/15.1">Logistic (Logit) Regression</a></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/regression/how-to/binary-logistic-regression/before-you-start/example/">Minitab</a></center></td>
             <td><center></center></td>
-            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/logistic-regression">R</a></center></td>
+            <td><center></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat501/lesson/15/15.2">Multinomial Logistic Regression</a></td>
