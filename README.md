@@ -103,6 +103,13 @@
             <td><center></center></td>
         </tr>
         <tr>
+            <td>Ordinal Logistic Regression</td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
+        </tr>
+        <tr>
             <td><a href="https://online.stat.psu.edu/stat501/lesson/15/15.4">Poisson Regression</a></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/regression/how-to/fit-poisson-model/before-you-start/example/">Minitab</a></center></td>
             <td><center></center></td>
