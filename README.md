@@ -135,14 +135,14 @@
             <td>Likert-Type Scale</td>
             <td><center></center></td>
             <td><center></center></td>
-            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Likert-Type Scale">R</a></center></td>
+            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Likert-type">R</a></center></td>
             <td><center></center></td>
         </tr>
         <tr>
             <td>Likert-type</td>
             <td><center></center></td>
             <td><center></center></td>
-            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Likert Scale">R</a></center></td>
+            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Likert-scale">R</a></center></td>
             <td><center></center></td>
         </tr>
         <tr>
