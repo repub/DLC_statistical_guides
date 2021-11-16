@@ -1,0 +1,59 @@
+
+# Analyzing Likert Data
+
+ When our goal is to survey a group of individuals opinion toward a
+certain item or concept we can use scale-based approaches, the most
+common of which is Likert scale questions. Likert question an
+individual’s attitude toward a number of specific items along a 5 or
+more point scale with choices ranging from negative to positive
+attitudes toward the topic. Commonly, Likert scales follow the following
+syntax:
+
+-   Strongly agree = 5
+-   Agree = 4
+-   Neither agree nor disagree = 3
+-   Disagree = 2
+-   Strongly disagree = 1
+
+ *Note: The wording of each question is important. A negatively worded
+question (such as including the word ‘not’) may cause a respondent to
+answer in reverse to if the question was worded positively (not
+including a ‘not’ or other negative term), and thus during analysis its
+scoring should be flipped (i.e. a ‘Strongly agree’ response to a
+negative-worded question would be scored as a ‘Strongly disagree’
+response from a positive-phrased question)*
+
+ Often it can be useful to also include a “Not applicable (N/A)”
+response so that if a respondent does not have an opinion or feels the
+question is outside of their ability to answer they are not forced to
+answer untruthfully.
+
+ Although the questions are on a scale, where “Strongly agree” responses
+are rated higher than “Agree”, which are rated higher than “Neither
+agree nor disagree”, and so forth, we cannot assume that the difference
+between the scores is the same. That is to say, if one respondent
+answers “Strongly disagree” to a question, we cannot conclude that they
+view that topic twice as negatively compared to a second respondent that
+only answered “Disagree”, only that the first individual has a stronger
+negative view. Therefore, we can treat Likert responses as ordinal data,
+where there is an ordered ranking among the responses but not equal
+separation between them.
+
+### [Likert-type Scale](https://tylerbg.github.io/DLC_stat_resources/docs/R/Likert-type) vs. [Likert Scale](https://tylerbg.github.io/DLC_stat_resources/docs/R/Likert-scale)
+
+ One important consideration before performing your analysis, and one
+that should be considered prior to and while building your survey, is to
+determine what research question(s) you plan to analyze statistically
+and whether you will need to analyze Likert-type scale or Likert scale
+data (or both) to answer those research question(s). Likert-type scale
+refers to analyzing responses to any individual question. Conversely,
+with Likert scale analysis a series of questions that share a specific
+theme of interest will be analyzed together.
+
+ While both approaches can be very useful, the major quantitative
+difference between the two is the type of statistical analyses that are
+appropriate. For Likert-type scale data non-parametric tests that assess
+the median response, such as the Mann Whitney and Kruskal Wallis tests,
+and ordinal regression can be applied. Parametric methods, such as the
+t-test, ANOVA, and logistic regression, are instead applicable for
+Likert scale analysis.
