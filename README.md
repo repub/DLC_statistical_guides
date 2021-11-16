@@ -153,7 +153,7 @@
             <td><center></center></td>
         </tr>
          <tr>
-            <td><b>Displaying Likert Data</b></td>
+            <td>Displaying Likert Data</td>
             <td><center></center></td>
             <td><center></center></td>
             <td><center></center></td>
