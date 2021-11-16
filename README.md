@@ -105,7 +105,7 @@
         <tr>
             <td>Ordinal Logistic Regression</td>
             <td><center></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/regression/how-to/ordinal-logistic-regression/before-you-start/example/">Minitab</a></center></td>
             <td><center></center></td>
             <td><center></center></td>
         </tr>
