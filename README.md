@@ -139,7 +139,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td>Likert-type</td>
+            <td>Likert Scale</td>
             <td><center></center></td>
             <td><center></center></td>
             <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Likert-scale">R</a></center></td>
