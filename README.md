@@ -152,5 +152,12 @@
             <td><center></center></td>
             <td><center></center></td>
         </tr>
+         <tr>
+            <td><b>Displaying Likert Data</b></td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
+        </tr>
     </tbody>
 </table>
