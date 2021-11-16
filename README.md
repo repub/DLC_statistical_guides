@@ -121,11 +121,15 @@
             <td colspan=4></td>
         </tr>
         <tr>
+            <td>Agree/Disagree</td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
+        </tr>
+        <tr>
             <td><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Likert">Likert Scale Questions</a></td>
-            <td><center></center></td>
-            <td><center></center></td>
-            <td><center></center></td>
-            <td><center></center></td>
+            <td colspan=4></td>
         </tr>
         <tr>
             <td>Likert-Type Scale</td>
