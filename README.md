@@ -116,5 +116,37 @@
             <td><center></center></td>
             <td><center></center></td>
         </tr>
+        <tr>
+            <td><b>Survey Analysis</b></td>
+            <td colspan=4></td>
+        </tr>
+        <tr>
+            <td><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Likert">Likert Scale Questions</a></td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
+        </tr>
+        <tr>
+            <td>Likert-Type Scale</td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Likert-Type Scale">R</a></center></td>
+            <td><center></center></td>
+        </tr>
+        <tr>
+            <td>Likert-type</td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Likert Scale">R</a></center></td>
+            <td><center></center></td>
+        </tr>
+        <tr>
+            <td>Pre/Post Intervention Likert</td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
+        </tr>
     </tbody>
 </table>
