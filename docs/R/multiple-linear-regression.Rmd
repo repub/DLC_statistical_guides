@@ -80,7 +80,7 @@ The `summary()` output includes some descriptive statistics of each of the four 
 summary(fit.lm)
 ```
 
-&emsp;From the summary statistics we can fist note that *PIQ* can be predicted by the variables included in our model as the p-value for the MLR model is below 0.05, although the r<sup>2</sup> is ~3 to say that relationship is weak. Further, the *Brain* and *Height* variables are statistically significant predictors of *PIQ* given by the p-values for their coefficients (`Pr(>|t|)` column) being below 0.05. Conversely, the *Weight* variable is not statistically significant and even close to 1, so we could conclude that the weight of the participant has no relationship with their performance IQ score.
+&emsp;From the summary statistics we can fist note that *PIQ* can be predicted by the variables included in our model as the p-value for the MLR model is below 0.05, although the r<sup>2</sup> is ~3 to say that relationship is weak. Further, the *Brain* and *Height* variables are statistically significant predictors of *PIQ* given by the p-values for their coefficients (`Pr(>|t|)` column being below 0.05. Conversely, the *Weight* variable is not statistically significant and even close to 1, so we could conclude that the weight of the participant has no relationship with their performance IQ score.
 
 ### Full code block
 

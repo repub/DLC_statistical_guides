@@ -1,46 +1,27 @@
 
 # Likert-type scale analysis
 
- For this tutorial we will be using a modified data set that contains
-Likert responses collected from faculty at the Open University of
-Catalonia on their opinions for using Wikipedia as a teaching resource.
-The data set was originally provided by the [UCI Maching Learning
+ For this tutorial we will be using a [modified data
+set](https://github.com/tylerbg/DLC_stat_resources/blob/master/docs/R/dat/wiki4HE_rev.csv)
+that contains Likert responses collected from faculty at the Open
+University of Catalonia on their opinions for using Wikipedia as a
+teaching resource. The data set was originally provided by the [UCI
+Maching Learning
 Repository](https://archive.ics.uci.edu/ml/datasets/wiki4he).
 
 ``` r
 wiki.dat <- read.csv("dat/wiki4HE_rev.csv", stringsAsFactors = TRUE)
-str(wiki.dat)
 ```
-
-    ## 'data.frame':    796 obs. of  18 variables:
-    ##  $ AGE   : int  40 42 37 40 51 47 43 55 54 50 ...
-    ##  $ GENDER: Factor w/ 2 levels "Female","Male": 2 2 2 2 2 2 2 2 2 2 ...
-    ##  $ DOMAIN: Factor w/ 6 levels "Arts & Humanities",..: 6 4 2 2 5 2 2 5 1 2 ...
-    ##  $ Qu1   : int  3 4 2 3 4 3 4 3 4 4 ...
-    ##  $ Qu2   : int  3 4 2 4 5 3 4 3 4 4 ...
-    ##  $ Qu3   : int  2 3 2 3 4 3 4 3 2 4 ...
-    ##  $ Qu4   : int  2 3 5 3 3 4 2 3 5 2 ...
-    ##  $ Qu5   : int  3 2 3 3 4 4 4 4 3 3 ...
-    ##  $ Use1  : int  3 2 1 3 3 2 3 1 1 4 ...
-    ##  $ Use2  : int  1 2 1 3 3 1 4 2 1 1 ...
-    ##  $ Use3  : int  1 1 1 3 5 3 4 3 4 5 ...
-    ##  $ Use4  : int  2 1 1 3 5 2 3 3 4 4 ...
-    ##  $ Use5  : int  4 2 1 3 5 4 5 4 5 5 ...
-    ##  $ Exp1  : int  4 2 2 4 5 4 4 4 5 4 ...
-    ##  $ Exp2  : int  4 2 2 4 5 3 5 4 5 5 ...
-    ##  $ Exp3  : int  4 4 2 3 5 4 5 3 5 2 ...
-    ##  $ Exp4  : int  1 2 1 3 4 1 2 1 1 1 ...
-    ##  $ Exp5  : int  2 4 3 4 4 4 2 4 1 1 ...
 
 ### Two group comparisons
 
  Let us say that we are interested if two groups respond differently to
-a signle Likert-item. In this case, we are interested if males and
+a single Likert-item. In this case, we are interested if males and
 females generally have different views on the reliability of Wikipedia
 articles as a resource. Viewing the results of the survey, as in the
 barplot below, suggests that male respondents view Wikipedia articles as
 more reliable compared to their female counterparts overall, with 44% of
-males selecing either “Agree” or “Strongly agree” compared to 29% of
+males selecting either “Agree” or “Strongly agree” compared to 29% of
 females.
 
 <img src="img/Likert-type/Qu1_GENDER_plot-1.png" style="display: block; margin: auto;" />
@@ -156,18 +137,9 @@ We will need to install and load the `FSA` library which contains the
 
 ``` r
 library(FSA)
-```
 
-    ## ## FSA v0.9.1. See citation('FSA') if used in publication.
-    ## ## Run fishR() for related website and fishR('IFAR') for related book.
-
-``` r
 dunnTest(Qu1 ~ DOMAIN, data = wiki.dat, method = "bonferroni")
 ```
-
-    ## Dunn (1964) Kruskal-Wallis multiple comparison
-
-    ##   p-values adjusted with the Bonferroni method.
 
     ##                                        Comparison          Z      P.unadj       P.adj
     ## 1  Arts & Humanities - Engineering & Architecture -1.6988814 0.0893415352 1.000000000
@@ -199,10 +171,6 @@ dunn.res$res$sig <- ifelse(dunn.res$res$P.adj <= 0.05, "*", " ")
 
 dunn.res
 ```
-
-    ## Dunn (1964) Kruskal-Wallis multiple comparison
-
-    ##   p-values adjusted with the Bonferroni method.
 
     ##                                        Comparison          Z      P.unadj       P.adj sig
     ## 1  Arts & Humanities - Engineering & Architecture -1.6988814 0.0893415352 1.000000000    
@@ -261,16 +229,7 @@ the OLR model for us.
 
 ``` r
 library(MASS)
-```
 
-    ## 
-    ## Attaching package: 'MASS'
-
-    ## The following object is masked from 'package:dplyr':
-    ## 
-    ##     select
-
-``` r
 olr.fit <- polr(factor(Qu1, ordered = TRUE) ~ AGE, data = wiki.dat, Hess = TRUE)
 summary(olr.fit)
 ```

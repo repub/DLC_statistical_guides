@@ -9,8 +9,9 @@ editor_options:
   chunk_output_type: console
 ---
   
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, fig.path="img/Likert-type/",
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo=TRUE, message = FALSE,
+                      fig.path="img/Likert-type/",
                       fig.width=6, fig.height=4,
                       fig.show='hold', fig.align='center'
                       )
@@ -19,16 +20,15 @@ options(width=100)
 
 # Likert-type scale analysis
 
-&emsp;For this tutorial we will be using a modified data set that contains Likert responses collected from faculty at the Open University of Catalonia on their opinions for using Wikipedia as a teaching resource.  The data set was originally provided by the [UCI Maching Learning Repository](https://archive.ics.uci.edu/ml/datasets/wiki4he).
+&emsp;For this tutorial we will be using a [modified data set](https://github.com/tylerbg/DLC_stat_resources/blob/master/docs/R/dat/wiki4HE_rev.csv) that contains Likert responses collected from faculty at the Open University of Catalonia on their opinions for using Wikipedia as a teaching resource.  The data set was originally provided by the [UCI Maching Learning Repository](https://archive.ics.uci.edu/ml/datasets/wiki4he).
 
 ```{r load_wiki_data}
 wiki.dat <- read.csv("dat/wiki4HE_rev.csv", stringsAsFactors = TRUE)
-str(wiki.dat)
 ```
 
 ### Two group comparisons 
 
-&emsp;Let us say that we are interested if two groups respond differently to a signle Likert-item.  In this case, we are interested if males and females generally have different views on the reliability of Wikipedia articles as a resource.  Viewing the results of the survey, as in the barplot below, suggests that male respondents view Wikipedia articles as more reliable compared to their female counterparts overall, with 44% of males selecing either "Agree" or "Strongly agree" compared to 29% of females.
+&emsp;Let us say that we are interested if two groups respond differently to a single Likert-item.  In this case, we are interested if males and females generally have different views on the reliability of Wikipedia articles as a resource.  Viewing the results of the survey, as in the barplot below, suggests that male respondents view Wikipedia articles as more reliable compared to their female counterparts overall, with 44% of males selecting either "Agree" or "Strongly agree" compared to 29% of females.
 
 ```{r Qu1_GENDER_plot, echo = FALSE, results = FALSE, message = FALSE, fig.height = 2}
 library(tidyverse)

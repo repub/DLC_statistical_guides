@@ -22,49 +22,45 @@ options(width=100)
 
 ### T-test for one mean
 
-&emsp;The simplest form of the t-test is when we have one sample for which we want to determine if the group is significantly different from some predetermined value.  
+&emsp;The simplest form of the t-test is when we have one sample for which we want to determine if the group is significantly different from some predetermined value. For instance, say we wanted to determine if the average student at Penn State had a normal blood cholesterol value (<200 mg/dL). At the beginning of the semester we recruited 10 students to donate their blood to our study and measured their cholesterol levels.
 
 ```{r}
-x <- c(161, 108, 148, 107, 104, 124, 152, 152)
+PSU_student <- c(170, 230, 175, 145, 149, 165, 164, 150, 167, 151)
 
-t.test(x, mu = 120, alternative = "greater")
+t.test(PSU_student, mu = 200, alternative = "less")
 ```
+
+&emsp;We use the `t.test()` function on our dataset, `PSU`, and set the mean we are test to 200 with the `mu` option. Additionally, because we are only interested in if the students have blood cholesterol levels that are below that threshold, we set the `alternative` option to `"less"`, indicating that our alternative hypothesis for this test is that the true mean is less than the mean that we defined in the `mu` option as 200.
+
+&emsp;From our results we see that the p-value for our t-test is 0.0009818, which is well below our threshold of &alpha; = 0.05. Therefore, we can accept our alternative hypothesis that the mean blood cholesterol level for PSU students is less than 200 mg/dL.
 
 ### Two-sample t-test
 
-```{r}
-dinopis <- c(12.9, 10.2, 7.4, 7, 10.5, 11.9, 7.1, 9.9, 14.4, 11.3)
-menneus <- c(10.2, 6.9, 10.9, 11, 10.1, 5.3, 7.5, 10.3, 9.2, 8.8)
+&emsp;Now let us say that we want to compare the average PSU student's blood cholesterol with the faculty at Penn State.
 
-t.test(dinopis, menneus)
-t.test(dinopis, menneus, var.equal = TRUE)
+```{r}
+PSU_faculty <- c(189, 165, 191, 193, 177, 200, 179, 189, 202, 235)
 ```
+
+&emsp;We can perform a two-sample t-test in R using the same `t.test()` function.
+
+```{r}
+t.test(PSU_student, PSU_faculty)
+```
+
+&emsp;Because we are testing two groups we do not need to set a value for `mu` (the default is 0, meaning that we are testing if the difference of blood cholesterol values between students and faculty is or is not 0). Additionally, because we are interested in testing if there is a difference between the two groups in any direction we do not need to define the `alternative` option which is set to `"two.sided"` as default. Note that the `t.test()` function assumes the variances are unequal (`var.equal = FALSE` as default).
+
+&emsp;From the output we can see that there is a statistically significant difference in the blood cholesterol levels between Penn State students and faculty (p = 0.01862). Additionally, the output provides a confidence interval from which we can conclude with 95% certainty that the mean difference between the two groups is somewhere between -45.99 and -4.81. Higher (or lower) ranges for the confidence interval can be selected by chaing the `conf.level` option.
 
 ### Paired t-test
 
 ```{r}
-Lab_1 <- c(258, 259, 256, 274, 268, 253, 270, 260, 258, 262)
-Lab_2 <- c(273, 277, 289, 279, 273, 278, 266, 283, 271, 267)
-
-t.test(Lab_1, Lab_2, paired = TRUE)
-```
-
-
-```{r}
-PSU_Lab <- c(258, 259, 256, 274, 268, 253, 270, 260, 258, 262)
-
-t.test(PSU_Lab, mu = 260, alternative = "greater")
+PSU_student2 <- c(179, 224, 175, 140, 148, 181, 179, 142, 180, 169)
 ```
 
 ```{r}
-Wisc_Lab <- c(273, 277, 289, 279, 273, 278, 266, 283, 271, 267)
-
-t.test(PSU_Lab, Wisc_Lab)
+t.test(PSU_student, PSU_student2, paired = TRUE)
 ```
 
-```{r}
-PSU_FollowUp <- c(262, 258, 267, 281, 259, 255, 264, 261, 258, 265)
 
-t.test(PSU_Lab, PSU_FollowUp, paired = TRUE)
-```
 
