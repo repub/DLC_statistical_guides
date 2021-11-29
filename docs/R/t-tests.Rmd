@@ -1,0 +1,92 @@
+---
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs/R';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='t-tests.md') })
+output: github_document
+editor_options:
+  chunk_output_type: console
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, fig.path="img/t-tests/",
+                      fig.width=6, fig.height=4,
+                      fig.show='hold', fig.align='center')
+options(width=100)
+```
+
+# T-tests
+
+&nbsp;&nbsp;&nbsp;&nbsp;For this example we will be using a dataset from [STAT 415 Introduction to Mathematics](https://online.stat.psu.edu/stat415/lesson/11/11.3). 
+
+```{r echo = FALSE, ref.label = 'data_entry'}
+```
+
+```{r echo = FALSE}
+y_means <- aggregate(australia$Feeding, list(australia$Species), FUN = mean)
+y_sds <- aggregate(australia$Feeding, list(australia$Species), FUN = sd)
+
+barCenters <- barplot(height = y_means$x,
+                      names.arg = y_means$Group.1,
+                      beside = TRUE,
+                      las = 1,
+                      main = "Feeding Habits of Net-Casting Spiders",
+                      xlab = "Species",
+                      ylab = "Prey Size (mm)",
+                      ylim = c(0, 14),
+                      border = "black",
+                      axes = TRUE)
+
+segments(barCenters, y_means$x, barCenters,
+         y_means$x + y_sds$x, lwd = 1.5)
+
+arrows(barCenters, y_means$x, barCenters,
+       y_means$x + y_sds$x, lwd = 1.5, angle = 90,
+       code = 3, length = 0.15)
+
+box()
+```
+
+### Hypotheses
+
+- **Null Hypothesis:** The means of the two groups are equal.
+&nbsp;
+<center><i>H<sub>0</sub>: &mu;<sub>1</sub> </i>=<i> &mu;<sub>2</sub></i></center>
+&nbsp;
+
+- **Alternative Hypothesis:** The means of the two groups are not equal.
+&nbsp;
+<center><i>H<sub>0</sub>: &mu;<sub>1</sub> </i>&ne;<i> &mu;<sub>2</sub></i></center>
+&nbsp;
+
+### Entering the data
+
+```{r data_entry}
+australia <- data.frame("Species" = c(rep("Dinopis", 10),
+                                      rep("Menneus", 10)),
+                        "Feeding" = c(12.9, 10.2, 7.4, 7.0, 10.5, 11.9, 7.1, 9.9, 14.4, 11.3,
+                                      10.2, 6.9, 10.9, 11, 10.1, 5.3, 7.5, 10.3, 9.2, 8.8))
+```
+
+
+
+```{r}
+bartlett.test(Feeding ~ Species, data = australia)
+
+```
+
+
+
+```{r}
+t.test(Feeding ~ Species, data = australia, var.equal = TRUE)
+```
+
+
+
+```{r}
+t.test(Feeding ~ Species, data = australia)
+```
+
+
+
