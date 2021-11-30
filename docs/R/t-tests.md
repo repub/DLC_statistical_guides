@@ -1,24 +1,64 @@
 
 # T-tests
 
- When we are interested in testing whether one mean is equal to some
-value or the equality of two means we can rely on the t-test. While
-there are different forms of the t-test, they all are based on the
-t-distribution for a given mean and variance.
+ Suppose we are interested in testing whether one sample mean deviates
+from some set value or if the means from two samples are unequal. In
+these cases we can rely on the t-test, as long as our samples meet the
+following assumptions:
+
+-   The data is continuous,
+-   approximately normally distributed,
+-   randomly sampled from the population,
+-   and independent (in the case of two-sample tests).
+
+ While there are different forms of the t-test, they all are based on
+calculating a t-statistic that can be used to estimate a p-value from
+the t-distribution.
 
 ### T-test for one mean
 
- The simplest form of the t-test is when we have one sample for which we
-want to determine if the group is significantly different from some
-predetermined value. For instance, say we wanted to determine if the
-average student at Penn State had a normal blood cholesterol value
-(&lt;200 mg/dL). At the beginning of the semester we recruited 10
-students to donate their blood to our study and measured their
-cholesterol levels.
+ The simplest form of the t-test is when we want to test the
+distribution of one sample against some predetermined value. For
+example, say we designed a study to determine if the average student at
+Penn State has a normal blood cholesterol value (&lt;200 mg/dL). At the
+beginning of the semester we recruited 12 students who donated their
+blood and we measured their cholesterol levels. We can manually input
+the results into R as follows:
 
 ``` r
 PSU_student <- c(170, 230, 175, 145, 149, 165, 164, 150, 167, 151, 178, 183)
+```
 
+<img src="img/t-tests/one_mean_plot-1.png" align="left">
+
+ The stripchart on the left shows the distribution of our data, from
+which we will employ a t-test to assess if the mean blood cholesterol
+from these 12 students at the beginning of the semester (blue dashed
+line) is significantly lower than the normal threshold of 200 mg/dL (red
+dotted line). We will decide to use a significance threshold of α =
+0.05.
+
+ To do so, we will wrap our sample, `PSU_student`, in the `t.test()`
+function. Because we are interested in testing if the blood cholesterol
+levels from these students are significantly below 200, we set the `mu`
+option to 200 (the default is 0). Additionally, since we are
+specifically interested in testing whether the mean student blood
+cholesterol levels (x̄) are below that threshold, we set the
+`alternative` option to `"less"`. This option sets our null
+(H<sub>0</sub>) and alternative (H<sub>A</sub>) hypotheses to:
+
+<center>
+<i>H<sub>0</sub></i>: <i>x̄</i> ≥ <i>200, H<sub>A</sub></i>: <i>x̄</i>
+&lt; <i>200</i>
+</center>
+
+<br>
+
+ If we instead hypothesized that the mean blood cholesterol would be
+either more or less than 200, we would set `alternative` to
+`"two.sided"` (the default value). We can then run our code as follows:
+
+``` r
 t.test(PSU_student, mu = 200, alternative = "less")
 ```
 
@@ -34,28 +74,18 @@ t.test(PSU_student, mu = 200, alternative = "less")
     ## mean of x 
     ##  168.9167
 
-<img src="img/t-tests/one_mean_plot-1.png" align="left">
-
- We use the `t.test()` function on our dataset, `PSU_student`, and set
-the mean we are test to 200 with the `mu` option. Additionally, because
-we are only interested in if the students have blood cholesterol levels
-that are below that threshold, we set the `alternative` option to
-`"less"`, indicating that our alternative hypothesis for this test is
-that the true mean is less than the mean that we defined in the `mu`
-option as 200. If instead we did not hypothesize that blood cholesterol
-would be more or less than 200 but not 200, we would set `alternative`
-to `"two.sided"` (the default value).
-
- From our results we see that the p-value for our t-test (p = 3.18 x
-10<sup>-4</sup>) is well below our threshold of α = 0.05. Therefore, we
-can accept our alternative hypothesis that the mean blood cholesterol
-level for PSU students is less than 200 mg/dL. The `t.test()` function
-also returns the mean of our sample, 168.9 mg/dL.
+ From the printout of results we see that the p-value for our t-test (p
+= 3.18 x 10<sup>-4</sup>) is well below our threshold of α = 0.05.
+Therefore, we can reject the null hypothesis in favor of the alternative
+hypothesis to conclude the mean blood cholesterol level for PSU students
+at the beginning of the semester is less than 200 mg/dL. The `t.test()`
+function also returns the mean of our sample, 168.9 mg/dL.
 
 ### Two-sample t-test
 
  Now let us say that we want to compare the average PSU student’s blood
-cholesterol with the faculty at Penn State.
+cholesterol with the faculty at Penn State. We similarly input their
+data into R as follows:
 
 ``` r
 PSU_faculty <- c(189, 165, 191, 193, 177, 200, 179, 189, 202, 235, 178, 226)
@@ -63,9 +93,32 @@ PSU_faculty <- c(189, 165, 191, 193, 177, 200, 179, 189, 202, 235, 178, 226)
 
 <img src="img/t-tests/two_mean_plot-1.png" style="display: block; margin: auto;" />
 
- We can perform a two-sample t-test in R using the same `t.test()`
-function, but this time instead of defining `mu` we include the two data
-sets to be compared.
+ In the above stripchart it appears that the distribution and mean of
+blood cholesterol levels for students (blue) are mostly below those of
+faculty (red), although there is some overlap. To statistically
+determine whether these two groups vary we can employ the two-sample
+t-test, which can be performed in R using the same function as before
+but this time we wrap both data sets instead of defining `mu`.
+Additionally, because we are hypothesizing that the two groups vary but
+not in which direction they vary we leave the `alternative` option to
+its default, `two.sided`, to test the null and alternative hypotheses:
+
+<center>
+<i>H<sub>0</sub></i>: <i>x̄<sub>Student</sub></i> =
+<i>x̄<sub>Faculty</sub>, H<sub>A</sub></i>: <i>x̄<sub>Student</sub></i> ≠
+<i>x̄<sub>Faculty</sub></i>
+</center>
+
+<br>
+
+ Another thing we may want to consider before performing a t-test is
+whether the samples have equal variance. While we can change whether R
+runs an equal or unequal variance t-test (known as Welch’s t-test) using
+the `var.equal` option (set to `FALSE` as default), if the variances are
+equal then we will receive the same result regardless of which option we
+set, and if they are not equal then we would violate the assumption of
+the equal variance t-test. Therefore, we can choose to leave it alone
+and run our code as follows:
 
 ``` r
 t.test(PSU_student, PSU_faculty)
@@ -83,32 +136,23 @@ t.test(PSU_student, PSU_faculty)
     ## mean of x mean of y 
     ##  168.9167  193.6667
 
- Because we are testing two groups we do not need to set a value for
-`mu` (the default is 0, meaning that we are testing if the difference of
-blood cholesterol values between students and faculty is or is not 0).
-Additionally, because we are interested in testing if there is a
-difference between the two groups in any direction we do not need to
-define the `alternative` option which is set to `"two.sided"` as
-default. Note that the `t.test()` function assumes the variances are
-unequal (`var.equal = FALSE` as default).
-
  From the output we can see that there is a statistically significant
 difference in the blood cholesterol levels between Penn State students
-and faculty (p = 0.01862). Additionally, the output provides a
+and faculty (p = 0.01022). Additionally, the output provides a
 confidence interval from which we can conclude with 95% certainty that
-the mean difference between the two groups is somewhere between -45.99
-and -4.81. Higher (or lower) ranges for the confidence interval can be
-set through the `conf.level` option.
+the mean difference between the two groups is somewhere between -43 and
+-6.5. Higher (or lower) ranges for the confidence interval can be set
+through the `conf.level` option.
 
 ### Paired t-test
 
- Now let us say that we collected the same group of students at the end
-of the semester during finals week to see if their blood cholesterol
-levels might have changed due to the stress of the semester. We can
-compare the means from the beginning of the semester and those at finals
-week, but now we will be performing a paired t-test because the
-individuals we are measuring from are the same. Note that it is
-important that we put the data in the same order!
+ Now let us say that we collected samples from the same group of
+students during finals week to see if their blood cholesterol levels
+might have changed due to the stress of the semester. We can compare the
+means from the beginning of the semester and those at finals week, but
+now we will be performing a paired t-test because our samples are coming
+from the same individuals. Note that it is important that we put the
+data in the same order!
 
 ``` r
 PSU_student2 <- c(179, 224, 175, 140, 148, 181, 179, 142, 180, 169, 170, 189)
@@ -116,11 +160,16 @@ PSU_student2 <- c(179, 224, 175, 140, 148, 181, 179, 142, 180, 169, 170, 189)
 
 <img src="img/t-tests/paired_plot-1.png" style="display: block; margin: auto;" />
 
+ In the stripchart above there is overlap between our samples from the
+beginning of the semester (blue) and finals week (brown), but the mean
+appears to have slightly increased so maybe the stress of the semester
+has increased the student’s blood cholesterol overall.
+
  We can again use the same `t.test()` function setting the `paired`
-option to `TRUE`. Because we do not make any hypotheses that the blood
-cholesterol levels are higher or lower at the end of the semester, only
-different, we keep the `alternative` option to its default,
-`"two.sided"`.
+option to `TRUE`. Again, we are only hypothesizing that the blood
+cholesterol levels are different but not in any specific direction, so
+we keep the `alternative` option to its default, `"two.sided"`. We then
+perform a paired t-test as follows:
 
 ``` r
 t.test(PSU_student, PSU_student2, paired = TRUE)
@@ -138,11 +187,14 @@ t.test(PSU_student, PSU_student2, paired = TRUE)
     ## mean of the differences 
     ##               -4.083333
 
- The results from our test suggest that there is not a difference in
-student blood cholesterol levels from the beginning of the semester to
-finals week. First, the p-value is above our threshold of 0.05. In
-addition, the 95% confidence intervals around the mean of the
-differences (-4.08) includes 0 between the lower and upper limits.
+ The test results suggest that there is not a statistically significant
+difference in student blood cholesterol levels from the beginning of the
+semester to finals week. The estimated p-value is above our threshold of
+α = 0.05 and the upper and lower limits of the 95% confidence interval
+around the mean of the differences (-4.08) includes 0. Therefore, we
+accept the null hypothesis that there is not a difference in student
+blood cholesterol between the beginning of the semester and final’s
+week.
 
 ### Full Code Block
 
