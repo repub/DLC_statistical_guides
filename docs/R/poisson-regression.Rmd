@@ -27,44 +27,69 @@ options(width=100)
 To read the data into R, we can use the `read.table()` function and set `row.names = 1` so that the first column of the data (the observation number) is set as a rown name instead of its own variable.
 
 ```{r}
-crab <- read.table("dat/crab.txt", row.names = 1)
-```
-
-Because the dataset did not originally include the variable (column) names, we need to add them which we can do by wrapping our data in `colnames()` and assigning column names with `c()`.
-
-```{r}
-colnames(crab) <- c("Color", "Spine", "Width", "Weight", "Satellites")
+crab <- read.csv("dat/crab.csv")
 ```
 
 It is important to look at the structure of our dataset to make sure that it is read by R in the way we want it. Using the `str()` function we can see some features of our data. 
 
 ```{r}
 str(crab)
+
+crab$Color <- factor(crab$Color)
+crab$Spine <- factor(crab$Spine)
 ```
 
 Importantly, the *Color*, *Spine*, and *Satellites* variables are all read as integers while the *Width* and *Weight* are read as numerical. The issue here is that color and spine condition are not actually integers, only coded in that way. We will want to keep this in mind when we fit our model so that we correctly code our variable types.
 
 ### Fit a Poisson regression model
 
-
-
 ```{r}
-crab.pois <- glm(Satellites ~ factor(Color) + factor(Spine) + Weight + Width,
+crab.pois <- glm(Satellites ~ Color + Spine + Weight + Width,
                  data = crab,
                  family = poisson)
 
-crab.pois <- glm(Satellites ~ factor(Color), data = crab, family = poisson)
+summary(crab.pois)
 
-C1 = 1*(crab$C == 1)
-C2 = 1*(crab$C == 2)
-C3 = 1*(crab$C == 3)
-C4 = 1*(crab$C == 4)
+crab.pois <- glm(Satellites ~ Color + Weight,
+                 data = crab,
+                 family = poisson)
 
-Sa = crab$Satellites
-W = crab$Width
-Wt = crab$Weight
-Sp = crab$Spine
-model <- glm(Sa ~ Sp + W + C1 + C2 + C3, family = quasipoisson)
+summary(crab.pois)
+
+contrasts(crab$Color)
+
+contrasts(crab$Color) <- matrix(c(-1/4, 3/4, -1/4, -1/4,
+                                  -1/4, -1/4, 3/4, -1/4,
+                                  -1/4, -1/4, -1/4, 3/4),
+                                nrow = 4)
+
+```
+
+```{r}
+library(tidyverse)
+
+ggplot(crab, aes(x = Color,  y = Satellites)) +
+  stat_summary(geom = "pointrange", fun.data = "mean_se") +
+  geom_jitter()
+```
+
+
+
+```{r}
+crab$C1 <- 1*(crab$Color == 1)
+crab$C2 <- 1*(crab$Color == 2)
+crab$C3 <- 1*(crab$Color == 3)
+crab$C4 <- 1*(crab$Color == 4)
+crab$S1 <- 1*(crab$Spine == 1)
+crab$S2 <- 1*(crab$Spine == 2)
+crab$S3 <- 1*(crab$Spine == 3)
+
+model <- glm(Satellites ~ C2 + C3 + C4 + S2 + S3 + Weight + Width,
+             data = crab,
+             family = poisson)
+summary(model)
+
+
 vif(model)
 
 model <- glm(Sa ~ W, family = poisson)
