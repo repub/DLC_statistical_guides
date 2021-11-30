@@ -34,7 +34,7 @@ t.test(PSU_student, mu = 200, alternative = "less")
     ## mean of x 
     ##  168.9167
 
-<img src="img/t-tests/one_mean_plot-1.png" style="float:left; padding:10px" style="display: block; margin: auto;" />
+<img src="img/t-tests/one_mean_plot-1.png" align="left">
 
  We use the `t.test()` function on our dataset, `PSU_student`, and set
 the mean we are test to 200 with the `mu` option. Additionally, because

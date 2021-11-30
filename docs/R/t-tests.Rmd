@@ -31,7 +31,7 @@ PSU_student <- c(170, 230, 175, 145, 149, 165, 164, 150, 167, 151, 178, 183)
 t.test(PSU_student, mu = 200, alternative = "less")
 ```
 
-```{r one_mean_plot, echo = FALSE, fig.width = 4, out.extra='style="float:left; padding:10px"'}
+```{r one_mean_plot, echo = FALSE, fig.width = 4, fig.show = 'hide'}
 # plot(density(PSU_student),
 #      main = "Density plot of blood cholesterol levels for PSU students",
 #      xlab = "Blood cholesterol",
@@ -46,6 +46,8 @@ stripchart(PSU_student, vertical = TRUE, pch = 16, cex = 2,
 abline(h = 200, lty = 3, lwd = 2, col = "tomato")
 abline(h = mean(PSU_student), lty = 2, lwd = 2, col = "steelblue3")
 ```
+
+<img src="img/t-tests/one_mean_plot-1.png" align="left">
 
 &emsp;We use the `t.test()` function on our dataset, `PSU_student`, and set the mean we are test to 200 with the `mu` option. Additionally, because we are only interested in if the students have blood cholesterol levels that are below that threshold, we set the `alternative` option to `"less"`, indicating that our alternative hypothesis for this test is that the true mean is less than the mean that we defined in the `mu` option as 200.  If instead we did not hypothesize that blood cholesterol would be more or less than 200 but not 200, we would set `alternative` to `"two.sided"` (the default value).
 
