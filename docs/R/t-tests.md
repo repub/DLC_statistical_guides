@@ -34,7 +34,7 @@ t.test(PSU_student, mu = 200, alternative = "less")
     ## mean of x 
     ##  168.9167
 
-<img src="img/T-tests/one_mean_plot-1.png" style="float:left; padding:10px" style="display: block; margin: auto;" />
+<img src="img/t-tests/one_mean_plot-1.png" style="float:left; padding:10px" style="display: block; margin: auto;" />
 
  We use the `t.test()` function on our dataset, `PSU_student`, and set
 the mean we are test to 200 with the `mu` option. Additionally, because
@@ -61,7 +61,7 @@ cholesterol with the faculty at Penn State.
 PSU_faculty <- c(189, 165, 191, 193, 177, 200, 179, 189, 202, 235, 178, 226)
 ```
 
-<img src="img/T-tests/two_mean_plot-1.png" style="display: block; margin: auto;" />
+<img src="img/t-tests/two_mean_plot-1.png" style="display: block; margin: auto;" />
 
  We can perform a two-sample t-test in R using the same `t.test()`
 function, but this time instead of defining `mu` we include the two data
@@ -114,7 +114,7 @@ important that we put the data in the same order!
 PSU_student2 <- c(179, 224, 175, 140, 148, 181, 179, 142, 180, 169, 170, 189)
 ```
 
-<img src="img/T-tests/paired_plot-1.png" style="display: block; margin: auto;" />
+<img src="img/t-tests/paired_plot-1.png" style="display: block; margin: auto;" />
 
  We can again use the same `t.test()` function setting the `paired`
 option to `TRUE`. Because we do not make any hypotheses that the blood

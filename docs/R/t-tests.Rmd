@@ -3,7 +3,7 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs/R';
   rmarkdown::render(input_file,
     encoding=encoding,
-    output_file='T-tests.md') })
+    output_file='t-tests.md') })
 output: github_document
 editor_options:
   chunk_output_type: console
@@ -11,7 +11,7 @@ editor_options:
   
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, message = FALSE,
-                      fig.path="img/T-tests/",
+                      fig.path="img/t-tests/",
                       fig.width=6, fig.height=4,
                       fig.show='hold', fig.align='center')
 options(width=100)
