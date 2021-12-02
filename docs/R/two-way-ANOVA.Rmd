@@ -46,7 +46,7 @@ ggplot(stress, aes(x = Test, y = Time, color = `Smoking History`)) +
 
 <br>
 
-&emsp;The physiologist wants to test the following questions and their respective hypotheses:
+&emsp;The physiologist wants to test the following questions and their respective null and alternative hypotheses:
 
 1. Does smoking history affect the time to VO<sub>2max</sub>?
 <center><i>H<sub>0</sub></i>:<i> &alpha;<sub>Nonsmoker</sub> = &alpha;<sub>Moderate</sub> = &alpha;<sub>Heavy</sub> = 0</i></center>
@@ -72,7 +72,7 @@ stress <- read.csv("dat/smoking_stress.csv", stringsAsFactors = TRUE)
 stress.aov <- aov(Time ~ Smoking.History * Test, data = stress)
 ```
 
-&emsp;As with coding other models in R, the response variable (*Time*) is coded to the left of a `~` while predictor variables (*Smoking History* and *Test*) are to the right. We separate the predictors with an asterisk `*` to indicate that we want to include both variables and an interaction term between them. If we wanted to include each term separately we can write the model as follows, which is equivalent to using the `*`.
+&emsp;As with other formulas in R, the response variable (*Time*) is coded to the left of a `~` while predictor variables (*Smoking History* and *Test*) are to the right. We separate the predictors with an asterisk `*` to indicate that we want to include both variables and an interaction term between them. If we wanted to include each term separately we can write the model as follows, which is equivalent to using the `*`.
 
 ```{r eval = FALSE}
 stress.aov <- aov(Time ~ Smoking.History + Test + Smoking.History:Test, data = stress)
@@ -80,34 +80,31 @@ stress.aov <- aov(Time ~ Smoking.History + Test + Smoking.History:Test, data = s
 
 ### Interpreting the results
 
-&emsp;Using the `summary()` command we can print a table of results from our fitted ANOVA<sup>2</sup> model.
+&emsp;Using the `summary()` (or `anova()`) command we can print a table of results from our fitted ANOVA<sup>2</sup> model.
 
 ```{r}
 summary(stress.aov)
 ```
 
-&emsp;Notably, both *Smoking History* and *Test* are statistically significant with p-values well below our statistical threshold of &alpha; = 0.05.  However, the interaction between these two variables is not statistically significant.  We can then answer the physiologist's third question by concluding that there is not a significant interaction between the types of stress tests and a subject's smoking history.
+&emsp;Notably, both *Smoking History* and *Test* are statistically significant with p-values well below our statistical threshold of &alpha; = 0.05.  However, the interaction between these two variables is not statistically significant.  We can then answer the physiologist's third question by failing to reject the null hypothesis to conclude that there is not a significant interaction between the types of stress tests and a subject's smoking history.
 
 &emsp;Sometimes you will see that researchers refit a model by dropping the interaction term when it turns up insignificant.  However, since the physiologist originally hypothesized an interaction between our two variables, we should leave it in the model and continue with pairwise comparisons on *Smoking History* and *Test*. 
 
 ### Post-hoc tests
 
-&emsp;Since the interaction term is insignificant we should not follow up on that part of the ANOVA model with post-hoc tests.  So, to leave out a lot of unnecessary output we can first assign the results from the Tukey post-hoc test using `TukeyHSD()` to an object then use `$` to only print the pairwise comparisons from *Smoking History* and *Test*.
+&emsp;Since the interaction term is insignificant we should not follow up on that part of the ANOVA model with post-hoc tests.  So, to leave out a lot of unnecessary output we can first assign the results from the Tukey post-hoc test from the `TukeyHSD()` function to an object and then use `$` to only print the pairwise comparisons from *Smoking History* and *Test*.
 
 ```{r}
 stress.Tukey <- TukeyHSD(stress.aov)
 
 stress.Tukey$Smoking.History
 stress.Tukey$Test
-
-
-
 ```
 
 &emsp;From the output, we can see that each pairwise comparison is statistically significant except for the comparison between *Nonsmoker* and *Moderate*. Therefore, we can answer the physiologist's original two questions as follows:
 
 1. Heavy smokers have a significantly lower time to VO<sub>2max</sub> compared to moderate and nonsmokers, however there is not a statistically significant difference between moderate and nonsmokers.
-2. There are statistically significant differences in the time to reach VO<sub>2max</sub> among the three types of stress tests, with the bicycle being the lowest, then treadmill, and the step test with the highest time.
+2. There are statistically significant differences in the time to reach VO<sub>2max</sub> among the three types of stress tests, with the bicycle being the lowest, then treadmill, and then the step test with the highest time.
 
 ### Full code block
 

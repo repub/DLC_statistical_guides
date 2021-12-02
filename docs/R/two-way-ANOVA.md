@@ -24,7 +24,7 @@ to three different categories of smoking history (*Nonsmoker*,
 <br>
 
  The physiologist wants to test the following questions and their
-respective hypotheses:
+respective null and alternative hypotheses:
 
 1.  Does smoking history affect the time to VO<sub>2max</sub>?
     <center>
@@ -72,10 +72,10 @@ ANOVA<sup>2</sup> as an object, which we store here as `stress.aov`.
 stress.aov <- aov(Time ~ Smoking.History * Test, data = stress)
 ```
 
- As with coding other models in R, the response variable (*Time*) is
-coded to the left of a `~` while predictor variables (*Smoking History*
-and *Test*) are to the right. We separate the predictors with an
-asterisk `*` to indicate that we want to include both variables and an
+ As with other formulas in R, the response variable (*Time*) is coded to
+the left of a `~` while predictor variables (*Smoking History* and
+*Test*) are to the right. We separate the predictors with an asterisk
+`*` to indicate that we want to include both variables and an
 interaction term between them. If we wanted to include each term
 separately we can write the model as follows, which is equivalent to
 using the `*`.
@@ -86,8 +86,8 @@ stress.aov <- aov(Time ~ Smoking.History + Test + Smoking.History:Test, data = s
 
 ### Interpreting the results
 
- Using the `summary()` command we can print a table of results from our
-fitted ANOVA<sup>2</sup> model.
+ Using the `summary()` (or `anova()`) command we can print a table of
+results from our fitted ANOVA<sup>2</sup> model.
 
 ``` r
 summary(stress.aov)
@@ -105,8 +105,9 @@ summary(stress.aov)
 significant with p-values well below our statistical threshold of α =
 0.05. However, the interaction between these two variables is not
 statistically significant. We can then answer the physiologist’s third
-question by concluding that there is not a significant interaction
-between the types of stress tests and a subject’s smoking history.
+question by failing to reject the null hypothesis to conclude that there
+is not a significant interaction between the types of stress tests and a
+subject’s smoking history.
 
  Sometimes you will see that researchers refit a model by dropping the
 interaction term when it turns up insignificant. However, since the
@@ -114,11 +115,14 @@ physiologist originally hypothesized an interaction between our two
 variables, we should leave it in the model and continue with pairwise
 comparisons on *Smoking History* and *Test*.
 
+### Post-hoc tests
+
  Since the interaction term is insignificant we should not follow up on
 that part of the ANOVA model with post-hoc tests. So, to leave out a lot
 of unnecessary output we can first assign the results from the Tukey
-post-hoc test using `TukeyHSD()` to an object then use `$` to only print
-the pairwise comparisons from *Smoking History* and *Test*.
+post-hoc test from the `TukeyHSD()` function to an object and then use
+`$` to only print the pairwise comparisons from *Smoking History* and
+*Test*.
 
 ``` r
 stress.Tukey <- TukeyHSD(stress.aov)
@@ -141,7 +145,7 @@ stress.Tukey$Test
     ## Treadmill-Step Test -3.811111 -5.993830 -1.628392 8.483156e-04
 
  From the output, we can see that each pairwise comparison is
-statisticall significant except for the comparison between *Nonsmoker*
+statistically significant except for the comparison between *Nonsmoker*
 and *Moderate*. Therefore, we can answer the physiologist’s original two
 questions as follows:
 
@@ -151,8 +155,8 @@ questions as follows:
     nonsmokers.
 2.  There are statistically significant differences in the time to reach
     VO<sub>2max</sub> among the three types of stress tests, with the
-    bicycle being the lowest, then treadmill, and the step test with the
-    highest time.
+    bicycle being the lowest, then treadmill, and then the step test
+    with the highest time.
 
 ### Full code block
 
@@ -165,7 +169,7 @@ stress.aov <- aov(Time ~ Smoking.History * Test, data = stress)
 
 summary(stress.aov)
 
-# Perform a Tukey post-hoc test on the model for pairwise comparisons
+# Perform a Tukey post-hoc test on the significant factors for pairwise comparisons
 TukeyHSD(stress.aov)
 
 stress.Tukey$Smoking.History
