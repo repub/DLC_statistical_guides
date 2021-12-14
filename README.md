@@ -65,14 +65,14 @@
         <tr>
             <td><a>Mann Whitney U Test</a></td>
             <td><center></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/inference/how-to/two-samples/mann-whitney-test/before-you-start/example/">Minitab</a></center></td>
             <td><center></center></td>
             <td><center></center></td>
         </tr>
         <tr>
             <td><a>Kruskal-Wallis Test</a></td>
             <td><center></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/anova/how-to/kruskal-wallis-test/before-you-start/example/">Minitab</a></center></td>
             <td><center></center></td>
             <td><center></center></td>
         </tr>
@@ -95,16 +95,16 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td><a href="https://online.stat.psu.edu/stat501/lesson/15/15.1">Logistic (Logit) Regression</a></td>
+            <td><a href="https://online.stat.psu.edu/stat501/lesson/15/15.1">Binary Logistic (Logit) Regression</a></td>
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/regression/how-to/binary-logistic-regression/before-you-start/example/">Minitab</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/binary-logistic-regression">R</a></center></td>
             <td><center></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat501/lesson/15/15.2">Multinomial Logistic Regression</a></td>
             <td><center></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/regression/how-to/nominal-logistic-regression/before-you-start/example/">Minitab</a></center></td>
             <td><center></center></td>
             <td><center></center></td>
         </tr>
