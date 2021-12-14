@@ -65,14 +65,14 @@
         <tr>
             <td><a>Mann Whitney U Test</a></td>
             <td><center></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/inference/how-to/two-samples/mann-whitney-test/before-you-start/example/">Minitab</a></center></td>
             <td><center></center></td>
             <td><center></center></td>
         </tr>
         <tr>
             <td><a>Kruskal-Wallis Test</a></td>
             <td><center></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/anova/how-to/kruskal-wallis-test/before-you-start/example/">Minitab</a></center></td>
             <td><center></center></td>
             <td><center></center></td>
         </tr>
