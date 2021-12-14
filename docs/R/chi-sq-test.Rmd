@@ -52,6 +52,7 @@ options(width = 100)
 
 <center><i>H<sub>0</sub></i>: No relationship exists between party affiliation and opinion on the tax reform bill</center>
 <center><i>H<sub>A</sub></i>: There is a significant relationship between party affiliation and opinion on the tax reform bill</center>
+<br>
 
 ### [Assumptions and considerations](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3900058/)
 

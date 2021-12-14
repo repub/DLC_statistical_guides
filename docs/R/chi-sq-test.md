@@ -88,6 +88,8 @@ and opinion on the tax reform bill
 affiliation and opinion on the tax reform bill
 </center>
 
+<br>
+
 ### [Assumptions and considerations](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3900058/)
 
  Before using the χ<sup>2</sup> test to test association (or
