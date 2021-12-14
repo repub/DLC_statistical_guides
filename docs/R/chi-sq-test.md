@@ -15,10 +15,51 @@ participants were asked to give their party affiliation (*Democrat* or
 
 <div align="center">
 
-|                | Favor | Indifferent | Opposed |
-|:---------------|:-----:|:-----------:|:-------:|
-| **Democrat**   |  138  |     83      |   64    |
-| **Republican** |  64   |     67      |   84    |
+<table>
+<tbody>
+<tr>
+<td>
+</td>
+<td>
+<b>Favor</b>
+</td>
+<td>
+<b>Indifferent</b>
+</td>
+<td>
+<b>Opposed</b>
+</td>
+</tr>
+<tr>
+<td>
+<b>Democrat</b>
+</td>
+<td>
+138
+</td>
+<td>
+83
+</td>
+<td>
+64
+</td>
+</tr>
+<tr>
+<td>
+<b>Republican</b>
+</td>
+<td>
+64
+</td>
+<td>
+67
+</td>
+<td>
+84
+</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
@@ -75,7 +116,8 @@ opinion
 by simply using the `chisq.test()` function on our data frame.
 
 ``` r
-chisq.test(opinion)
+opinion.chisq <- chisq.test(opinion)
+opinion.chisq
 ```
 
     ## 
@@ -91,38 +133,17 @@ Importantly for answering our original question, the p-value is much
 less than 0 so that we can conclude that an association does exist
 between party affiliation and a person’s opinion on the tax reform bill.
 
-<table>
-<tr>
-<th>
-Observed
-</th>
-<th>
-Expected
-</th>
-</tr>
-<tr>
-<td>
+``` r
+opinion.chisq$expected
+```
 
-|                | Favor | Indifferent | Opposed | Total |
-|:---------------|:-----:|:-----------:|:-------:|:-----:|
-| **Democrat**   |  138  |     83      |   64    |  285  |
-| **Republican** |  64   |     67      |   84    |  215  |
-| **Total**      |  202  |     150     |   148   |  500  |
+    ##             Favor Indifferent Opposed
+    ## Democrat   115.14        85.5   84.36
+    ## Republican  86.86        64.5   63.64
 
-</td>
-<td>
-
-|                | Favor  | Indifferent | Opposed |
-|:---------------|:------:|:-----------:|:-------:|
-| **Democrat**   | 115.14 |    85.5     |  84.36  |
-| **Republican** | 86.86  |    64.5     |  63.64  |
-
-</td>
-</tr>
-</table>
-
- Comparing the observed and expected counts tables we can see that
-respondents who identified as *Republican* had more *Opposed* responses
-than expected compared to those who identified as *Democrat*, who also
-had more responses for *Favor*. The observed and expected counts almost
-match for the *Indifferent* responses from both parties.
+ Comparing the observed counts in our original table with the expected
+counts we can see that respondents who identified as *Republican* had
+more *Opposed* responses than expected compared to those who identified
+as *Democrat*, who also had more responses for *Favor*. The observed and
+expected counts almost match for the *Indifferent* responses from both
+parties.
