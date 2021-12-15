@@ -1,5 +1,4 @@
 <h1>Links to Statistical Resources</h1>
-
 <table>
     <tbody>
         <tr>
