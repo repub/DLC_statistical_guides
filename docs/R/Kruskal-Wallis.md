@@ -27,16 +27,19 @@ test the null and alternative hypotheses:
 equal with the other medians
 </center>
 
+<br>
+
  For this example we will be using the `chickwts` data set supplied in
 base R. The data set includes chick weights measured in grams (*weight*)
-for 71 chicks after being fed one of six supplemented feeds (*feed*).
+for 71 chicks after being fed one of six supplemented feeds (*feed*) and
+are presented in the figure below.
 
 <img src="img/Kruskal-Wallis/plot_data-1.png" style="display: block; margin: auto;" />
 
  From the plot above we might hypothesize that there are differences in
 the chick weights after being fed some of these supplemented feeds for 6
 weeks. In particular, we might suggest that the horsebean feed leads to
-lower chick weights than the other feeds.
+lower chick weights than the other feeds
 
  Before we start fitting a statistical model to the data we should get
 an idea of what it looks like. Using the `summary()` function we can
@@ -58,12 +61,15 @@ summary(chickwts)
 range, from 108 grams to 423 grams. For the *feed* variable we see that
 we have 6 feed types that are unequal but relatively close in size. We
 do not see any miscoded data, missing values, obvious ouliers or
-skewness, or anything obvious that would cause concern so we can
-continue with the Kruskal-Wallis test. To do so, we employ the
-`kruskal.test()` function that has the formula with the syntax
-“continuous response variable \~ categorical independent variable” that
-we will assign to an object (`chickwts.kw`). Then to get the results of
-the test we can simply print the object as follows:
+skewness, or anything obvious that would cause concern. For this example
+we will also accept that the assumptions for the Kruskal-Wallis test are
+valid for this data set, so we can continue with the Kruskal-Wallis
+test.
+
+ To do so, we employ the `kruskal.test()` function that has the formula
+with the syntax “continuous response variable \~ categorical independent
+variable” that we will assign to an object (`chickwts.kw`). Then to get
+the results of the test we can simply print the object as follows:
 
 ``` r
 chickwts.kw <- kruskal.test(weight ~ feed, chickwts)
