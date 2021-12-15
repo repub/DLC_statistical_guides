@@ -49,7 +49,8 @@
             <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/two-way-ANOVA">R</a></center></td>
             <td><center></center></td>
         </tr>
-        <td><a href="https://online.stat.psu.edu/stat505/lesson/8/8.2">MANOVA</a></td>
+        <tr>
+            <td><a href="https://online.stat.psu.edu/stat505/lesson/8/8.2">MANOVA</a></td>
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/anova/how-to/general-manova/before-you-start/example/">Minitab</a></center></td>
             <td><center></center></td>
