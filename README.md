@@ -147,7 +147,7 @@
         <tr>
             <td>Likert-Type Scale</td>
             <td><center></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/multivariate/how-to/item-analysis/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Likert-type">R</a></center></td>
             <td><center></center></td>
         </tr>
