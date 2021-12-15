@@ -1,5 +1,5 @@
 <h1>Links to Statistical Resources</h1>
-<table>
+<table width="75%">
     <tbody>
         <tr>
             <td colspan=5><center><b>Proportion Tests</b></center></td>
