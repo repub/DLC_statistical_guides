@@ -73,7 +73,7 @@
             <td><a>Kruskal-Wallis Test</a></td>
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/anova/how-to/kruskal-wallis-test/before-you-start/example/">Minitab</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Kruskal-Wallis">R</a></center></td>
             <td><center></center></td>
         </tr>
         <tr>
