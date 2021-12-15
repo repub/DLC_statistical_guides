@@ -75,6 +75,8 @@
         </tr>
         <tr>
             <td colspan=5><center><b>Linear Regression & Generalized Linear Models (GLMs)</b></center></td>
+        </tr>
+        <tr>
             <td colspan=5><center><a href="https://online.stat.psu.edu/stat504/lesson/6/6.1">Introduction to GLMs</a></center></td>
         </tr>
         <tr>
