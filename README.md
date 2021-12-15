@@ -132,15 +132,7 @@
         <td colspan=5><center><b>Survey Analysis</b></center></td>
         </tr>
         <tr>
-            <td>Agree/Disagree</td>
-            <td><center></center></td>
-            <td><center></center></td>
-            <td><center></center></td>
-            <td><center></center></td>
-        </tr>
-        <tr>
-            <td><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Likert">Likert Scale Questions</a></td>
-            <td colspan=4></td>
+            <td colspan=5><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Likert">Likert Scale Questions</a></center></td>
         </tr>
         <tr>
             <td>Likert-Type Scale</td>
