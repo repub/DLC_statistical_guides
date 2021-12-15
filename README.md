@@ -3,9 +3,8 @@
 <table>
     <tbody>
         <tr>
-            <center>
             <td><b>Proportion Tests</b></td>
-            </center>
+            <td colspan=4></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat415/lesson/9/9.4">Comparing Two Proportions</a></td>
