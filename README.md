@@ -6,6 +6,9 @@
             <td><b>Proportion Tests</b></td>
             <td colspan=4></td>
         </tr>
+<tr>
+            <td colspan=5><center><b>Proportion Tests</b></center></td>
+        </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat415/lesson/9/9.4">Comparing Two Proportions</a></td>
             <td><center></center></td>
