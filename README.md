@@ -1,5 +1,6 @@
-<h1>Links to Statistical Resources</h1>
-<table style="width:75%">
+# Links to Statistical Resources
+
+<table>
     <tbody>
         <tr>
             <td colspan=5><center><b>Proportion Tests</b></center></td>
@@ -49,8 +50,7 @@
             <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/two-way-ANOVA">R</a></center></td>
             <td><center></center></td>
         </tr>
-        <tr>
-            <td><a href="https://online.stat.psu.edu/stat505/lesson/8/8.2">MANOVA</a></td>
+        <td><a href="https://online.stat.psu.edu/stat505/lesson/8/8.2">MANOVA</a></td>
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/anova/how-to/general-manova/before-you-start/example/">Minitab</a></center></td>
             <td><center></center></td>
@@ -60,10 +60,10 @@
     <td colspan=5><center><b>Non-parametric Tests</b></center></td>
         </tr>
         <tr>
-            <td><a>Mann Whitney U Test</a></td>
+            <td><a>Mann Whitney & Wilcoxon Tests</a></td>
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/inference/how-to/two-samples/mann-whitney-test/before-you-start/example/">Minitab</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Mann-Whitney-Wilcoxon">R</a></center></td>
             <td><center></center></td>
         </tr>
         <tr>
@@ -132,7 +132,15 @@
         <td colspan=5><center><b>Survey Analysis</b></center></td>
         </tr>
         <tr>
-            <td colspan=5><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Likert">Likert Scale Questions</a></center></td>
+            <td>Agree/Disagree</td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
+        </tr>
+        <tr>
+            <td><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Likert">Likert Scale Questions</a></td>
+            <td colspan=4></td>
         </tr>
         <tr>
             <td>Likert-Type Scale</td>
