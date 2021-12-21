@@ -1,10 +1,8 @@
-# Links to Statistical Resources
-
-<table>
+<h1>Links to Statistical Resources</h1>
+<table style="width:75%">
     <tbody>
         <tr>
-            <td><b>Proportion Tests</b></td>
-            <td colspan=4></td>
+            <td colspan=5><center><b>Proportion Tests</b></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat415/lesson/9/9.4">Comparing Two Proportions</a></td>
@@ -28,8 +26,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td><b>Parametric Tests</b></td>
-            <td colspan=4></td>
+            <td colspan=5><center><b>Parametric Tests</b></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat415/lesson/11">T-tests</a></td>
@@ -52,15 +49,15 @@
             <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/two-way-ANOVA">R</a></center></td>
             <td><center></center></td>
         </tr>
-        <td><a href="https://online.stat.psu.edu/stat505/lesson/8/8.2">MANOVA</a></td>
+        <tr>
+            <td><a href="https://online.stat.psu.edu/stat505/lesson/8/8.2">MANOVA</a></td>
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/anova/how-to/general-manova/before-you-start/example/">Minitab</a></center></td>
             <td><center></center></td>
             <td><center></center></td>
         </tr>
         <tr>
-            <td><b>Non-parametric Tests</b></td>
-            <td colspan=4></td>
+    <td colspan=5><center><b>Non-parametric Tests</b></center></td>
         </tr>
         <tr>
             <td><a>Mann Whitney U Test</a></td>
@@ -77,8 +74,10 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td><b>Linear Regression & Generalized Linear Models (GLMs)</b></td>
-            <td colspan=4><center><a href="https://online.stat.psu.edu/stat504/lesson/6/6.1">Introduction to GLMs</a></center></td>
+            <td colspan=5><center><b>Linear Regression & Generalized Linear Models (GLMs)</b></center></td>
+        </tr>
+        <tr>
+            <td colspan=5><center><a href="https://online.stat.psu.edu/stat504/lesson/6/6.1">Introduction to GLMs</a></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat501/lesson/1">Simple Linear Regression</a></td>
@@ -130,24 +129,15 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td><b>Survey Analysis</b></td>
-            <td colspan=4></td>
+        <td colspan=5><center><b>Survey Analysis</b></center></td>
         </tr>
         <tr>
-            <td>Agree/Disagree</td>
-            <td><center></center></td>
-            <td><center></center></td>
-            <td><center></center></td>
-            <td><center></center></td>
-        </tr>
-        <tr>
-            <td><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Likert">Likert Scale Questions</a></td>
-            <td colspan=4></td>
+            <td colspan=5><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Likert">Likert Scale Questions</a></center></td>
         </tr>
         <tr>
             <td>Likert-Type Scale</td>
             <td><center></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/multivariate/how-to/item-analysis/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Likert-type">R</a></center></td>
             <td><center></center></td>
         </tr>
@@ -159,14 +149,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td>Pre/Post Intervention Likert</td>
-            <td><center></center></td>
-            <td><center></center></td>
-            <td><center></center></td>
-            <td><center></center></td>
-        </tr>
-         <tr>
-            <td>Displaying Likert Data</td>
+            <td>Pre/Post Intervention</td>
             <td><center></center></td>
             <td><center></center></td>
             <td><center></center></td>
