@@ -3,7 +3,7 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs/R';
   rmarkdown::render(input_file,
     encoding=encoding,
-    output_file='Mann-Whitney.md') })
+    output_file='Mann-Whitney-Wilcoxon.md') })
 output: github_document
 editor_options:
   chunk_output_type: console
@@ -11,7 +11,7 @@ editor_options:
   
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE,
-                      fig.path = "img/Mann-Whitney/",
+                      fig.path = "img/Mann-Whitney-Wilcoxon/",
                       fig.width = 6, fig.height = 4,
                       fig.show = 'hold', fig.align = 'center')
 options(width = 100)
