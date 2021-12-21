@@ -10,10 +10,11 @@ editor_options:
 ---
   
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, fig.path="img/Poisson-regression/",
-                      fig.width=6, fig.height=4,
-                      fig.show='hold', fig.align='center')
-options(width=100)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE,
+                      fig.path="img/Poisson-regression/",
+                      fig.width = 6, fig.height = 4,
+                      fig.show = 'hold', fig.align = 'center')
+options(width = 100)
 ```
 
 # Poisson Regression
@@ -40,6 +41,16 @@ crab$Spine <- factor(crab$Spine)
 ```
 
 Importantly, the *Color*, *Spine*, and *Satellites* variables are all read as integers while the *Width* and *Weight* are read as numerical. The issue here is that color and spine condition are not actually integers, only coded in that way. We will want to keep this in mind when we fit our model so that we correctly code our variable types.
+
+```{r crab_plot, echo = FALSE}
+library(tidyverse)
+
+ggplot(crab, aes(x = Satellites)) +
+  geom_histogram(bins = 15, aes(y = ..density..), colour = "black", fill = "grey90") +
+  geom_density(alpha = 0.55, fill = "lightblue", adjust = 2) +
+  theme_bw()
+```
+
 
 ### Fit a Poisson regression model
 
@@ -68,9 +79,13 @@ contrasts(crab$Color) <- matrix(c(-1/4, 3/4, -1/4, -1/4,
 ```{r}
 library(tidyverse)
 
-ggplot(crab, aes(x = Color,  y = Satellites)) +
-  stat_summary(geom = "pointrange", fun.data = "mean_se") +
-  geom_jitter()
+ggplot(crab, aes(x = Color,  y = Satellites, fill = Color)) +
+  geom_violin(trim = FALSE) +
+  # stat_summary(geom = "pointrange", fun.data = "mean_se") +
+  geom_boxplot(width = 0.1, fill = "white") +
+  geom_jitter(alpha = 0.3, width = 0.1) +
+  scale_fill_brewer(palette="Blues") +
+  theme_bw()
 ```
 
 
@@ -90,10 +105,10 @@ model <- glm(Satellites ~ C2 + C3 + C4 + S2 + S3 + Weight + Width,
 summary(model)
 
 
-vif(model)
+# vif(model)
 
-model <- glm(Sa ~ W, family = poisson)
-summary(model)
+# model <- glm(Sa ~ W, family = poisson)
+# summary(model)
 
 ```
 
@@ -104,16 +119,16 @@ summary(crab.pois)
 ```
 
 ```{r}
-
-pchisq(crab.pois$deviance, crab.pois$df.residual)
-
-influence(crab.pois)
-plot(influence(crab.pois)$pear.res)
-
-crab.pois <- glm(Sa ~ factor(C) + factor(S) + W + Wt,
-                 data = crab,
-                 family = quasipoisson)
-summary(crab.pois)$dispersion
+# 
+# pchisq(crab.pois$deviance, crab.pois$df.residual)
+# 
+# influence(crab.pois)
+# plot(influence(crab.pois)$pear.res)
+# 
+# crab.pois <- glm(Sa ~ factor(C) + factor(S) + W + Wt,
+#                  data = crab,
+#                  family = quasipoisson)
+# summary(crab.pois)$dispersion
 ```
 
 

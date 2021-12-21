@@ -1,0 +1,64 @@
+---
+  knit: (function(input_file, encoding) {
+    out_dir <- 'docs/R';
+    rmarkdown::render(input_file,
+                      encoding=encoding,
+                      output_file='MANOVA.md') })
+output: github_document
+editor_options:
+  chunk_output_type: console
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE,
+                      fig.path = "img/MANOVA/",
+                      fig.width = 6, fig.height = 4,
+                      fig.show = 'hold', fig.align = 'center')
+options(width = 100)
+```
+
+# MANOVA
+
+[Example dataset from PSU STAT 505](https://online.stat.psu.edu/stat505/lesson/8/8.4)
+
+```{r load_data}
+pottery <- read.csv("dat/pottery.csv", stringsAsFactors = TRUE)
+```
+
+
+```{r MANOVA_plot, echo = FALSE}
+#### Convert dataset to long & add full names
+library(tidyverse)
+pottery.long <- pivot_longer(pottery, Al:Na)
+pottery.long$Site <- as.character(pottery.long$Site)
+pottery.long <- pottery.long %>% mutate(Site = recode(Site,
+                                      "L" = "Llanedyrn",
+                                      "C" = "Caldicot",
+                                      "I" = "Isle Thorns",
+                                      "A" = "Ashley Rails"))
+pottery.long$Site <- as.factor(pottery.long$Site)
+
+ggplot(pottery.long, aes(x = name, y = value, color = Site)) +
+  geom_point(alpha = 0.55, position = position_dodge(0.55), size = 3) +
+  theme_bw() +
+  labs(x = "Element", y = "Abundance (log10(ppm))") +
+  scale_y_log10() +
+  scale_color_manual(values = c("steelblue3", "goldenrod3","tomato1", "forestgreen")) +
+  theme(legend.position = "bottom")
+```
+
+
+
+```{r MANOVA}
+pottery.manova <- manova(cbind(Al, Fe, Mg, Ca, Na) ~ Site, data = pottery)
+summary(pottery.manova)
+```
+
+```{r ANOVA_summaries}
+summary.aov(pottery.manova)
+```
+
+```{r}
+summary.lm(pottery.manova)
+```
+

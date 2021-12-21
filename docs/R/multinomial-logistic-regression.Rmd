@@ -18,44 +18,19 @@ options(width=100)
 
 # Multinomial Logistic Regression in R
 
-&emsp;In this tutorial we will be using one of the more widely applied datasets for learning regression and machine learning, the `iris` dataset.
+&emsp;For this example we will be using [this data set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/R/dat/cheese.csv) provided by the [STAT 504 Analysis of Discrete Data](https://online.stat.psu.edu/stat504/lesson/8/8.4/8.4.1) course.
 
-```{r}
-iris
-str(iris)
+```{r load_data}
+cheese <- read.csv("dat/cheese.csv", stringsAsFactors = TRUE)
+
+str(cheese)
 ```
 
-
-```{r, echo = FALSE}
-library(tidyverse)
-iris %>% group_by(Species) %>%
-  summarize(`Sepal Length` = mean(Sepal.Length),
-            `Sepal Width` = mean(Sepal.Width),
-            `Petal Length` = mean(Petal.Length),
-            `Petal Width` = mean(Petal.Width))
-```
-
-The dataset includes measurements of the lengths and widths of sepals (green outer part of a flower) and petals from three species of flowers. With multinomial logistic regression we can fit a model to see which of these measurements are significant predictors for these species.
-
-```{r}
+```{r model_fit}
 library(nnet)
 
-species.fit <- multinom(Species ~ ., data = iris)
-```
+cheese.fit <- multinom(Cheese ~ ., data = cheese)
 
-```{r}
-summary(species.fit)
-```
-
-```{r}
-z.scores <- coef(species.fit) / summary(species.fit)$standard.errors
-(p.values <- (1 - pnorm(abs(z.scores), 0, 1)) * 2)
-```
-
-```{r}
-iris$Species <- relevel(iris$Species, ref = "setosa")
-species.fit <- multinom(Species ~ ., data = iris)
-z.scores <- coef(species.fit) / summary(species.fit)$standard.errors
-(p.values <- (1 - pnorm(abs(z.scores), 0, 1)) * 2)
+summary(cheese.fit)
 ```
 
