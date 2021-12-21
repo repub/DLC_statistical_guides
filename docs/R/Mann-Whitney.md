@@ -1,6 +1,32 @@
 
 # Mann-Whitney U & Wilcoxon rank sum tests
 
+ When we have an ordinal dependent variable or a continuous variable
+that does not meet the assumptions of the t-test, we can look to the
+Mann-Whitney U test. If the groups are paired then the Wilcoxon rank sum
+test replaces the paired t-test as a non-parametric alternative. This
+means that while these tests do make the assumption that the two samples
+come from similarly shaped (symmetrical) distributions, those
+distributions do not need to be normally distributed (parametric).
+
+ Before committing to the Mann-Whitney U or the Wilcoxon rank sum test
+we should determine if the following assumptions are valid:
+
+-   The **dependent variable is ordinal or continuous** and the
+    **independent variable has two groups**
+-   The observations are **independent** and **randomly sampled**
+-   Both groups have **symmetrical distributions**
+
+ We can then test the null and alternative hypotheses:
+
+<center>
+<i>H<sub>0</sub></i>: The probability that a randomly drawn observation
+from one population will be greater than a randomly drawn observation
+from the second observation is 50%. Or, the two samples belong to the
+same population. <br> <i>H<sub>A</sub></i>: The two samples have
+different medians and thus do not come from the same population.
+</center>
+
 ### Fitting the Mann-Whitney U test
 
  In this example we will use the `mtcars` data set that is provided in
@@ -38,7 +64,10 @@ perform a Mann-Whitney test using the `wilcox.test()` function with the
 continuous variable (*mpg*) on the left and the categorical variable
 (*mpg*) on the right of the `~`. We will also set the `conf.int` option
 to `TRUE` so that the 95% confidence intervale and differences in
-location are calculated.
+location are calculated. Although *am* is coded as a numerical variable,
+because it only consists of 0’s and 1’s the `wilcox.test()` function
+will recognize the two groups and we do not need to change the variable
+type to a factor.
 
 ``` r
 wilcox.test(mpg ~ am, data = mtcars, conf.int = TRUE)
@@ -63,18 +92,19 @@ wilcox.test(mpg ~ am, data = mtcars, conf.int = TRUE)
     ##              -6.799963
 
  Note that we get warning messages with the output from the test This is
-because we have some values with tied rankings and sample sizes lower
-than 50, which causes the exact p-value and confidence intervals to be
-unable to be calculated. There are different ways we can avoid this
-issue, such as increasing the sample size to 50 or greater, but in many
-cases that solution would not be feasible. Instead, the estimated
+because we have some values with tied rankings and the sample sizes
+lower than 50, which causes the exact p-value and confidence intervals
+to be unable to be calculated. There are different ways we can avoid
+this issue, such as increasing the sample size to 50 or greater, but in
+many cases that solution would not be feasible. Instead, the estimated
 p-value based on a normal approximation calculated by the
 `wilcox.test()` is good enough, and we can conclude that automobiles
 with automatic transmissions have a lower miles per gallon than those
 with manual transmissions. The median difference between automatic and
 manual miles per gallon is somewhere between -2.9 and -11.7 mpg with 95%
 confidence, and the median of the difference between automatic and
-manual transmissions is -6.8 mpg.
+manual transmissions is -6.8 mpg (note that this is not the difference
+in medians).
 
 ### Fitting the Wilcoxon rank sum test
 
@@ -126,9 +156,17 @@ wilcox.test(extra ~ group, sleep, paired = TRUE, conf.int = TRUE)
     ## (pseudo)median 
     ##      -1.400031
 
- Again we see that there are warning messages, this time both that there
-are ties and that there are 0’s in our data set. Many times this is
-unavoidable
+ Again we see that there are warning messages, this time both that the
+samples have ties while the sample sizes are &lt;50 and that there are
+0’s in our data set. Many times this is unavoidable without increases
+our sample size, but again the estimated p-value is suitable for this
+analysis.
+
+ With a p-value less than 0.05 (p-value = 0.009091) we can conclude that
+the medians are not equal and that Drug \#2 has a greater effect on the
+change in hours of sleep compared to Drug \#1. The median difference in
+the change of hours of sleep for Drug \#1 compared to Drug \#2 is
+somewhere between -2.95 and -1.05 with 95% confidence.
 
 ### Full code block
 
