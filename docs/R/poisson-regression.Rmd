@@ -19,7 +19,7 @@ options(width = 100)
 
 # Poisson Regression
 
-
+&emsp;
 
 ### Load the data
 

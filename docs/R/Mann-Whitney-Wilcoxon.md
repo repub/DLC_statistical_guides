@@ -20,13 +20,20 @@ test we should determine if the following assumptions are valid:
 
  We can then test the null and alternative hypotheses:
 
-<center>
-<i>H<sub>0</sub></i>: The probability that a randomly drawn observation
+ <i>H<sub>0</sub></i>: The probability that a randomly drawn observation
 from one population will be greater than a randomly drawn observation
 from the second observation is 50%. Or, the two samples belong to the
-same population. <br> <i>H<sub>A</sub></i>: The two samples have
-different medians and thus do not come from the same population.
+same population with the same median.
+<center>
+M<sub>1</sub> = M<sub>2</sub>
 </center>
+<br>  <i>H<sub>A</sub></i>: The two samples have different medians and
+thus do not come from the same population.
+<center>
+M<sub>1</sub> ≠ M<sub>2</sub>
+</center>
+
+<br>
 
 ### Fitting the Mann-Whitney U test
 
