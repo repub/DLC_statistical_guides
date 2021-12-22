@@ -57,6 +57,13 @@
             <td><center></center></td>
         </tr>
         <tr>
+            <td><a href="https://online.stat.psu.edu/stat502_fa21/lesson/9">ANCOVA</a></td>
+            <td><center></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/anova/supporting-topics/anova-models/understanding-covariates/">Minitab</a></center></td>
+            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/ANCOVA">R</a></center></td>
+            <td><center></center></td>
+        </tr>
+        <tr>
     <td colspan=5><center><b>Non-parametric Tests</b></center></td>
         </tr>
         <tr>
