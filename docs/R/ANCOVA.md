@@ -3,17 +3,16 @@
 
  Sometimes when we are using an ANOVA to test whether there are
 differences among some number of independent groups for some dependent
-variable we may believe that there is another continuous confounding
-variable that could affect our results. In these cases we can adjust or
-control for this confounding variable through an ANCOVA, where instead
-of assessing differences between group means we statistically test for
-differences in the means that have been adjusted for the covariate. With
-the ANCOVA we can have more than one continuous covariate that we
-control for, and like other ANOVA models the number of categorical
-independent variables determines if the ANCOVA is “one-way”, “two-way”,
-etc.
+variable we may believe that there is another continuous variable that
+could affect our results. In these cases we can adjust or control for
+this confounding variable through an ANCOVA, where instead of assessing
+differences between group means we statistically test for differences in
+those means after adjusting for the covariate. With the ANCOVA we can
+have more than one continuous covariate and like other ANOVA models the
+number of categorical independent variables determines if the ANCOVA is
+“one-way”, “two-way”, etc.
 
- With the ANCOVA we have similar assumptions to the ANOVA:
+ The ANCOVA has similar assumptions to the ANOVA:
 
 -   The **dependent variable and the covariate(s) are continuous** while
     the **independent variable is categorical**
@@ -21,9 +20,12 @@ etc.
 -   There are no **outliers** or **points with high leverage**
 -   The errors (residuals) are **approximately normally distributed**
     and have **equal variances**
+-   If using more than one covariate, **no covariates should be highly
+    correlated with another**
 
- The null and altnerative hypotheses for the ANCOVA are also similar to
-those for the ANOVA, however the means are adjusted for the covariate.
+ The null and alternative hypotheses for the ANCOVA are also similar to
+those for the ANOVA, however the means (μ) are adjusted for the
+covariate(s) (μ̇).
 
  <i>H<sub>0</sub></i>: There is no effect of the independent variable on
 the dependent variable when controlling for the covariate.
@@ -45,13 +47,14 @@ example](https://github.com/tylerbg/DLC_stat_resources/blob/master/docs/R/dat/Ry
 originally provided in [STAT 485 Topics in R Statistical
 Language](https://online.stat.psu.edu/stat485/lesson/welcome-stat-485),
 compares the biomass of rye plants in g/m<sup>2</sup> (*RyeDMg*) planted
-at two different dates (*Plant*) and then terminated after a different
-number of days following the beginning of the growing season (*Tdate*).
-After loaing the data we should get some information on the variables to
-make sure they are coded correctly and there are no issues such as
-missing data. There are 5 other variables in the data set that do not
-interest us, such as the repetition number and term, so we will assign
-the variables that we are interested in to an object and print the
+at two different dates (*Plant*) and then terminated after a number of
+days following the beginning of the growing season on April
+15<sup>th</sup> (*Tdate*). After loading the data we should get some
+information on the variables to make sure they are coded correctly and
+there are no issues such as missing data. There are 5 other variables in
+the data set that are of no interest us, such as the repetition number
+and term, so we will concatenate the variables that we plan to use in
+the ANCOVA analysis to a character vector with `c()` then print the
 structure and summary statistics of those variables as follows.
 
 ``` r
@@ -79,19 +82,21 @@ summary(rye[, cols])
     ##          3rd Qu.:766.2   3rd Qu.:39.50  
     ##          Max.   :930.5   Max.   :39.50
 
- We can see that our dependent variable, *RyeDMg* is numerical
+ We can see that our dependent variable, *RyeDMg*, is numerical
 (continuous) while our explanatory variable, *Plant*, is a factor
-(categorical) and the covariate *Tdate* is also numerical. Therefore,
-our data set is coded correctly to fit a one-way ANCOVA. Additionally,
-the summary statistics do not show any obvious outliers, missing data,
-or mis-coded observations, so we can continue with planning our
-analysis.
+(categorical). The covariate, *Tdate*, is also numerical and therefore
+our data set is coded correctly to fit a one-way ANCOVA model.
+Additionally, the summary statistics do not show any obvious outliers,
+missing data, or mis-coded observations, so we can continue with
+planning our analysis.
 
  Plotting the data (below) we can see that rye planted in early autumn
 (*P1*) appear to have a higher biomass throughout the growing season
 compared to those planted in late autumn (*P2*). The rate of increase
 for these two planting times also appear to be very similar as their
-slopes are nearly parallel, suggesting there is not an interaction.
+slopes are nearly parallel to suggest that there is not an interaction
+between *Plant* and *Tdate* so we will not hypothesize or test for an
+interaction term.
 
 <img src="img/ANCOVA/rye_plot-1.png" style="display: block; margin: auto;" />
 
@@ -113,9 +118,12 @@ summary(rye.aov)
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
- From the ANCOVA sum of squares table we can see that both of the
-independent variables are statistically significant predictors of rye
-biomass.
+ From the ANCOVA sum of squares table we can see that both the
+independent variable and covariate, *Plant* and *Tdate*, are
+statistically significant predictors of rye biomass. Therefore, we can
+conclude that plant biomass is significantly higher in rye planted in
+early August compared to those planted in late August when controlling
+for termination date.
 
  Note that the default sum of squares calculated by the `summary()` and
 `anova()` functions are Type I, or the sequential sum of squares. This
