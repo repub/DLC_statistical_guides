@@ -15,7 +15,7 @@
             <td><a href="https://online.stat.psu.edu/stat504/lesson/3/3.3">Fisher's Exact Test</a></td>
             <td><center></center></td>
             <td><center></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Fisher-exact-test">R</a></center></td>
             <td><center></center></td>
         </tr>
         <tr>
