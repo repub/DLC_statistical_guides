@@ -66,3 +66,18 @@ x <- data.frame(tea_first = c(3, 1),
 fisher.test(x, alternative = "greater")
 ```
 
+
+
+
+
+```{r}
+df <- data.frame(Female = c(9, 26), Male = c(21, 35),
+                 row.names = c("Candidate A", "Candidate B"))
+
+df
+```
+
+```{r}
+fisher.test(df)
+```
+

@@ -43,7 +43,7 @@ ggplot(pottery.long, aes(x = name, y = value, color = Site)) +
   theme_bw() +
   labs(x = "Element", y = "Abundance (log10(ppm))") +
   scale_y_log10() +
-  scale_color_manual(values = c("steelblue3", "goldenrod3","tomato1", "forestgreen")) +
+  scale_color_manual(values = c("steelblue3", "goldenrod3", "tomato1", "forestgreen")) +
   theme(legend.position = "bottom")
 ```
 
@@ -51,6 +51,7 @@ ggplot(pottery.long, aes(x = name, y = value, color = Site)) +
 
 ```{r MANOVA}
 pottery.manova <- manova(cbind(Al, Fe, Mg, Ca, Na) ~ Site, data = pottery)
+
 summary(pottery.manova)
 ```
 
@@ -60,5 +61,47 @@ summary.aov(pottery.manova)
 
 ```{r}
 summary.lm(pottery.manova)
+```
+
+
+
+### Fit a MANOVA
+
+```{r}
+summary(iris)
+```
+
+```{r}
+library(tidyverse)
+
+iris.long <- pivot_longer(iris, Sepal.Length:Petal.Width)
+iris.long$name <- gsub("\\.", " ", iris.long$name)
+
+ggplot(iris.long, aes(x = name, y = value, color = Species)) +
+  geom_boxplot(outlier.shape = NULL) +
+  geom_jitter(alpha = 0.55, position = position_jitterdodge(dodge.width = 0.75)) +
+  theme_bw() +
+  labs(x = NULL) +
+  scale_color_brewer(palette = "Set2")
+  theme(legend.position = "bottom")
+
+```
+
+
+```{r}
+iris.manova <- manova(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ Species,
+                      data = iris)
+
+summary(iris.manova)
+```
+
+```{r}
+summary.aov(iris.manova)
+```
+
+
+```{r}
+iris.aov <- aov(Sepal.Width ~ Species, data = iris)
+TukeyHSD(iris.aov)
 ```
 
