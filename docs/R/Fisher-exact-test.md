@@ -43,7 +43,69 @@ results of the study are provided in the table below.
 
 <div align="center">
 
-<table>
+<table style="width:60%">
+<tbody>
+<tr>
+<td>
+</td>
+<td>
+<b>Favor</b>
+</td>
+<td>
+<b>Indifferent</b>
+</td>
+<td>
+<b>Opposed</b>
+</td>
+</tr>
+<tr>
+<td>
+<b>Democrat</b>
+</td>
+<td>
+<center>
+138
+</center>
+</td>
+<td>
+<center>
+83
+</center>
+</td>
+<td>
+<center>
+64
+</center>
+</td>
+</tr>
+<tr>
+<td>
+<b>Republican</b>
+</td>
+<td>
+<center>
+64
+</center>
+</td>
+<td>
+<center>
+67
+</center>
+</td>
+<td>
+<center>
+84
+</center>
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div align="center">
+
+<table style="width:60%">
 <tbody>
 <tr>
 <td>
