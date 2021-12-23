@@ -9,57 +9,77 @@ editor_options:
   chunk_output_type: console
 ---
   
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, fig.path="img/two-proportions/",
-                      fig.width=6, fig.height=4,
-                      fig.show='hold', fig.align='center')
-options(width=100)
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE,
+                      fig.path = "img/two-proportions/",
+                      fig.width = 6, fig.height = 4,
+                      fig.show = 'hold', fig.align = 'center')
+options(width = 100)
 ```
 
-# Comparing Two Proportions in R
+# Comparing Two Proportions
 
-#### Hypotheses
+&emsp;
 
-&nbsp;&nbsp;&nbsp;&nbsp;**Null hypothesis:** the two proportions are equal.  
-&nbsp;&nbsp;&nbsp;&nbsp;**Alternative hypothesis:** the two proportions are not equal.
+&emsp;**Null hypothesis:** The proportions of the two variables are the equal.
+<center><i>H<sub>0</sub>: p<sub>1</sub> = p<sub>2</sub></i></center>
 
-#### Assumptions
+&emsp;<b>Alternative hypothesis:</b> The proportions of the two variables are not equal.
+<center><i>H<sub>A</sub>: p<sub>1</sub> &ne; p<sub>2</sub></i></center>
+<br>
 
-- The data was gathered by **simple random sampling**.
-- The two samples are **independent**.
-- Both groups follow a **binomial distribution**.
+&emsp;To statistically test the equality of two proportions the following assumptions should be valid.
 
-### Entering the data in R
+- The data was gathered by **simple random sampling**
+- The two samples are **independent**
+- Both groups follow a **binomial distribution**
 
-&nbsp;&nbsp;&nbsp;&nbsp;For this R tutorial we will use the example from [Penn State's Introduction to Mathematical Statistics course](https://online.stat.psu.edu/stat415/lesson/9/9.4).  Assume that 800 adult Americans were polled on the question: "Should the federal tax on cigarettes be raised to pay for health care reform?".  We can simply input the total number of people polled in each group (n) and the respective counts of yes answers (y) into R as follows:
+### Performing a test of equal proportions
 
-```{r}
-n1 <- 605
-n2 <- 195
-y1 <- 351
-y2 <- 41
+&emsp;For this R tutorial we will use the example from [Penn State's Introduction to Mathematical Statistics course](https://online.stat.psu.edu/stat415/lesson/9/9.4).  Assume that 800 American adults were polled on the question: "Should the federal tax on cigarettes be raised to pay for health care reform?".  Of those polled, 195 identified themselves as *smokers*, 41 of which responded 'yes', while 605 identified as *non-smokers* with 351 responding yes.  Plotting the results of the survey (below) we might suggest that there is a difference in how *smokers* and *non-smokers* responded overall, so we can use a proportion test to statistically support or reject this hypothesis.
+
+```{r plot, echo = FALSE}
+df <- data.frame(Status = c(rep("Non-Smoker", 2), rep("Smoker", 2)),
+                 Answer = c(rep(c("Yes", "No"), 2)),
+                 n = c(351, 254, 41, 154))
+
+library(tidyverse)
+
+ggplot(df, aes(x = Status, y = n, fill = Answer)) +
+  geom_col() +
+  scale_fill_brewer(palette = "Paired") +
+  labs(title ="Reponses from 800 American adults to:\n\"Should the federal tax on cigarettes be raised to pay for health care reform?\"",
+       x = "Smoking Status",
+       y = "Count") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
-#### Running the test & interpreting the results
+&emsp;In this tutorial we will manually input the data into R.  First, we will make two vectors, one with the total number of *non-smokers* and *smokers* polled (*count*) and the second with the number of yes responds for each group (*yes*) with the `c()` function.
 
-&nbsp;&nbsp;&nbsp;&nbsp;Running the test in R using `prop.test()` is very simple as it does not require us to calculate the proportions before hand and only uses one line of code:
-
-```{r}
-prop.test(x = c(y1, y2), n = c(n1, n2))
+```{r input_data}
+n <- c(605, 195)
+yes <- c(351, 41)
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;The p-value for our test is extremely small and well below 0.05, so we can conclude that there is a statistically significant difference between the two proportions. Specifically, the proportion of smokers who answered 'yes' to the survey question is significantly lower than the proportion of non-smokers who answered 'yes'.
+&emsp;We can perform a proportion test using the `prop.test()` function which takes the vector of successes as the first argument and the total number of trials as the second argument.
 
-&nbsp;&nbsp;&nbsp;&nbsp;*Note that the test statistic for our test is slightly different than in the STAT 415 example. This is because `prop.test()` uses the Yates' continuity correction by default. By setting `correct = FALSE` within prop.test() you can not apply the correction to result in the test statistic calculated in the original example.*
+```{r prop_test}
+prop.test(yes, n)
+```
+
+&emsp;The p-value for our test is extremely small and well below 0.05, so we can conclude that there is a statistically significant difference between the two proportions. Specifically, the proportion of smokers who answered 'yes' to the survey question is significantly lower than the proportion of non-smokers who answered 'yes'.
+
+&emsp;*Note that the test statistic for our test is slightly different than in the STAT 415 example. This is because `prop.test()` uses the Yates' continuity correction by default. By setting `correct = FALSE` within prop.test() the correction will not be made to result in the same test statistic that is calculated in the STAT 415 example.*
 
 ### Full code block
 
-```{r eval=FALSE}
-n1 <- 605
-n2 <- 195
-y1 <- 351
-y2 <- 41
+```{r full_code, eval=FALSE}
+# Input the total number of non-smokers and somkers polled and the number of yes responses for each
+n <- c(605, 195)
+yes <- c(351, 41)
 
-prop.test(x = c(y1, y2), n = c(n1, n2))
+# Perform a proportion test
+prop.test(yes, n)
 ```
 
