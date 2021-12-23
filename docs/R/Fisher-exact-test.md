@@ -43,7 +43,7 @@ results of the study are provided in the table below.
 
 <div align="center">
 
-<table style="width:60%">
+<table>
 <tbody>
 <tr>
 <td>

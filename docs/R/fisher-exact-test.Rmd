@@ -41,7 +41,7 @@ options(width = 100)
 &emsp;In this tutorial we will be using data provided by [Freeman and Campbell from The University of Sheffield](https://www.sheffield.ac.uk/polopoly_fs/1.43998!/file/tutorial-9-fishers.pdf) that examined whether intra-muscular magnesium better treated chronic fatigue syndrome compared to a placebo treatment in 32 patients.  The results of the study are provided in the table below.
 
 <div align="center">
-<table style="width:60%">
+<table>
   <tbody>
     <tr>
       <td></td>
