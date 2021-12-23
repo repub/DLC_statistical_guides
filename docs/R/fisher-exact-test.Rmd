@@ -43,21 +43,21 @@ options(width = 100)
 <div align="center">
 <table style="width:60%">
   <tbody>
-  <tr>
-    <td></td>
-    <td><b><center>Magnesium</b></center></td>
-    <td><b><center>Placebo</b></center></td>
-  </tr>
-  <tr>
-    <td><b>Felt better</b></td>
-    <td>12</td>
-    <td>3</td>
-  </tr>
-  <tr>
-    <td><b>Did not feel better</b></td>
-    <td>3</td>
-    <td>14</td>
-  </tr>
+    <tr>
+      <td></td>
+      <td><b><center>Magnesium</b></center></td>
+      <td><b><center>Placebo</b></center></td>
+    </tr>
+    <tr>
+      <td><b>Felt better</b></td>
+      <td>12</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td><b>Did not feel better</b></td>
+      <td>3</td>
+      <td>14</td>
+    </tr>
   </tbody>
 </table>
 </div>
