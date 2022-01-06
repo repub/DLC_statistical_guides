@@ -23,7 +23,7 @@ options(width = 100)
 
 ### Load the data
 
-&nbsp;&nbsp;&nbsp;&nbsp;Here, we will use a dataset provided in [STAT 501 Regression Methods](https://online.stat.psu.edu/stat504/lesson/9/9.2) that observed the relationship between the number of male crabs attaching to a female crab's nest (*Satellites*) and characteristics of the female crab that include the color (*Color*), spine condition (*Spine*), weight (*Weight*), and carapace width (*Width*).
+&emsp;Here, we will use a dataset provided in [STAT 501 Regression Methods](https://online.stat.psu.edu/stat504/lesson/9/9.2) that observed the relationship between the number of male crabs attaching to a female crab's nest (*Satellites*) and characteristics of the female crab that include the color (*Color*), spine condition (*Spine*), weight (*Weight*), and carapace width (*Width*).
 
 To read the data into R, we can use the `read.table()` function and set `row.names = 1` so that the first column of the data (the observation number) is set as a rown name instead of its own variable.
 
@@ -46,7 +46,7 @@ Importantly, the *Color*, *Spine*, and *Satellites* variables are all read as in
 library(tidyverse)
 
 ggplot(crab, aes(x = Satellites)) +
-  geom_histogram(bins = 15, aes(y = ..density..), colour = "black", fill = "grey90") +
+  geom_histogram(bins = 16, aes(y = ..density..), colour = "black", fill = "grey90") +
   geom_density(alpha = 0.55, fill = "lightblue", adjust = 2) +
   theme_bw()
 ```
@@ -60,13 +60,19 @@ crab.pois <- glm(Satellites ~ Color + Spine + Weight + Width,
                  family = poisson)
 
 summary(crab.pois)
+```
 
+
+```{r}
 crab.pois <- glm(Satellites ~ Color + Weight,
                  data = crab,
                  family = poisson)
 
 summary(crab.pois)
+```
 
+
+```{r}
 contrasts(crab$Color)
 
 contrasts(crab$Color) <- matrix(c(-1/4, 3/4, -1/4, -1/4,
@@ -90,27 +96,6 @@ ggplot(crab, aes(x = Color,  y = Satellites, fill = Color)) +
 
 
 
-```{r}
-crab$C1 <- 1*(crab$Color == 1)
-crab$C2 <- 1*(crab$Color == 2)
-crab$C3 <- 1*(crab$Color == 3)
-crab$C4 <- 1*(crab$Color == 4)
-crab$S1 <- 1*(crab$Spine == 1)
-crab$S2 <- 1*(crab$Spine == 2)
-crab$S3 <- 1*(crab$Spine == 3)
-
-model <- glm(Satellites ~ C2 + C3 + C4 + S2 + S3 + Weight + Width,
-             data = crab,
-             family = poisson)
-summary(model)
-
-
-# vif(model)
-
-# model <- glm(Sa ~ W, family = poisson)
-# summary(model)
-
-```
 
 ### Interpret the results
 
@@ -133,3 +118,41 @@ summary(crab.pois)
 
 
 ### Full code block
+
+
+
+
+
+
+
+
+### Poisson Regression with [The Children Ever Born Data](https://data.princeton.edu/wws509/datasets/#ceb)
+
+```{r}
+ceb <- read.table("dat/ceb.txt", stringsAsFactors = TRUE)
+```
+
+```{r}
+head(ceb)
+str(ceb)
+```
+
+```{r}
+dur.levels <- levels(ceb$dur)
+
+ceb$dur <- factor(ceb$dur, levels = dur.levels[c(1, 6, 2:5)])
+```
+
+- dur = marriage duration
+- res = residence type
+- educ = education level
+- mean = mean number of children ever born
+- var = variance of children ever born
+- n = number of women
+
+```{r}
+ceb.pois <- glm(round(y) ~ dur + res + educ, data = ceb, family = "poisson")
+
+summary(ceb.pois)
+```
+
