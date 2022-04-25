@@ -105,3 +105,32 @@ iris.aov <- aov(Sepal.Width ~ Species, data = iris)
 TukeyHSD(iris.aov)
 ```
 
+
+
+
+
+
+# MANOVA with the Car Ratings data set
+
+```{r}
+ratings <- read.csv("dat/Car_Lock_Ratings.csv", header = TRUE, stringsAsFactors = TRUE)
+```
+
+```{r}
+head(ratings)
+str(ratings)
+```
+
+```{r}
+ratings.manova <- manova(cbind(Usability.Rating, Quality.Rating) ~ Method * Plant, data = ratings)
+
+summary(ratings.manova, test = "Wilks")
+
+
+summary(car::Manova(ratings.manova, type = 3))
+```
+
+```{r}
+summary.aov(ratings.manova)
+```
+
