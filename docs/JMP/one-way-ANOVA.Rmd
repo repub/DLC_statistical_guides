@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # One-way Analysis of Variance (ANOVA<sup>1</sup>)
 
-&emsp;For this tutorial we will be using a sample dataset from the [PSU STAT 500 Applied Statistics course](https://online.stat.psu.edu/stat500/lesson/10/10.1). The dataset contains measurements of tar content as measured by Lab Precise from three cigarette brands. A barplot for the tar content from each brand is shown below.
+&emsp;For this tutorial we will be using [this data set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/JMP/dat/smoking_stress.jmp) from the [PSU STAT 500 Applied Statistics course](https://online.stat.psu.edu/stat500/lesson/10/10.1). The dataset contains measurements of tar content as measured by Lab Precise from three cigarette brands. A barplot for the tar content from each brand is shown below.
 
 <center>
 ![Tar Brand Boxplot](img/tar_brand_boxplot.png)

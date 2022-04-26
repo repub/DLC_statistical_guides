@@ -41,7 +41,7 @@ options(width = 100)
 
 ### Fitting a MLR model
 
-&emsp;In this example we will be using [this data set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/R/dat/iqsize.txt) provided by the [Example 5-1 of the STAT 501 Regression Methods course](https://online.stat.psu.edu/stat501/lesson/5/5.1) course that includes data on participant's performance IQ score (*PIQ*), brain size (*Brain*), and two variables on body size, *Height* and *Weight*.  Plotting each of the variables against one another we can see that *Height*, *Weight*, and *Brain* each appear to have some positive relationship with one another, but what about *PIQ*?
+&emsp;In this example we will be using [this data set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/R/dat/iqsize.txt) provided by the [Example 5-1 of the STAT 501 Regression Methods course](https://online.stat.psu.edu/stat501/lesson/5/5.1) course that includes data on participant's performance IQ score (*PIQ*), brain size (*Brain*), and two variables on body size, *Height* and *Weight*.  Plotting each of the variables against one another we can see that *Height*, *Weight*, and *Brain* each appear to have some positive relationship with one another, but what about with *PIQ*?
 
 ```{r pre_load_data, echo = FALSE}
 iqsize <- read.table("dat/iqsize.txt", header = TRUE)
@@ -51,7 +51,7 @@ iqsize <- read.table("dat/iqsize.txt", header = TRUE)
 plot(iqsize)
 ```
 
-&emsp;Using MLR we can determine what relationships, if any, these three physical features have with the IQ scores.  Our data set is in a tabular .txt format, so we will first load the data into R using the `read.table()` function.  We can view summary statistics for each of the variables and the structure of the dataset with the `summary()` and `str()` functions.
+&emsp;Using MLR we can determine what relationships, if any, these three physical features have with the *PIQ* scores.  Our data set is in a tabular .txt format, so we will first load the data into R using the `read.table()` function.  We can view summary statistics for each of the variables and the structure of the dataset with the `summary()` and `str()` functions.
 
 ```{r load_data}
 iqsize <- read.table("dat/iqsize.txt", header = TRUE)

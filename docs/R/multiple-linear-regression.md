@@ -10,15 +10,18 @@ an extension of SLR, to assess these relationships in one statistical
 model. MLR tests the following
 [hypotheses](https://online.stat.psu.edu/stat501/lesson/5/5.3):
 
- **Null hypothesis:** The estimated coefficient (*β*) for variable *i*
-is equal to 0.  
+ **Null hypothesis:** The estimated coefficient
+(![\\beta](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta "\beta"))
+for variable *i* is equal to 0.  
 <center>
 <i>H<sub>0</sub></i>:<i> β<sub>i</sub> </i>=<i> 0</i>
 </center>
 
  
 
- **Alternative hypothesis:** *β*<sub>*i*</sub> is not equal to 0.  
+ **Alternative hypothesis:**
+![\\beta\_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta_i "\beta_i")
+is not equal to 0.  
 <center>
 <i>H<sub>A</sub></i>:<i> β<sub>i</sub> </i>≠<i> 0</i>, or<i>
 H<sub>A</sub></i>:<i> β<sub>i</sub> </i>&gt;<i> 0 </i>or<i>
@@ -47,13 +50,13 @@ includes data on participant’s performance IQ score (*PIQ*), brain size
 (*Brain*), and two variables on body size, *Height* and *Weight*.
 Plotting each of the variables against one another we can see that
 *Height*, *Weight*, and *Brain* each appear to have some positive
-relationship with one another, but what about *PIQ*?
+relationship with one another, but what about with *PIQ*?
 
 <img src="img/multiple-linear-regression/scat_plot-1.png" style="display: block; margin: auto;" />
 
  Using MLR we can determine what relationships, if any, these three
-physical features have with the IQ scores. Our data set is in a tabular
-.txt format, so we will first load the data into R using the
+physical features have with the *PIQ* scores. Our data set is in a
+tabular .txt format, so we will first load the data into R using the
 `read.table()` function. We can view summary statistics for each of the
 variables and the structure of the dataset with the `summary()` and
 `str()` functions.
