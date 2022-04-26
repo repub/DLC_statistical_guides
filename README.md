@@ -44,7 +44,7 @@
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat504/lesson/two-way-anova-example">Two-way ANOVA</a></td>
-            <td><center></center></td>
+            <td><a href="https://tylerbg.github.io/DLC_stat_resources/docs/JMP/two-way-ANOVA"><center>JMP</center></a></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/anova/how-to/two-way-anova/before-you-start/example/ ">Minitab</a></center></td>
             <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/two-way-ANOVA">R</a></center></td>
             <td><center></center></td>
