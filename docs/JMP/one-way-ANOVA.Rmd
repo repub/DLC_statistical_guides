@@ -1,7 +1,4 @@
 ---
-title: "One-way ANOVA in JMP"
-author: "tylerbg"
-date: "4/23/2022"
 output: html_document
 editor_options: 
   chunk_output_type: console
