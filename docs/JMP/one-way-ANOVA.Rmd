@@ -11,7 +11,7 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# One-way Analysis of Variance (ANOVA)
+# One-way Analysis of Variance (ANOVA<sup>1</sup>)
 
 &emsp;For this tutorial we will be using a sample dataset from the [PSU STAT 500 Applied Statistics course](https://online.stat.psu.edu/stat500/lesson/10/10.1). The dataset contains measurements of tar content as measured by Lab Precise from three cigarette brands. A barplot for the tar content from each brand is shown below.
 
@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 &emsp; From briefly inspecting the barplot, there does appear to be a difference in tar content among the three cigarette brands. However, we should use a statistical test, in this case a one-way ANOVA, to quantitatively determine if there are differences in tar content among the brands based on the following statistical hypotheses and assumptions. We will use a threshold of 0.05 (sometimes shown as &alpha; = 0.05) to determine statistical significance in the following tests.
 
-###[Anova Assumptions]()
+###[Anova Assumptions](https://online.stat.psu.edu/stat500/lesson/10/10.2/10.2.1)
 
 &emsp;Since each of the tar measurements comes from a different brand of cigarette, we could safely assume that there is no dependence between the three brands and accept the assumption of independent observations. To assess other assumptions and if an one-way ANOVA fits our data set, we can first fit the model in JMP by selecting *Analyze* -> *Fit Y by X*.  In the pop-up window we will put "tar" as our *Y, Response* and "brand" as our *X, Factor*.  After selecting *OK* a new pop-up will display a plot with the grand mean (presented as a horizontal line) and the points for each measurement of tar content among the three brands of cigarettes.
 

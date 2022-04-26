@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo=TRUE, fig.path="img/one-way-ANOVA/",
 options(width=100)
 ```
 
-# One-way Analysis of Variance (ANOVA)
+# One-way Analysis of Variance (ANOVA<sup>1</sup>)
 
 &nbsp;&nbsp;&nbsp;&nbsp;For this tutorial we will be using a sample dataset from the [PSU STAT 500 Applied Statistics course](https://online.stat.psu.edu/stat500/lesson/10/10.1). The dataset contains measurements of tar content as measured by Lab Precise from three cigarette brands. A barplot presenting the means and standard deviations of the tar content from each brand is shown below.
 
