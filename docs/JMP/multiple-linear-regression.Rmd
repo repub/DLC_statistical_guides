@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 &emsp;More than likely we will be interested in the relationship between some response variable and more than one explanatory variable.  This is because a single independent variable rarely fully explains some dependent variable.  In these cases, rather than fitting a simple linear regression (SLR) model for each explanatory variable we can employ MLR, an extension of SLR, to assess these relationships in one statistical model.
 
-&emsp;In this example we will be using [this data set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/JMP/dat/iqsize.jmp) originally provided by the [Example 5-1 of the STAT 501 Regression Methods course](https://online.stat.psu.edu/stat501/lesson/5/5.1) course that includes data on participant's performance IQ score (*PIQ*), brain size (*Brain*), and two variables on body size, *Height* and *Weight*.
+&emsp;In this example we will be using [this data set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/JMP/dat/iqsize.jmp) originally provided by the [Example 5-1 of the STAT 501 Regression Methods course](https://online.stat.psu.edu/stat501/lesson/5/5.1) course that includes data on participant's performance IQ score (*PIQ*), brain size (*Brain*) measured from MRI scans and given as counts/10,000, and two variables on body size, *Height* in inches and *Weight* in pounds.
 
 <center>
 ![iqsize Scatterplot](img/iqsize_scatterplot.png)

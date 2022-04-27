@@ -47,7 +47,8 @@ set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/R/dat/iqsize
 provided by the [Example 5-1 of the STAT 501 Regression Methods
 course](https://online.stat.psu.edu/stat501/lesson/5/5.1) course that
 includes data on participant’s performance IQ score (*PIQ*), brain size
-(*Brain*), and two variables on body size, *Height* and *Weight*.
+(*Brain*) measured from MRI scans and given as counts/10,000, and two
+variables on body size, *Height* in inches and *Weight* in pounds.
 Plotting each of the variables against one another we can see that
 *Height*, *Weight*, and *Brain* each appear to have some positive
 relationship with one another, but what about with *PIQ*?
