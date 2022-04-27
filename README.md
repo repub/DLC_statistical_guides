@@ -30,7 +30,7 @@
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat415/lesson/11">T-tests</a></td>
-            <td><center></center></td>
+            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/JMP/t-tests">JMP</a></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/inference/how-to/two-samples/2-sample-t/before-you-start/example/ ">Minitab</a></center></td>
             <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/t-tests">R</a></center></td>
             <td><center></center></td>
