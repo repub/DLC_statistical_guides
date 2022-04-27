@@ -1,6 +1,11 @@
 ---
-output: html_document
-editor_options: 
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs/JMP';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='binary-logistic-regression.md') })
+output: github_document
+editor_options:
   chunk_output_type: console
 ---
 
@@ -26,7 +31,7 @@ knitr::opts_chunk$set(echo = TRUE)
 &emsp;To fit a binary logistic regression model we can select *Analyze* -> *Fit Model* then put *REMISS* in the *Y* box and our remaining six variables in the *Construct Model Effects* box.  In the *Personality* drop down tab make sure that either *Nominal Logistic* or *Ordinal Logistic* is selected (because our response variable is binary nominal and ordinal logistic regression will give the same results).  The remaining options we can leave at their defaults and we can select *Run* to fit the model.
 
 <center>
-![REMISS Full BLR](img/remiss_full_BLR.png)
+<img src="img/binary-logistic-regression/remiss_full_BLR.png" style="display: block; margin: auto;" />
 </center>
 
 &emsp;The first thing to note in the output is the *Whole Model Test* table which compares the log likelihoods of the full model (all six variables) against a model without any variables to determine whether the overall model has a statistically significant fit, which we see that our model does.  Next, we can check the *Parameter Estimates* table to check which variables are statistically significant predictors in the model, however as we can see none of the six variables have a p-value less than 0.05.  Conversely, in the *Effect Likelihood Ratio Tests* table we do see that one variable, *LI*, is significant.  Since both our overall model and the *LI* variable have statistically significant log likelihoods we can try fitting a new model that only includes *LI* predicting *REMISS*.
@@ -34,7 +39,7 @@ knitr::opts_chunk$set(echo = TRUE)
 &emsp;Again we select *Analyze* -> *Fit Model* and add *REMISS* to the *Y* box but now only include *LI* in the *Construct Model Effects* box.  Checking again that one of the logistic options are selected in the *Personality* drop down tab we can click *Run* to fit the new model.
 
 <center>
-![REMISS Full BLR](img/remiss_LI_BLR.png)
+<img src="img/binary-logistic-regression/remiss_LI_BLR.png" style="display: block; margin: auto;" />
 </center>
 
 &emsp;In the summary from our simpler model we see in the *Whole Model Test* table that again comparing the log likelihoods of the full model (this time just with *LI* as a predictor) against a model with only an intercept that the overall model significantly predicts *REMISS*.  Additionally, in the *Parameter Estimates* table we now see that *LI* is a statistically significant predictor with a p-value below 0.05.

@@ -1,6 +1,11 @@
 ---
-output: html_document
-editor_options: 
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs/JMP';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='t-tests.md') })
+output: github_document
+editor_options:
   chunk_output_type: console
 ---
 
@@ -17,13 +22,13 @@ knitr::opts_chunk$set(echo = TRUE)
 &emsp;The simplest form of the t-test is when we want to test the distribution of one sample against some predetermined value.  Let's say we hypothesized that on average students at the beginning of the semester have a normal blood cholesterol level (<200 mg/dL).  We can test this by first selecting *Analyze* -> *Distribution* and adding the *Student* variable to the *Y, Columns* box then selecting *OK*.
 
 <center>
-![Cholesterol One Mean](img/cholesterol_one_mean.png)
+<img src="img/t-tests/cholesterol_one_mean.png" style="display: block; margin: auto;" />
 </center>
 
 &emsp;The pop-up provides a histogram, boxplot, and summary statistics for the *Student* variable, from which we can note that the mean blood cholesterol value for the students at the beginning of the semester is 168.9 mg/dL.  However, we do want a statsitical test to determine whether this value is significantly lower than our normal blood cholesterol threshold of 200 mg/dL.  So, we can select the red arrow next to *Student* and select *Test Mean*.  In the pop-up window we specify our hypothesized mean to be 200 and select *OK*.
 
 <center>
-![Cholesterol One Mean2](img/cholesterol_one_mean2.png)
+<img src="img/t-tests/cholesterol_one_mean2.png" style="display: block; margin: auto;" />
 </center>
 
 &emsp;In the results from the t-test we are given the test statistic (t-value) and three p-values, one for a two-tailed t-test (*Prob > |t|*), and for the upper- (*Prob > t*) and lower-tailed t-tests (*Prob < t*).  Since our original hypothesis was that the average student blood cholesterol was below 200 mg/dL we can use the results from the lower-tailed t-test to conclude that yes, the students on average do have normal blood cholesterol levels at the beginning of the semester.
@@ -35,13 +40,13 @@ knitr::opts_chunk$set(echo = TRUE)
 &emsp;Now our data is formatted to run a two-sample t-test.  In the new data table we can select *Analyze* -> *Fit Y by X* and place the *Data* variable, which includes the blood cholesterol values, into the *Y, Response* box and *Label*, which has the groups for which the blood cholesterol values belong, into the *X, Factor* box.  After selecting *OK* a new window will pop up with a dot-plot of faculty and student blood cholesterol levels.
 
 <center>
-![Cholesterol Two Means](img/cholesterol_two_means.png)
+<img src="img/t-tests/cholesterol_two_means.png" style="display: block; margin: auto;" />
 </center>
 
 &emsp;Next, we can click the red arrow next to *Oneway Analysis of Data By Label* and select *t Test* to print out a summary of results.
 
 <center>
-![Cholesterol Two Means2](img/cholesterol_two_means2.png)
+<img src="img/t-tests/cholesterol_two_means2.png" style="display: block; margin: auto;" />
 </center>
 
 &emsp;Note again that the results table provides p-values for both two- and one-tailed t-tests.  Since we questioned whether there were differences between students and faculty blood cholesterol levels but not in one specific direction, we can take the results of the two-tailed t-test (*Prob > |t|*) to conclude that there is a statistically significant difference in the average blood cholesterol levels between students and faculty, with students having blood cholesterol levels ~25 mg/dL less than faculty on average.
@@ -53,7 +58,7 @@ knitr::opts_chunk$set(echo = TRUE)
 &emsp;For the paired t-test we can go back to our original data table that had all three variables, *Student*, *Faculty*, and *Student Finals*.  For the *Student* and *Student Finals* variables each row corresponds to the same participant in our study.  We will not need to stack the variables this time before running the test, so we can go ahead and start our analysis by selecting *Analyze* -> *Specialized Modeling* -> *Matched Pairs*.  In the resulting pop-up window place both *Student* and *Student Finals* in the *Y, Paired Response* box and select *OK* to run the paired t-test.
 
 <center>
-![Cholesterol Paired Means](img/cholesterol_paired_means.png)
+<img src="img/t-tests/cholesterol_paired_means.png" style="display: block; margin: auto;" />
 </center>
 
 &emsp;In the results window we see a plot of the differences in blood cholesterol values for each student as points, the average difference as a solid red line, and the 95% upper and lower confidence intervals as dashed red lines.  Below the plot are the summary statistics and results from the paired t-test.  Since our question was whether the blood cholesterol levels for students changed from the beginning of the semester to finals week and not in a specific direction, we can use the results from the two-tailed t-test (*Prob > |t|*), from which we can conclude that there is not a statistically significant change in student blood cholesterol levels between the beginning and end of the semester.

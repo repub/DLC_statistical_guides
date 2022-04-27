@@ -1,13 +1,17 @@
 
 # Poisson Regression
 
+ 
+
 ### Load the data
 
-    Here, we will use a dataset provided in [STAT 501 Regression
+ Here, we will use [this data
+set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/R/dat/crab.csv)
+provided in [STAT 501 Regression
 Methods](https://online.stat.psu.edu/stat504/lesson/9/9.2) that observed
 the relationship between the number of male crabs attaching to a female
-crab’s nest (*Satellites*) and characteristics of the female crab that
-include the color (*Color*), spine condition (*Spine*), weight
+crab’s nest (*Satellites*) and the characteristics of the female crab
+that include the color (*Color*), spine condition (*Spine*), weight
 (*Weight*), and carapace width (*Width*).
 
 To read the data into R, we can use the `read.table()` function and set
@@ -141,64 +145,16 @@ contrasts(crab$Color) <- matrix(c(-1/4, 3/4, -1/4, -1/4,
 ``` r
 library(tidyverse)
 
-ggplot(crab, aes(x = Color,  y = Satellites)) +
-  stat_summary(geom = "pointrange", fun.data = "mean_se") +
-  geom_jitter()
+ggplot(crab, aes(x = Color,  y = Satellites, fill = Color)) +
+  geom_violin(trim = FALSE) +
+  # stat_summary(geom = "pointrange", fun.data = "mean_se") +
+  geom_boxplot(width = 0.1, fill = "white") +
+  geom_jitter(alpha = 0.3, width = 0.1) +
+  scale_fill_brewer(palette="Blues") +
+  theme_bw()
 ```
 
-<img src="img/Poisson-regression/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
-
-``` r
-crab$C1 <- 1*(crab$Color == 1)
-crab$C2 <- 1*(crab$Color == 2)
-crab$C3 <- 1*(crab$Color == 3)
-crab$C4 <- 1*(crab$Color == 4)
-crab$S1 <- 1*(crab$Spine == 1)
-crab$S2 <- 1*(crab$Spine == 2)
-crab$S3 <- 1*(crab$Spine == 3)
-
-model <- glm(Satellites ~ C2 + C3 + C4 + S2 + S3 + Weight + Width,
-             data = crab,
-             family = poisson)
-summary(model)
-```
-
-    ## 
-    ## Call:
-    ## glm(formula = Satellites ~ C2 + C3 + C4 + S2 + S3 + Weight + 
-    ##     Width, family = poisson, data = crab)
-    ## 
-    ## Deviance Residuals: 
-    ##     Min       1Q   Median       3Q      Max  
-    ## -3.0291  -1.8632  -0.5991   0.9331   4.9449  
-    ## 
-    ## Coefficients:
-    ##             Estimate Std. Error z value Pr(>|z|)   
-    ## (Intercept) -0.35722    0.96700  -0.369  0.71182   
-    ## C2          -0.26491    0.16811  -1.576  0.11507   
-    ## C3          -0.51374    0.19536  -2.630  0.00855 **
-    ## C4          -0.53126    0.22692  -2.341  0.01922 * 
-    ## S2          -0.15044    0.21358  -0.704  0.48119   
-    ## S3           0.08742    0.11993   0.729  0.46604   
-    ## Weight       0.49712    0.16628   2.990  0.00279 **
-    ## Width        0.01651    0.04894   0.337  0.73582   
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ## 
-    ## (Dispersion parameter for poisson family taken to be 1)
-    ## 
-    ##     Null deviance: 632.79  on 172  degrees of freedom
-    ## Residual deviance: 549.56  on 165  degrees of freedom
-    ## AIC: 920.86
-    ## 
-    ## Number of Fisher Scoring iterations: 6
-
-``` r
-# vif(model)
-
-# model <- glm(Sa ~ W, family = poisson)
-# summary(model)
-```
+<img src="img/Poisson-regression/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
 ### Interpret the results
 
@@ -247,3 +203,86 @@ summary(crab.pois)
 ```
 
 ### Full code block
+
+### Poisson Regression with [The Children Ever Born Data](https://data.princeton.edu/wws509/datasets/#ceb)
+
+``` r
+ceb <- read.table("dat/ceb.txt", stringsAsFactors = TRUE)
+```
+
+``` r
+head(ceb)
+```
+
+    ##   dur   res  educ mean  var  n     y
+    ## 1 0-4  Suva  none 0.50 1.14  8  4.00
+    ## 2 0-4  Suva lower 1.14 0.73 21 23.94
+    ## 3 0-4  Suva upper 0.90 0.67 42 37.80
+    ## 4 0-4  Suva  sec+ 0.73 0.48 51 37.23
+    ## 5 0-4 urban  none 1.17 1.06 12 14.04
+    ## 6 0-4 urban lower 0.85 1.59 27 22.95
+
+``` r
+str(ceb)
+```
+
+    ## 'data.frame':    70 obs. of  7 variables:
+    ##  $ dur : Factor w/ 6 levels "0-4","10-14",..: 1 1 1 1 1 1 1 1 1 1 ...
+    ##  $ res : Factor w/ 3 levels "rural","Suva",..: 2 2 2 2 3 3 3 3 1 1 ...
+    ##  $ educ: Factor w/ 4 levels "lower","none",..: 2 1 4 3 2 1 4 3 2 1 ...
+    ##  $ mean: num  0.5 1.14 0.9 0.73 1.17 0.85 1.05 0.69 0.97 0.96 ...
+    ##  $ var : num  1.14 0.73 0.67 0.48 1.06 1.59 0.73 0.54 0.88 0.81 ...
+    ##  $ n   : int  8 21 42 51 12 27 39 51 62 102 ...
+    ##  $ y   : num  4 23.9 37.8 37.2 14 ...
+
+``` r
+dur.levels <- levels(ceb$dur)
+
+ceb$dur <- factor(ceb$dur, levels = dur.levels[c(1, 6, 2:5)])
+```
+
+-   dur = marriage duration
+-   res = residence type
+-   educ = education level
+-   mean = mean number of children ever born
+-   var = variance of children ever born
+-   n = number of women
+
+``` r
+ceb.pois <- glm(round(y) ~ dur + res + educ, data = ceb, family = "poisson")
+
+summary(ceb.pois)
+```
+
+    ## 
+    ## Call:
+    ## glm(formula = round(y) ~ dur + res + educ, family = "poisson", 
+    ##     data = ceb)
+    ## 
+    ## Deviance Residuals: 
+    ##      Min        1Q    Median        3Q       Max  
+    ## -18.2023   -4.1368   -0.3074    3.7858   16.2193  
+    ## 
+    ## Coefficients:
+    ##             Estimate Std. Error z value Pr(>|z|)    
+    ## (Intercept)  4.77392    0.04655  102.56  < 2e-16 ***
+    ## dur5-9       0.89541    0.05240   17.09  < 2e-16 ***
+    ## dur10-14     1.22136    0.05024   24.31  < 2e-16 ***
+    ## dur15-19     1.31091    0.04975   26.35  < 2e-16 ***
+    ## dur20-24     1.32965    0.04965   26.78  < 2e-16 ***
+    ## dur25-29     1.89210    0.04756   39.78  < 2e-16 ***
+    ## resSuva     -1.44312    0.02785  -51.83  < 2e-16 ***
+    ## resurban    -1.04901    0.02405  -43.62  < 2e-16 ***
+    ## educnone     0.16257    0.02168    7.50  6.4e-14 ***
+    ## educsec+    -1.94337    0.05208  -37.32  < 2e-16 ***
+    ## educupper   -0.88738    0.02951  -30.07  < 2e-16 ***
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## 
+    ## (Dispersion parameter for poisson family taken to be 1)
+    ## 
+    ##     Null deviance: 13735.6  on 69  degrees of freedom
+    ## Residual deviance:  2504.1  on 59  degrees of freedom
+    ## AIC: 2955.6
+    ## 
+    ## Number of Fisher Scoring iterations: 5

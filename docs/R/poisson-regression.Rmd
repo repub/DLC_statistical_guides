@@ -23,7 +23,7 @@ options(width = 100)
 
 ### Load the data
 
-&emsp;Here, we will use a dataset provided in [STAT 501 Regression Methods](https://online.stat.psu.edu/stat504/lesson/9/9.2) that observed the relationship between the number of male crabs attaching to a female crab's nest (*Satellites*) and characteristics of the female crab that include the color (*Color*), spine condition (*Spine*), weight (*Weight*), and carapace width (*Width*).
+&emsp;Here, we will use [this data set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/R/dat/crab.csv) provided in [STAT 501 Regression Methods](https://online.stat.psu.edu/stat504/lesson/9/9.2) that observed the relationship between the number of male crabs attaching to a female crab's nest (*Satellites*) and the characteristics of the female crab that include the color (*Color*), spine condition (*Spine*), weight (*Weight*), and carapace width (*Width*).
 
 To read the data into R, we can use the `read.table()` function and set `row.names = 1` so that the first column of the data (the observation number) is set as a rown name instead of its own variable.
 
