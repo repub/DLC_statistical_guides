@@ -18,7 +18,7 @@ options(width=100)
 
 # Multinomial Logistic Regression in R
 
-&emsp;For this example we will be using [this data set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/R/dat/cheese.csv) provided by the [STAT 504 Analysis of Discrete Data](https://online.stat.psu.edu/stat504/lesson/8/8.4/8.4.1) course.
+&emsp;For this example we will be using [this data set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/R/dat/cheese.csv) provided by the [STAT 504 Analysis of Discrete Data](https://online.stat.psu.edu/stat504/lesson/8/8.1) course.
 
 ```{r load_data}
 cheese <- read.csv("dat/cheese.csv", stringsAsFactors = TRUE)

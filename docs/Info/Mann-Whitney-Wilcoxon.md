@@ -1,0 +1,64 @@
+
+# Mann-Whitney U & Wilcoxon signed-rank tests
+
+ When we are comparing two groups that have an ordinal dependent
+variable or a continuous variable that does not meet the assumptions of
+the t-test (specifically not approximately normally distributed), we can
+look to the Mann-Whitney U test (also known as the Wilcoxon rank sum
+test), considered to be, though not always, the nonparametric
+alternative to the t-test. For example, you could have surveyed
+student’s perceptions toward two separate teaching styles using a
+5-point scale, or determine if males and females at a certain company
+have similar salaries.
+
+ The Mann-Whitney U test tests the null (<i>H<sub>0</sub></i>) and
+alternative (<i>H<sub>A</sub></i>) hypotheses:
+
+ <i>H<sub>0</sub></i>: The probability that a randomly drawn observation
+from one population will be greater than a randomly drawn observation
+from the second observation is 50%. Or, the two samples belong to the
+same population with the same median (M).
+<center>
+M<sub>1</sub> = M<sub>2</sub>
+</center>
+<br>  <i>H<sub>A</sub></i>: The two samples have different medians and
+thus do not come from the same population.
+<center>
+M<sub>1</sub> ≠ M<sub>2</sub>
+</center>
+
+<br>
+
+ Alternatively, if the dependent variable is ordinal or not
+approximately distributed and the two groups are paired the Mann-Whitney
+U test is no longer valid and is replaced with the Wilcoxon signed-rank
+test. Similarly, the Wilcoxon signed-rank test is considered, though not
+always, the nonparametric alternative to the paired t-test. Examples of
+when the Wilcoxon signed-rank test may be appropriate include if we
+compare student responses to a survey on a 5-point scale before and
+after an exam or if patient blood pressures are reduced after given a
+new pharmaceutical.
+
+  The Wilcoxon ranked sign test tests similar null and alternative
+hypotheses to the Mann-Whitney U test:
+
+ <i>H<sub>0</sub></i>: The median of the population differences between
+the two paired groups is 0.
+<center>
+M(pop<sub>1</sub> - pop<sub>2</sub>) = 0
+</center>
+<br>  <i>H<sub>A</sub></i>: The median of the population differences is
+not 0.
+<center>
+M(pop<sub>1</sub> - pop<sub>2</sub>) ≠ 0
+</center>
+
+<br>
+
+ Before committing to the Mann-Whitney U or the Wilcoxon signed-rank
+test it should determined if the following assumptions are valid:
+
+-   The **dependent variable is ordinal or continuous** and the
+    **independent variable has two groups**
+-   The observations are **independent** and **randomly sampled**
+-   Both groups have **symmetrical distributions**

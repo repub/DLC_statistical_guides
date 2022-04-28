@@ -91,7 +91,6 @@ ggplot(sleep, aes(x = factor(group), y = extra, fill = factor(group))) +
         plot.title = element_text(hjust = 0.5))
 ```
 
-
 ```{r sleep_test, message = TRUE}
 wilcox.test(extra ~ group, sleep, paired = TRUE, conf.int = TRUE)
 ```
