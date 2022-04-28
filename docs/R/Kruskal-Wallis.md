@@ -39,7 +39,7 @@ are presented in the figure below.
  From the plot above we might hypothesize that there are differences in
 the chick weights after being fed some of these supplemented feeds for 6
 weeks. In particular, we might suggest that the horsebean feed leads to
-lower chick weights than the other feeds
+lower chick weights than the other feeds.
 
  Before we start fitting a statistical model to the data we should get
 an idea of what it looks like. Using the `summary()` function we can
@@ -128,15 +128,15 @@ chickwts.dunn
     ## 15   soybean - sunflower -2.6897988 7.149510e-03 7.149510e-02
 
  Because we had 6 groups for pairwise comparisons we have
-*n* \* (*n* − 1)/2 = 6 \* (6 − 1)/2 = 15 total comparisons. As you can
-imagine, as the number of groups increases the number of pairwise
-comparisons nearly exponentially increases. The `dunnTest()` function
-already handles multiple test error correction for us (which we can
-choose to change the method of correction), however it can still be
-tedious to determine which p-values are statistical significant. To make
-things easier we can use the `ifelse()` function to create a new column
-that indicates which comparisons are below our statistical threshold of
-α = 0.05 as follows:
+![n\*(n-1) / 2 = 6\*(6-1) / 2 = 15](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;n%2A%28n-1%29%20%2F%202%20%3D%206%2A%286-1%29%20%2F%202%20%3D%2015 "n*(n-1) / 2 = 6*(6-1) / 2 = 15")
+total comparisons. As you can imagine, as the number of groups increases
+the number of pairwise comparisons nearly exponentially increases. The
+`dunnTest()` function already handles multiple test error correction for
+us (which we can choose to change the method of correction), however it
+can still be tedious to determine which p-values are statistical
+significant. To make things easier we can use the `ifelse()` function to
+create a new column that indicates which comparisons are below our
+statistical threshold of α = 0.05 as follows:
 
 ``` r
 chickwts.dunn$res$sig <- ifelse(chickwts.dunn$res$P.adj > 0.05, "", "*")

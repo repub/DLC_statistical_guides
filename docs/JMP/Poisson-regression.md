@@ -1,11 +1,11 @@
 
 # Poisson Regression
 
- When we are looking to determine which factor(s) are associated with
-some response variable that is a count of some occurrence (such as the
-number of birds that visit a bird feeder over an hour or the number of
-ticks found on bear cubs), we can use Poisson regression, a special type
-of Generalized Linear Regression.
+ When we are looking to determine whether some factors are associated
+with some response variable that is a count of some occurrence (such as
+the number of birds that visit a bird feeder over an hour or the number
+of ticks found on bear cubs), we can use Poisson regression, a special
+type of Generalized Linear Regression.
 
  For this example, we will use [this data
 set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/JMP/dat/crab.jmp)

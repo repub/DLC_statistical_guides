@@ -35,7 +35,7 @@ threshold of 200 mg/dL. So, we can select the red arrow next to
 hypothesized mean to be 200 and select *OK*.
 
 <center>
-<img src="img/t-tests/cholesterol_one_mean2.png" style="display: block; margin: auto;" />
+<img src="img/t-tests/cholesterol_one_mean2.PNG" style="display: block; margin: auto;" />
 </center>
 
  In the results from the t-test we are given the test statistic

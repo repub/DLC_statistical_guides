@@ -1,0 +1,77 @@
+
+# Kruskal-Wallis rank sum test
+
+ Typically when we have more than two treatments we are interested in
+comparing we apply the one-way ANOVA. However, when we decide that the
+one-way ANOVA may not be appropriate, such as when certain assumptions
+are violated or we have an unbalanced design with unequal variances, we
+can instead apply the Kruskal-Wallis rank sum test. Because the
+Kruskal-Wallis test is a non-parametric test we do not need to meet
+certain assumptions that accompany the parametric one-way ANOVA, such as
+equal variances and normally distributed data.
+
+ For this example we will be using the `chickwts` data set that is
+supplied in R but provided in [JMP format
+here](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/JMP/dat/chickwts.jmp).
+The data set includes chick weights measured in grams (*weight*) for 71
+chicks after being fed one of six supplemented feeds (*feed*) and are
+presented in the figure below.
+
+<center>
+<img src="img/Kruskal-Wallis/chickwts_boxplot.png" style="display: block; margin: auto;" />
+</center>
+
+<br>
+
+ From the plot above we might hypothesize that there are differences in
+the chick weights after being fed some of these supplemented feeds for 6
+weeks. In particular, we might suggest that the horsebean feed leads to
+lower chick weights than the other feeds.
+
+ To use the Kruskal-Wallis test we can select `Analyze -> Fit Y by X`
+then add *weight* to the *Y, Response* box and *feed* to the *X, Factor*
+box. After selecting *OK* we are given a dot plot with a horizontal line
+representing the grand mean of the data.
+
+<center>
+<img src="img/Kruskal-Wallis/chickwts_KW.PNG" style="display: block; margin: auto;" />
+</center>
+
+<br>
+
+ To get summary statistics from a Kruskal-Wallis test we can select the
+red down arrow next to *Oneway Analysis of weight By feed* then select
+`Nonparametric -> Wilcoxen Test`.
+
+<center>
+<img src="img/Kruskal-Wallis/chickwts_KW2.PNG" style="display: block; margin: auto;" />
+</center>
+
+<br>
+
+ From the results presented in the *1-Way Test, ChiSqaure Approximation*
+table we can see that at least one of the variables has a distribution
+that is significantly different from at least one of the other
+variables. Like the one-way ANOVA however, while the Kruskal-Wallis test
+indicaets that there are statistically significant differences among
+some of the variables it does not identify which variables are different
+from one another. We will need to use a post-hoc pairwise comparison
+test, for which the Dunn’s test is a commonly used post-hoc test for
+nonparametric tests. To use the Dunn’s test, we need to click the red
+arrow again next to *Oneway Analysis of weight By feed* then select
+`Nonparametric -> Nonparametric Multiple Comparisons -> Dunn All Pairs for Joint Ranks`.
+
+<center>
+<img src="img/Kruskal-Wallis/chickwts_Dunn.PNG" style="display: block; margin: auto;" />
+</center>
+
+<br>
+
+ The results from the Dunn’s tests indicate that out of the 15 pairwise
+comparisons 5 have statistically significant differences, which include:
+
+-   sunflower &gt; horsebean
+-   meatmeal &gt; horsebean
+-   sunflower &gt; lineseed
+-   linseed &lt; casein
+-   horsebean &lt; casein

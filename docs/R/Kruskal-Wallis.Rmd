@@ -18,6 +18,7 @@ options(width = 100)
 ```
 
 # Kruskal-Wallis rank sum test
+
 &emsp;Typically when we have more than two treatments we are interested in comparing we apply the one-way ANOVA.  However, when we decide that the one-way ANOVA may not be appropriate, such as when certain assumptions are violated or we have an unbalanced design with unequal variances, we can instead apply the Kruskal-Wallis rank sum test.  Because the Kruskal-Wallis test is a non-parametric test we do not need to meet certain assumptions that accompany the parametric one-way ANOVA, such as equal variances and normally distributed data.  Instead, the Kruskal-Wallis test has the following assumptions:
 
 * The dependent variable is **ordinal or continuous**
@@ -45,7 +46,7 @@ ggplot(chickwts, aes(x = feed, y = weight, color = feed)) +
         plot.title = element_text(hjust = 0.5))
 ```
 
-&emsp;From the plot above we might hypothesize that there are differences in the chick weights after being fed some of these supplemented feeds for 6 weeks.  In particular, we might suggest that the horsebean feed leads to lower chick weights than the other feeds
+&emsp;From the plot above we might hypothesize that there are differences in the chick weights after being fed some of these supplemented feeds for 6 weeks.  In particular, we might suggest that the horsebean feed leads to lower chick weights than the other feeds.
 
 &emsp;Before we start fitting a statistical model to the data we should get an idea of what it looks like.  Using the `summary()` function we can print summary statistics of each variable.
 
