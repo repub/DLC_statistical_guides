@@ -14,8 +14,8 @@ equal variances and normally distributed data.
 supplied in R but provided in [JMP format
 here](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/JMP/dat/chickwts.jmp).
 The data set includes chick weights measured in grams (*weight*) for 71
-chicks after being fed one of six supplemented feeds (*feed*) and are
-presented in the figure below.
+chicks after being fed one of six supplemented feeds (*feed*) for six
+weeks and are presented in the figure below.
 
 <center>
 <img src="img/Kruskal-Wallis/chickwts_boxplot.png" style="display: block; margin: auto;" />
@@ -75,3 +75,10 @@ comparisons 5 have statistically significant differences, which include:
 -   sunflower &gt; lineseed
 -   linseed &lt; casein
 -   horsebean &lt; casein
+
+ Therefore, we could interpret these results to conclude that sunflower,
+meatmeal, and casein feeds provided chicks with the highest weights
+while the linseed and horsebean fed chicks had the lowest weight after
+six weeks. We could then follow-up with a cost-benefit analysis to
+determine which of the feeds would produce chicks with the greatest
+weight at the lowest cost.

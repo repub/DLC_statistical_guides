@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 &emsp;Typically when we have more than two treatments we are interested in comparing we apply the one-way ANOVA.  However, when we decide that the one-way ANOVA may not be appropriate, such as when certain assumptions are violated or we have an unbalanced design with unequal variances, we can instead apply the Kruskal-Wallis rank sum test.  Because the Kruskal-Wallis test is a non-parametric test we do not need to meet certain assumptions that accompany the parametric one-way ANOVA, such as equal variances and normally distributed data.
 
-&emsp;For this example we will be using the `chickwts` data set that is supplied in R but provided in [JMP format here](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/JMP/dat/chickwts.jmp).  The data set includes chick weights measured in grams (*weight*) for 71 chicks after being fed one of six supplemented feeds (*feed*) and are presented in the figure below.
+&emsp;For this example we will be using the `chickwts` data set that is supplied in R but provided in [JMP format here](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/JMP/dat/chickwts.jmp).  The data set includes chick weights measured in grams (*weight*) for 71 chicks after being fed one of six supplemented feeds (*feed*) for six weeks and are presented in the figure below.
 
 <center>
 <img src="img/Kruskal-Wallis/chickwts_boxplot.png" style="display: block; margin: auto;" />
@@ -55,3 +55,4 @@ knitr::opts_chunk$set(echo = TRUE)
 * linseed < casein
 * horsebean < casein
 
+&emsp;Therefore, we could interpret these results to conclude that sunflower, meatmeal, and casein feeds provided chicks with the highest weights while the linseed and horsebean fed chicks had the lowest weight after six weeks.  We could then follow-up with a cost-benefit analysis to determine which of the feeds would produce chicks with the greatest weight at the lowest cost.
