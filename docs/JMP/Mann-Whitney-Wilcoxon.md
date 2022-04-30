@@ -1,23 +1,16 @@
 
 # Mann-Whitney U & Wilcoxon signed-rank tests
 
- When we have an ordinal dependent variable or a continuous variable
-that does not meet the assumptions of the t-test, we can look to the
-Mann-Whitney U test (also known as the Wilcoxon rank sum test). If the
-groups are paired then the Wilcoxon signed-rank test replaces the paired
-t-test as a non-parametric alternative. This means that while these
-tests do make the assumption that the two samples come from similarly
-shaped (symmetrical) distributions, those distributions do not need to
-be normally distributed (parametric).
-
 ### Mann-Whitney U test
 
  In this example we will use the `mtcars` data set that is provided in
-base R. The data set includes 10 aspects of automobile design and
-performance for 32 automobile models built between 1973 and 1974. We
-will specifically be interested in whether there are differences in
-miles per gallon (*mpg*) between the two types of transmission (*am*),
-automatic and manual.
+base R and supplied as a [JMP data table
+here](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/JMP/dat/mtcars.jmp).
+The data set includes 10 aspects of automobile design and performance
+for 32 automobile models built between 1973 and 1974. We will
+specifically be interested in whether there are differences in miles per
+gallon (*mpg*) between the two types of transmission (*am*), automatic
+and manual.
 
  To statistically determine if there are differences between these two
 types of transmissions we will use the Mann-Whitney U test. First, we
@@ -38,3 +31,61 @@ By am* then select `Nonparametric -> Wilcoxon Test`.
 </center>
 
 <br>
+
+ 
+
+### Wilcoxon signed-rank test
+
+ In the case that our data is paired the Mann-Whitney U test is no
+longer viable, so instead we should apply the Wilcoxon signed-rank test.
+In the [Student’s Sleep
+Study](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/JMP/dat/sleep.jmp)
+a table that contains data from 10 patients (*ID*) who were given two
+soporific drugs (*group*) to assess whether they experienced an increase
+in hours of sleep (*extra*).
+
+ Before we fit the Wilcoxon signed-rank test however we will need to
+transform our data so that the values recorded in *extra* are split into
+two columns, one for each *group* and with each row being one of the
+participants. To do so, we can select `Tables -> Split` and in the
+resulting pop-up window place *group* in the *Split By* box and *extra*
+in the *Split Columns* box. We can choose to keep the *ID* variable by
+selecting *Keep All* under *Remaining columns*, though it will not be
+required to properly reformat the data or run the test. After selecting
+*OK* a new data table with *extra* reformatted into two columns labeled
+*1* and *2* for groups 1 and 2.
+
+ Now we can run the Wilcoxon signed-rank test by selecting
+`Analyze -> Specialized Modeling -> Matched Pairs` then placing the *1*
+and *2* columns (prefereably in order) into the *Y, Paired Response* box
+and selecting *OK*.
+
+<center>
+<img src="img/Mann-Whitney-Wilcoxon/sleep_Wilcoxon.png" style="display: block; margin: auto;" />
+</center>
+
+<br>
+
+ In the print out we are given a plot with points for the differences
+between the two treatments for each participant with red lines
+representing the mean of those differences and upper and lower 95%
+confidence intervals. Below the plot we are provided summary statistics
+for those differences and the results from a paired t-test. To run a
+Wilcoxon signed-rank test we need to click the red arrow next to
+*Matched Pairs* then select `Wilcoxon Signed Rank`.
+
+<center>
+<img src="img/Mann-Whitney-Wilcoxon/sleep_Wilcoxon2.png" style="display: block; margin: auto;" />
+</center>
+
+<br>
+
+ In this output we are provided the test statistic for the Wilcoxon
+signed rank test (S) and the corresponding p-values for the two-tailed
+(*Prob&gt;\|S\|*) and the upper (*Prob&gt;S*) and lower (*Prob&lt;S*)
+one-tailed tests. Since we were interested in whether there were any
+differences in the amount of sleep between the two groups we will look
+at the results of the two-tailed test which indicates that there is a
+statistically significant difference between the two treatments.
+Therefore, we can conclude that the second treatment increases the
+amount of sleep significantly more than the first treatment.
