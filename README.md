@@ -19,7 +19,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td><a href="https://online.stat.psu.edu/stat500/lesson/8">Chi-square Test</a></td>
+            <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/chi-sq-test">Chi-square Test</a></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/JMP/chi-sq-test">JMP</a></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/19/help-and-how-to/statistics/tables/how-to/chi-square-test-for-association/before-you-start/example/ ">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/chi-sq-test">R</a></center></td>
