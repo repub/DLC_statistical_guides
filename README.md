@@ -12,7 +12,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td><a href="https://online.stat.psu.edu/stat504/lesson/3/3.3">Fisher's Exact Test</a></td>
+            <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/Fisher-exact-test">Fisher's Exact Test</a></td>
             <td><center></center></td>
             <td><center></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/Fisher-exact-test">R</a></center></td>
