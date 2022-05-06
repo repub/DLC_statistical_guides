@@ -1,28 +1,4 @@
 
-# Comparing Two Proportions
-
- 
-
- **Null hypothesis:** The proportions of the two variables are the
-equal.
-<center>
-<i>H<sub>0</sub>: p<sub>1</sub> = p<sub>2</sub></i>
-</center>
- <b>Alternative hypothesis:</b> The proportions of the two variables are
-not equal.
-<center>
-<i>H<sub>A</sub>: p<sub>1</sub> ≠ p<sub>2</sub></i>
-</center>
-
-<br>
-
- To statistically test the equality of two proportions the following
-assumptions should be valid.
-
--   The data was gathered by **simple random sampling**
--   The two samples are **independent**
--   Both groups follow a **binomial distribution**
-
 ### Performing a test of equal proportions
 
  For this R tutorial we will use the example from [Penn State’s
