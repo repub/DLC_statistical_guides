@@ -5,7 +5,7 @@
             <td colspan=5><center><b>Proportion Tests</b></center></td>
         </tr>
         <tr>
-            <td><a href="https://online.stat.psu.edu/stat415/lesson/9/9.4">Comparing Two Proportions</a></td>
+            <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/two-proportions">Comparing Two Proportions</a></td>
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/20/help-and-how-to/statistics/basic-statistics/how-to/2-proportions/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/two-proportions">R</a></center></td>
