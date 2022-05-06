@@ -17,9 +17,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE,
 options(width = 100)
 ```
 
-# The Chi-square (&chi;<sup>2</sup>) Test
-
-&emsp;When our data includes two categorical variables, we can determine if there is a statistically significant relationship (or alternatively dependence) between them with the &chi;<sup>2</sup> test. WIth the &chi;<sup>2</sup> test, we compare the observed counts (our data) with the expected counts if the data came from the same distributions.
+# Running the &chi;<sup>2</sup> test
 
 &emsp;For this tutorial we will use data from an example offered in [STAT 500 Applied Statistics](https://online.stat.psu.edu/stat500/lesson/8) where participants were asked to give their party affiliation (*Democrat* or *Republican*) and their opinion on a tax reform bill (*Favor*, *Indifferent*, or *Opposed*).
 
@@ -53,20 +51,6 @@ options(width = 100)
 <center><i>H<sub>0</sub></i>: No relationship exists between party affiliation and opinion on the tax reform bill</center>
 <center><i>H<sub>A</sub></i>: There is a significant relationship between party affiliation and opinion on the tax reform bill</center>
 <br>
-
-### [Assumptions and considerations](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3900058/)
-
-&emsp;Before using the &chi;<sup>2</sup> test to test association (or independence) we should make sure we meet the following conditions:
-
-* The data is in non-transformed counts or frequencies (not percentages)
-* Each level is mutually exclusive
-* Each subject or observation can only contribute data once
-* The expected value should be 5 or more for at least 80% of the cells and none should be < 1
-* No cells in the observations table should be 0
-
-&emsp;When either of the last two conditions are not satisfied then you may consider a [Fisher-exact test](https://tylerbg.github.io/DLC_stat_resources/docs/R/Fisher-exact-test).
-
-### Run the &chi;<sup>2</sup> test
 
 &emsp;Using the `data.frame()` function we can easily code the data from the above table into R going from top to bottom row-wise then left to right column-wise.  By putting the variable name before the `=` in each line we can set the desired names for each column then set the `row.names` option to add the desired names to the rows.
 

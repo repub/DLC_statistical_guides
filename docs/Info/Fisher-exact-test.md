@@ -4,7 +4,7 @@
  With the Fisher’s exact test we can statistically determine whether
 there are nonrandom associations between two categorical variables,
 typically when we have a small sample size. The test is commonly applied
-to 2x2 matrices (known as contengency tables), where it is assumed that
+to 2x2 matrices (known as contingency tables), where it is assumed that
 the counts in each row are dependent on which column they belong (or
 that the rows and columns are independent from one another). For
 example, we may be interested in whether there are differences in the
@@ -39,13 +39,14 @@ should determine whether the following assumptions are valid.
 -   The **expected counts is &lt; 5 but &gt; 1** for at least 20% of the
     observations (cells in the contingency table)
 
- While larger contengency tables (2x3, 2x4, etc.) and sample sizes can
+ While larger contingency tables (2x3, 2x4, etc.) and sample sizes can
 be used with the Fisher’s exact test, as either increases so does the
 computation time. This is because unlike some other statistical tests,
 Fisher’s exact test calculates the exact p-value. Therefore, for larger
 sample sizes (&gt;1000) or when the expected counts are &gt; 5 for at
-least 80% of the cells then a <i>χ</i><sup>2</sup> test may be
-preferred.
+least 80% of the cells then a [χ<sup>2</sup>
+test](https://tylerbg.github.io/DLC_statical_guides/docs/Info/chi-sq-test)
+may be preferred.
 
  After performing the Fisher’s exact test, with an exact p-value less
 than the chosen statistical threshold (typically α = 0.05) the null
