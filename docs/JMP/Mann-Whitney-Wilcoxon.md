@@ -27,7 +27,7 @@ and *am* to the *X, Factor* box then select *OK*.
 By am* then select `Nonparametric -> Wilcoxon Test`.
 
 <center>
-<img src="img/Mann-Whitney-Wilcoxon/mtcars_MW2.png" style="display: block; margin: auto;" />
+<img src="img/Mann-Whitney-Wilcoxon/mtcars_MW2.PNG" style="display: block; margin: auto;" />
 </center>
 
 <br>
