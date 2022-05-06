@@ -1,38 +1,5 @@
 
-# Fisher’s Exact Test
-
- With Fisher’s exact test we are testing whether the counts in each row
-are dependent on which column they belong (or that the rows and columns
-are independent from one another). We can phrase our statistical
-hypotheses as follows:
-
- **Null hypothesis:** The proportions of the two variables are the
-equal.
-<center>
-<i>H<sub>0</sub>: p<sub>1</sub> = p<sub>2</sub></i>
-</center>
- <b>Alternative hypothesis:</b> The proportions of the two variables are
-not equal.
-<center>
-<i>H<sub>A</sub>: p<sub>1</sub> ≠ p<sub>2</sub></i>
-</center>
-
-<br>
-
- Before using Fisher’s exact test to evaluate these hypotheses, we
-should determine whether the following
-[assumptions](https://online.stat.psu.edu/stat504/lesson/3/3.3) are
-valid.
-
--   The total counts are **fixed and not random**
--   **Small sample size**
--   The samples and observations are **independent** of each other
--   The observations are **mutually exclusive** and can be classified
-    into only one category
--   The **expected counts is &lt; 5 but &gt; 1** for at least 20% of the
-    observations
-
-### Performing Fisher’s exact test
+# Performing Fisher’s exact test
 
  In this tutorial we will be using data provided by [Freeman and
 Campbell from The University of

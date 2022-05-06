@@ -39,8 +39,6 @@ equation:
 <img src="img/two-proportions/z-test_eq.PNG" style="display: block; margin: auto;" />
 </center>
 
-<br>
-
 where <i>p</i><sub>1</sub> and <i>p</i><sub>2</sub> are the proportions
 from the first and second populations, <i>n</i><sub>1</sub> and
 <i>n</i><sub>2</sub> are their sample sizes, and <i>p</i> is the pooled
