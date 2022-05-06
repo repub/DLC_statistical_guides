@@ -68,7 +68,7 @@
         </tr>
         <tr>
             <td><a href="https://tylerbg.github.io/DLC_stat_resources/docs/Info/Mann-Whitney-Wilcoxon">Mann Whitney & Wilcoxon Tests</a></td>
-            <td><center></center></td>
+            <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/JMP/Mann-Whitney-Wilcoxon">JMP</a></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/inference/how-to/two-samples/mann-whitney-test/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://tylerbg.github.io/DLC_stat_resources/docs/R/Mann-Whitney-Wilcoxon">R</a></center></td>
             <td><center></center></td>
