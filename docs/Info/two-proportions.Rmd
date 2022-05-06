@@ -34,7 +34,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 &emsp;To compare the proportions, a z-statistic is first calculated in the equation:
 
-<div class="center">
+<center>
+<img src="img/two-proportions/z-test_eq.PNG" style="display: block; margin: auto;" />
+</center>
+<br>
 
-$$Z = \frac{(\hat{p_1} - \hat{p_2})}{\sqrt{\hat{p}(1 - \hat{p})(\frac{1}{n_1} + \frac{1}{n_2)}}}$$
-</div>
+where <i>p</i><sub>1</sub> and <i>p</i><sub>2</sub> are the proportions from the first and second populations, <i>n</i><sub>1</sub> and <i>n</i><sub>2</sub> are their sample sizes, and <i>p</i> is the pooled proportion from the two populations.
+
+&emsp;Once the z-statistic is calculated the corresponding p-value can be determined from the z-distribution.  A p-value less than the chosen statistical threshold (typically &alpha; = 0.05) allows the null hypothesis to be rejected, to conclude that there is a statistically significant difference in the proportions between the two populations.

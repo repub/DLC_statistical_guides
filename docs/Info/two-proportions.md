@@ -35,8 +35,19 @@ assumptions should be valid.
  To compare the proportions, a z-statistic is first calculated in the
 equation:
 
-<div class="center">
+<center>
+<img src="img/two-proportions/z-test_eq.PNG" style="display: block; margin: auto;" />
+</center>
 
-![Z = \\frac{(\\hat{p\_1} - \\hat{p\_2})}{\\sqrt{\\hat{p}(1 - \\hat{p})(\\frac{1}{n\_1} + \\frac{1}{n\_2)}}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Z%20%3D%20%5Cfrac%7B%28%5Chat%7Bp_1%7D%20-%20%5Chat%7Bp_2%7D%29%7D%7B%5Csqrt%7B%5Chat%7Bp%7D%281%20-%20%5Chat%7Bp%7D%29%28%5Cfrac%7B1%7D%7Bn_1%7D%20%2B%20%5Cfrac%7B1%7D%7Bn_2%29%7D%7D%7D "Z = \frac{(\hat{p_1} - \hat{p_2})}{\sqrt{\hat{p}(1 - \hat{p})(\frac{1}{n_1} + \frac{1}{n_2)}}}")
+<br>
 
-</div>
+where <i>p</i><sub>1</sub> and <i>p</i><sub>2</sub> are the proportions
+from the first and second populations, <i>n</i><sub>1</sub> and
+<i>n</i><sub>2</sub> are their sample sizes, and <i>p</i> is the pooled
+proportion from the two populations.
+
+ Once the z-statistic is calculated the corresponding p-value can be
+determined from the z-distribution. A p-value less than the chosen
+statistical threshold (typically α = 0.05) allows the null hypothesis to
+be rejected, to conclude that there is a statistically significant
+difference in the proportions between the two populations.
