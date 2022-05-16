@@ -29,7 +29,7 @@
             <td colspan=5><center><b>Parametric Tests</b></center></td>
         </tr>
         <tr>
-            <td><a href="https://online.stat.psu.edu/stat415/lesson/11">T-tests</a></td>
+            <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/t-tests">R</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/JMP/t-tests">JMP</a></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/inference/how-to/two-samples/2-sample-t/before-you-start/example/ ">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/t-tests">R</a></center></td>
