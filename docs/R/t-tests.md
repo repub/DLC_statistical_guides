@@ -1,21 +1,5 @@
 
-# T-tests
-
- Suppose we are interested in testing whether one sample mean deviates
-from some set value or if the means from two samples are unequal. In
-these cases we can rely on the t-test, as long as our samples meet the
-following assumptions:
-
--   The data is continuous,
--   approximately normally distributed,
--   randomly sampled from the population,
--   and independent (in the case of two-sample tests).
-
- While there are different forms of the t-test, they all are based on
-calculating a t-statistic that can be used to estimate a p-value from
-the t-distribution.
-
-### T-test for one mean
+# T-test for one mean
 
  The simplest form of the t-test is when we want to test the
 distribution of one sample against some predetermined value. For
@@ -81,7 +65,7 @@ hypothesis to conclude the mean blood cholesterol level for PSU students
 at the beginning of the semester is less than 200 mg/dL. The `t.test()`
 function also returns the mean of our sample, 168.9 mg/dL.
 
-### Two-sample t-test
+# Two-sample t-test
 
  Now let us say that we want to compare the average PSU student’s blood
 cholesterol with the faculty at Penn State. We similarly input their
@@ -144,7 +128,7 @@ the mean difference between the two groups is somewhere between -43 and
 -6.5. Higher (or lower) ranges for the confidence interval can be set
 through the `conf.level` option.
 
-### Paired t-test
+# Paired t-test
 
  Now let us say that we collected samples from the same group of
 students during finals week to see if their blood cholesterol levels
