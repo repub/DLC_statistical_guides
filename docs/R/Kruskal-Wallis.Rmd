@@ -19,18 +19,6 @@ options(width = 100)
 
 # Kruskal-Wallis rank sum test
 
-&emsp;Typically when we have more than two treatments we are interested in comparing we apply the one-way ANOVA.  However, when we decide that the one-way ANOVA may not be appropriate, such as when certain assumptions are violated or we have an unbalanced design with unequal variances, we can instead apply the Kruskal-Wallis rank sum test.  Because the Kruskal-Wallis test is a non-parametric test we do not need to meet certain assumptions that accompany the parametric one-way ANOVA, such as equal variances and normally distributed data.  Instead, the Kruskal-Wallis test has the following assumptions:
-
-* The dependent variable is **ordinal or continuous**
-* The observations are **independent** and **randomly sampled** from the population
-* The distributions for each group have the same shape
-
-&emsp;When these assumptions are met we can apply the Kruskal-Wallis test to test the null and alternative hypotheses:
-
-<center><i>H<sub>0</sub></i>: The population medians are equal</center>
-<center><i>H<sub>A</sub></i>: At least one of the population medians are not equal with the other medians</center>
-<br>
-
 &emsp;For this example we will be using the `chickwts` data set supplied in base R.  The data set includes chick weights measured in grams (*weight*) for 71 chicks after being fed one of six supplemented feeds (*feed*) and are presented in the figure below.
 
 ```{r plot_data, echo = FALSE}
