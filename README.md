@@ -36,7 +36,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td><a href="https://online.stat.psu.edu/stat500/lesson/10/10.1">One-way ANOVA</a></td>
+            <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/one-way-ANOVA">One-way ANOVA</a></td>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/JMP/one-way-ANOVA"><center>JMP</center></a></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/anova/how-to/one-way-anova/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/one-way-ANOVA">R</a></center></td>
