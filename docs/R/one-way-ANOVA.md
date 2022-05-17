@@ -16,19 +16,7 @@ should use a statistical test, in this case a one-way ANOVA, to
 quantitatively determine if there are differences in tar content among
 the brands based on the following statistical hypotheses and
 assumptions. We will use a threshold of 0.05 (sometimes shown as α =
-0.05) to determine statistical significance in the following tests.
-
-### [ANOVA hypotheses](https://online.stat.psu.edu/stat500/lesson/10/10.2)
-
--   **Null hypothesis:** the means of each group are equal.  
--   **Alternative hypothesis:** at least one of the group means is not
-    equal to the others.
-
-### [ANOVA assumptions](https://online.stat.psu.edu/stat500/lesson/10/10.2/10.2.1)
-
--   The observations are **independent**.
--   Each factor is **approximately normally distributed**.
--   The distributions of the factors have **equal variances**.
+0.05) to determine statistical significance.
 
     Since each of the tar measurements comes from a different brand of
 cigarette, we could safely assume that there is no dependence between

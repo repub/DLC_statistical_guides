@@ -1,14 +1,6 @@
 
 # Two-way Analysis of Variance (ANOVA<sup>2</sup>)
 
- For data sets with two factors the ANOVA<sup>2</sup> can be a powerful
-statistical tool when the data meets the following assumptions:
-
--   The data are continuous,
--   randomly sampled from the population,
--   approximately normally distributed,
--   and have equal variances between the groups.
-
  For this example we will use a data set from [STAT 414 Introduction to
 Mathematical
 Statistics](https://online.stat.psu.edu/stat415/lesson/14/14.1) where a

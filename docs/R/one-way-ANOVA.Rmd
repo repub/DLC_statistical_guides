@@ -49,18 +49,7 @@ arrows(barCenters, y_means$x, barCenters,
 box()
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;From briefly observing the barplot, there does appear to be a difference in tar content among the three cigarette brands. However, we should use a statistical test, in this case a one-way ANOVA, to quantitatively determine if there are differences in tar content among the brands based on the following statistical hypotheses and assumptions. We will use a threshold of 0.05 (sometimes shown as &alpha; = 0.05) to determine statistical significance in the following tests.
-
-### [ANOVA hypotheses](https://online.stat.psu.edu/stat500/lesson/10/10.2)
-
-- **Null hypothesis:** the means of each group are equal.  
-- **Alternative hypothesis:** at least one of the group means is not equal to the others.
-
-### [ANOVA assumptions](https://online.stat.psu.edu/stat500/lesson/10/10.2/10.2.1)
-
-- The observations are **independent**.
-- Each factor is **approximately normally distributed**.
-- The distributions of the factors have **equal variances**.
+&nbsp;&nbsp;&nbsp;&nbsp;From briefly observing the barplot, there does appear to be a difference in tar content among the three cigarette brands. However, we should use a statistical test, in this case a one-way ANOVA, to quantitatively determine if there are differences in tar content among the brands based on the following statistical hypotheses and assumptions. We will use a threshold of 0.05 (sometimes shown as &alpha; = 0.05) to determine statistical significance.
 
 &nbsp;&nbsp;&nbsp;&nbsp;Since each of the tar measurements comes from a different brand of cigarette, we could safely assume that there is no dependence between the three brands and accept the assumption of independent observations. We can check the assumption of normally distributed observations after we fit the model, but for the assumption of equal variances we can apply the Bartlett Test of Homogeneity of Variances using `bartlett.test()`. Before we can do so however, we will need to read our data into R.
 

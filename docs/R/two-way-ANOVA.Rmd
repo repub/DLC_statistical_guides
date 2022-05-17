@@ -19,13 +19,6 @@ options(width=100)
 
 # Two-way Analysis of Variance (ANOVA<sup>2</sup>)
 
-&emsp;For data sets with two factors the ANOVA<sup>2</sup> can be a powerful statistical tool when the data meets the following assumptions:
-
-* The data are continuous,
-* randomly sampled from the population,
-* approximately normally distributed,
-* and have equal variances between the groups.
-
 &emsp;For this example we will use a data set from [STAT 414 Introduction to Mathematical Statistics](https://online.stat.psu.edu/stat415/lesson/14/14.1) where a physiologist wanted to determine if smoking history affected how a subject responds to different types of stress tests. The time to maximum oxygen uptake (VO<sub>2max</sub>) was measured from subjects belonging to three different categories of smoking history (*Nonsmoker*, *Moderate*, and *Heavy*) while performing three different stress tests (*Bicycle*, *Step Test*, and *Treadmill*).
 
 ```{r two-way-plot, echo = FALSE}
