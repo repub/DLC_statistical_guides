@@ -74,7 +74,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td><a>Kruskal-Wallis Test</a></td>
+            <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/Kruskal-Wallis">Kruskal Wallis rank sum</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/JMP/Kruskal-Wallis">JMP</a></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/anova/how-to/kruskal-wallis-test/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/Kruskal-Wallis">R</a></center></td>
