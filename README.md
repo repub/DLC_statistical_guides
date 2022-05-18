@@ -19,7 +19,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/chi-sq-test">Chi-square Test</a></td>
+            <td><a href="docs/Info/chi-sq-test">Chi-square Test</a></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/JMP/chi-sq-test">JMP</a></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/19/help-and-how-to/statistics/tables/how-to/chi-square-test-for-association/before-you-start/example/ ">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/chi-sq-test">R</a></center></td>
@@ -29,7 +29,7 @@
             <td colspan=5><center><b>Parametric Tests</b></center></td>
         </tr>
         <tr>
-            <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/t-tests">T-tests</a></center></td>
+            <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/t-tests">T-tests</a></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/JMP/t-tests">JMP</a></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/inference/how-to/two-samples/2-sample-t/before-you-start/example/ ">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/t-tests">R</a></center></td>
@@ -74,7 +74,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/Kruskal-Wallis">Kruskal Wallis rank sum</a></center></td>
+            <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/Kruskal-Wallis">Kruskal Wallis rank sum</a></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/JMP/Kruskal-Wallis">JMP</a></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/anova/how-to/kruskal-wallis-test/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/Kruskal-Wallis">R</a></center></td>
