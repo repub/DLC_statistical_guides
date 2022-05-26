@@ -101,7 +101,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td><a href="https://online.stat.psu.edu/stat501/lesson/15/15.1">Binary Logistic (Logit) Regression</a></td>
+            <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/binary-logistic-regression">Binary Logistic (Logit) Regression</a></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/JMP/binary-logistic-regression">JMP</a></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/regression/how-to/binary-logistic-regression/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/binary-logistic-regression">R</a></center></td>
