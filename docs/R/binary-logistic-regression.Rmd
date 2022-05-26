@@ -19,15 +19,6 @@ options(width = 100)
 
 # Binary Logistic (Logit) Regression
 
-&emsp;When our response variable has only two outcomes (binary), such as *agree* and **disagree* or *yes* and *no*, we can estimate the log of odds for which of the two outcomes an observation may fall in from a set of predictors using binary logistic regression.  The assumptions for logit regression include:
-
-* The observations are independent
-* Little to no multicollinearity exists among the predictor variables
-* No extreme outliers or influential points
-* The sample size is sufficiently large
-
-### Fitting a logit model
-
 &emsp;For this example we will use this [data set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/R/dat/leukemia_remission.csv) originally provided in [STAT 501 Regression Methods](https://online.stat.psu.edu/stat501/lesson/15/15.1) that includes six possible factors that may predict Leukemia remission:
 
 * *BLAST* - absolute number of blasts in the peripheral blood
@@ -85,9 +76,8 @@ plot(remiss$LI, remiss$REMISS, pch = 19, col = "white",
 grid()
 points(remiss$LI, remiss$REMISS, pch = 19, col = rgb(0.31, 0.58, 0.8, alpha = 0.41))
 LI <- remiss$LI
-remiss.preds <-
-curve(predict(remiss.fit2, data.frame(LI = x), type="resp"), add = TRUE,
-      col = "tomato3", lwd = 2)
+remiss.preds <- curve(predict(remiss.fit2, data.frame(LI = x), type="resp"), add = TRUE,
+                      col = "tomato3", lwd = 2)
 # segments(0, 0.5, 1.3, 0.5, lty = 2)
 # segments(1.3, 0, 1.3, 0.5, lty = 2)
 ```

@@ -1,47 +1,6 @@
 
 # Multiple Linear Regression (MLR)
 
- More than likely we will be interested in the relationship between some
-response variable and more than one explanatory variable. This is
-because a single independent variable rarely fully explains some
-dependent variable. In these cases, rather than fitting a simple linear
-regression (SLR) model for each explanatory variable we can employ MLR,
-an extension of SLR, to assess these relationships in one statistical
-model. MLR tests the following
-[hypotheses](https://online.stat.psu.edu/stat501/lesson/5/5.3):
-
- **Null hypothesis:** The estimated coefficient
-(![\\beta](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta "\beta"))
-for variable *i* is equal to 0.  
-<center>
-<i>H<sub>0</sub></i>:<i> β<sub>i</sub> </i>=<i> 0</i>
-</center>
-
- 
-
- **Alternative hypothesis:**
-![\\beta\_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta_i "\beta_i")
-is not equal to 0.  
-<center>
-<i>H<sub>A</sub></i>:<i> β<sub>i</sub> </i>≠<i> 0</i>, or<i>
-H<sub>A</sub></i>:<i> β<sub>i</sub> </i>&gt;<i> 0 </i>or<i>
-β<sub>i</sub> </i>&lt;<i> 0</i>
-</center>
-
- 
-
- Additionally, with MLR we have the following
-[assumptions](https://online.stat.psu.edu/stat501/lesson/7/7.3):
-
--   The predictor and response variables have a **linear relationship**
--   The errors (residuals) are **independent**, **normally
-    distributed**, and have **equal variances**
--   The observations are **randomly selected** from the population
--   There are **no outliers or high leverage points**
--   The independent variables have **little to no multicollinearity**
-
-### Fitting a MLR model
-
  In this example we will be using [this data
 set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/R/dat/iqsize.txt)
 provided by the [Example 5-1 of the STAT 501 Regression Methods
