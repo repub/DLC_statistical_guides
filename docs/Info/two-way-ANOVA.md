@@ -1,74 +1,119 @@
 
-# Binary Logistic (Logit) Regression
+## Two-way Analysis of Variance (ANOVA<sup>2</sup>)
 
- When our response variable has only two outcomes (binary) we can
-estimate the log of odds for which of the two outcomes an observation
-may fall in from a set of predictors using binary logistic regression.
-For example, we may poll voters on whether they agree or disagree with a
-proposed bill, or we may test whether a new drug prevents ticks from
-biting dogs (yes or no). The logit model can then estimate the
-probabilities of the two outcomes occuring based on the independent
-variables then classifies (predicts) the outcome with the highest
-probability (&gt;50%) for each observation. The assumptions for logit
-regression include:
+ For data sets with two factors the ANOVA<sup>2</sup> can be a powerful
+statistical tool. For example, we may hypothesize that happiness scores
+vary by gender (male or female) and socioeconomic bracket (lower-,
+middle-, and upper-class), or that levels of water pollution in
+reservours differ by season (winter, spring, summer, and fall) and the
+local community type (village, town, or city). Similar to the
+ANOVA<sup>1</sup>, the ANOVA<sup>2</sup> has the following assumptions:
 
--   the observations are **independent** and **randomly sampled**,
--   **little to no multicollinearity exists** among the predictor
-    variables,
--   there are **no extreme outliers or influential points**,
--   the **sample size is sufficiently large**, and
--   a **linear relationship exists** between any continuous predictor
-    variables and the logit transformation of the response variable.
+-   The data are **continuous**,
+-   the observations are **randomly sampled** from the population,
+-   each factor is **approximately normally distributed**,
+-   there are no **significant outliers** or **high-leveradge points**,
+-   and there are **equal variances** among the groups.
 
- The first assumption is valid through study design, where the values of
-independent variables do not depend on another variable, and sampling
-method that randomly selects observations is chosen. Multicollinearity,
-outliers, and influential points can be assessed after model fitting
-similar to linear regression. There is no exact minimum number of
-observations required for logit regression, however [some studies
-suggest](https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/1471-2288-14-137)
-at least 20 observations per independent variable is necessary for a
-stable model. The linear relationship between the predictor varaibles
-and logit transformed response varaible can be assessed with the
-Box-Tidwell Transformation Test, which uses interaction terms for each
-variable and its natural log transformation to assess nonlinearity
-within the model, though can be ignored with a large sample size.
+ The ANOVA<sup>2</sup> tests the following null and alternative
+statistical hypotheses for each factor and their interaction:
 
- Logit regression tests similar null and alternative hypotheses as
-linear regression, specifically whether any of the coefficients for the
-independent variables are non-zero. These statistical hypotheses can be
-written as:
+1.  Is there a difference in the population means for Factor A
+    (<i>α</i>)?
 
- **Null hypothesis:** The estimated coefficient <i>β</i> for variable
-*i* is equal to 0.  
+    <center>
+
+    <i>H<sub>0</sub></i>: α<sub>1</sub> = α<sub>2</sub> = … =
+    α<sub>n</sub>
+
+    <center>
+
+    <i>H<sub>A</sub></i>: at least one <i>α<sub>i</sub></i> is not equal
+    to at least one other <i>α<sub>i</sub></i>
+
+    </center>
+
+    <br>
+
+2.  Is there a difference in the population means for Factor B
+    (<i>β</i>)?
+
+    <center>
+
+    <i>H<sub>0</sub></i>: β<sub>1</sub> = β<sub>2</sub> = … =
+    β<sub>n</sub>
+
+    <center>
+
+    <i>H<sub>A</sub></i>: at least one <i>β<sub>i</sub></i> is not equal
+    to at least one other <i>β<sub>i</sub></i>
+
+    </center>
+
+    <br>
+
+3.  Is there an interaction between Factors A and B?
+
+    <center>
+
+    <i>H<sub>0</sub></i>: Factors A and B do not influence one another
+
+    </center>
+    <center>
+
+    <i>H<sub>A</sub></i>: Factor A is influenced by Factor B, and vice
+    versa
+
+    </center>
+
+    <br>
+
+ The ANOVA method calculates what is known as a F-statistic by:
+
+1.  calculating the sum of squares (SS) differences between each of the
+    two factors A and B (SSA and SSB), the SS for the interaction
+    between factors A and B (SSAB), within each group (SSW also known as
+    SSE for error sum of squares), and the total sum of squares (SST),
+    which for the ANOVA<sup>1</sup> are the sum of the between- and
+    within-group SS,
+2.  determining the degrees of freedom (df),
+3.  calculating the mean squared errors (MSE) by dividing each SS by
+    their respective df,
+4.  calculating an F-value by dividing the MSE for the between groups
+    with the MSE for the within groups.
+
+An example ANOVA<sup>1</sup> table and the formulas for each calculation
+is:
+
 <center>
-<i>H<sub>0</sub></i>:<i> β<sub>i</sub> </i>=<i> 0</i>
+<img src="img/two-way-ANOVA/SS-table.PNG" style="display: block; margin: auto;" />
 </center>
 
- 
+<br>
 
- **Alternative hypothesis:** <i>β<sub>i</sub></i> is not equal to 0.  
-<center>
-<i>H<sub>A</sub></i>:<i> β<sub>i</sub> </i>≠<i> 0</i>, or<i>
-H<sub>A</sub></i>:<i> β<sub>i</sub> </i>&gt;<i> 0 </i>or<i>
-β<sub>i</sub> </i>&lt;<i> 0</i>
-</center>
+ From the F-value, an approximated p-value is then derived from the
+F-distribution. A p-value that falls below the chosen statistical
+threshold (typically α = 0.05) is considered statistically significant,
+where the null hypothesis can be rejected in favor of the alternative.
 
- 
+ Note that the primary purpose of using an ANOVA<sup>2</sup> over two
+separate ANOVA<sup>1</sup>s for each factor is to test whether there is
+an interaction between those two factors and should be checked first in
+the results. A statistically significant interaction term would indicate
+that Factor A influences Factor B (and vice versa), thus interpreting
+the other effects would be misleading. Post-hoc tests, such as Tukey’s
+Honestly Significant Difference (HSD) test, can report the simple main
+effects of the interaction, or the difference in Factor A at each level
+of Factor B and the difference in Factor B at each level of Factor A.
 
- These hypotheses can be tested through the Wald test, where the square
-of each estimated coefficient divided by its standard error is compared
-with a χ<sup>2</sup> distribution with 1 degree of freedom. However,
-this method can be unreliable with small sample sizes and variables with
-large estimated coefficients. Likelihood ratio tests can be an
-alternative method for testing these hypotheses when there is concern
-that the Wald test may be unreliable.
-
- Unlike linear regression, a p-value estimated from a F-statistic
-calculated by the sum of squares is not viable. Instead, goodness of fit
-tests, such as the χ<sup>2</sup> goodness of fit test or the
-Hosmer-Lemeshow test, are needed to determine how well the overall model
-fits the data. In these tests, a significant p-value would indicate that
-the model does not describe the response variable well, or that the
-values for the response variable are significantly different from the
-values predicted by the model.
+ If the interaction term is not significant, then you do not need to run
+a new model without the interaction term but can continue with
+interpreting the main effects. The ANOVA<sup>2</sup> does not indicate
+which group means differ from one another, only that at least one of the
+group means are different statistically. To determine which specific
+group means statistically differ then a post-hoc pairwise comparison
+test is needed. Tukey’s HSD test is most valid when the assumption of
+equal variance is valid, otherwise the Games-Howell post hoc test may be
+more appropriate. Alternatively, pairwise t-tests using the Bonferroni,
+Benjamini-Hocheburg, Waller-Duncan, or a number of other multiple test
+correction methods can be used.
