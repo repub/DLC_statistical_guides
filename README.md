@@ -19,7 +19,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td><a href="docs/Info/chi-sq-test">Chi-square Test</a></td>
+            <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/chi-sq-test">Chi-square Test</a></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/JMP/chi-sq-test">JMP</a></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/19/help-and-how-to/statistics/tables/how-to/chi-square-test-for-association/before-you-start/example/ ">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/chi-sq-test">R</a></center></td>
@@ -115,7 +115,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td>Ordinal Logistic Regression</td>
+            <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/ordinal-logistic-regression">Ordinal Logistic Regression</a></td>
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/regression/how-to/ordinal-logistic-regression/before-you-start/example/">Minitab</a></center></td>
             <td><center></center></td>
