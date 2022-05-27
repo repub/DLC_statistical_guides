@@ -6,11 +6,30 @@ estimate the log of odds for which of the two outcomes an observation
 may fall in from a set of predictors using binary logistic regression.
 For example, we may poll voters on whether they agree or disagree with a
 proposed bill, or we may test whether a new drug prevents ticks from
-biting dogs (yes or no). The logit model can then estimate the
-probabilities of the two outcomes occuring based on the independent
-variables then classifies (predicts) the outcome with the highest
-probability (&gt;50%) for each observation. The assumptions for logit
-regression include:
+biting dogs (yes or no).
+
+ The logit model estimates the probabilities of the two outcomes
+occurring based on the estimated regression coefficients then classifies
+(predicts) the outcome that has the highest probability (&gt;50%) for
+each observation. The logit regression model equation has the formula:
+
+<center>
+<img src="img/binary-logistic-regression/logit-eq.PNG" style="display: block; margin: auto;" />
+</center>
+
+<br>
+
+where <i>P<sub>i</sub></i> is the probability of an event occurring for
+observation *i*, <i>ϵ<sub>i</sub></i> is the error term for observation
+*i*, <i>β<sub>.</sub></i> are the regression coefficients for *k*
+variables with <i>β<sub>0</sub></i> representing the intercept, and
+<i>x<sub>i.</sub></i> the value for variable *k* in observation *i*. The
+natural log (*ln*) of the probabilities in the left quantity are known
+as a logit, or the log odds that the event occurs, while the regression
+coefficients indicate by how much and in which direction the log odds
+change given a change in the respective independent variable.
+
+ The assumptions for logit regression include:
 
 -   the observations are **independent** and **randomly sampled**,
 -   **little to no multicollinearity exists** among the predictor
