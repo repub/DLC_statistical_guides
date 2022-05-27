@@ -95,3 +95,14 @@ H<sub>A</sub></i>:<i> β<sub>i</sub> </i>&gt;<i> 0 </i>or<i>
 </center>
 
  
+
+ These hypotheses can be tested using multiple methods, but commonly
+either the Wald test, where the square of each estimated coefficient
+divided by its standard error is compared with a χ<sup>2</sup>
+distribution with 1 degree of freedom, or when the sample size is large
+a t-test which calculates a t-statistic to approximate a p-value based
+on the standard normal distribution. To test the overall fit of the
+model, the χ<sup>2</sup> goodness of fit test can be employed where a
+significant p-value would indicate that the model does not describe the
+response variable well, or that the values for the response variable are
+significantly different from the values predicted by the model.
