@@ -50,17 +50,24 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td><a href="https://online.stat.psu.edu/stat505/lesson/8/8.2">MANOVA</a></td>
-            <td><center></center></td>
-            <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/anova/how-to/general-manova/before-you-start/example/">Minitab</a></center></td>
-            <td><center></center></td>
-            <td><center></center></td>
-        </tr>
-        <tr>
             <td><a href="https://online.stat.psu.edu/stat502_fa21/lesson/9">ANCOVA</a></td>
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/anova/supporting-topics/anova-models/understanding-covariates/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/ANCOVA">R</a></center></td>
+            <td><center></center></td>
+        </tr>
+        <tr>
+            <td><a href="[https://online.stat.psu.edu/stat502_fa21/lesson/9](https://repub.github.io/DLC_statistical_guides/docs/Info/repeated-measures-ANOVA)">Repeated Measures ANOVA</a></td>
+            <td><center></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/anova/supporting-topics/basics/analyzing-a-repeated-measures-design/">Minitab</a></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
+        </tr>
+        <tr>
+            <td><a href="https://online.stat.psu.edu/stat505/lesson/8/8.2">MANOVA</a></td>
+            <td><center></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/anova/how-to/general-manova/before-you-start/example/">Minitab</a></center></td>
+            <td><center></center></td>
             <td><center></center></td>
         </tr>
         <tr>
