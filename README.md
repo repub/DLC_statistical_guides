@@ -57,7 +57,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td><a href="[https://online.stat.psu.edu/stat502_fa21/lesson/9](https://repub.github.io/DLC_statistical_guides/docs/Info/repeated-measures-ANOVA)">Repeated Measures ANOVA</a></td>
+            <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/repeated-measures-ANOVA">Repeated Measures ANOVA</a></td>
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/anova/supporting-topics/basics/analyzing-a-repeated-measures-design/">Minitab</a></center></td>
             <td><center></center></td>
