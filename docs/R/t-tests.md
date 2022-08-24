@@ -1,5 +1,5 @@
 
-<header>
+<div class="header">
 
 <div id="toc_container">
 
@@ -25,7 +25,7 @@ Contents
 
 </div>
 
-</header>
+</div>
 
 # T-test for one mean <a name="t-test-one-mean"></a>
 
