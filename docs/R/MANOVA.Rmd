@@ -19,118 +19,209 @@ options(width = 100)
 
 # MANOVA
 
-[Example dataset from PSU STAT 505](https://online.stat.psu.edu/stat505/lesson/8/8.4)
+&emsp;For this tutorial we will employ functions from three different packages:
 
-```{r load_data}
-pottery <- read.csv("dat/pottery.csv", stringsAsFactors = TRUE)
-```
+* `car` (Companion to Applied Regression) that includes additional statistical tests,
+* `rstatix` which provides pipe-friendly statistical tests, and
+* `tidyverse` that contains multiple packages for data manipulation, visualization, and analysis.
 
-
-```{r MANOVA_plot, echo = FALSE}
-#### Convert dataset to long & add full names
+```{r load-libs}
+library(car)
+library(rstatix)
 library(tidyverse)
-pottery.long <- pivot_longer(pottery, Al:Na)
-pottery.long$Site <- as.character(pottery.long$Site)
-pottery.long <- pottery.long %>% mutate(Site = recode(Site,
-                                      "L" = "Llanedyrn",
-                                      "C" = "Caldicot",
-                                      "I" = "Isle Thorns",
-                                      "A" = "Ashley Rails"))
-pottery.long$Site <- as.factor(pottery.long$Site)
-
-ggplot(pottery.long, aes(x = name, y = value, color = Site)) +
-  geom_point(alpha = 0.55, position = position_dodge(0.55), size = 3) +
-  theme_bw() +
-  labs(x = "Element", y = "Abundance (log10(ppm))") +
-  scale_y_log10() +
-  scale_color_manual(values = c("steelblue3", "goldenrod3", "tomato1", "forestgreen")) +
-  theme(legend.position = "bottom")
 ```
 
+&emsp;After loading the packages we can bring in the data set we will be working with using the `read_csv()` function.  This dataset includes red and white wines (`type`) that vary among three quality levels (`quality`) with five measures of their chemical attributes:
 
+* `residual_sugar` - grams per liter of sugars remaining after fermentation
+* `pH` - acidity as measured by the negative log<sub>10</sub> of the solution's hydronium ion concentration
+* `alcohol` - percent volumn that is alcohol
+* `chlorides` - grams per liter of sodium chloride
+* `sulphates` - grams per liter of potassium sulphate
 
-```{r MANOVA}
-pottery.manova <- manova(cbind(Al, Fe, Mg, Ca, Na) ~ Site, data = pottery)
+```{r load-data}
+wine <- read_csv("../dat/wine-quality.csv")
 
-summary(pottery.manova)
+head(wine)
 ```
 
-```{r ANOVA_summaries}
-summary.aov(pottery.manova)
+&emsp;Note that the `type` and `quality` variables are enccoded as characters.  This is usually fine, but for ease of use we should go ahead and recode them to factors.  For the `type` variable we can code is as a normal factor, however the `quality` variable is actually ordered, so we should recode it as an ordered factor.
+
+```{r to-factor}
+wine$type <- factor(wine$type)
+wine$quality <- factor(wine$quality,
+                       levels = c("mediocre", "good", "very good"),
+                       ordered = TRUE)
+
+str(wine)
 ```
+
+&emsp;From the output of `str()` we can see that `type` and `quality` are now coded as a factor and an ordered factor where its levels are ordered as *mediocre* < *good* < *very good*, respectively.
 
 ```{r}
-summary.lm(pottery.manova)
+wine %>%
+  pivot_longer(cols = c(residual_sugar, pH, alcohol, chlorides, sulphates)) %>%
+  ggplot(aes(x = name, y = value, color = factor(quality))) +
+    geom_boxplot() +
+    facet_wrap(~ type) +
+    labs(x = NULL) +
+    theme_bw() +
+    theme(axis.text = element_text(angle = 45, vjust = 0.5, hjust = 1))
 ```
 
 
 
-### Fit a MANOVA
+## Check assumptions
 
-```{r}
-summary(iris)
+&emsp;Before starting the MANOVA analysis we should first check whether some of its assumptions are valid with this data set.  These assumptions include:
+
+* Adequate *sample size*,
+* No *outliers* or *high leverage points*,
+* Approximately multivariate *normality*,
+* No major *multicollinearity*, and
+* Homogeneity of covariances, or *heteroskedacity*.
+
+### Sample size
+
+&emsp;For the MANOVA test to be valid, the number of observations (n) for each group (g) must be greater than the number of outcome variables (p).  With this data, we have 2 levels in the `type` variable and 3 levels in the `quality` variable for 2x3 = 6 total groups, so we will want our n for each group to be greater than 6.  We can use the `group_by()` function to create our groups then count the number of observations within them with the `summarize()` and `n()` functions.
+
+```{r sample-size}
+wine %>%
+  group_by(type, quality) %>%
+  summarize(n = n())
 ```
 
+&emsp;
+
+### Check for outliers
+
+#### Multivariate outliers
+
+&emsp;To flag multivariate outliers we can calculate the Mahalanobis distances for each point, then compare those distances against a &chi;<sup>2</sup> distribution where the degrees of freedom is equal to the number of outcome variables (in this case 3) and &alpha; = 0.001.  We first group our independent variables of interest, <i>type</i> and <i>quality</i>, using `group_by()` then calculate the Mahalanobis distances with the `mahalanobis_distance()` funciton.  We will also use the `filter()` function to only print out significant outliers.
+
+```{r mult-outliers}
+wine %>%
+  group_by(type, quality) %>%
+  mahalanobis_distance() %>%
+  filter(is.outlier == TRUE)
+```
+
+&emsp;Since the output is empty we can conclude that there are no significant multivariate outliers as determined by the Mahalanobis distance.
+
+#### Univariate outliers
+
 ```{r}
-library(tidyverse)
+wine %>%
+  group_by(type, quality) %>%
+  identify_outliers(pH)
 
-iris.long <- pivot_longer(iris, Sepal.Length:Petal.Width)
-iris.long$name <- gsub("\\.", " ", iris.long$name)
+wine %>%
+  group_by(type, quality) %>%
+  identify_outliers(residual_sugar)
 
-ggplot(iris.long, aes(x = name, y = value, color = Species)) +
-  geom_boxplot(outlier.shape = NULL) +
-  geom_jitter(alpha = 0.55, position = position_jitterdodge(dodge.width = 0.75)) +
-  theme_bw() +
-  labs(x = NULL) +
-  scale_color_brewer(palette = "Set2")
-  theme(legend.position = "bottom")
+wine %>%
+  group_by(type, quality) %>%
+  identify_outliers(`alcohol`)
+```
 
+### Test assumptions of normality
+
+#### Multivariate normality test
+
+```{r mshapiro}
+wine %>%
+  select(pH, alcohol, residual_sugar, chlorides, sulphates) %>%
+  mshapiro_test()
+```
+
+#### Univariate normality test
+
+```{r shapiro}
+wine %>%
+  group_by(type, quality) %>%
+  shapiro_test(residual_sugar, pH, alcohol, chlorides, sulphates) %>%
+  adjust_pvalue(method = "BH") %>%
+  add_significance() %>%
+  print(n = Inf)
+```
+
+### Correlation test
+
+```{r cor}
+wine %>%
+  select(residual_sugar:sulphates) %>%
+  cor_mat()
+```
+
+### Homogeneity of covariance
+
+```{r box-m}
+wine %>%
+  select(residual_sugar:sulphates) %>%
+  box_m(wine$quality)
+```
+
+```{r levene}
+wine %>%
+  pivot_longer(cols = c(pH, alcohol, residual_sugar, chlorides, sulphates)) %>%
+  group_by(name) %>%
+  levene_test(value ~ type * quality) %>%
+  adjust_pvalue() %>%
+  add_significance()
 ```
 
 
-```{r}
-iris.manova <- manova(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ Species,
-                      data = iris)
+## One-way MANOVA
 
-summary(iris.manova)
+```{r}
+wine_manova1 <- manova(cbind(pH, alcohol, residual_sugar, chlorides, sulphates) ~ quality,
+                       data = wine)
+
+Manova(wine_manova1, test.statistic = "Pillai")
+Manova(wine_manova1, test.statistic = "Wilks")
+Manova(wine_manova1, test.statistic = "Hotelling-Lawley")
+Manova(wine_manova1, test.statistic = "Roy")
 ```
 
+### Post-hoc ANOVA
 ```{r}
-summary.aov(iris.manova)
+wine %>%
+  pivot_longer(cols = c(pH, alcohol, residual_sugar, chlorides, sulphates)) %>%
+  group_by(name) %>%
+  anova_test(value ~ quality)
+```
+
+### Post-hoc pairwise comparisons
+
+```{r}
+wine %>%
+  tukey_hsd(alcohol ~ quality)
 ```
 
 
+
+## Two-way MANOVA
+
 ```{r}
-iris.aov <- aov(Sepal.Width ~ Species, data = iris)
-TukeyHSD(iris.aov)
+wine_manova2 <- manova(cbind(pH, alcohol, residual_sugar, chlorides, sulphates) ~ quality * type,
+                       data = wine)
+
+Manova(wine_manova2, test.statistic = "Pillai", type = 3)
 ```
 
-
-
-
-
-
-# MANOVA with the Car Ratings data set
+### Post-hoc ANOVA
 
 ```{r}
-ratings <- read.csv("dat/Car_Lock_Ratings.csv", header = TRUE, stringsAsFactors = TRUE)
+wine %>%
+  pivot_longer(cols = c(pH, alcohol, residual_sugar, chlorides, sulphates)) %>%
+  group_by(name) %>%
+  anova_test(value ~ quality + type, type = 2)
 ```
 
-```{r}
-head(ratings)
-str(ratings)
-```
+### Post-hoc pairwise comparisons
 
 ```{r}
-ratings.manova <- manova(cbind(Usability.Rating, Quality.Rating) ~ Method * Plant, data = ratings)
-
-summary(ratings.manova, test = "Wilks")
-
-
-summary(car::Manova(ratings.manova, type = 3))
-```
-
-```{r}
-summary.aov(ratings.manova)
+wine %>%
+  tukey_hsd(alcohol ~ quality)
 ```
 

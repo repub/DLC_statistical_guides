@@ -1,0 +1,61 @@
+type,quality,residual_sugar,pH,alcohol,chlorides,sulphates
+red,good,1.8,3.38,11.8,0.066,0.72
+red,good,2,2.94,9.2,0.082,0.66
+red,good,3,3.16,11.5,0.103,1
+red,good,2.5,3.27,9.3,0.097,0.6
+red,good,2.6,3.36,9.4,0.093,0.86
+red,good,3.6,3.39,11,0.067,0.66
+red,good,2,3.22,11.2,0.12,0.58
+red,good,2,3.37,9.4,0.082,0.5
+red,good,8.8,3.38,10.1,0.084,0.64
+red,good,2,3.11,10.1,0.067,0.97
+red,mediocre,7.9,3.27,9.3,0.086,0.57
+red,mediocre,2.9,3.14,9.4,0.089,0.54
+red,mediocre,2.6,3.22,13,0.056,0.37
+red,mediocre,2.1,3.38,10.3,0.07,0.6
+red,mediocre,2.4,3.36,10,0.081,0.53
+red,mediocre,2.5,3.22,9.7,0.08,1.07
+red,mediocre,2.5,3.53,9.5,0.076,0.55
+red,mediocre,2.7,3.13,9.5,0.095,0.51
+red,mediocre,2.6,3.28,9.8,0.078,0.51
+red,mediocre,2,3.25,9.4,0.074,0.54
+red,very good,1.8,3.41,11.9,0.075,0.76
+red,very good,1.7,3.32,11.9,0.054,0.8
+red,very good,1.6,3.54,12.2,0.054,0.62
+red,very good,2.2,3.44,11.5,0.062,0.72
+red,very good,1.9,3.18,10.9,0.078,1.04
+red,very good,3.4,3.17,12.2,0.128,0.84
+red,very good,1.9,2.98,11.8,0.083,0.63
+red,very good,1.5,3.26,10.6,0.058,0.82
+red,very good,2.2,3.07,9.2,0.075,0.84
+red,very good,1.2,3.57,13,0.046,0.85
+white,good,8.5,3.22,10.5,0.033,0.56
+white,good,2.3,3.13,12.8,0.051,0.52
+white,good,1.7,3.15,10.3,0.057,0.41
+white,good,13.5,3,10.7,0.038,0.63
+white,good,10.8,3.08,10.1,0.042,0.4
+white,good,11.25,3.02,12.4,0.032,0.38
+white,good,1.7,3.2,10.2,0.038,0.62
+white,good,3.3,3.16,10.5,0.048,0.5
+white,good,4.55,3.37,9.5,0.053,0.67
+white,good,1.7,3.24,13.13333333,0.021,0.95
+white,mediocre,12.9,3.08,9.4,0.033,0.49
+white,mediocre,18.15,3.06,9.2,0.05,0.5
+white,mediocre,15.6,3.06,9.5,0.049,0.68
+white,mediocre,1.2,3.24,9.5,0.05,0.37
+white,mediocre,7.2,3.12,9.2,0.048,0.37
+white,mediocre,1.2,3.06,9.1,0.051,0.46
+white,mediocre,16.75,3.15,9.2,0.05,0.54
+white,mediocre,11.5,3.22,9.5,0.04,0.56
+white,mediocre,6.5,3.14,9.5,0.056,0.44
+white,mediocre,5.6,2.96,11,0.039,0.52
+white,very good,1.5,3.32,10.4,0.037,0.51
+white,very good,12.6,3.04,10,0.044,0.56
+white,very good,6.2,3.21,12.2,0.039,0.35
+white,very good,1.1,3.34,12.8,0.022,0.38
+white,very good,4.2,3.35,10.7,0.044,0.44
+white,very good,1.3,3.08,12.3,0.031,0.62
+white,very good,3.8,3.31,11.3,0.038,0.5
+white,very good,2.7,3.24,13,0.045,0.48
+white,very good,15.55,3.42,9.1,0.058,0.36
+white,very good,12.8,3.14,9.1,0.053,0.49

@@ -17,7 +17,20 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE,
 options(width=100)
 ```
 
-# T-test for one mean
+<div id="toc_container">
+<p class="toc_title">Contents</p>
+<ul class="toc_list">
+  <li><a href="t-test-one-mean">1 T-tests for one mean</a>
+  <ul>
+    <li>1.1 First Sub Point 1</li>
+    <li>1.2 First Sub Point 2</li>
+  </ul>
+</li>
+<li>2 Second Point Header</li>
+</ul>
+</div>
+
+# T-test for one mean <a name="t-test-one-mean"></a>
 
 &emsp;The simplest form of the t-test is when we want to test the distribution of one sample against some predetermined value.  For example, say we designed a study to determine if the average student at Penn State has a normal blood cholesterol value (<200 mg/dL).  At the beginning of the semester we recruited 12 students who donated their blood and we measured their cholesterol levels.  We can manually input the results into R as follows:
 

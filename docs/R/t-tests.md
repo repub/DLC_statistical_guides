@@ -1,10 +1,34 @@
 
-# T-test for one mean
+<div id="toc_container">
+
+<p class="toc_title">
+Contents
+</p>
+<ul class="toc_list">
+<li>
+<a href="t-test-one-mean">1 T-tests for one mean</a>
+<ul>
+<li>
+1.1 First Sub Point 1
+</li>
+<li>
+1.2 First Sub Point 2
+</li>
+</ul>
+</li>
+<li>
+2 Second Point Header
+</li>
+</ul>
+
+</div>
+
+# T-test for one mean <a name="t-test-one-mean"></a>
 
  The simplest form of the t-test is when we want to test the
 distribution of one sample against some predetermined value. For
 example, say we designed a study to determine if the average student at
-Penn State has a normal blood cholesterol value (&lt;200 mg/dL). At the
+Penn State has a normal blood cholesterol value (\<200 mg/dL). At the
 beginning of the semester we recruited 12 students who donated their
 blood and we measured their cholesterol levels. We can manually input
 the results into R as follows:
@@ -32,8 +56,8 @@ cholesterol levels (x̄) are below that threshold, we set the
 (H<sub>0</sub>) and alternative (H<sub>A</sub>) hypotheses to:
 
 <center>
-<i>H<sub>0</sub></i>: <i>x̄</i> ≥ <i>200, H<sub>A</sub></i>: <i>x̄</i>
-&lt; <i>200</i>
+<i>H<sub>0</sub></i>: <i>x̄</i> ≥ <i>200, H<sub>A</sub></i>: <i>x̄</i> \<
+<i>200</i>
 </center>
 
 <br>
@@ -164,12 +188,12 @@ t.test(PSU_student, PSU_student2, paired = TRUE)
     ## 
     ## data:  PSU_student and PSU_student2
     ## t = -1.4269, df = 11, p-value = 0.1814
-    ## alternative hypothesis: true difference in means is not equal to 0
+    ## alternative hypothesis: true mean difference is not equal to 0
     ## 95 percent confidence interval:
     ##  -10.381676   2.215009
     ## sample estimates:
-    ## mean of the differences 
-    ##               -4.083333
+    ## mean difference 
+    ##       -4.083333
 
  The test results suggest that there is not a statistically significant
 difference in student blood cholesterol levels from the beginning of the
