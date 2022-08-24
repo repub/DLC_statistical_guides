@@ -17,6 +17,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE,
 options(width=100)
 ```
 
+<header>
 <div id="toc_container">
 <p class="toc_title">Contents</p>
 <ul class="toc_list">
@@ -29,6 +30,7 @@ options(width=100)
 <li>2 Second Point Header</li>
 </ul>
 </div>
+</header>
 
 # T-test for one mean <a name="t-test-one-mean"></a>
 
