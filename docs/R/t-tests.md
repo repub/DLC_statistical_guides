@@ -6,24 +6,30 @@
 <p class="toc_title">
 Contents
 </p>
-<!-- <ul class="toc_list"> -->
-<!--   <li><a href="t-test-one-mean">T-tests for one mean</a> -->
-<!--   <!-- <ul> --> <!--   <!--   <li>1.1 First Sub Point 1</li> -->
-<!--   <!--   <li>1.2 First Sub Point 2</li> --> <!--   <!-- </ul> -->
-<!--   </li> -->
-<!--   <li><a href="two-sample-t-test">Two-sample t-test</a></li> -->
-<!--   <li><a href="paired-t-test">Paired-t test</a></li> -->
-<!--   <li><a href="full-code-block">Full code block</a></li> -->
-<!-- </ul> -->
+<ul class="toc_list">
+<li>
+<a href="#t-test-one-mean">T-tests for one mean</a> <!-- <ul> -->
+<!--    <li>1.1 First Sub Point 1</li> -->
+<!--    <li>1.2 First Sub Point 2</li> --> <!-- </ul> -->
+</li>
+<li>
+<a href="#two-sample-t-test">Two-sample t-test</a>
+</li>
+<li>
+<a href="#paired-t-test">Paired t-test</a>
+</li>
+<li>
+<a href="#full-code-block">Full code block</a>
+</li>
+</ul>
 
 </div>
 
-[T-test for one mean](#t-test-one-mean)<br> [Two-sample
-t-test](#two-sample-t-test)<br> [Paired t-test](#paired-t-test)<br>
-[Full code block](#full-code-block)
 </aside>
 
-# T-test for one mean <a id="t-test-one-mean"></a>
+<a id="t-test-one-mean"></a>
+
+# T-test for one mean
 
  The simplest form of the t-test is when we want to test the
 distribution of one sample against some predetermined value. For
@@ -89,7 +95,9 @@ hypothesis to conclude the mean blood cholesterol level for PSU students
 at the beginning of the semester is less than 200 mg/dL. The `t.test()`
 function also returns the mean of our sample, 168.9 mg/dL.
 
-# Two-sample t-test <a name="two-sample-t-test"></a>
+<a name="two-sample-t-test"></a>
+
+# Two-sample t-test
 
  Now let us say that we want to compare the average PSU student’s blood
 cholesterol with the faculty at Penn State. We similarly input their
@@ -152,7 +160,9 @@ the mean difference between the two groups is somewhere between -43 and
 -6.5. Higher (or lower) ranges for the confidence interval can be set
 through the `conf.level` option.
 
-# Paired t-test <a name="paired-t-test"></a>
+<a name="paired-t-test"></a>
+
+# Paired t-test
 
  Now let us say that we collected samples from the same group of
 students during finals week to see if their blood cholesterol levels
@@ -204,7 +214,9 @@ accept the null hypothesis that there is not a difference in student
 blood cholesterol between the beginning of the semester and final’s
 week.
 
-### Full Code Block <a name="full-code-block"></a>
+<a name="full-code-block"></a>
+
+### Full Code Block
 
 ``` r
 # Input student blood cholesterol data from the beginning of the semester
