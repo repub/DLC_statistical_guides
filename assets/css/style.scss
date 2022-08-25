@@ -41,3 +41,10 @@ li::after {
   overflow: hidden;
   visibility: hidden;
 }
+
+aside {
+  float: left;
+  width: 270px;
+  position: fixed;
+  top: 300px;
+}
