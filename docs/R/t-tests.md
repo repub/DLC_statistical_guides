@@ -6,28 +6,24 @@
 <p class="toc_title">
 Contents
 </p>
-<ul class="toc_list">
-<li>
-<a href="t-test-one-mean">T-tests for one mean</a> <!-- <ul> -->
-<!--   <li>1.1 First Sub Point 1</li> -->
-<!--   <li>1.2 First Sub Point 2</li> --> <!-- </ul> -->
-</li>
-<li>
-<a href="two-sample-t-test">Two-sample t-test</a>
-</li>
-<li>
-<a href="two-sample-t-test">Paired-t-test</a>
-</li>
-<li>
-<a href="two-sample-t-test">Full code block</a>
-</li>
-</ul>
+<!-- <ul class="toc_list"> -->
+<!--   <li><a href="t-test-one-mean">T-tests for one mean</a> -->
+<!--   <!-- <ul> --> <!--   <!--   <li>1.1 First Sub Point 1</li> -->
+<!--   <!--   <li>1.2 First Sub Point 2</li> --> <!--   <!-- </ul> -->
+<!--   </li> -->
+<!--   <li><a href="two-sample-t-test">Two-sample t-test</a></li> -->
+<!--   <li><a href="paired-t-test">Paired-t test</a></li> -->
+<!--   <li><a href="full-code-block">Full code block</a></li> -->
+<!-- </ul> -->
 
 </div>
 
+[T-test for one mean](#t-test-one-mean)<br> [Two-sample
+t-test](#two-sample-t-test)<br> [Paired t-test](#paired-t-test)<br>
+[Full code block](#full-code-block)
 </aside>
 
-# T-test for one mean <a name="t-test-one-mean"></a>
+# T-test for one mean <a id="t-test-one-mean"></a>
 
  The simplest form of the t-test is when we want to test the
 distribution of one sample against some predetermined value. For
