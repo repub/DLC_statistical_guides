@@ -2,8 +2,9 @@ url: "https://repub.github.io/DLC_statistical_guides"
 
 theme: jekyll-theme-minimal
 
+katex: true
+
 # Google Analytics
 google_analytics: G-CEG0HBMVJQ
 
 logo: "/assets/images/PSU_LIB_RGB_2C.png"
-
