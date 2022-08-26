@@ -3,7 +3,7 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs/R';
   rmarkdown::render(input_file,
     encoding=encoding,
-    output_file='t-tests.md') })
+    output_file='t-tests.html') })
 output:
   html_document:
     css: style.scss
@@ -44,7 +44,7 @@ options(width=100)
 PSU_student <- c(170, 230, 175, 145, 149, 165, 164, 150, 167, 151, 178, 183)
 ```
 
-```{r one_mean_plot, echo = FALSE, fig.width = 4, fig.show = 'hide'}
+```{r one_mean_plot, echo = FALSE, fig.width = 4}
 stripchart(PSU_student, vertical = TRUE, pch = 16, cex = 2,
            col = rgb(.275, .51, .706, alpha = 0.55),
            main = "Student blood cholesterol levels\nat the beginning of the semester",
@@ -52,8 +52,6 @@ stripchart(PSU_student, vertical = TRUE, pch = 16, cex = 2,
 abline(h = 200, lty = 3, lwd = 2, col = "tomato")
 abline(h = mean(PSU_student), lty = 2, lwd = 2, col = "steelblue3")
 ```
-
-<img src="img/t-tests/one_mean_plot-1.png" align="left">
 
 &emsp;The stripchart on the left shows the distribution of our data, from which we will employ a t-test to assess if the mean blood cholesterol from these 12 students at the beginning of the semester (blue dashed line) is significantly lower than the normal threshold of 200 mg/dL (red dotted line).  We will decide to use a significance threshold of &alpha; = 0.05.
 
