@@ -56,14 +56,5 @@ aside {
 
 
 a:hover {
-    font-weight:bold;
-}
-
-a::before {
-    display: block;
-    content: attr(title);
-    font-weight: bold;
-    height: 0;
-    overflow: hidden;
-    visibility: hidden;
+    font-weight: normal;
 }
