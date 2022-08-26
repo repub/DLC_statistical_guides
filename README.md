@@ -1,4 +1,4 @@
-<h1>Links to Statistical Resources</h1>
+<h1>Links to Statistical Guides</h1>
 <table style="width:75%">
     <tbody>
         <tr>

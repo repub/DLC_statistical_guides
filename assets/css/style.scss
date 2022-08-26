@@ -17,8 +17,7 @@ section{
     border: 1px solid #e5e5e5;
     border-radius: 5px;
     display: table;
-    font-size: 100%;
-    margin-bottom: 1em;
+    font-size: 18px;
     padding-top: 8px;
     padding-right: 15px;
     padding-bottom: 8px;
@@ -52,5 +51,11 @@ aside {
   width: 270px;
   position: fixed;
   top: 300px;
-  left: 80px;
+  left: calc((100vw - 1200px)/2);
+}
+
+
+a:hover {
+    font-weight: normal;
+    color: #080a82;
 }
