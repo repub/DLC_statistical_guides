@@ -6,8 +6,7 @@ knit: (function(input_file, encoding) {
     output_file='MANOVA2.html') })
 output:
   html_document:
-    theme: null
-    highlight: null
+    css: style.scss
 editor_options:
   chunk_output_type: console
 ---
