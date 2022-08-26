@@ -3,8 +3,10 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs/R';
   rmarkdown::render(input_file,
     encoding=encoding,
-    output_file='MANOVA.md') })
-output: github_document
+    output_file='MANOVA2.html') })
+output:
+  html_document:
+    code_folding: hide
 editor_options:
   chunk_output_type: console
 ---
@@ -123,7 +125,7 @@ wine %>%
 &emsp;
 
 
-### Outliers
+### Outliers {.tabset .tabset-fade .tabset-pills}
 
 
 #### Multivariate outliers

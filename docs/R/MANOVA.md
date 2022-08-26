@@ -1,39 +1,5 @@
 
 <!-- TABLE OF CONTENTS -->
-<!-- <aside> -->
-<!--   <div id="toc_container"> -->
-<!--   <p class="toc_title">Contents</p> -->
-<!--   <ul class="toc_list"> -->
-<!--     <li><a href="#manova">MANOVA</a></li> -->
-<!--     <li><a href="#checking-assumptions">Checking assumptions</a> -->
-<!--     <ul> -->
-<!--        <li><a href="#sample-size">Sample size</a></li> -->
-<!--        <li><a href="#outliers">Outliers</a> -->
-<!--        <ul> -->
-<!--          <li><a href="#multivariate-outliers">Multivariate outliers</a></li> -->
-<!--          <li><a href="#univariate-outliers">Univariate outliers</a></li> -->
-<!--        </ul></li> -->
-<!--        <li><a href="#normality">Normality</a> -->
-<!--        <ul> -->
-<!--          <li><a href="#multivariate-normality-test">Multivariate normality test</a></li> -->
-<!--          <li><a href="#univariate-normality-test">Univariate normality test</a></li> -->
-<!--        </ul></li> -->
-<!--        <li><a href="#correlations">Correlations</a></li> -->
-<!--        <li><a href="#heteroskedasticity">Heteroskedasticity</a></li> -->
-<!--     </ul></li> -->
-<!--     <li><a href="#one-way-manova">One-way MANOVA</a> -->
-<!--     <ul> -->
-<!--       <li><a href="#post-hoc-anova">Post-hoc ANOVA</a></li> -->
-<!--       <li><a href="#post-hoc-pairwise-comparisons">Pos-hoc pairwise comparisons</a></li> -->
-<!--     </ul></li> -->
-<!--     <li><a href="#two-way-manova">Two-way MANOVA</a> -->
-<!--     <ul> -->
-<!--       <li><a href="#post-hoc-anova2">Post-hoc ANOVA</a></li> -->
-<!--       <li><a href="#post-hoc-pairwise-comparisons2">Pos-hoc pairwise comparisons</a></li> -->
-<!--     </ul></li> -->
-<!--   </ul> -->
-<!--   </div> -->
-<!-- </aside> -->
 <aside>
 
 <div id="toc_container">
