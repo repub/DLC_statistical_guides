@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=10">
 
-{% seo %}
+<!--{% seo %}
     <!--<link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | absolute_url }}">
     <!--<link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
     <!--[if lt IE 9]>
@@ -47,8 +47,6 @@
         {% if site.github.is_project_page %}
         <p class="view"><small><a href="https://libraries.psu.edu/research/research-data-services/statistical-consultations">Schedule an appointment with a PSU Libraries Statistical Consultant</a></small></p>
         {% endif %}
-{% seo %}
-        <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | absolute_url }}">
       </footer>
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | 
@@ -64,4 +62,8 @@
     </script>
     {% endif %}
   </body>
+  <head>
+ {% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+  </head>
 </html>
