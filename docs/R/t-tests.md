@@ -8,7 +8,7 @@ Contents
 </p>
 <ul class="toc_list">
 <li>
-<a href="#t-test-one-mean">T-tests for one mean</a> <!-- <ul> -->
+<a href="#t-test-for-one-mean">T-tests for one mean</a> <!-- <ul> -->
 <!--    <li>1.1 First Sub Point 1</li> -->
 <!--    <li>1.2 First Sub Point 2</li> --> <!-- </ul> -->
 </li>
@@ -26,8 +26,6 @@ Contents
 </div>
 
 </aside>
-
-<a id="t-test-one-mean"></a>
 
 # T-test for one mean
 
@@ -95,8 +93,6 @@ hypothesis to conclude the mean blood cholesterol level for PSU students
 at the beginning of the semester is less than 200 mg/dL. The `t.test()`
 function also returns the mean of our sample, 168.9 mg/dL.
 
-<a name="two-sample-t-test"></a>
-
 # Two-sample t-test
 
  Now let us say that we want to compare the average PSU student’s blood
@@ -160,8 +156,6 @@ the mean difference between the two groups is somewhere between -43 and
 -6.5. Higher (or lower) ranges for the confidence interval can be set
 through the `conf.level` option.
 
-<a name="paired-t-test"></a>
-
 # Paired t-test
 
  Now let us say that we collected samples from the same group of
@@ -214,9 +208,7 @@ accept the null hypothesis that there is not a difference in student
 blood cholesterol between the beginning of the semester and final’s
 week.
 
-<a name="full-code-block"></a>
-
-### Full Code Block
+### Full code block
 
 ``` r
 # Input student blood cholesterol data from the beginning of the semester
