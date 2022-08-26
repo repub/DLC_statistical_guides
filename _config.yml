@@ -1,5 +1,4 @@
-baseurl: "/DLC_statistical_guides"
-url: "https://repub.github.io"
+url: "https://repub.github.io/DLC_statistical_guides"
 
 theme: jekyll-theme-minimal
 
