@@ -1,4 +1,10 @@
+baseurl: "/DLC_statistical_guides"
+url: "https://repub.github.io"
+layout: default
+
 theme: jekyll-theme-minimal
+
+katex: true
 
 # Google Analytics
 google_analytics: G-CEG0HBMVJQ
