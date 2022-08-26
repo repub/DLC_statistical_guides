@@ -292,8 +292,11 @@ wine %>%
 
 ### Post-hoc pairwise comparisons
 
+
+<details>
+<summary>Output</summary>
 ```{r}
 wine %>%
   tukey_hsd(alcohol ~ quality)
 ```
-
+</details>

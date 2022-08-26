@@ -511,6 +511,11 @@ wine %>%
 
 ### Post-hoc pairwise comparisons
 
+<details>
+<summary>
+Output
+</summary>
+
 ``` r
 wine %>%
   tukey_hsd(alcohol ~ quality)
@@ -522,3 +527,5 @@ wine %>%
     ## 1 quality mediocre good               0    0.907   0.0585      1.75 0.0336   *           
     ## 2 quality mediocre very good          0    1.55    0.707       2.40 0.000135 ***         
     ## 3 quality good     very good          0    0.648  -0.200       1.50 0.166    ns
+
+</details>
