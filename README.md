@@ -224,7 +224,7 @@
             <td><center> </center></td>
             <td><center> </center></td>
             <td><center> </center></td>
-            <td colspan=3><center><a href="https://www.rstudio.com/products/rstudio/download/">R Studio     </a><a href="https://www.r-project.org/">R</a></center></td>
+            <td colspan=3><center><a href="https://www.rstudio.com/products/rstudio/download/">R Studio&emsp;&emsp;&emsp;&emsp;&emsp;</a><a href="https://www.r-project.org/">R</a></center></td>
             <td><center> </center></td>
             <td><center> </center></td>
             <td><center> </center></td>
