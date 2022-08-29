@@ -180,31 +180,43 @@
 <table style="width:90%">
     <tbody>
         <tr>
+            <td> </td>
             <td><center>Free Software</center></td>
+            <td> </td>
             <td> </td>
             <td><center>Paid Software</center></td>
         <tr>
+            <td> </td>
             <td><center><a href="https://softwarerequest.psu.edu/Home/AllReleases">AMOS 28 (PSU)</a></center></td>
+            <td> </td>
             <td> </td>
             <td><center><a href="https://www.ibm.com/support/pages/downloading-ibm-spss-amos-26">AMOS 26</a></center></td>
         </tr>
         <tr>
+            <td> </td>
             <td><center><a href="https://softwarestore.psu.edu/sas-license/-8501">JMP 16 Pro (PSU)</a></center></td>
+            <td> </td>
             <td> </td>
             <td><center><a href="https://www.jmp.com/en_us/software/buy-jmp.html">JMP 16</a></center></td>
         </tr>
         <tr>
-            <td><center><a href="https://softwarestore.psu.edu/minitab-license/-7885">Minitab Web App (PSU)</a>&emsp;&emsp;<a href="https://softwarestore.psu.edu/minitab-license/-7885">Minitab Express (PSU)</a>&emsp;&emsp;<a href="https://softwarestore.psu.edu/minitab-license/-8291">Minitab 19 (PSU)</a></center></td>
+            <td><center><a href="https://softwarestore.psu.edu/minitab-license/-7885">Minitab Web App (PSU)</a></center></td>
+            <td><center><a href="https://softwarestore.psu.edu/minitab-license/-7885">Minitab Express (PSU)</a></center></td>
+            <td><center><a href="https://softwarestore.psu.edu/minitab-license/-8291">Minitab 19 (PSU)</a></center></td>
             <td> </td>
             <td><center><a href="https://www.minitab.com/en-us/support/downloads/">Minitab 19</a></center></td>
         </tr>
         <tr>
+            <td> </td>
             <td><center><a href="https://www.r-project.org/">R</a>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a href="https://www.rstudio.com/products/rstudio/download/">R Studio</a></center></td>
+            <td> </td>
             <td> </td>
             <td><center> </center></td>
         </tr>
         <tr>
+            <td> </td>
             <td><center><a href="https://softwarestore.psu.edu/brand/spss-license">SPSS 28 (PSU)</a></center></td>
+            <td> </td>
             <td> </td>
             <td><center><a href="https://www.ibm.com/support/pages/downloading-ibm-spss-statistics-26">SPSS 26</a></center></td>
         </tr>
