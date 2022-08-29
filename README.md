@@ -181,12 +181,12 @@
     <tbody>
         <tr>
             <td> </td>
-            <td><center>Free Software</center></td>
+            <td><center><b>Free Software</b></center></td>
             <td> </td>
             <td> </td>
             <td> </td>
             <td> </td>
-            <td><center>Paid Software</center></td>
+            <td><center><b>Paid Software</b></center></td>
         <tr>
             <td> </td>
             <td><center><a href="https://softwarerequest.psu.edu/Home/AllReleases">AMOS 28 (PSU)</a></center></td>
