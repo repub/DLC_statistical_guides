@@ -223,11 +223,9 @@
         <tr>
             <td><center> </center></td>
             <td><center> </center></td>
+            <td colspan=2><center><a href="https://www.r-project.org/">R</a></center></td>
             <td><center> </center></td>
-            <td><center><a href="https://www.r-project.org/">R</a></center></td>
-            <td><center> </center></td>
-            <td><center><a href="https://www.rstudio.com/products/rstudio/download/">R Studio</a></center></td>
-            <td><center> </center></td>
+            <td colspan=2><center><a href="https://www.rstudio.com/products/rstudio/download/">R Studio</a></center></td>
             <td><center> </center></td>
             <td><center> </center></td>
             <td><center> </center></td>
