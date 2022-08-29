@@ -180,7 +180,9 @@
 <table style="width:90%">
     <tbody>
         <tr>
-            <td colspan=3><center>Free Software</center></td>
+            <td> </td>
+            <td><center>Free Software</center></td>
+            <td> </td>
             <td><center>Paid Software</center></td>
         <tr>
             <td> </td>
