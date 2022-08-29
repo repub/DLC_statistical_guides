@@ -224,9 +224,7 @@
             <td><center> </center></td>
             <td><center> </center></td>
             <td><center> </center></td>
-            <td><center><a href="https://www.r-project.org/">R</a></center></td>
-            <td><center> </center></td>
-            <td><center><a href="https://www.rstudio.com/products/rstudio/download/">R Studio</a></center></td>
+            <td colspan=3><center><a href="https://www.rstudio.com/products/rstudio/download/">R Studio     </a><a href="https://www.r-project.org/">R</a></center></td>
             <td><center> </center></td>
             <td><center> </center></td>
             <td><center> </center></td>
@@ -246,5 +244,3 @@
             <td><center><a href="https://www.ibm.com/support/pages/downloading-ibm-spss-statistics-26">SPSS 26</a></center></td>
             <td><center> </center></td>
         </tr>
-
-
