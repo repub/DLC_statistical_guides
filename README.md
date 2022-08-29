@@ -178,7 +178,7 @@
         <tr>
             <td></td>
             <td colspan=2><center>Free Software</center></td>
-            <td></td>
+            <td><center>Paid Software</center></td>
         <tr>
             <td>AMOS</td>
             <td colspan=2><center><a href="https://softwarerequest.psu.edu/Home/AllReleases">AMOS 26 (PSU)</a></center></td>
