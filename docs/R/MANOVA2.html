@@ -11,7 +11,7 @@
 
 
 
-<title>MANOVA3.knit</title>
+<title>MANOVA.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -252,6 +252,7 @@ if (window.hljs) {
 
 
 
+<link rel="stylesheet" href="MANOVA2_files/sass39d0126eb6dbb3466fef1170050f74ed/style.min.css" type="text/css" />
 
 
 
@@ -376,12 +377,8 @@ Contents
 <a href="#checking-assumptions">Checking assumptions</a><br>
 <a href="#sample-size"> Sample size</a><br>
 <a href="#outliers"> Outliers</a><br>
-<a href="#multivariate-outliers">  Multivariate outliers</a><br>
-<a href="#univariate-outliers">  Univariate outliers</a><br>
 <a href="#normality"> Normality</a><br>
-<a href="#multivariate-normality-test">  Multivariate normality
-test</a><br> <a href="#univariate-normality-test">  Univariate normality
-test</a><br> <a href="#correlations"> Correlations</a><br>
+<a href="#correlations"> Correlations</a><br>
 <a href="#heteroskedasticity"> Heteroskedasticity</a><br>
 <a href="#one-way-manova">One-way MANOVA</a><br>
 <a href="#post-hoc-anova"> Post-hoc ANOVA</a><br>
@@ -422,7 +419,7 @@ log<sub>10</sub> of the solution’s hydronium ion concentration</li>
 <li><code>chlorides</code> - grams per liter of sodium chloride</li>
 <li><code>sulphates</code> - grams per liter of potassium sulphate</li>
 </ul>
-<pre class="r"><code>wine &lt;- read_csv(&quot;../dat/wine-quality.csv&quot;)
+<pre class="r"><code>wine &lt;- read_csv(&quot;../../dat/wine-quality.csv&quot;)
 
 head(wine)</code></pre>
 <pre><code>## # A tibble: 6 × 7
@@ -570,8 +567,8 @@ distance.</p>
 ## 3 white mediocre             5.6  2.96    11       0.039      0.52 TRUE       TRUE</code></pre>
 </div>
 </div>
-<div id="normality" class="section level3">
-<h3>Normality</h3>
+<div id="normality" class="section level3 tabset tabset-fade tabset-pills">
+<h3 class="tabset tabset-fade tabset-pills">Normality</h3>
 <div id="multivariate-normality-test" class="section level4">
 <h4>Multivariate normality test</h4>
 <pre class="r"><code>wine %&gt;%

@@ -3,10 +3,10 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs/R';
   rmarkdown::render(input_file,
     encoding=encoding,
-    output_file='MANOVA2.html') })
+    output_file='MANOVA3.html') })
 output:
   html_document:
-    css: style.scss
+    cold_folding: show
 editor_options:
   chunk_output_type: console
 ---

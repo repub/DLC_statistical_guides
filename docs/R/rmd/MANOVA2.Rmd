@@ -3,8 +3,10 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs/R';
   rmarkdown::render(input_file,
     encoding=encoding,
-    output_file='MANOVA.md') })
-output: github_document
+    output_file='MANOVA2.html') })
+output:
+  html_document:
+    css: style.scss
 editor_options:
   chunk_output_type: console
 ---
@@ -75,6 +77,8 @@ head(wine)
 
 &emsp;Note that the `type` and `quality` variables are enccoded as characters.  This is usually fine, but for ease of use we should go ahead and recode them to factors.  For the `type` variable we can code is as a normal factor, however the `quality` variable is actually ordered, so we should recode it as an ordered factor.
 
+
+<details><summary>click here</summary>
 ```{r to-factor}
 wine$type <- factor(wine$type)
 wine$quality <- factor(wine$quality,
@@ -83,6 +87,7 @@ wine$quality <- factor(wine$quality,
 
 str(wine)
 ```
+</details>
 
 &emsp;From the output of `str()` we can see that `type` and `quality` are now coded as a factor and an ordered factor where its levels are ordered as *mediocre* < *good* < *very good*, respectively.
 
@@ -123,7 +128,7 @@ wine %>%
 &emsp;
 
 
-### Outliers
+### Outliers {.tabset .tabset-fade .tabset-pills}
 
 
 #### Multivariate outliers

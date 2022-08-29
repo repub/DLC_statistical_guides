@@ -3,15 +3,17 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs/R';
   rmarkdown::render(input_file,
     encoding=encoding,
-    output_file='MANOVA3.html') })
-output: html_document
+    output_file='../MANOVA2.html') })
+output:
+  html_document:
+    css: style.scss
 editor_options:
   chunk_output_type: console
 ---
   
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE,
-                      fig.path = "img/MANOVA/",
+                      fig.path = "../img/MANOVA/",
                       fig.width = 6, fig.height = 4,
                       fig.show = 'hold', fig.align = 'center')
 options(width = 100)
@@ -26,11 +28,7 @@ options(width = 100)
     <a href="#checking-assumptions">Checking assumptions</a><br>
        <a href="#sample-size">&emsp;Sample size</a><br>
        <a href="#outliers">&emsp;Outliers</a><br>
-         <a href="#multivariate-outliers">&emsp;&emsp;Multivariate outliers</a><br>
-         <a href="#univariate-outliers">&emsp;&emsp;Univariate outliers</a><br>
        <a href="#normality">&emsp;Normality</a><br>
-         <a href="#multivariate-normality-test">&emsp;&emsp;Multivariate normality test</a><br>
-         <a href="#univariate-normality-test">&emsp;&emsp;Univariate normality test</a><br>
        <a href="#correlations">&emsp;Correlations</a><br>
        <a href="#heteroskedasticity">&emsp;Heteroskedasticity</a><br>
     <a href="#one-way-manova">One-way MANOVA</a><br>
@@ -68,7 +66,7 @@ library(tidyverse)
 * `sulphates` - grams per liter of potassium sulphate
 
 ```{r load-data}
-wine <- read_csv("../dat/wine-quality.csv")
+wine <- read_csv("../../dat/wine-quality.csv")
 
 head(wine)
 ```
@@ -156,7 +154,7 @@ wine %>%
   identify_outliers(`alcohol`)
 ```
 
-### Normality
+### Normality {.tabset .tabset-fade .tabset-pills}
 
 #### Multivariate normality test
 
