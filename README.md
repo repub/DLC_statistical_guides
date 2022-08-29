@@ -196,12 +196,16 @@
             <td colspan=2><center><a href="https://softwarestore.psu.edu/minitab-license/-7885">Minitab Web App (PSU)</a></center></td>
             <td colspan=2><center><a href="https://softwarestore.psu.edu/minitab-license/-7885">Minitab Express (PSU)</a></center></td>
             <td colspan=2><center><a href="https://softwarestore.psu.edu/minitab-license/-8291">Minitab 19 (PSU)</a></center></td>
-            <td colspan=3><center><a href="https://www.minitab.com/en-us/support/downloads/">Minitab 19</a></center></td>
+            <td><center> </center></td>
+            <td><center><a href="https://www.minitab.com/en-us/support/downloads/">Minitab 19</a></center></td>
+            <td><center> </center></td>
         </tr>
         <tr>
             <td colspan=3><center><a href="https://www.r-project.org/">R</a></center></td>
             <td colspan=3><center><a href="https://www.rstudio.com/products/rstudio/download/">R Studio</a></center></td>
-            <td colspan=3> </td>
+            <td><center> </center></td>
+            <td><center> </center></td>
+            <td><center> </center></td>
         </tr>
         <tr>
             <td colspan=6><center><a href="https://softwarestore.psu.edu/brand/spss-license">SPSS 28 (PSU)</a></center></td>
