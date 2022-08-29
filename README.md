@@ -191,7 +191,7 @@
             <td><center><a href="https://www.jmp.com/en_us/software/buy-jmp.html">JMP 16</a></center></td>
         </tr>
         <tr>
-            <td><center><a href="https://softwarestore.psu.edu/minitab-license/-7885">Minitab Web App (PSU)</a>&emsp;&emsp;<a href="https://softwarestore.psu.edu/minitab-license/-7885">Minitab Express (PSU)</a>&emsp;&emsp;<a href="https://softwarestore.psu.edu/minitab-license/-8291">Minitab 19 (PSU)</a></center></td>
+            <td colspan=3><center><a href="https://softwarestore.psu.edu/minitab-license/-7885">Minitab Web App (PSU)</a>&emsp;&emsp;<a href="https://softwarestore.psu.edu/minitab-license/-7885">Minitab Express (PSU)</a>&emsp;&emsp;<a href="https://softwarestore.psu.edu/minitab-license/-8291">Minitab 19 (PSU)</a></center></td>
             <td><center><a href="https://www.minitab.com/en-us/support/downloads/">Minitab 19</a></center></td>
         </tr>
         <tr>
