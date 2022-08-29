@@ -183,17 +183,25 @@
             <td colspan=9><center>Free Software</center></td>
             <td colspan=3><center>Paid Software</center></td>
         <tr>
-            <td colspan=3><center> </center></td>
+            <td><center> </center></td>
+            <td><center> </center></td>
+            <td><center> </center></td>
             <td colspan=3><center><a href="https://softwarerequest.psu.edu/Home/AllReleases">AMOS 28 (PSU)</a></center></td>
-            <td colspan=3><center> </center></td>
+            <td><center> </center></td>
+            <td><center> </center></td>
+            <td><center> </center></td>
             <td><center> </center></td>
             <td><center><a href="https://www.ibm.com/support/pages/downloading-ibm-spss-amos-26">AMOS 26</a></center></td>
             <td><center> </center></td>
         </tr>
         <tr>
-            <td colspan=3><center> </center></td>
+            <td><center> </center></td>
+            <td><center> </center></td>
+            <td><center> </center></td>
             <td colspan=3><center><a href="https://softwarestore.psu.edu/sas-license/-8501">JMP 16 Pro (PSU)</a></center></td>
-            <td colspan=3><center> </center></td>
+            <td><center> </center></td>
+            <td><center> </center></td>
+            <td><center> </center></td>
             <td><center> </center></td>
             <td><center><a href="https://www.jmp.com/en_us/software/buy-jmp.html">JMP 16</a></center></td>
             <td><center> </center></td>
