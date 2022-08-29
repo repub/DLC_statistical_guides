@@ -171,3 +171,35 @@
         </tr>
     </tbody>
 </table>
+
+<h1>Software Access</h1>
+<table style="width:75%">
+    <tbody>
+        <tr>
+            <td>AMOS</td>
+            <td><center><a href="https://softwarerequest.psu.edu/Home/AllReleases">AMOS 26 (PSU)</a></center></td>
+            <td><center><a href="https://www.ibm.com/support/pages/downloading-ibm-spss-amos-26">AMOS 26</a></center></td>
+        </tr>
+        <tr>
+            <td>JMP</td>
+            <td><center><a href="https://softwarestore.psu.edu/sas-license/-8501">JMP 16 Pro (PSU)</a></center></td>
+            <td><center><a href="https://www.jmp.com/en_us/software/buy-jmp.html">JMP 16</a></center></td>
+        </tr>
+        <tr>
+            <td>Minitab</td>
+            <td><center><a href="https://softwarestore.psu.edu/minitab-license/-7885">Minitab Express (PSU)</a></center></td>
+            <td><center><a href="https://softwarestore.psu.edu/minitab-license/-8291">Minitab 19 (PSU)</a></center></td>
+        </tr>
+        <tr>
+            <td>R</td>
+            <td><center><a href="https://www.r-project.org/">R</a></center></td>
+            <td><center><a href="https://www.rstudio.com/products/rstudio/download/">R Studio</a></center></td>
+        </tr>
+        <tr>
+            <td>SPSS</td>
+            <td><center><a href="https://softwarestore.psu.edu/brand/spss-license">SPSS 26 (PSU)</a></center></td>
+            <td><center><a href="https://www.ibm.com/support/pages/downloading-ibm-spss-statistics-26">SPSS 26</a></center></td>
+        </tr>
+    </tbody>
+</table>
+
