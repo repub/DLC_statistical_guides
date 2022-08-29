@@ -212,6 +212,5 @@
             <td colspan=3><center><a href="https://softwarestore.psu.edu/brand/spss-license">SPSS 28 (PSU)</a></center></td>
             <td><center><a href="https://www.ibm.com/support/pages/downloading-ibm-spss-statistics-26">SPSS 26</a></center></td>
         </tr>
-    </tbody>
-</table>
+
 
