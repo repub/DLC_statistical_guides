@@ -172,7 +172,11 @@
     </tbody>
 </table>
 
+<br>
+<br>
+
 <h1>Software Access</h1>
+
 <table style="width:75%">
     <tbody>
         <tr>
