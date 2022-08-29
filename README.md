@@ -1,5 +1,5 @@
 <h1>Links to Statistical Guides</h1>
-<table style="width:75%">
+<table style="width:90%">
     <tbody>
         <tr>
             <td colspan=5><center><b>Proportion Tests</b></center></td>
@@ -177,7 +177,7 @@
 
 <h1>Software Access</h1>
 
-<table style="width:75%">
+<table style="width:90%">
     <tbody>
         <tr>
             <td colspan=3><center>Free Software</center></td>
