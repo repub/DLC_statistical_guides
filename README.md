@@ -184,7 +184,7 @@
             <td colspan=2><center>Paid Software</center></td>
         <tr>
             <td colspan=3><center><a href="https://softwarerequest.psu.edu/Home/AllReleases">AMOS 28 (PSU)</a></center></td>
-            <td colspan=2><center><a href="https://www.ibm.com/support/pages/downloading-ibm-spss-amos-26">AMOS 28</a></center></td>
+            <td colspan=2><center><a href="https://www.ibm.com/support/pages/downloading-ibm-spss-amos-26">AMOS 26</a></center></td>
         </tr>
         <tr>
             <td colspan=3><center><a href="https://softwarestore.psu.edu/sas-license/-8501">JMP 16 Pro (PSU)</a></center></td>
