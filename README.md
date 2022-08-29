@@ -201,7 +201,7 @@
         <tr>
             <td colspan=3><center><a href="https://www.r-project.org/">R</a></center></td>
             <td colspan=3><center><a href="https://www.rstudio.com/products/rstudio/download/">R Studio</a></center></td>
-            <td colspan=3></td>
+            <td colspan=3> </td>
         </tr>
         <tr>
             <td colspan=6><center><a href="https://softwarestore.psu.edu/brand/spss-license">SPSS 28 (PSU)</a></center></td>
