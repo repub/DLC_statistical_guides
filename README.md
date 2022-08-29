@@ -201,11 +201,11 @@
         <tr>
             <td><center> </center></td>
             <td><center> </center></td>
-            <td><center> </center></td>
             <td><center><a href="https://softwarestore.psu.edu/minitab-license/-7885">Minitab Web App (PSU)</a></center></td>
-            <td><center><a href="https://softwarestore.psu.edu/minitab-license/-7885">Minitab Express (PSU)</a></center></td>
-            <td><center><a href="https://softwarestore.psu.edu/minitab-license/-8291">Minitab 19 (PSU)</a></center></td>
             <td><center> </center></td>
+            <td><center><a href="https://softwarestore.psu.edu/minitab-license/-7885">Minitab Express (PSU)</a></center></td>
+            <td><center> </center></td>
+            <td><center><a href="https://softwarestore.psu.edu/minitab-license/-8291">Minitab 19 (PSU)</a></center></td>
             <td><center> </center></td>
             <td><center> </center></td>
             <td><center> </center></td>
@@ -227,7 +227,7 @@
             <td><center> </center></td>
         </tr>
         <tr>
-            <td colspan=6><center><a href="https://softwarestore.psu.edu/brand/spss-license">SPSS 28 (PSU)</a></center></td>
+            <td colspan=9><center><a href="https://softwarestore.psu.edu/brand/spss-license">SPSS 28 (PSU)</a></center></td>
             <td><center> </center></td>
             <td><center><a href="https://www.ibm.com/support/pages/downloading-ibm-spss-statistics-26">SPSS 26</a></center></td>
             <td><center> </center></td>
