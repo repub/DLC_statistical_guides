@@ -72,12 +72,12 @@ pre.sourceCode {
   background-color: #E4EDF5;
 }
 
-pre {
-  background-color: #E4EDF5;
+pre:not([class]) {
+  background-color: #F8F8F8;
 }
 
 #toc_container{
-  background-color: #E4EDF5;
+  background-color: #F8F8F8;
 }
 
 code span.fu {
