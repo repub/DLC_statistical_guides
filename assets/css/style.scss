@@ -63,20 +63,12 @@ a:hover {
 
 /* below requires the highlight: tango option when knitting document in R Markdown */
 
-pre.sourceCode {
+pre.sourceCode, p code, li code {
   background-color: #E4EDF5;
 }
 
-pre:not([class]) {
+pre:not([class]), #toc_container {
   background-color: #F8F8F8;
-}
-
-#toc_container{
-  background-color: #F8F8F8;
-}
-
-li code{
-  background-color: #E4EDF5;
 }
 
 code span.fu {
@@ -103,4 +95,6 @@ code span.cn {
   color: #48657E;
 }
 
-
+p {
+  text-indent: 30px;
+}
