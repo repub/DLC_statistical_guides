@@ -54,12 +54,34 @@ aside {
   left: calc((100vw - 1200px)/2);
 }
 
-
 a:hover {
     font-weight: normal;
     color: #080a82;
 }
 
-pre {
+/* below requires the highlight: tango option when knitting document in R Markdown */
+
+pre.sourceCode, p code, li code {
   background-color: #E4EDF5;
+}
+
+pre:not([class]), #toc_container {
+  background-color: #F8F8F8;
+}
+
+code span.ot, code span.sc {
+  color: #B45F06;
+}
+
+code span.fl, code span.dv {
+  color: #65487E;
+}
+
+
+code span.cn, code span.fu {
+  color: #48657E;
+}
+
+p:not([class]) {
+  text-indent: 30px;
 }
