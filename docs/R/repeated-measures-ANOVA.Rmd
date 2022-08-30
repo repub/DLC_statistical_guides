@@ -1,0 +1,130 @@
+---
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs/R';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='repeated-measures-ANOVA.md') })
+output: github_document
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE,
+                      fig.path = "img/repeated-measures-ANOVA/",
+                      fig.width = 6, fig.height = 4,
+                      fig.show = 'hold', fig.align = 'center')
+options(width=100)
+```
+
+# Repeated Measures ANOVA
+
+```{r}
+df <- read.csv("dat/dog_experiment.csv")
+
+head(df)
+str(df)
+```
+
+```{r}
+df$Treatment <- factor(df$Treatment)
+df$DogID <- factor(df$DogID)
+```
+
+
+```{r}
+dog.aov <- aov(Potassium ~ Timepoint * Treatment + Error(DogID/Timepoint),
+               data = df)
+
+summary(dog.aov)
+
+library(afex)
+
+dog.aov2 <- aov_car(Potassium ~ Timepoint * Treatment + Error(DogID/Timepoint),
+               data = df)
+
+summary(dog.aov2)
+```
+
+```{r}
+library(emmeans)
+
+dog.emmeans <- emmeans(dog.aov2, specs = ~Treatment*Timepoint)
+
+dog.emmeans
+
+contrast(dog.emmeans)
+dog.pairs <- pairs(dog.emmeans)
+
+
+dog.pairs2 <- data.frame(dog.pairs)
+
+dog.pairs2$sig <- ifelse(dog.pairs2$p.value < 0.05, "*", "")
+```
+
+
+
+```{r}
+library(tidyverse)
+
+# ggplot(df, aes(x = Timepoint, y = Potassium, colour = Treatment, group = Treatment)) +
+#   stat_summary(geom = "line",
+#                fun = mean) +
+#   stat_summary(geom = "point",
+#                fun = mean) +
+#   stat_summary(geom = "errorbar",
+#                fun.data = mean_se,
+#                width = 0.15) +
+#   theme_bw()
+
+dog.summ <- dog.emmeans %>%
+  as_tibble()
+  
+dog.summ$Timepoint <- gsub("X", "", dog.summ$Timepoint) %>%
+  ordered(levels = c("1", "5", "9", "13"))
+
+ggplot(dog.summ, aes(x = Timepoint, y = emmean, colour = Treatment, group = Treatment)) +
+  geom_point() +
+  geom_line() +
+  geom_errorbar(aes(ymin = lower.CL, ymax = upper.CL,
+                    width = 0.15)) +
+  theme_bw()
+```
+
+
+## Mixed-Model Approach
+
+```{r}
+library(lme4)
+
+df2 <- df
+df2$Timepoint <- as.numeric(df2$Timepoint)
+
+dog.lmer <- lmer(Potassium ~ Treatment * Timepoint + (Timepoint | DogID),
+                 data = df2,
+                 REML = FALSE)
+
+summary(dog.lmer)
+
+anova(dog.lmer)
+
+dog.mixed <- mixed(Potassium ~ Treatment * Timepoint + (1|DogID),
+      data = df)
+
+dog.mixed
+
+
+
+dog.lme <- lme(Potassium ~ Treatment * Timepoint,
+               data = df2,
+               random = ~ 1 | DogID,
+               correlation = corAR1(form = ~ Timepoint | DogID),
+               control = lmeControl(opt = "optim"))
+
+
+summary(dog.lme)
+anova(dog.lme)
+
+```
+
+
