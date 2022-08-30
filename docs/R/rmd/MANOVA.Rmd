@@ -3,9 +3,10 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs/R';
   rmarkdown::render(input_file,
     encoding=encoding,
-    output_file='../MANOVA2.html') })
+    output_file='../MANOVA.html') })
 output:
   html_document:
+    highlight: tango
     css: style.scss
 editor_options:
   chunk_output_type: console
@@ -24,7 +25,7 @@ options(width = 100)
   <div id="toc_container">
   <p class="toc_title">Contents</p>
   <ul class="toc_list">
-    <a href="#manova">MANOVA</a><br>
+    <a href="#manova-in-r">MANOVA in R</a><br>
     <a href="#checking-assumptions">Checking assumptions</a><br>
        <a href="#sample-size">&emsp;Sample size</a><br>
        <a href="#outliers">&emsp;Outliers</a><br>
@@ -32,18 +33,16 @@ options(width = 100)
        <a href="#correlations">&emsp;Correlations</a><br>
        <a href="#heteroskedasticity">&emsp;Heteroskedasticity</a><br>
     <a href="#one-way-manova">One-way MANOVA</a><br>
-      <a href="#post-hoc-anova">&emsp;Post-hoc ANOVA</a><br>
-      <a href="#post-hoc-pairwise-comparisons">&emsp;Pos-hoc pairwise comparisons</a><br>
+      <a href="#post-hoc-tests">&emsp;Post-hoc tests</a><br>
     <a href="#two-way-manova">Two-way MANOVA</a><br>
-      <a href="#post-hoc-anova2">&emsp;Post-hoc ANOVA</a><br>
-      <a href="#post-hoc-pairwise-comparisons2">&emsp;Pos-hoc pairwise comparisons</a><br>
+      <a href="#post-hoc2">&emsp;Post-hoc tests</a><br>
   </ul>
   </div>
 </aside>
 
 
 
-# MANOVA
+# MANOVA in R
 
 &emsp;For this tutorial we will employ functions from three different packages:
 
@@ -213,7 +212,9 @@ Manova(wine_manova1, test.statistic = "Hotelling-Lawley")
 Manova(wine_manova1, test.statistic = "Roy")
 ```
 
-### Post-hoc ANOVA
+### Post-hoc tests {.tabset .tabset-fade .tabset-pills}
+
+#### ANOVA
 ```{r}
 wine %>%
   pivot_longer(cols = c(pH, alcohol, residual_sugar, chlorides, sulphates)) %>%
@@ -221,7 +222,7 @@ wine %>%
   anova_test(value ~ quality)
 ```
 
-### Post-hoc pairwise comparisons
+#### Pairwise comparisons
 
 ```{r}
 wine %>%
@@ -239,9 +240,11 @@ wine_manova2 <- manova(cbind(pH, alcohol, residual_sugar, chlorides, sulphates) 
 Manova(wine_manova2, test.statistic = "Pillai", type = 3)
 ```
 
-<a id="post-hoc-anova2"></a>
+<a id="post-hoc2"></a>
 
-### Post-hoc ANOVA
+### Post-hoc tests {.tabset .tabset-fade .tabset-pills}
+
+#### ANOVA
 
 ```{r}
 wine %>%
@@ -250,9 +253,7 @@ wine %>%
   anova_test(value ~ quality + type, type = 2)
 ```
 
-<a id="post-hoc-pairwise-comparisons2"></a>
-
-### Post-hoc pairwise comparisons
+#### Pairwise comparisons
 
 
 
