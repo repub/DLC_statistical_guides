@@ -3,7 +3,7 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs/R';
   rmarkdown::render(input_file,
     encoding=encoding,
-    output_file='../MANOVA.html') })
+    output_file='../MANOVA.md') })
 output:
   html_document:
     highlight: tango

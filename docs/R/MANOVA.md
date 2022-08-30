@@ -315,7 +315,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<link rel="stylesheet" href="MANOVA_files/sass527b1ad690c2ce5eddea7688042e0e33/style.min.css" type="text/css" />
+<link rel="stylesheet" href="MANOVA_files/sassd50adff03136401075b00652db758832/style.min.css" type="text/css" />
 
 
 

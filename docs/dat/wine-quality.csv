@@ -1,158 +1,61 @@
-type,quality,alcohol,pH,residual sugar
-red,mediocre,10.9,3.38,2.5
-red,mediocre,11,3.26,3
-red,mediocre,9.4,3.26,5.1
-red,mediocre,9.6,3.68,2.1
-red,mediocre,9.5,3.22,6.7
-red,mediocre,10.3,3.37,2.3
-red,mediocre,8.8,3.16,13.8
-red,mediocre,9.5,3.36,1.4
-red,mediocre,9.8,3.16,2.5
-red,mediocre,9.2,3.16,3.8
-red,mediocre,9.5,3.17,1.6
-red,mediocre,9.6,3.26,3.3
-red,mediocre,9.9,3.47,7.9
-red,mediocre,9.6,3.26,1.5
-red,mediocre,10.9,3.53,1.7
-red,mediocre,10.5,3.35,6.1
-red,mediocre,10,3.23,2.1
-red,mediocre,9.3,3.11,1.6
-red,good,10.6,3.38,2.1
-red,good,10.3,3.1,2
-red,good,9.7,3.35,1.9
-red,good,10.2,3.5,1.9
-red,good,9.3,3.08,2.2
-red,good,11.06666667,3.32,2.2
-red,good,10.7,3.43,2.6
-red,good,11.5,3.61,2.2
-red,good,10.1,3.4,2.4
-red,good,9.3,3.12,2.5
-red,good,10.1,3.08,2.9
-red,good,11.4,3.1,2.3
-red,good,9.9,3.14,1.8
-red,good,10.9,3.09,2.8
-red,good,11.9,3.18,2.2
-red,very good,11.7,3.26,2.05
-red,very good,11.4,3.04,2.8
-red,very good,11,3.4,2.1
-red,very good,12,3.2,2.4
-white,mediocre,9.8,3.17,5.6
-white,mediocre,12.1,3.24,0.9
-white,mediocre,11.1,3.06,1.6
-white,mediocre,11.2,3.1,1.2
-white,mediocre,9.3,3.17,8.3
-white,mediocre,10.8,3.2,11.8
-white,mediocre,9.2,3.21,8.3
-white,mediocre,9.7,3.18,14.8
-white,mediocre,8.9,3.22,13.7
-white,mediocre,10.5,3.18,1.9
-white,mediocre,9.6,2.96,18.2
-white,mediocre,9.8,3.3,0.7
-white,mediocre,9.4,3.28,12.9
-white,mediocre,8.9,3.08,12.1
-white,mediocre,8.9,3.12,11.8
-white,mediocre,9.3,2.99,12.6
-white,mediocre,9.5,3.08,1.1
-white,mediocre,12.9,2.93,2.1
-white,mediocre,9.4,3.22,8.8
-white,mediocre,9.5,3.06,1
-white,mediocre,11.6,2.9,6.6
-white,mediocre,9.8,3.11,11.8
-white,mediocre,10.4,3.45,1.3
-white,mediocre,9.1,3.42,3.3
-white,mediocre,9.2,3.07,17.8
-white,mediocre,10.4,3.04,2
-white,mediocre,10.1,3.38,7.1
-white,mediocre,9.5,3.14,6.5
-white,mediocre,10,3.38,10.4
-white,mediocre,10.4,3.19,7
-white,mediocre,9.3,3.22,8
-white,mediocre,10.5,3.18,5.8
-white,mediocre,9.4,3.06,14.2
-white,mediocre,9.5,3.16,1.35
-white,mediocre,10.1,3.09,1.7
-white,mediocre,9,3.01,12.1
-white,mediocre,9.7,3.14,1.6
-white,mediocre,9.3,3.22,15.2
-white,mediocre,10.3,3.06,8.6
-white,mediocre,9.4,3.31,9.2
-white,good,10.8,3.15,6.7
-white,good,10.8,3.43,1.9
-white,good,9.7,3.52,8.2
-white,good,12.4,3.18,5.1
-white,good,10.8,3.22,1.6
-white,good,10.5,2.88,4.7
-white,good,10.5,3.3,5.3
-white,good,11.3,3.14,13
-white,good,10.5,3.29,1.9
-white,good,11.4,3.02,3.2
-white,good,11,3.38,5.2
-white,good,9.9,3.19,8.5
-white,good,10.5,3.2,6.2
-white,good,10.4,3.21,4.8
-white,good,8.8,3.02,16.4
-white,good,10.6,3.48,2.5
-white,good,9.1,3.02,14.4
-white,good,9.2,3.04,12.4
-white,good,10.2,3.47,1.1
-white,good,11,3.47,5.55
-white,good,10.4,3.25,8.6
-white,good,9,3.21,13.9
-white,good,10.7,3.48,1.5
-white,good,10.3,3.3,8.9
-white,good,9.4,3.06,7.7
-white,good,9.8,3.34,13.9
-white,good,9.8,3.2,14.8
-white,good,11.5,3.19,1
-white,good,9.9,3.14,1.2
-white,good,10.4,3.03,12.2
-white,good,11.2,3.21,1.4
-white,good,9.3,3.18,3.3
-white,good,9.5,3.05,1.1
-white,good,13.1,3.48,2.8
-white,good,10.6,3.2,2.1
-white,good,11.8,3.28,1.8
-white,good,8.9,2.89,14
-white,good,9.5,3.14,11.3
-white,good,10.1,3.34,1.5
-white,good,11.5,3.21,3.8
-white,good,8.5,2.98,18
-white,good,9.7,3.4,5.3
-white,good,9.6,3.15,4.6
-white,good,10.9,3.39,1.6
-white,good,11.3,3.24,1.2
-white,good,10.3,3.13,1.2
-white,good,10.5,3.01,5.8
-white,good,11.2,3.12,2
-white,good,10.6,3.21,4.7
-white,good,12.1,3.17,9.4
-white,good,9.2,3.11,17.3
-white,good,9.1,3.06,12.9
-white,good,10.8,3.12,3.3
-white,good,11,2.97,2.7
-white,very good,11.3,3.03,3.2
-white,very good,11.1,3.14,7.7
-white,very good,12.8,3,4.1
-white,very good,12.6,3.13,8
-white,very good,11,3.42,1.2
-white,very good,8.8,3.26,14.4
-white,very good,13.5,3.19,2.4
-white,very good,11.3,3.31,2.8
-white,very good,10.3,3.26,12.6
-white,very good,9.3,3.37,5.3
-white,very good,11.5,3.04,10.4
-white,very good,8.9,3.04,13.1
-white,very good,11.9,3.27,2.2
-white,very good,13.6,3.31,1.2
-white,very good,9.3,3.15,17
-white,very good,11.5,3.24,2.3
-white,very good,11.1,3.07,1.4
-white,very good,12.2,3.17,4.8
-white,very good,11.9,3.15,6.3
-white,very good,11.5,3.05,10.6
-white,very good,11.8,3.1,5
-white,very good,12.6,3.08,2.4
-white,very good,12.8,3.46,4.3
-white,very good,11,3.11,6.4
-white,very good,12.1,3.19,6
-white,very good,11.1,3.25,2.2
+type,quality,residual_sugar,pH,alcohol,chlorides,sulphates
+red,good,1.8,3.38,11.8,0.066,0.72
+red,good,2,2.94,9.2,0.082,0.66
+red,good,3,3.16,11.5,0.103,1
+red,good,2.5,3.27,9.3,0.097,0.6
+red,good,2.6,3.36,9.4,0.093,0.86
+red,good,3.6,3.39,11,0.067,0.66
+red,good,2,3.22,11.2,0.12,0.58
+red,good,2,3.37,9.4,0.082,0.5
+red,good,8.8,3.38,10.1,0.084,0.64
+red,good,2,3.11,10.1,0.067,0.97
+red,mediocre,7.9,3.27,9.3,0.086,0.57
+red,mediocre,2.9,3.14,9.4,0.089,0.54
+red,mediocre,2.6,3.22,13,0.056,0.37
+red,mediocre,2.1,3.38,10.3,0.07,0.6
+red,mediocre,2.4,3.36,10,0.081,0.53
+red,mediocre,2.5,3.22,9.7,0.08,1.07
+red,mediocre,2.5,3.53,9.5,0.076,0.55
+red,mediocre,2.7,3.13,9.5,0.095,0.51
+red,mediocre,2.6,3.28,9.8,0.078,0.51
+red,mediocre,2,3.25,9.4,0.074,0.54
+red,very good,1.8,3.41,11.9,0.075,0.76
+red,very good,1.7,3.32,11.9,0.054,0.8
+red,very good,1.6,3.54,12.2,0.054,0.62
+red,very good,2.2,3.44,11.5,0.062,0.72
+red,very good,1.9,3.18,10.9,0.078,1.04
+red,very good,3.4,3.17,12.2,0.128,0.84
+red,very good,1.9,2.98,11.8,0.083,0.63
+red,very good,1.5,3.26,10.6,0.058,0.82
+red,very good,2.2,3.07,9.2,0.075,0.84
+red,very good,1.2,3.57,13,0.046,0.85
+white,good,8.5,3.22,10.5,0.033,0.56
+white,good,2.3,3.13,12.8,0.051,0.52
+white,good,1.7,3.15,10.3,0.057,0.41
+white,good,13.5,3,10.7,0.038,0.63
+white,good,10.8,3.08,10.1,0.042,0.4
+white,good,11.25,3.02,12.4,0.032,0.38
+white,good,1.7,3.2,10.2,0.038,0.62
+white,good,3.3,3.16,10.5,0.048,0.5
+white,good,4.55,3.37,9.5,0.053,0.67
+white,good,1.7,3.24,13.13333333,0.021,0.95
+white,mediocre,12.9,3.08,9.4,0.033,0.49
+white,mediocre,18.15,3.06,9.2,0.05,0.5
+white,mediocre,15.6,3.06,9.5,0.049,0.68
+white,mediocre,1.2,3.24,9.5,0.05,0.37
+white,mediocre,7.2,3.12,9.2,0.048,0.37
+white,mediocre,1.2,3.06,9.1,0.051,0.46
+white,mediocre,16.75,3.15,9.2,0.05,0.54
+white,mediocre,11.5,3.22,9.5,0.04,0.56
+white,mediocre,6.5,3.14,9.5,0.056,0.44
+white,mediocre,5.6,2.96,11,0.039,0.52
+white,very good,1.5,3.32,10.4,0.037,0.51
+white,very good,12.6,3.04,10,0.044,0.56
+white,very good,6.2,3.21,12.2,0.039,0.35
+white,very good,1.1,3.34,12.8,0.022,0.38
+white,very good,4.2,3.35,10.7,0.044,0.44
+white,very good,1.3,3.08,12.3,0.031,0.62
+white,very good,3.8,3.31,11.3,0.038,0.5
+white,very good,2.7,3.24,13,0.045,0.48
+white,very good,15.55,3.42,9.1,0.058,0.36
+white,very good,12.8,3.14,9.1,0.053,0.49

@@ -336,7 +336,7 @@ pre code {
 
 <div id="the-chi-square-χ2-test" class="section level1">
 <h1>The Chi-square (χ<sup>2</sup>) Test</h1>
-<p> Pearson’s χ<sup>2</sup> test of independence (or the χ<sup>2</sup>
+<p>Pearson’s χ<sup>2</sup> test of independence (or the χ<sup>2</sup>
 goodness-of-fit test) can be used when we have some variables that can
 be divided into two or more categories from which we want to determine
 if there are differences among them. For example, we may want to
@@ -344,9 +344,9 @@ determine if a sample of seniors from two separate universities have
 differing opinions (positive, negative, or neutral) on their college
 experience, or whether three brands of a medication are preferred by
 different socioeconomic classes (lower-, middle-, and upper-class).</p>
-<p>  The χ<sup>2</sup> test compares the observed counts (your data)
-with the expected counts if the data came from the same distributions.
-The null (<i>H<sub>0</sub></i>) and alternative (<i>H<sub>A</sub></i>)
+<p>The χ<sup>2</sup> test compares the observed counts (your data) with
+the expected counts if the data came from the same distributions. The
+null (<i>H<sub>0</sub></i>) and alternative (<i>H<sub>A</sub></i>)
 hypotheses to be tested are:</p>
 <center>
 <i>H<sub>0</sub></i>: The variables have the same distributions
@@ -356,7 +356,7 @@ hypotheses to be tested are:</p>
 distribution of at least one of the variables
 </center>
 <p><br></p>
-<p> Before using the χ<sup>2</sup> test to test association (or
+<p>Before using the χ<sup>2</sup> test to test association (or
 independence) we should make sure we meet the following conditions:</p>
 <ul>
 <li>The data is in <strong>non-transformed counts or frequencies (not
@@ -368,9 +368,9 @@ once</strong></li>
 cells and none should be &lt; 1</strong></li>
 <li><strong>No cells in the contingency table are 0</strong></li>
 </ul>
-<p> When either of the last two conditions are not satisfied then the <a href="https://tylerbg.github.io/DLC_statical_guides/docs/Info/Fisher-exact-test">Fisher-exact
+<p>When either of the last two conditions are not satisfied then the <a href="https://tylerbg.github.io/DLC_statical_guides/docs/Info/Fisher-exact-test">Fisher-exact
 test</a> should be considered instead.</p>
-<p> For each cell in the contengency table the χ<sup>2</sup> test will
+<p>For each cell in the contengency table the χ<sup>2</sup> test will
 first calculate the differences between the expected and observed
 values, squares that difference, then divides by the expected counts.
 The sum of those values is then calculated to give the
@@ -380,7 +380,7 @@ The sum of those values is then calculated to give the
 </center>
 <p>where <i>x<sub>i</sub></i> and <i>m<sub>i</sub></i> are the observed
 and expected values, respectively.</p>
-<p> Once the χ<sup>2</sup>-statistic is calculated the corresponding
+<p>Once the χ<sup>2</sup>-statistic is calculated the corresponding
 p-value can be determined from the χ<sup>2</sup> distribution. A p-value
 less than the chosen statistical threshold (typically α = 0.05) allows
 the null hypothesis to be rejected, to conclude that there is a
