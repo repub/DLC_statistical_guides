@@ -1,0 +1,117 @@
+---
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs/R';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='../multiple-linear-regression.md') })
+output:
+  html_document:
+    highlight: tango
+editor_options:
+  chunk_output_type: console
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE,
+                      fig.path = "../img/multiple-linear-regression/",
+                      fig.width = 6, fig.height = 4,
+                      fig.show = 'hold', fig.align = 'center')
+options(width = 100)
+```
+
+# Multiple Linear Regression (MLR)
+
+In this example we will be using [this data set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/R/dat/iqsize.txt) provided by the [Example 5-1 of the STAT 501 Regression Methods course](https://online.stat.psu.edu/stat501/lesson/5/5.1) course that includes data on participant's performance IQ score (*PIQ*), brain size (*Brain*) measured from MRI scans and given as counts/10,000, and two variables on body size, *Height* in inches and *Weight* in pounds.  Plotting each of the variables against one another we can see that *Height*, *Weight*, and *Brain* each appear to have some positive relationship with one another, but what about with *PIQ*?
+
+```{r pre_load_data, echo = FALSE}
+iqsize <- read.table("../../dat/iqsize.txt", header = TRUE)
+```
+
+```{r scat_plot, echo = FALSE, fig.height = 5}
+plot(iqsize)
+```
+
+Using MLR we can determine what relationships, if any, these three physical features have with the *PIQ* scores.  Our data set is in a tabular .txt format, so we will first load the data into R using the `read.table()` function.  We can view summary statistics for each of the variables and the structure of the dataset with the `summary()` and `str()` functions.
+
+```{r load_data}
+iqsize <- read.table("../../dat/iqsize.txt", header = TRUE)
+
+summary(iqsize)
+str(iqsize)
+```
+
+Each of the variables appear to have an appropriate spread of values with no obvious outliers or issues such as missing data or incorrectly coded values.  Although *PIQ* and *Weight* are of the "integer" type we can treat them as continuous and do not need to make any changes, so we can continue with fitting our model.
+
+To fit a MLR model we can use the `lm()` function where the response variable, *PIQ*, is to the left of of a `~` and the predictor variables, *Brain*, *Height*, and *Weight*, are to the right with each separated by a `+`. 
+
+```{r fit_model_example, eval = FALSE}
+iqsize.fit <- lm(PIQ ~ Brain + Height + Weight, data = iqsize)
+```
+
+Alternatively, instead of listing each predictor variable we could use `.` on the right of the `~` to tell R to include all other variables in the data frame as a predictor variable.  This becomes very helpful when we have a lot of predictors.
+
+```{r fit_model}
+iqsize.fit <- lm(PIQ ~ ., data = iqsize)
+```
+
+Before jumping in and interpreting the results of the model we should assess how well the MLR fit our data and if any of the assumptions have been violated.  One of these assumptions, little to no multicollinearity, can be assessed by calculating variance inflation factors (VIFs).  VIFs measure how much the variance of the coefficient for each variable is increased due to collinearity with other variables and range from a minimum of 1 to infinity.  A VIF greater than 10 (or some suggest even 5) is indicative of a high degree of multicollinearity and a violation of our assumption.
+
+Unlike some other statistical software base R does not automatically calculate VIFs, so we can turn to the `vif()` function from the `car` package to do it for us.
+
+```{r VIFs}
+library(car)
+
+vif(iqsize.fit)
+```
+
+&emps;Each of the VIFs are quite low, therefore was can accept that we have little to no multicollinearity in our model.
+
+Next, we can use diagnostic plots of the residuals to assess many of the other assumptions.  Using the `plot()` command we can graph four different diagnostic plots for our model.  Using `par(mfrow=c(2,2))` we can set the graphical parameters to have 2 rows and 2 columns so that we can see all four diagnostic plots in one figure.
+
+```{r diagnostic_plots, fig.height = 6}
+par(mfrow=c(2,2))
+plot(iqsize.fit)
+```
+
+There are [many assessments that can be made from these plots](https://online.stat.psu.edu/stat501/lesson/7/7.4), but the important features for this example are:
+
+* The points in the Residuals vs Fitted and the Scale-Location plots do not appear to have any patterns and randomly bounce along the horizonal 0-line
+* In the Normal Q-Q plot the points line mostly along the diagnoal line
+* None of the points in the Residuals vs Leverage plot are extreme (outside the dashed bands)
+
+Together, we can be confident that our assumptions of no outliers or high leverage points, normally distributed errors, and equal variances are valid.  We can now use the `summary()` function to print a summary of the results from our MLR model.
+
+```{r model_summary}
+summary(iqsize.fit)
+```
+
+From the summary of the results we can first note that we have a statistical significant MLR fit as the p-value for the MLR model is below 0.05 (`p-value: 0.007215`).  Further, the *Brain* and *Height* variables are statistically significant predictors of *PIQ* given by the p-values for their coefficients (`Pr(>|t|)` column) being below 0.05. Conversely, the *Weight* variable is not statistically significant and even close to 1.  We can conclude that the weight of the participant has no relationship, their height has a negative relationship, and brain size has a positive relationship with their performance IQ score.
+
+The `summary()` function also gives us the multiple R-squared and adjusted R-squared.  Note that the multiple R-squared can be misleading in MLR models as it will always increase (or stay relatively the same) as we add independent variables, even if they are not significant predictors of our response varaible.  The adjusted R-squared corrects for this by penalizing additional variables without relationships to the response, but its interpretation is more useful when we are comparing models to determine which has the better predictive fit.
+
+### Full code block
+
+```{r full_code, eval = FALSE}
+# Load the data set and view its structure and summary statistics of the variables
+iqsize <- read.table("../../dat/iqsize.txt", header = TRUE)
+
+str(iqsize)
+summary(iqsize)
+
+# Fit a linear model with PIQ as the response and Brain, Height, and Weight as the predictor variables
+iqsize.fit <- lm(PIQ ~ ., data = iqsize)
+
+# Load the car package to calculate the VIFs to assess multicollinearity
+library(car)
+
+vif(iqsize.fit)
+
+# View diagnostic plots of the residuals from the fit MLR model
+par(mfrow=c(2,2))
+plot(iqsize.fit)
+
+# Print a summary of the results for the MLR model
+summary(fit.lm)
+```
+
+

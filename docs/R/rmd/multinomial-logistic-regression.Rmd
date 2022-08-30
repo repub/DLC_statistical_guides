@@ -3,14 +3,16 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs/R';
   rmarkdown::render(input_file,
     encoding=encoding,
-    output_file='multinomial-logistic-regression.md') })
-output: github_document
+    output_file='../multinomial-logistic-regression.md') })
+output:
+  html_document:
+    highlight: tango
 editor_options:
   chunk_output_type: console
 ---
   
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, fig.path="img/multinomial-logistic-regression/",
+knitr::opts_chunk$set(echo=TRUE, fig.path="../img/multinomial-logistic-regression/",
                       fig.width=6, fig.height=4,
                       fig.show='hold', fig.align='center')
 options(width=100)
@@ -18,10 +20,10 @@ options(width=100)
 
 # Multinomial Logistic Regression in R
 
-&emsp;For this example we will be using [this data set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/R/dat/cheese.csv) provided by the [STAT 504 Analysis of Discrete Data](https://online.stat.psu.edu/stat504/lesson/8/8.1) course.
+For this example we will be using [this data set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/R/dat/cheese.csv) provided by the [STAT 504 Analysis of Discrete Data](https://online.stat.psu.edu/stat504/lesson/8/8.1) course.
 
 ```{r load_data}
-cheese <- read.csv("dat/cheese.csv", stringsAsFactors = TRUE)
+cheese <- read.csv("../../dat/cheese.csv", stringsAsFactors = TRUE)
 
 str(cheese)
 ```

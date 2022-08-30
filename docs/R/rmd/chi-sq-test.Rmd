@@ -1,0 +1,109 @@
+---
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs/R';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='../chi-sq-test.md') })
+output:
+  html_document:
+    highlight: tango
+editor_options:
+  chunk_output_type: console
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE,
+                      fig.path = "../img/chi-sq-test/",
+                      fig.width = 6, fig.height = 4,
+                      fig.show = 'hold', fig.align = 'center')
+options(width = 100)
+```
+
+# Running the &chi;<sup>2</sup> test
+
+For this tutorial we will use data from an example offered in [STAT 500 Applied Statistics](https://online.stat.psu.edu/stat500/lesson/8) where participants were asked to give their party affiliation (*Democrat* or *Republican*) and their opinion on a tax reform bill (*Favor*, *Indifferent*, or *Opposed*).
+
+<div align="center">
+<table style="width:60%">
+  <tbody>
+    <tr>
+      <td></td>
+      <td><b>Favor</b></td>
+      <td><b>Indifferent</b></td>
+      <td><b>Opposed</b></td>
+    </tr>
+    <tr>
+      <td><b>Democrat</b></td>
+      <td><center>138</center></td>
+      <td><center>83</center></td>
+      <td><center>64</center></td>
+    </tr>
+    <tr>
+      <td><b>Republican</b></td>
+      <td><center>64</center></td>
+      <td><center>67</center></td>
+      <td><center>84</center></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+The researcher wants to know whether a relationship exists between party affiliation and opinion, which corresponds to the following statistical hypotheses:
+
+<center><i>H<sub>0</sub></i>: No relationship exists between party affiliation and opinion on the tax reform bill</center>
+<center><i>H<sub>A</sub></i>: There is a significant relationship between party affiliation and opinion on the tax reform bill</center>
+<br>
+
+Using the `data.frame()` function we can easily code the data from the above table into R going from top to bottom row-wise then left to right column-wise.  By putting the variable name before the `=` in each line we can set the desired names for each column then set the `row.names` option to add the desired names to the rows.
+
+```{r build_table}
+opinion <- data.frame(Favor = c(138, 64),
+                      Indifferent = c(83, 67),
+                      Opposed = c(64, 84),
+                      row.names = c("Democrat", "Republican"))
+
+opinion
+```
+
+Note that if we wanted our columns to be party affiliation and rows the opinion on the tax reform bill we can simply change how we set up our data frame (or transpose them with `t()`) and the &chi;<sup>2</sup> test will still have the same statistical results.
+
+Now that we have our data in a data frame we can run the &chi;<sup>2</sup> test with the `chisq.test()` function.  We will assign the results to a new object so that we can get some additional information out of it later.
+
+```{r chisq_test}
+opinion.chisq <- chisq.test(opinion)
+
+opinion.chisq
+```
+
+The output of the `chisq.test()` function gives us the test statistic (`X-squared = 22.152`), the degrees of freedom (`df = 2`), and the p-value associated with the test statistics (`p-value = 1.548e-05`). Importantly for answering our original question, the p-value is much less than 0 so that we can conclude that an association does exist between party affiliation and a person's opinion on the tax reform bill.
+
+With the &chi;<sup>2</sup> test the expected observations if the null hypothesis was true are calculated.  Since we assigned the results to an object we can append to it `$expected` to print a table of the expected counts.
+
+```{r expected_counts}
+opinion.chisq$expected
+```
+
+Comparing the expected counts with the observed counts in our original table we can see that respondents who identified as *Republican* had more *Opposed* responses than expected compared to those who identified as *Democrat*, for who had more responses for *Favor*.  Conversely, the observed and expected counts almost match for the *Indifferent* responses from both parties.
+
+If we wanted to run post-hoc analyses to statistically determine which specific responses are different we could consider proportion tests with `prop.test()` or further &chi;<sup>2</sup> tests for each pairwise comparison with multiple test corrections.  However, in this case it is quite clear that *Democrat* respondents view the tax bill more favorably than those who identify as *Republican*.
+
+### Full code block
+
+```{r full_code, eval = FALSE}
+# Put data into a data frame and print
+opinion <- data.frame(Favor = c(138, 64),
+                      Indifferent = c(83, 67),
+                      Opposed = c(64, 84),
+                      row.names = c("Democrat", "Republican"))
+
+opinion
+
+# Fit chi-square test and print results
+opinion.chisq <- chisq.test(opinion)
+
+opinion.chisq
+
+# Print table of expected counts
+opinion.chisq$expected
+```
+

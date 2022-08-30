@@ -1,0 +1,130 @@
+---
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs/R';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='../ordinal-logistic-regression.md') })
+output:
+  html_document:
+    highlight: tango
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE,
+                      fig.path = "../img/ordinal-logistic-regression/",
+                      fig.width = 6, fig.height = 4,
+                      fig.show = 'hold', fig.align = 'center')
+options(width=100)
+```
+
+# Ordinal Logistic Regression (OLR)
+
+For this tutorial we will be using a [modified version]() of the *Red Wine Quaity* data set originally published by [Paulo <i>et al.</i> 2009](https://www.sciencedirect.com/science/article/pii/S0167923609001377?casa_token=FA46cZUBbKYAAAAA:-dW3CVVFbG_qTvY-73Bzhob89GojMasXIjpPX3-Hv37eV9kEZRXzuG8Ijns3JBMvewTLYww9).  The response variable, *quality*, is an ordinal variable that scales the quality of red wines from 0 (worst) to 10 (best) to be predicted by 11 wine attributes:
+
+* *fixed acidity* - the acids involved with wine that are fixed (nonvolatile, or do not evaporate readily).
+* *volatile acidity* - the amount of volatile acid in wine, which at too high of levels can lead to an unpleasant, vinegar taste.
+* *citric acid* - when found in small quantities, citric acid can add 'freshness' and flavor to wines.
+* *residual sugar* - the amount of sugar remaining after fermentation stops; it's rare to find wines with less than 1 gram/liter and wines are considered sweeter as sugar increases.
+* *chlorides* - the amount of salt in the wine.
+* *free sulfur dioxide* - the free form of SO<sub>2</sub> exists in equilibrium between molecular SO<sub>2</sub> (as a dissolved gas) and bisulfite ion; SO<sub>2</sub> inhibits microbial growth and the oxidation of wine.
+* *total sulfur dioxide* - amount of free and bound forms of S0<sub>2</sub>; in low concentrations, SO<sub>2</sub> is mostly undetectable in wine, but at free SO<sub>2</sub> concentrations over 50 ppm, SO<sub>2</sub> becomes evident in the nose and taste of wine.
+* *density* - the density of water is close to that of water depending on the percent alcohol and sugar content.
+* *pH* - describes how acidic or basic a wine is on a scale from 0 (very acidic) to 14 (very basic); most wines are between 3-4 on the pH scale.
+* *sulphates* - a wine additive that contributes to SO<sub>2</sub> levels.
+* *alcohol* - the relative amount of ethanol present in the wine.
+
+First, we can load the data set and print its structure using the `str()` function to get an idea of how the data is formatted.
+
+```{r load_data}
+wine <- read.csv("../../dat/winequality-red.csv")
+
+str(wine)
+```
+
+From the output we can see that each of the predictor variables are coded as numeric, which is what we want for this data.  However, the *quality* variable is currently coded as an integer.  We should change this variable into an ordered factor using the `ordered()` function.  If we wanted to set the order of the levels manually we can use the `levels` option, however since *quality* is given numerically the function will automatically order the levels from lowest to highest for us.  We can see this by again using the `str()` function on just the *quality* variable after setting it to an ordered factor.
+
+```{r order_levels}
+wine$quality <- ordered(wine$quality)
+
+wine$alcohol <- ifelse(wine$alcohol < 9, "<9%",
+                       ifelse(9 <= wine$alcohol & wine$alcohol < 11, "9-11%",
+                              ifelse(11 <= wine$alcohol & wine$alcohol < 13, "11-13%", ">13%")))
+                       
+wine$alcohol <- ordered(wine$alcohol,
+                        levels = c("<9%", "9-11%","11-13%", ">13%"))
+str(wine$quality)
+```
+
+Now the *quality* variable is an ordered factor (`Ord.factor`) with 6 levels in order from 3 to 8 (although the quality scale is from 0 to 10 we only have observations from 3 to 8 on that scale).
+
+Now that our data are in the correct format we can fit an OLR model.  First, we will want to load the `MASS` library which provides functions for fitting and assessing OLR models.  With the `MASS` library loaded we can fit an OLR model with the `polr()` function.  Like other GLMs, we write the model formula with the response variable on the left (*quality*) and predictor variables (*.* to include all 11 wine attributes) on the right of a `~`.  We should also set the `Hess` option to `TRUE` to return the observed information matrix for when we assess the model using the `summary()` function.
+
+```{r fit_olr}
+library(MASS)
+
+fit <- polr(quality ~ .,
+            data = wine,
+            Hess = TRUE)
+
+summary(fit)
+```
+
+Notice that in the summary statistics for the OLR model we are given the coefficients (`Value`), standard errors (`Std. Error`) and t-statstics (`t value`) for each variable and for the intercepts between each ordinal level.  To get p-values we will need to do our own approximations from the t statistics.  We can do this in R through the following steps:
+
+First we can make an object with all of the coefficients, standard errors, and t-statistics by using `coef()` on the summary statistics.
+
+```{r coef_table}
+## Get table of coefficients
+coef_table <- coef(summary(fit))
+```
+
+Next, we estimate the p-values for each coefficient using the `pnorm()` function, which approximates the p-values from the t-statistics using the normal distribution function.  With this function, we want to take the absolute values for the t-statistics with the `abs()` function, set the lower tail to false so that the probabilities are P[X > x], and finally multiply the result by 2 for a two-tailed test.
+
+```{r p_calc}
+## Estimate and print p-values
+p <- pnorm(abs(coef_table[, "t value"]), lower.tail = FALSE) * 2
+```
+
+Finally, we round the p-values with `round()` for simplicity and add them to the table with `cbind()`, then print the table.
+
+```{r coef_table_p}
+coef_table <- cbind(coef_table, "p value" = round(p, 4))
+
+coef_table
+```
+
+From the p-values we see that only *citric acid* is not significant in the model, while all 10 other wine attributes and each intercept is statistically significant with p-values less than 0.05.  However, we will want to assess the model fit before diving into the results and interpretation of the results.
+
+To assess the goodness of fit for OLR models it is recommended to run four tests alongside one another: the Lipsitz goodness of fit test for OLR models, the Hosmer-Lemeshow goodness of fit test for OLR models,and the Pulkstenis-Robinson goodness of fit <i>&chi;<sup>2</sup></i> and deviance tests for OLR models.  We will first use the Lipsitz test using the `lipsitz.test()` function on our fitted OLR model which bins the data into equal groups, the number of which can be changed using the `g` option.  It is suggested that the number of bins be at least 6 and less than the number of observations, *n*, divided by 5 times the number of predictor variables, *c*, (*n*/5*c*)  By default, the number of bins is set to 10 which is good for our data.
+
+```{r lipsitz}
+## Goodness of fit
+library(generalhoslem)
+
+lipsitz.test(fit)
+```
+
+In the results of the Lipsitz goodness of fit test we are given the likelihood ratio statistic (`LR statistic`), the degrees of freedom for the test (`df`), and the `p-value`, which is not statistically significant (greater than 0.05) and therefore suggests that our OLR model satisfies the proportional odds assumption.
+
+Next, we will use the `logitgof()` function to use the Hosmer-Lemeshow goodness of fit test on the observed values (`wine$quality`) and the expected values fitted by the model which we can get from the `fitted()` function.  Similarly, the Hosmer-Lemeshow test bins the data into groups for which it is recommended that the number of groups be at least 6 to avoid too much within group heterogeneity that would reduce the power of the test, and not so large so that the contingency table be sparsely populated and not adhere to the <i>&chi;<sup>2</sup></i> distribution.  The number of bins can be set by the `g` option which is also 10 by default and good for our data.  Additionally, we should set the `ord` option to `TRUE` so that the ordinal version of the test is used, otherwise the multinomial version of the test will be used by default.
+
+```{r }
+logitgof(wine$quality, fitted(fit), ord = TRUE)
+```
+
+From the results of the Hosmer-Lemeshow goodness of fit test we run into two issues with our model.  First, the resulting p-value is lower than 0.05 to be statistically significant, indicating that the OLR model does not fit the data well.  Second, we receive a warning message which tells us `At lesat one cell in the expected frequencies table is <1`.  Because the Hosmer-Lemeshow is using the <i>&chi;<sup>2</sup></i> distribution to approximate a p-value it has similar assumptions to other <i>&chi;<sup>2</sup></i> distribution-based tests, in particular here the assumption that there are no expected frequencies that are less than 1.  When this assumption does not hold and the expected values are small the approximations of the p-value may not be correct.
+
+Because of this, the results of the Hosmer-Lemeshow goodness of fit test may be inconclusive, so we should try the Pulkstenis-Robinson goodness of fit <i>&chi;<sup>2</sup></i> and deviance tests with the `pulkrob.chisq()` and `pulkrob.deviance()` functions, respectively.  For each function we give the fitted OLR model as the first argument then a vector of names for the categorical variables in the second arguement.  In this case the *alcohol* variable is the only predictor variable that is categorical, so we only should include it in the second arguement.
+
+```{r}
+pulkrob.chisq(fit, c("alcohol"))
+pulkrob.deviance(fit, c("alcohol"))
+```
+
+As we see from both Pulkstenis-Robinson tests we run into the same issue as the Hosmer-Lemeshow test, in that both are statistically significant with p-values less than 0.05 to indicate that the OLR model does not fit the data well accompanied by warnings to indicate that the <i>&chi;<sup>2</sup></i> distribution-based p-value approximations may be invalid due to small expected values.  While these tests also are inconclusive because this assumption is violated, the fact that three of our four goodness of fit tests had issues should give us pause on how well our OLR model fits the data.
+
+If we choose to use the OLR model we can interpret each of the predictor variable coefficients as the log odds of the quality of the wine to change while all other variables are constant, with negative values decreasing and positive values increasing the log odds of that change in quality.  Typically the magnitude of the log odds change is not as of much interest to us as the direction of the change, and in these instance we can have a simpler interpretation that as the predictor variable of interest increases then the wine quality is expected to increase (positive coefficient) or decrease (negative coefficient) when the other predictor variables remain constant.
+
+If we instead decide that the OLR model has significant problems with its fit we could instead choose other options.  If we want to stick with fitting an OLR model then we could possibly use variable selection methods to determine which variables to include and simplify the model in hoeps for a better fit.  Alternatively, if we are more interested in classification and prediction we could employ a number of machine learning methods such as support vector machines or regression trees.
