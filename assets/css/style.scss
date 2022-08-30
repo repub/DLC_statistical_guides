@@ -60,11 +60,23 @@ a:hover {
     color: #080a82;
 }
 
+/* change links to PSU blue */
+
+a {
+  color: #041E42;
+}
+
+/* below requires the highlight: tango option when knitting document in R Markdown */
+
 pre.sourceCode {
   background-color: #E4EDF5;
 }
 
-pre code {
+pre {
+  background-color: #E4EDF5;
+}
+
+#toc_container{
   background-color: #E4EDF5;
 }
 
@@ -91,3 +103,5 @@ code span.dv {
 code span.cn {
   color: #48657E;
 }
+
+
