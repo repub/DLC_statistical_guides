@@ -44,7 +44,7 @@ options(width = 100)
 
 # MANOVA in R
 
-&emsp;For this tutorial we will employ functions from three different packages:
+For this tutorial we will employ functions from three different packages:
 
 * `car` (Companion to Applied Regression) that includes additional statistical tests,
 * `rstatix` which provides pipe-friendly statistical tests, and
@@ -56,7 +56,7 @@ library(rstatix)
 library(tidyverse)
 ```
 
-&emsp;After loading the packages we can bring in the data set we will be working with using the `read_csv()` function.  This dataset includes red and white wines (`type`) that vary among three quality levels (`quality`) with five measures of their chemical attributes:
+After loading the packages we can bring in the data set we will be working with using the `read_csv()` function.  This dataset includes red and white wines (`type`) that vary among three quality levels (`quality`) with five measures of their chemical attributes:
 
 * `residual_sugar` - grams per liter of sugars remaining after fermentation
 * `pH` - acidity as measured by the negative log<sub>10</sub> of the solution's hydronium ion concentration
@@ -70,7 +70,7 @@ wine <- read_csv("../../dat/wine-quality.csv")
 head(wine)
 ```
 
-&emsp;Note that the `type` and `quality` variables are enccoded as characters.  This is usually fine, but for ease of use we should go ahead and recode them to factors.  For the `type` variable we can code is as a normal factor, however the `quality` variable is actually ordered, so we should recode it as an ordered factor.
+Note that the `type` and `quality` variables are enccoded as characters.  This is usually fine, but for ease of use we should go ahead and recode them to factors.  For the `type` variable we can code is as a normal factor, however the `quality` variable is actually ordered, so we should recode it as an ordered factor.
 
 ```{r to-factor}
 wine$type <- factor(wine$type)
@@ -81,7 +81,7 @@ wine$quality <- factor(wine$quality,
 str(wine)
 ```
 
-&emsp;From the output of `str()` we can see that `type` and `quality` are now coded as a factor and an ordered factor where its levels are ordered as *mediocre* < *good* < *very good*, respectively.
+From the output of `str()` we can see that `type` and `quality` are now coded as a factor and an ordered factor where its levels are ordered as *mediocre* < *good* < *very good*, respectively.
 
 ```{r}
 wine %>%
@@ -97,7 +97,7 @@ wine %>%
 
 ## Checking assumptions
 
-&emsp;Before starting the MANOVA analysis we should first check whether some of its assumptions are valid with this data set.  These assumptions include:
+Before starting the MANOVA analysis we should first check whether some of its assumptions are valid with this data set.  These assumptions include:
 
 * Adequate *sample size*,
 * No *outliers* or *high leverage points*,
@@ -109,7 +109,7 @@ wine %>%
 
 ### Sample size
 
-&emsp;For the MANOVA test to be valid, the number of observations (n) for each group (g) must be greater than the number of outcome variables (p).  With this data, we have 2 levels in the `type` variable and 3 levels in the `quality` variable for 2x3 = 6 total groups, so we will want our n for each group to be greater than 6.  We can use the `group_by()` function to create our groups then count the number of observations within them with the `summarize()` and `n()` functions.
+For the MANOVA test to be valid, the number of observations (n) for each group (g) must be greater than the number of outcome variables (p).  With this data, we have 2 levels in the `type` variable and 3 levels in the `quality` variable for 2x3 = 6 total groups, so we will want our n for each group to be greater than 6.  We can use the `group_by()` function to create our groups then count the number of observations within them with the `summarize()` and `n()` functions.
 
 ```{r sample-size}
 wine %>%
@@ -117,7 +117,7 @@ wine %>%
   summarize(n = n())
 ```
 
-&emsp;
+
 
 
 ### Outliers {.tabset .tabset-fade .tabset-pills}
@@ -125,7 +125,7 @@ wine %>%
 
 #### Multivariate outliers
 
-&emsp;To flag multivariate outliers we can calculate the Mahalanobis distances for each point, then compare those distances against a &chi;<sup>2</sup> distribution where the degrees of freedom is equal to the number of outcome variables (in this case 3) and &alpha; = 0.001.  We first group our independent variables of interest, <i>type</i> and <i>quality</i>, using `group_by()` then calculate the Mahalanobis distances with the `mahalanobis_distance()` funciton.  We will also use the `filter()` function to only print out significant outliers.
+To flag multivariate outliers we can calculate the Mahalanobis distances for each point, then compare those distances against a &chi;<sup>2</sup> distribution where the degrees of freedom is equal to the number of outcome variables (in this case 3) and &alpha; = 0.001.  We first group our independent variables of interest, <i>type</i> and <i>quality</i>, using `group_by()` then calculate the Mahalanobis distances with the `mahalanobis_distance()` funciton.  We will also use the `filter()` function to only print out significant outliers.
 
 ```{r mult-outliers}
 wine %>%
@@ -134,7 +134,7 @@ wine %>%
   filter(is.outlier == TRUE)
 ```
 
-&emsp;Since the output is empty we can conclude that there are no significant multivariate outliers as determined by the Mahalanobis distance.
+Since the output is empty we can conclude that there are no significant multivariate outliers as determined by the Mahalanobis distance.
 
 
 #### Univariate outliers

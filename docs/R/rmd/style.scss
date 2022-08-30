@@ -598,3 +598,93 @@ footer {
 section {
     width: 820px;
 }
+
+
+/* Below here is not part of the Jekyll minimal theme but is included in the style.scss file for the github page */
+
+#toc_container {
+    background: #f8f8f8 none repeat scroll 0 0;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    display: table;
+    font-size: 14px;
+    padding-top: 8px;
+    padding-right: 5px;
+    padding-bottom: 8px;
+    padding-left: 5px;
+    width: 270px;
+}
+
+.toc_title {
+    font-weight: 1000;
+    text-align: center;
+    font-size: 24px;
+    color: #000000;
+}
+
+#toc_container li, #toc_container ul, #toc_container ul li {
+    list-style: outside none none !important;
+}
+
+li::after {
+    display: block;
+    content: attr(title);
+    font-weight: bold;
+    height: 1px;
+    color: transparent;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+aside {
+    float: left;
+    width: 270px;
+    position: fixed;
+    top: 300px;
+    left: calc((100vw - 1200px)/2);
+}
+
+
+a:hover {
+    font-weight: normal;
+    color: #080a82;
+}
+
+
+/* below requires the highlight: tango option when knitting document in R Markdown */
+
+pre.sourceCode, p code, li code {
+    background-color: #E4EDF5;
+}
+
+pre:not([class]), #toc_container {
+    background-color: #F8F8F8;
+}
+
+code span.fu {
+    color: #48657E;
+}
+
+code span.ot {
+    color: #B45F06;
+}
+
+code span.sc {
+    color: #B45F06;
+}
+
+code span.fl {
+    color: #65487E;
+}
+
+code span.dv {
+    color: #65487E;
+}
+
+code span.cn {
+    color: #48657E;
+}
+
+p {
+    text-indent: 30px;
+}
