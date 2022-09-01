@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html>
 
 <head>
@@ -491,16 +493,16 @@ read .csv files similar to <code>read.csv()</code>. We will also get a
 look at our data after it is loaded in using <code>head()</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>wine <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;../../dat/wine-quality.csv&quot;</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wine)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 7
-##   type  quality residual_sugar    pH alcohol chlorides sulphates
-##   &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-## 1 red   good               1.8  3.38    11.8     0.066      0.72
-## 2 red   good               2    2.94     9.2     0.082      0.66
-## 3 red   good               3    3.16    11.5     0.103      1   
-## 4 red   good               2.5  3.27     9.3     0.097      0.6 
-## 5 red   good               2.6  3.36     9.4     0.093      0.86
-## 6 red   good               3.6  3.39    11       0.067      0.66</code></pre>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wine)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 × 7</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   type  quality residual_sugar    pH alcohol chlorides sulphates</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 red   good               1.8  3.38    11.8     0.066      0.72</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 red   good               2    2.94     9.2     0.082      0.66</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 red   good               3    3.16    11.5     0.103      1   </span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 red   good               2.5  3.27     9.3     0.097      0.6 </span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 red   good               2.6  3.36     9.4     0.093      0.86</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 red   good               3.6  3.39    11       0.067      0.66</span></span></code></pre></div>
 <p>Note that the <code>type</code> and <code>quality</code> variables
 are encoded as characters. This is usually fine, but for ease of use we
 should go ahead and recode them to factors. For the <code>type</code>
@@ -516,21 +518,21 @@ from lowest to highest for ease of interpretation). To check that
 everything is coded properly and to get another look at our data set we
 will then use the <code>str()</code> function to see its structure in
 <code>R</code>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>wine <span class="ot">&lt;-</span> wine <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">factor</span>(wine<span class="sc">$</span>type),</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">quality =</span> <span class="fu">factor</span>(wine<span class="sc">$</span>quality,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;mediocre&quot;</span>, <span class="st">&quot;good&quot;</span>, <span class="st">&quot;very good&quot;</span>),</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ordered =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wine)</span></code></pre></div>
-<pre><code>## tibble [60 × 7] (S3: tbl_df/tbl/data.frame)
-##  $ type          : Factor w/ 2 levels &quot;red&quot;,&quot;white&quot;: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ quality       : Ord.factor w/ 3 levels &quot;mediocre&quot;&lt;&quot;good&quot;&lt;..: 2 2 2 2 2 2 2 2 2 2 ...
-##  $ residual_sugar: num [1:60] 1.8 2 3 2.5 2.6 3.6 2 2 8.8 2 ...
-##  $ pH            : num [1:60] 3.38 2.94 3.16 3.27 3.36 3.39 3.22 3.37 3.38 3.11 ...
-##  $ alcohol       : num [1:60] 11.8 9.2 11.5 9.3 9.4 11 11.2 9.4 10.1 10.1 ...
-##  $ chlorides     : num [1:60] 0.066 0.082 0.103 0.097 0.093 0.067 0.12 0.082 0.084 0.067 ...
-##  $ sulphates     : num [1:60] 0.72 0.66 1 0.6 0.86 0.66 0.58 0.5 0.64 0.97 ...</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>wine <span class="ot">&lt;-</span> wine <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">factor</span>(wine<span class="sc">$</span>type),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">quality =</span> <span class="fu">factor</span>(wine<span class="sc">$</span>quality,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;mediocre&quot;</span>, <span class="st">&quot;good&quot;</span>, <span class="st">&quot;very good&quot;</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ordered =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wine)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="do">## tibble [60 × 7] (S3: tbl_df/tbl/data.frame)</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ type          : Factor w/ 2 levels &quot;red&quot;,&quot;white&quot;: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ quality       : Ord.factor w/ 3 levels &quot;mediocre&quot;&lt;&quot;good&quot;&lt;..: 2 2 2 2 2 2 2 2 2 2 ...</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ residual_sugar: num [1:60] 1.8 2 3 2.5 2.6 3.6 2 2 8.8 2 ...</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ pH            : num [1:60] 3.38 2.94 3.16 3.27 3.36 3.39 3.22 3.37 3.38 3.11 ...</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ alcohol       : num [1:60] 11.8 9.2 11.5 9.3 9.4 11 11.2 9.4 10.1 10.1 ...</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ chlorides     : num [1:60] 0.066 0.082 0.103 0.097 0.093 0.067 0.12 0.082 0.084 0.067 ...</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ sulphates     : num [1:60] 0.72 0.66 1 0.6 0.86 0.66 0.58 0.5 0.64 0.97 ...</span></span></code></pre></div>
 <p>From the output of <code>str()</code> we can see that
 <code>type</code> and <code>quality</code> are now coded as a factor and
 an ordered factor where its levels are ordered as <em>mediocre</em> &lt;
@@ -567,19 +569,19 @@ to create groups based on the <code>type</code> and <code>quality</code>
 variables. We then pipe the grouped data into <code>summarize()</code>
 and create a column named <code>n</code> which will be the total counts
 of each group as performed by the <code>n()</code> function.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(type, quality) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 3
-## # Groups:   type [2]
-##   type  quality       n
-##   &lt;fct&gt; &lt;ord&gt;     &lt;int&gt;
-## 1 red   mediocre     10
-## 2 red   good         10
-## 3 red   very good    10
-## 4 white mediocre     10
-## 5 white good         10
-## 6 white very good    10</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(type, quality) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>())</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 × 3</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   type [2]</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   type  quality       n</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;fct&gt; &lt;ord&gt;     &lt;int&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 red   mediocre     10</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 red   good         10</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 red   very good    10</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 white mediocre     10</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 white good         10</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 white very good    10</span></span></code></pre></div>
 <p>As we can see from the output each group has enough observations to
 meet this assumption. Additionally, as there are 10 observations in each
 group we can say that the design is balanced.</p>
@@ -597,13 +599,13 @@ independent variables of interest, <code>type</code> and
 distances. We will also use the <code>filter()</code> function to only
 print out significant outliers, otherwise <code>R</code> would print out
 the results for every data point.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(type, quality) <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mahalanobis_distance</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(is.outlier <span class="sc">==</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 0 × 7
-## # … with 7 variables: residual_sugar &lt;dbl&gt;, pH &lt;dbl&gt;, alcohol &lt;dbl&gt;, chlorides &lt;dbl&gt;,
-## #   sulphates &lt;dbl&gt;, mahal.dist &lt;dbl&gt;, is.outlier &lt;lgl&gt;</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(type, quality) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mahalanobis_distance</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(is.outlier <span class="sc">==</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 0 × 7</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 7 variables: residual_sugar &lt;dbl&gt;, pH &lt;dbl&gt;, alcohol &lt;dbl&gt;, chlorides &lt;dbl&gt;,</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="do">## #   sulphates &lt;dbl&gt;, mahal.dist &lt;dbl&gt;, is.outlier &lt;lgl&gt;</span></span></code></pre></div>
 <p>Since the output is empty we can conclude that there are no
 significant multivariate outliers as determined from the Mahalanobis
 distances.</p>
@@ -641,13 +643,13 @@ every variable we want to select from the data set, however when their
 columns are in sequence we can use <code>:</code> to select the first
 and last columns we want to select along with all columns in
 between.</em></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(residual_sugar<span class="sc">:</span>sulphates) <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mshapiro_test</span>()</span></code></pre></div>
-<pre><code>## # A tibble: 1 × 2
-##   statistic  p.value
-##       &lt;dbl&gt;    &lt;dbl&gt;
-## 1     0.899 0.000116</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(residual_sugar<span class="sc">:</span>sulphates) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mshapiro_test</span>()</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1 × 2</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   statistic  p.value</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="do">##       &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 1     0.899 0.000116</span></span></code></pre></div>
 <p>The results of the test indicates that our data does deviate from an
 approximately multivariate normal distribution, and since we did not
 identify any outliers from the Mahalanobis distances this departure is
@@ -677,17 +679,17 @@ remove any variables. To calculate the correlations between the
 dependent variables we can simply select them with <code>select()</code>
 then pipe them into the <code>cor_mat()</code> function which will print
 a matrix of pairwise Person correlations.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(residual_sugar<span class="sc">:</span>sulphates) <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor_mat</span>()</span></code></pre></div>
-<pre><code>## # A tibble: 5 × 6
-##   rowname        residual_sugar    pH alcohol chlorides sulphates
-## * &lt;chr&gt;                   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-## 1 residual_sugar           1    -0.33   -0.36     -0.29     -0.3 
-## 2 pH                      -0.33  1       0.18      0.11      0.11
-## 3 alcohol                 -0.36  0.18    1        -0.22      0.14
-## 4 chlorides               -0.29  0.11   -0.22      1         0.36
-## 5 sulphates               -0.3   0.11    0.14      0.36      1</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(residual_sugar<span class="sc">:</span>sulphates) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor_mat</span>()</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 5 × 6</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   rowname        residual_sugar    pH alcohol chlorides sulphates</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="do">## * &lt;chr&gt;                   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 residual_sugar           1    -0.33   -0.36     -0.29     -0.3 </span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 pH                      -0.33  1       0.18      0.11      0.11</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 alcohol                 -0.36  0.18    1        -0.22      0.14</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 chlorides               -0.29  0.11   -0.22      1         0.36</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 sulphates               -0.3   0.11    0.14      0.36      1</span></span></code></pre></div>
 <p>From the correlation matrix we see that all of the pairwise
 correlations are well below our threshold and thus can conclude that
 there is not a problematic degree of multicollinearity in our data. If
@@ -710,13 +712,13 @@ analyzing in the MANOVA both should be used in this argument. So, we
 will use the <code>fct_cross()</code> function to cross
 <code>quality</code> and <code>type</code> and create the 6 groupings
 for the Box’s M-test.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(residual_sugar<span class="sc">:</span>sulphates) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">box_m</span>(<span class="fu">fct_cross</span>(wine<span class="sc">$</span>quality, wine<span class="sc">$</span>type))</span></code></pre></div>
-<pre><code>## # A tibble: 1 × 4
-##   statistic    p.value parameter method                                             
-##       &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;                                              
-## 1      145. 0.00000204        75 Box&#39;s M-test for Homogeneity of Covariance Matrices</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(residual_sugar<span class="sc">:</span>sulphates) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">box_m</span>(<span class="fu">fct_cross</span>(wine<span class="sc">$</span>quality, wine<span class="sc">$</span>type))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1 × 4</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   statistic    p.value parameter method                                             </span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="do">##       &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;                                              </span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      145. 0.00000204        75 Box&#39;s M-test for Homogeneity of Covariance Matrices</span></span></code></pre></div>
 <p>The significant results from the Box’s M-test indicate that there are
 not equal variances between the groups, or that they have
 heteroscedasticity . This is not surprising since our data also violated
@@ -757,37 +759,37 @@ the <code>test.statistic</code> option. Each statistic has advantages
 and disadvantages against the other statistics depending on design
 balanced and violations of assumptions, and it is usually a good idea to
 asses them all (more information on these statistics can be found <a href="https://www.hindawi.com/journals/cmmm/2019/2173638/">here</a>).</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>wine_manova1 <span class="ot">&lt;-</span> <span class="fu">manova</span>(<span class="fu">cbind</span>(pH, alcohol, residual_sugar, chlorides, sulphates) <span class="sc">~</span> quality,</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data =</span> wine)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">Manova</span>(wine_manova1)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Type II MANOVA Tests: Pillai test statistic</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="do">##         Df test stat approx F num Df den Df  Pr(&gt;F)  </span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="do">## quality  2   0.33506   2.1734     10    108 0.02472 *</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Manova</span>(wine_manova1, <span class="at">test.statistic =</span> <span class="st">&quot;Wilks&quot;</span>)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Type II MANOVA Tests: Wilks test statistic</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="do">##         Df test stat approx F num Df den Df  Pr(&gt;F)  </span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="do">## quality  2   0.67572    2.295     10    106 0.01764 *</span></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="fu">Manova</span>(wine_manova1, <span class="at">test.statistic =</span> <span class="st">&quot;Hotelling-Lawley&quot;</span>)</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Type II MANOVA Tests: Hotelling-Lawley test statistic</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="do">##         Df test stat approx F num Df den Df  Pr(&gt;F)  </span></span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="do">## quality  2   0.46394   2.4125     10    104 0.01272 *</span></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="fu">Manova</span>(wine_manova1, <span class="at">test.statistic =</span> <span class="st">&quot;Roy&quot;</span>)</span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Type II MANOVA Tests: Roy test statistic</span></span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="do">##         Df test stat approx F num Df den Df   Pr(&gt;F)   </span></span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a><span class="do">## quality  2   0.42653   4.6065      5     54 0.001426 **</span></span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>wine_manova1 <span class="ot">&lt;-</span> <span class="fu">manova</span>(<span class="fu">cbind</span>(pH, alcohol, residual_sugar, chlorides, sulphates) <span class="sc">~</span> quality,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data =</span> wine)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">Manova</span>(wine_manova1)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Type II MANOVA Tests: Pillai test statistic</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="do">##         Df test stat approx F num Df den Df  Pr(&gt;F)  </span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="do">## quality  2   0.33506   2.1734     10    108 0.02472 *</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Manova</span>(wine_manova1, <span class="at">test.statistic =</span> <span class="st">&quot;Wilks&quot;</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Type II MANOVA Tests: Wilks test statistic</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="do">##         Df test stat approx F num Df den Df  Pr(&gt;F)  </span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="do">## quality  2   0.67572    2.295     10    106 0.01764 *</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="fu">Manova</span>(wine_manova1, <span class="at">test.statistic =</span> <span class="st">&quot;Hotelling-Lawley&quot;</span>)</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Type II MANOVA Tests: Hotelling-Lawley test statistic</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="do">##         Df test stat approx F num Df den Df  Pr(&gt;F)  </span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="do">## quality  2   0.46394   2.4125     10    104 0.01272 *</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="fu">Manova</span>(wine_manova1, <span class="at">test.statistic =</span> <span class="st">&quot;Roy&quot;</span>)</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Type II MANOVA Tests: Roy test statistic</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="do">##         Df test stat approx F num Df den Df   Pr(&gt;F)   </span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="do">## quality  2   0.42653   4.6065      5     54 0.001426 **</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
 <p>From the results we see that each of the test statistics provide
 statistically significant results, indicating that there is a different
 in the means of at least one of the chemical composition variables when
@@ -822,18 +824,18 @@ into <code>welch_anova_test()</code>, with a model formula of
 the standard one-way ANOVA, which can be done with
 <code>anova_test()</code>, because the assumption of homoscedascticity
 was violated.</em></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(pH, alcohol, residual_sugar, chlorides, sulphates)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">welch_anova_test</span>(value <span class="sc">~</span> quality)</span></code></pre></div>
-<pre><code>## # A tibble: 5 × 8
-##   name           .y.       n statistic   DFn   DFd        p method     
-## * &lt;chr&gt;          &lt;chr&gt; &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      
-## 1 alcohol        value    60     10.9      2  37.0 0.000193 Welch ANOVA
-## 2 chlorides      value    60      0.58     2  37.1 0.566    Welch ANOVA
-## 3 pH             value    60      1.37     2  37.7 0.266    Welch ANOVA
-## 4 residual_sugar value    60      1.09     2  37.2 0.346    Welch ANOVA
-## 5 sulphates      value    60      2.51     2  37.4 0.095    Welch ANOVA</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(pH, alcohol, residual_sugar, chlorides, sulphates)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">welch_anova_test</span>(value <span class="sc">~</span> quality)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 5 × 8</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   name           .y.       n statistic   DFn   DFd        p method     </span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="do">## * &lt;chr&gt;          &lt;chr&gt; &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      </span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 alcohol        value    60     10.9      2  37.0 0.000193 Welch ANOVA</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 chlorides      value    60      0.58     2  37.1 0.566    Welch ANOVA</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 pH             value    60      1.37     2  37.7 0.266    Welch ANOVA</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 residual_sugar value    60      1.09     2  37.2 0.346    Welch ANOVA</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 sulphates      value    60      2.51     2  37.4 0.095    Welch ANOVA</span></span></code></pre></div>
 <p>From the results of the five tests we can see that only
 <code>alcohol</code> varies significantly by wine quality. However, as
 we have 3 levels of wine qualities we are not certain how these levels
@@ -852,14 +854,14 @@ our data set into <code>tukey_hsd()</code> with the model formula as
 <code>quality</code> is an ordered factor we should pass
 <code>TRUE</code> to the <code>ordered</code> argument so that the order
 of the levels is accounted for before taking their differences.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tukey_hsd</span>(alcohol <span class="sc">~</span> quality, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 3 × 9
-##   term    group1   group2    null.value estimate conf.low conf.high    p.adj p.adj.signif
-## * &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       
-## 1 quality mediocre good               0    0.907   0.0585      1.75 0.0336   *           
-## 2 quality mediocre very good          0    1.55    0.707       2.40 0.000135 ***         
-## 3 quality good     very good          0    0.648  -0.200       1.50 0.166    ns</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tukey_hsd</span>(alcohol <span class="sc">~</span> quality, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 3 × 9</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   term    group1   group2    null.value estimate conf.low conf.high    p.adj p.adj.signif</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="do">## * &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 quality mediocre good               0    0.907   0.0585      1.75 0.0336   *           </span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 quality mediocre very good          0    1.55    0.707       2.40 0.000135 ***         </span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 quality good     very good          0    0.648  -0.200       1.50 0.166    ns</span></span></code></pre></div>
 <p>From the results we can see that the <em>mediocre</em> wines have
 significantly different alcohol content compared to <em>good</em> and
 <em>very good</em> quality of wines, for which do not vary in alcohol
@@ -881,49 +883,49 @@ we want to include both <code>type</code> and the interaction between
 adding this interaction, we should use a type 3 sum of squares approach
 instead of the default type 2 sum of squares by assigning <code>3</code>
 to the <code>type</code> argument.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>wine_manova2 <span class="ot">&lt;-</span> <span class="fu">manova</span>(<span class="fu">cbind</span>(pH, alcohol, residual_sugar, chlorides, sulphates) <span class="sc">~</span> quality <span class="sc">*</span> type,</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data =</span> wine)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">Manova</span>(wine_manova2, <span class="at">type =</span> <span class="dv">3</span>)</span></code></pre></div>
-<pre><code>## 
-## Type III MANOVA Tests: Pillai test statistic
-##              Df test stat approx F num Df den Df    Pr(&gt;F)    
-## (Intercept)   1   0.99821   5570.7      5     50 &lt; 2.2e-16 ***
-## quality       2   0.36076      2.2     10    102   0.02065 *  
-## type          1   0.78403     36.3      5     50 1.635e-15 ***
-## quality:type  2   0.24110      1.4     10    102   0.19173    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Manova</span>(wine_manova2, <span class="at">test.statistic =</span> <span class="st">&quot;Wilks&quot;</span>, <span class="at">type =</span> <span class="dv">3</span>)</span></code></pre></div>
-<pre><code>## 
-## Type III MANOVA Tests: Wilks test statistic
-##              Df test stat approx F num Df den Df    Pr(&gt;F)    
-## (Intercept)   1   0.00179   5570.7      5     50 &lt; 2.2e-16 ***
-## quality       2   0.66153      2.3     10    100   0.01808 *  
-## type          1   0.21597     36.3      5     50 1.635e-15 ***
-## quality:type  2   0.77248      1.4     10    100   0.20148    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Manova</span>(wine_manova2, <span class="at">test.statistic =</span> <span class="st">&quot;Hotelling-Lawley&quot;</span>, <span class="at">type =</span> <span class="dv">3</span>)</span></code></pre></div>
-<pre><code>## 
-## Type III MANOVA Tests: Hotelling-Lawley test statistic
-##              Df test stat approx F num Df den Df    Pr(&gt;F)    
-## (Intercept)   1    557.07   5570.7      5     50 &lt; 2.2e-16 ***
-## quality       2      0.48      2.3     10     98   0.01598 *  
-## type          1      3.63     36.3      5     50 1.635e-15 ***
-## quality:type  2      0.28      1.4     10     98   0.21175    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Manova</span>(wine_manova2, <span class="at">test.statistic =</span> <span class="st">&quot;Roy&quot;</span>, <span class="at">type =</span> <span class="dv">3</span>)</span></code></pre></div>
-<pre><code>## 
-## Type III MANOVA Tests: Roy test statistic
-##              Df test stat approx F num Df den Df    Pr(&gt;F)    
-## (Intercept)   1    557.07   5570.7      5     50 &lt; 2.2e-16 ***
-## quality       2      0.39      4.0      5     51   0.00389 ** 
-## type          1      3.63     36.3      5     50 1.635e-15 ***
-## quality:type  2      0.18      1.8      5     51   0.12545    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>wine_manova2 <span class="ot">&lt;-</span> <span class="fu">manova</span>(<span class="fu">cbind</span>(pH, alcohol, residual_sugar, chlorides, sulphates) <span class="sc">~</span> quality <span class="sc">*</span> type,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data =</span> wine)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">Manova</span>(wine_manova2, <span class="at">type =</span> <span class="dv">3</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Type III MANOVA Tests: Pillai test statistic</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="do">##              Df test stat approx F num Df den Df    Pr(&gt;F)    </span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept)   1   0.99821   5570.7      5     50 &lt; 2.2e-16 ***</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="do">## quality       2   0.36076      2.2     10    102   0.02065 *  </span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="do">## type          1   0.78403     36.3      5     50 1.635e-15 ***</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="do">## quality:type  2   0.24110      1.4     10    102   0.19173    </span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="fu">Manova</span>(wine_manova2, <span class="at">test.statistic =</span> <span class="st">&quot;Wilks&quot;</span>, <span class="at">type =</span> <span class="dv">3</span>)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Type III MANOVA Tests: Wilks test statistic</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="do">##              Df test stat approx F num Df den Df    Pr(&gt;F)    </span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept)   1   0.00179   5570.7      5     50 &lt; 2.2e-16 ***</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="do">## quality       2   0.66153      2.3     10    100   0.01808 *  </span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="do">## type          1   0.21597     36.3      5     50 1.635e-15 ***</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="do">## quality:type  2   0.77248      1.4     10    100   0.20148    </span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="fu">Manova</span>(wine_manova2, <span class="at">test.statistic =</span> <span class="st">&quot;Hotelling-Lawley&quot;</span>, <span class="at">type =</span> <span class="dv">3</span>)</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="do">## Type III MANOVA Tests: Hotelling-Lawley test statistic</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="do">##              Df test stat approx F num Df den Df    Pr(&gt;F)    </span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept)   1    557.07   5570.7      5     50 &lt; 2.2e-16 ***</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="do">## quality       2      0.48      2.3     10     98   0.01598 *  </span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="do">## type          1      3.63     36.3      5     50 1.635e-15 ***</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="do">## quality:type  2      0.28      1.4     10     98   0.21175    </span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="fu">Manova</span>(wine_manova2, <span class="at">test.statistic =</span> <span class="st">&quot;Roy&quot;</span>, <span class="at">type =</span> <span class="dv">3</span>)</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="do">## Type III MANOVA Tests: Roy test statistic</span></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a><span class="do">##              Df test stat approx F num Df den Df    Pr(&gt;F)    </span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept)   1    557.07   5570.7      5     50 &lt; 2.2e-16 ***</span></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a><span class="do">## quality       2      0.39      4.0      5     51   0.00389 ** </span></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a><span class="do">## type          1      3.63     36.3      5     50 1.635e-15 ***</span></span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a><span class="do">## quality:type  2      0.18      1.8      5     51   0.12545    </span></span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
 <p>In the output above we see that again each of the four test
 statistics are in agreement. First, the interaction term,
 <code>quality:type</code> is insignificant. Conversely, both the
@@ -947,23 +949,23 @@ instead of <code>*</code>. Additionally, we will use
 the latter function can only perform one-way ANOVAs. To apply a
 correction for heteroscedasticity we assign <code>TRUE</code> to the
 <code>white.adjust</code> option.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(pH, alcohol, residual_sugar, chlorides, sulphates)) <span class="sc">%&gt;%</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anova_test</span>(value <span class="sc">~</span> quality <span class="sc">+</span> type, <span class="at">white.adjust =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 10 × 7
-##    name           Effect    DFn   DFd      F        p `p&lt;.05`
-##  * &lt;chr&gt;          &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  
-##  1 alcohol        quality     2    56 10.3   1.58e- 4 &quot;*&quot;    
-##  2 alcohol        type        1    56  0.048 8.28e- 1 &quot;&quot;     
-##  3 chlorides      quality     2    56  1.12  3.35e- 1 &quot;&quot;     
-##  4 chlorides      type        1    56 83.7   1.04e-12 &quot;*&quot;    
-##  5 pH             quality     2    56  1.42  2.5 e- 1 &quot;&quot;     
-##  6 pH             type        1    56  8.58  5   e- 3 &quot;*&quot;    
-##  7 residual_sugar quality     2    56  1.47  2.38e- 1 &quot;&quot;     
-##  8 residual_sugar type        1    56 18.1   7.9 e- 5 &quot;*&quot;    
-##  9 sulphates      quality     2    56  2.76  7.2 e- 2 &quot;&quot;     
-## 10 sulphates      type        1    56 22.3   1.6 e- 5 &quot;*&quot;</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(pH, alcohol, residual_sugar, chlorides, sulphates)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anova_test</span>(value <span class="sc">~</span> quality <span class="sc">+</span> type, <span class="at">white.adjust =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 10 × 7</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    name           Effect    DFn   DFd      F        p `p&lt;.05`</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  * &lt;chr&gt;          &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  </span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 alcohol        quality     2    56 10.3   1.58e- 4 &quot;*&quot;    </span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 alcohol        type        1    56  0.048 8.28e- 1 &quot;&quot;     </span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 chlorides      quality     2    56  1.12  3.35e- 1 &quot;&quot;     </span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 chlorides      type        1    56 83.7   1.04e-12 &quot;*&quot;    </span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 pH             quality     2    56  1.42  2.5 e- 1 &quot;&quot;     </span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 pH             type        1    56  8.58  5   e- 3 &quot;*&quot;    </span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 residual_sugar quality     2    56  1.47  2.38e- 1 &quot;&quot;     </span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 residual_sugar type        1    56 18.1   7.9 e- 5 &quot;*&quot;    </span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 sulphates      quality     2    56  2.76  7.2 e- 2 &quot;&quot;     </span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 sulphates      type        1    56 22.3   1.6 e- 5 &quot;*&quot;</span></span></code></pre></div>
 <p>From the results of the two-way ANOVA tests we see that
 <code>alcohol</code> is the only variable that varies by
 <code>quality</code> (similar to our one-way MANOVA results) while
@@ -982,14 +984,14 @@ of code, one for the variables that significantly vary by
 <code>type</code>. The first set will be the same as with the one-way
 MANOVA, where the data set is piped to <code>tukey_hsd()</code> with the
 model formula as <code>alcohol ~ quality</code>.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tukey_hsd</span>(alcohol <span class="sc">~</span> quality, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 3 × 9
-##   term    group1   group2    null.value estimate conf.low conf.high    p.adj p.adj.signif
-## * &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       
-## 1 quality mediocre good               0    0.907   0.0585      1.75 0.0336   *           
-## 2 quality mediocre very good          0    1.55    0.707       2.40 0.000135 ***         
-## 3 quality good     very good          0    0.648  -0.200       1.50 0.166    ns</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tukey_hsd</span>(alcohol <span class="sc">~</span> quality, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 3 × 9</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   term    group1   group2    null.value estimate conf.low conf.high    p.adj p.adj.signif</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="do">## * &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 quality mediocre good               0    0.907   0.0585      1.75 0.0336   *           </span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 quality mediocre very good          0    1.55    0.707       2.40 0.000135 ***         </span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 quality good     very good          0    0.648  -0.200       1.50 0.166    ns</span></span></code></pre></div>
 <p>Note that the results are the same as those from the one-way MANOVA
 post-hoc test, so are interpeted the same.</p>
 <p>The second block of code is similar to the one we used to perform the
@@ -998,17 +1000,17 @@ two-way ANOVAs with a couple of changes. First, we will not include
 <code>pivot_longer()</code>. Second, we use <code>tukey_hsd()</code>
 with a model formula of <code>value ~ type</code> to run a Tukey’s test
 for each of the 4 variables.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(pH, residual_sugar, chlorides, sulphates)) <span class="sc">%&gt;%</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tukey_hsd</span>(value <span class="sc">~</span> type)</span></code></pre></div>
-<pre><code>## # A tibble: 4 × 10
-##   name           term  group1 group2 null.value estimate conf.low conf.high    p.adj p.adj.signif
-## * &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       
-## 1 chlorides      type  red    white           0  -0.0356  -0.0432   -0.0280 1.52e-11 ****        
-## 2 pH             type  red    white           0  -0.106   -0.177    -0.0352 4.06e- 3 **          
-## 3 residual_sugar type  red    white           0   4.59     2.48      6.71   5.61e- 5 ****        
-## 4 sulphates      type  red    white           0  -0.188   -0.268    -0.108  1.5 e- 5 ****</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(pH, residual_sugar, chlorides, sulphates)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tukey_hsd</span>(value <span class="sc">~</span> type)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 4 × 10</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   name           term  group1 group2 null.value estimate conf.low conf.high    p.adj p.adj.signif</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="do">## * &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 chlorides      type  red    white           0  -0.0356  -0.0432   -0.0280 1.52e-11 ****        </span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 pH             type  red    white           0  -0.106   -0.177    -0.0352 4.06e- 3 **          </span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 residual_sugar type  red    white           0   4.59     2.48      6.71   5.61e- 5 ****        </span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 sulphates      type  red    white           0  -0.188   -0.268    -0.108  1.5 e- 5 ****</span></span></code></pre></div>
 <p>From these results we see that since there are only two types of wine
 in our <code>type</code> group, there is only one pairwise comparison
 for each of the chemical composition variables, each being statistically

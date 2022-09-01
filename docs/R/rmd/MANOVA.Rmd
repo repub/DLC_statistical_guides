@@ -13,7 +13,7 @@ editor_options:
 ---
   
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE,
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, collapse = TRUE,
                       fig.path = "../img/MANOVA/",
                       fig.width = 6, fig.height = 4,
                       fig.show = 'hold', fig.align = 'center')
