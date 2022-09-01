@@ -40,15 +40,23 @@ options(width = 100)
   </div>
 </aside>
 
+# [MANOVA in R](https://online.stat.psu.edu/stat505/lesson/8/8.2)
 
+In this tutorial we will analyze a data set where red and white wines (`type`) were identified as one of three quality levels (`quality`) along with five measures of their chemical attributes:
 
-# MANOVA in R
+* `residual_sugar` - grams per liter of sugars remaining after fermentation.
+* `pH` - acidity as measured by the negative log<sub>10</sub> of the solution's hydronium ion concentration.
+* `alcohol` - percent volume that is alcohol.
+* `chlorides` - grams per liter of sodium chloride.
+* `sulphates` - grams per liter of potassium sulphate.
 
-For this tutorial we will employ functions from three different packages:
+Using the MANOVA test we want to identify whether any of these chemical attributes vary between red and white wines as well as their quality.  To assist us with our analysis we will employ functions from three different packages:
 
-* `car` (Companion to Applied Regression) that includes additional statistical tests,
-* `rstatix` which provides pipe-friendly statistical tests, and
-* `tidyverse` that contains multiple packages for data manipulation, visualization, and analysis.
+* `car` (Companion to Applied Regression) to add more statistical tests for our analysis.
+* `rstatix` for pipe-friendly statistical functions.
+* `tidyverse` which contains multiple packages for data manipulation, visualization, and analysis ([more information on tidyverse](https://www.tidyverse.org/)).
+
+While these libraries are not required to perform a MANOVA test in `R`, they do provide additional tools to improve the processes of checking assumptions and performing statistical analyses for multiple variables. 
 
 ```{r load-libs}
 library(car)
@@ -56,13 +64,7 @@ library(rstatix)
 library(tidyverse)
 ```
 
-After loading the packages we can bring in the data set we will be working with using the `read_csv()` function.  This dataset includes red and white wines (`type`) that vary among three quality levels (`quality`) with five measures of their chemical attributes:
-
-* `residual_sugar` - grams per liter of sugars remaining after fermentation
-* `pH` - acidity as measured by the negative log<sub>10</sub> of the solution's hydronium ion concentration
-* `alcohol` - percent volumn that is alcohol
-* `chlorides` - grams per liter of sodium chloride
-* `sulphates` - grams per liter of potassium sulphate
+After loading the packages we can bring in wine quality data set using the `read_csv()` function, a tidy-friendly function to read .csv files similar to `read.csv()`.  We will also get a look at our data after it is loaded in using `head()`.
 
 ```{r load-data}
 wine <- read_csv("../../dat/wine-quality.csv")
@@ -70,46 +72,35 @@ wine <- read_csv("../../dat/wine-quality.csv")
 head(wine)
 ```
 
-Note that the `type` and `quality` variables are enccoded as characters.  This is usually fine, but for ease of use we should go ahead and recode them to factors.  For the `type` variable we can code is as a normal factor, however the `quality` variable is actually ordered, so we should recode it as an ordered factor.
+Note that the `type` and `quality` variables are encoded as characters.  This is usually fine, but for ease of use we should go ahead and recode them to factors.  For the `type` variable we can code is as a normal factor using `facter()`.  However since the `quality` variable is actually on a scale where some values are greater or lesser than others we should recode it as an ordered factor.  We can do so using the same function but setting the `levels` option to a concatenated list of values using `c()` and setting the `ordered` option to `TRUE`.  Note that when setting an ordered factor you will want the list passed to `levels` to be in order (typically from lowest to highest for ease of interpretation).  To check that everything is coded properly and to get another look at our data set we will then use the `str()` function to see its structure in `R`.
 
 ```{r to-factor}
-wine$type <- factor(wine$type)
-wine$quality <- factor(wine$quality,
+wine <- wine %>%
+  mutate(type = factor(wine$type),
+         quality = factor(wine$quality,
                        levels = c("mediocre", "good", "very good"),
-                       ordered = TRUE)
+                       ordered = TRUE))
 
 str(wine)
 ```
 
-From the output of `str()` we can see that `type` and `quality` are now coded as a factor and an ordered factor where its levels are ordered as *mediocre* < *good* < *very good*, respectively.
+From the output of `str()` we can see that `type` and `quality` are now coded as a factor and an ordered factor where its levels are ordered as *mediocre* < *good* < *very good*, respectively.  Now that our data is set up properly we can begin testing whether or not the MANOVA assumptions are valid.
 
-```{r}
-wine %>%
-  pivot_longer(cols = c(residual_sugar, pH, alcohol, chlorides, sulphates)) %>%
-  ggplot(aes(x = name, y = value, color = factor(quality))) +
-    geom_boxplot() +
-    facet_wrap(~ type) +
-    labs(x = NULL) +
-    theme_bw() +
-    theme(axis.text = element_text(angle = 45, vjust = 0.5, hjust = 1))
-```
+## Checking assumptions {.tabset .tabset-fade .tabset-pills}
 
+Before performing the MANOVA analysis we should first check whether our data set meets its assumptions.  These assumptions include:
 
-## Checking assumptions
+* Adequate **sample size**,
+* No multivariate **outliers** or **high leverage points**,
+* Approximately multivariate **normality**,
+* No major **multicollinearity**, and
+* Homogeneity of covariances, or **homoscedasticity **
 
-Before starting the MANOVA analysis we should first check whether some of its assumptions are valid with this data set.  These assumptions include:
-
-* Adequate *sample size*,
-* No *outliers* or *high leverage points*,
-* Approximately multivariate *normality*,
-* No major *multicollinearity*, and
-* Homogeneity of covariances, or *heteroskedacity*.
-
-<a id="sample-size"></a>
+Additionally, while not an assumption having a balanced design (equal group sizes) improves the robustness of the MANOVA test when some of these assumptions are violated, particularly when the data are not approximately multivariate normally distributed.
 
 ### Sample size
 
-For the MANOVA test to be valid, the number of observations (n) for each group (g) must be greater than the number of outcome variables (p).  With this data, we have 2 levels in the `type` variable and 3 levels in the `quality` variable for 2x3 = 6 total groups, so we will want our n for each group to be greater than 6.  We can use the `group_by()` function to create our groups then count the number of observations within them with the `summarize()` and `n()` functions.
+For the MANOVA test to be valid, the number of observations for each group must be greater than the number of outcome variables.  With this data, we have 2 levels in the `type` variable and 3 levels in the `quality` variable for $2*3 = 6$ total groups, so we will want the number of observations for each group to be greater than 6.  To easily check this we can pipe (`%>%`) our data into the `group_by()` function to create groups based on the `type` and `quality` variables.  We then pipe the grouped data into `summarize()` and create a column named `n` which will be the total counts of each group as performed by the `n()` function.
 
 ```{r sample-size}
 wine %>%
@@ -117,15 +108,11 @@ wine %>%
   summarize(n = n())
 ```
 
+As we can see from the output each group has enough observations to meet this assumption.  Additionally, as there are 10 observations in each group we can say that the design is balanced.
 
+### Multivariate outliers
 
-
-### Outliers {.tabset .tabset-fade .tabset-pills}
-
-
-#### Multivariate outliers
-
-To flag multivariate outliers we can calculate the Mahalanobis distances for each point, then compare those distances against a &chi;<sup>2</sup> distribution where the degrees of freedom is equal to the number of outcome variables (in this case 3) and &alpha; = 0.001.  We first group our independent variables of interest, <i>type</i> and <i>quality</i>, using `group_by()` then calculate the Mahalanobis distances with the `mahalanobis_distance()` funciton.  We will also use the `filter()` function to only print out significant outliers.
+To flag multivariate outliers we can calculate the Mahalanobis distances for each point, then compare those distances against a &chi;<sup>2</sup> distribution where the degrees of freedom is equal to the number of outcome variables (in this case 3) and &alpha; = 0.001.  We first pipe our data set into `group_by()` to again group our independent variables of interest, `type` and `quality`, which then is piped into `mahalanobis_distance()` to calculate the Mahalanobis distances.  We will also use the `filter()` function to only print out significant outliers, otherwise `R` would print out the results for every data point.
 
 ```{r mult-outliers}
 wine %>%
@@ -134,47 +121,60 @@ wine %>%
   filter(is.outlier == TRUE)
 ```
 
-Since the output is empty we can conclude that there are no significant multivariate outliers as determined by the Mahalanobis distance.
+Since the output is empty we can conclude that there are no significant multivariate outliers as determined from the Mahalanobis distances.
 
+<!-- #### Univariate outliers -->
 
-#### Univariate outliers
+<!-- ```{r} -->
+<!-- wine %>% -->
+<!--   group_by(type, quality) %>% -->
+<!--   identify_outliers(pH) -->
 
-```{r}
-wine %>%
-  group_by(type, quality) %>%
-  identify_outliers(pH)
+<!-- wine %>% -->
+<!--   group_by(type, quality) %>% -->
+<!--   identify_outliers(residual_sugar) -->
 
-wine %>%
-  group_by(type, quality) %>%
-  identify_outliers(residual_sugar)
+<!-- wine %>% -->
+<!--   group_by(type, quality) %>% -->
+<!--   identify_outliers(alcohol) -->
 
-wine %>%
-  group_by(type, quality) %>%
-  identify_outliers(`alcohol`)
-```
+<!-- wine %>% -->
+<!--   group_by(type, quality) %>% -->
+<!--   identify_outliers(chlorides) -->
 
-### Normality {.tabset .tabset-fade .tabset-pills}
+<!-- wine %>% -->
+<!--   group_by(type, quality) %>% -->
+<!--   identify_outliers(sulphates) -->
+<!-- ``` -->
 
-#### Multivariate normality test
+### Multivariate normality
+
+To determine whether the data is approximately multivariate normally distributed we can use the multivariate Shapiro-Wilk test of normality, an extension of the univariate Shapiro-Wilk normality test.  For this test we first select the variables we want to test for approximately normal distributions which are the 5 chemical composition variables.  Using `select()` we can select these variables from our data set and pipe them into `mshapiro_test()` to perform the multivariate Shapiro-Wilk normality test.
+
+*Note: with `select()` we can include the name for every variable we want to select from the data set, however when their columns are in sequence we can use `:` to select the first and last columns we want to select along with all columns in between.*
 
 ```{r mshapiro}
 wine %>%
-  select(pH, alcohol, residual_sugar, chlorides, sulphates) %>%
+  select(residual_sugar:sulphates) %>%
   mshapiro_test()
 ```
 
-#### Univariate normality test
+The results of the test indicates that our data does deviate from an approximately multivariate normal distribution, and since we did not identify any outliers from the Mahalanobis distances this departure is unlikely due to extreme points.  Although this is not ideal, since we have a balanced design there are methods to improve the robustness of the MANOVA which will be covered later.  To note, if our sample sizes are large enough (n &ge; 20) then we can also ignore violations to this assumption due to the central limit theorem.
 
-```{r shapiro}
-wine %>%
-  group_by(type, quality) %>%
-  shapiro_test(residual_sugar, pH, alcohol, chlorides, sulphates) %>%
-  adjust_pvalue(method = "BH") %>%
-  add_significance() %>%
-  print(n = Inf)
-```
+<!-- #### Univariate normality test -->
 
-### Correlations
+<!-- ```{r shapiro} -->
+<!-- wine %>% -->
+<!--   group_by(type, quality) %>% -->
+<!--   shapiro_test(residual_sugar, pH, alcohol, chlorides, sulphates) %>% -->
+<!--   adjust_pvalue(method = "BH") %>% -->
+<!--   add_significance() %>% -->
+<!--   print(n = Inf) -->
+<!-- ``` -->
+
+### Multicollinearity
+
+The next assumption we should test is whether a high degree of multicollinearity exists among the dependent variables.  A simple way to do so is to calculate the correlations between each variable and determine whether they are below a certain threshold.  Here, we will use a threshold of r<sup>2</sup> &ge; 0.90 to determine whether we need to remove any variables.  To calculate the correlations between the dependent variables we can simply select them with `select()` then pipe them into the `cor_mat()` function which will print a matrix of pairwise Person correlations.
 
 ```{r cor}
 wine %>%
@@ -182,63 +182,96 @@ wine %>%
   cor_mat()
 ```
 
-### Heteroskedasticity
+From the correlation matrix we see that all of the pairwise correlations are well below our threshold and thus can conclude that there is not a problematic degree of multicollinearity in our data.  If we were to see high multicollinearity where variables should be removed then it would be best to remove only one variable then reassess multicollinearity on the remaining variables, then repeating if necessary.
+
+### Homoscedasticity 
+
+Equal covariances, or homoscedasticity , can be tested using Box's M-test for homogeneity of covariance matrices.  We will again use `select()` to select the dependent variables from the data set then pipe them into the `box_m()` function which will be used to perform Box's M-test.  However, `box_m()` function requires an argument, `group`, to know how to group the data points.  If we had only one independent variable we would use it for this argument, however since we have two grouping factors we will be analyzing in the MANOVA both should be used in this argument.  So, we will use the `fct_cross()` function to cross `quality` and `type` and create the 6 groupings for the Box's M-test.
 
 ```{r box-m}
 wine %>%
   select(residual_sugar:sulphates) %>%
-  box_m(wine$quality)
+  box_m(fct_cross(wine$quality, wine$type))
 ```
 
-```{r levene}
-wine %>%
-  pivot_longer(cols = c(pH, alcohol, residual_sugar, chlorides, sulphates)) %>%
-  group_by(name) %>%
-  levene_test(value ~ type * quality) %>%
-  adjust_pvalue() %>%
-  add_significance()
-```
+The significant results from the Box's M-test indicate that there are not equal variances between the groups, or that they have heteroscedasticity .  This is not surprising since our data also violated the assumption of approximately multivariate normal distributions.  However, since we have a balanced design we can similarly use statistical methods to improve the robustness of the MANOVA even though this assumption was violated.
 
+<!-- # ```{r levene} -->
+<!-- # wine %>% -->
+<!-- #   pivot_longer(cols = c(pH, alcohol, residual_sugar, chlorides, sulphates)) %>% -->
+<!-- #   group_by(name) %>% -->
+<!-- #   levene_test(value ~ type * quality) %>% -->
+<!-- #   adjust_pvalue() %>% -->
+<!-- #   add_significance() -->
+<!-- # ``` -->
 
 ## One-way MANOVA
 
-```{r}
+Now that we have checked our assumptions and decided to continue with our analysis we can perform the MANOVA test.  Although we have two grouping variables in the interests of this guide we will begin with a one-way MANOVA analysis using `quality` as our only independent variable.
+
+To perform a MANOVA test we can use the `manova()` function with two necessary arguments, `formula` and `data`.  In the `formula` argument we will list each of our variables in the `cbind()` function to combine their columns, followed by `~` then our independent variable, `quality`.  We then add our data set, `wine`, to the `data` argument.  We will also assign the results of the test to a new object names `wine_manova1`.  We will observe these results with the `Manova()` function, which will print a MANOVA table using one of four test statistics.  The default test statistic is the Pillai's trace, though the Wilk's lambda, Hotelling's trace, or Roy's largest root statistics can instead be used by changing the `test.statistic` option.  Each statistic has advantages and disadvantages against the other statistics depending on design balanced and violations of assumptions, and it is usually a good idea to asses them all (more information on these statistics can be found [here](https://www.hindawi.com/journals/cmmm/2019/2173638/)).
+
+```{r one-way-manova, collapse = TRUE}
 wine_manova1 <- manova(cbind(pH, alcohol, residual_sugar, chlorides, sulphates) ~ quality,
                        data = wine)
 
-Manova(wine_manova1, test.statistic = "Pillai")
+Manova(wine_manova1)
 Manova(wine_manova1, test.statistic = "Wilks")
 Manova(wine_manova1, test.statistic = "Hotelling-Lawley")
 Manova(wine_manova1, test.statistic = "Roy")
 ```
 
+From the results we see that each of the test statistics provide statistically significant results, indicating that there is a different in the means of at least one of the chemical composition variables when grouped by their associated wine quality.  To determine which of these variables vary significantly by wine quality we will need to perform post-hoc univariate ANOVA tests for each of the 5 chemical composition variables. 
+
 ### Post-hoc tests {.tabset .tabset-fade .tabset-pills}
 
 #### ANOVA
+
+Since we have a 5 chemical composition variables, instead of writing many lines of code to independently run an ANOVA test for each of them we can use `tidyverse` and `rstatix` to run and print the tests in a more elegant way.
+
+First, we will pipe our data set into `pivot_longer()` which will convert our data from "wide" to "long" format.  This is done by creating two new columns where in the first each row is the name of one of the variable (titled `name` by default) and the second column the value of that observation (titled `value` by default).  We will list the columns we want to lengthen with `c()` and assign them to the `cols` argument.
+
+*Note: if you are unfamiliar with converting data between wide and long format or want to see how the data is transformed then run the below code that comes before piping into `group_by()`.*
+
+The lengthened data set is then piped into `group_by()` to put each variable into its own grouping.  The grouped data is then piped into `welch_anova_test()`, with a model formula of `value ~ quality` to perform ANOVAs for each variable.
+
+*Note that we are using the Welch one-way ANOVA test rather than the standard one-way ANOVA, which can be done with `anova_test()`, because the assumption of homoscedascticity was violated.*
+
 ```{r}
 wine %>%
   pivot_longer(cols = c(pH, alcohol, residual_sugar, chlorides, sulphates)) %>%
   group_by(name) %>%
-  anova_test(value ~ quality)
+  welch_anova_test(value ~ quality)
 ```
+
+From the results of the five tests we can see that only `alcohol` varies significantly by wine quality.  However, as we have 3 levels of wine qualities we are not certain how these levels differ.  We will need to perform a second post-hoc test to make these pairwise comparisons.
 
 #### Pairwise comparisons
 
+There are multiple post-hoc pairwise tests that can be performed, but for this gudie will we use Tukey's honest significant differences test.  Because we only had one chemical composition variable that was significant in the ANOVA test we do not need to convert our data from wide to long to run all of our tests.  Instead, all we need to do is pipe our data set into `tukey_hsd()` with the model formula as `alcohol ~ quality`.  Additionally, because `quality` is an ordered factor we should pass `TRUE` to the `ordered` argument so that the order of the levels is accounted for before taking their differences.
+
 ```{r}
 wine %>%
-  tukey_hsd(alcohol ~ quality)
+  tukey_hsd(alcohol ~ quality, ordered = TRUE)
 ```
 
-
+From the results we can see that the *mediocre* wines have significantly different alcohol content compared to *good* and *very good* quality of wines, for which do not vary in alcohol content significantly.  The `estimate` column shows the differences in the means between `group2` and `group1`, indicating that the alcohol content in *mediocre* wine is 0.907% less than *good* wines and 1.55% less than *very good* wines on average.
 
 ## Two-way MANOVA
+
+The two-way MANOVA can be written similarly to the one-way MANOVA except we add `type` to the right of the `~` in the model formula.  Additionally, we use `*` to indicate that we want to include both `type` and the interaction between `quality` and `type` in our model.  Because we are adding this interaction, we should use a type 3 sum of squares approach instead of the default type 2 sum of squares by assigning `3` to the `type` argument.
 
 ```{r}
 wine_manova2 <- manova(cbind(pH, alcohol, residual_sugar, chlorides, sulphates) ~ quality * type,
                        data = wine)
 
-Manova(wine_manova2, test.statistic = "Pillai", type = 3)
+Manova(wine_manova2, type = 3)
+Manova(wine_manova2, test.statistic = "Wilks", type = 3)
+Manova(wine_manova2, test.statistic = "Hotelling-Lawley", type = 3)
+Manova(wine_manova2, test.statistic = "Roy", type = 3)
 ```
+
+In the output above we see that again each of the four test statistics are in agreement.  First, the interaction term, `quality:type` is insignificant.  Conversely, both the `quality` and `type` terms are significant in each test, indicating that at least one of the chemical composition variables vary significantly by wine quality and by the type of wine.  However, again the MANOVA does not indicate which of these variables vary significantly, so we will need to perform a post-hoc two-way ANOVA test.
 
 <a id="post-hoc2"></a>
 
@@ -246,19 +279,55 @@ Manova(wine_manova2, test.statistic = "Pillai", type = 3)
 
 #### ANOVA
 
+Again, the method for performing the post-hoc two-way ANOVAs as with the one-way ANOVAs except that we need to include the second term.  Since we did not see significance in the interaction term in the MANOVA we can exclude it in the follow-up models by using `+` to add type instead of `*`.  Additionally, we will use `anova_test()` instead of `welch_anova_test()` as the latter function can only perform one-way ANOVAs.  To apply a correction for heteroscedasticity we assign `TRUE` to the `white.adjust` option. 
+
 ```{r}
 wine %>%
   pivot_longer(cols = c(pH, alcohol, residual_sugar, chlorides, sulphates)) %>%
   group_by(name) %>%
-  anova_test(value ~ quality + type, type = 2)
+  anova_test(value ~ quality + type, white.adjust = TRUE)
 ```
+
+From the results of the two-way ANOVA tests we see that `alcohol` is the only variable that varies by `quality` (similar to our one-way MANOVA results) while `chlorides`, `pH`, `residual_sugar`, and `sulphates` all vary significantly by `type`.  Again however, the results of the two-way ANOVA do not tell us how exactly the levels in these variables vary, so we will need to follow-up with post-hoc pairwise comparison tests.
 
 #### Pairwise comparisons
 
-
+For the post-hoc pairwise comparisons we will only want to test the grouped variables that had signficant results.  So, we will run two sets of code, one for the variables that significantly vary by `quality` and a second for those significantly varying by `type`.  The first set will be the same as with the one-way MANOVA, where the data set is piped to `tukey_hsd()` with the model formula as `alcohol ~ quality`.
 
 ```{r}
 wine %>%
-  tukey_hsd(alcohol ~ quality)
+  tukey_hsd(alcohol ~ quality, ordered = TRUE)
 ```
 
+Note that the results are the same as those from the one-way MANOVA post-hoc test, so are interpeted the same.
+
+The second block of code is similar to the one we used to perform the two-way ANOVAs with a couple of changes.  First, we will not include `alcohol` in the list of columns to lengthen by `pivot_longer()`.  Second, we use `tukey_hsd()` with a model formula of `value ~ type` to run a Tukey's test for each of the 4 variables.
+
+```{r}
+wine %>%
+  pivot_longer(cols = c(pH, residual_sugar, chlorides, sulphates)) %>%
+  group_by(name) %>%
+  tukey_hsd(value ~ type)
+```
+
+From these results we see that since there are only two types of wine in our `type` group, there is only one pairwise comparison for each of the chemical composition variables, each being statistically significant.  From the `estimate` column we can see how these means vary between red and white wines, with `chlorides`, `pH`, and `sulphates` being lower and `residual_sugar` higher in concentration on average in white wines.
+
+
+
+
+
+
+
+
+<!-- # EXTRA CODE -->
+<!-- ```{r manova-plot, echo = FALSE} -->
+<!-- ## Boxplots -->
+<!-- wine %>% -->
+<!--   pivot_longer(cols = c(residual_sugar, pH, alcohol, chlorides, sulphates)) %>% -->
+<!--   ggplot(aes(x = name, y = value, color = factor(quality))) + -->
+<!--     geom_boxplot() + -->
+<!--     facet_wrap(~ type) + -->
+<!--     labs(x = NULL) + -->
+<!--     theme_bw() + -->
+<!--     theme(axis.text = element_text(angle = 45, vjust = 0.5, hjust = 1)) -->
+<!-- ``` -->
