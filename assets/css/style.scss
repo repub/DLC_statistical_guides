@@ -82,6 +82,10 @@ code span.cn, code span.fu {
   color: #48657E;
 }
 
+code span.do,{
+  font-weight: normal;
+}
+
 p:not([class]) {
   text-indent: 30px;
 }
