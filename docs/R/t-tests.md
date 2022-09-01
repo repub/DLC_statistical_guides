@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html>
 
 <head>
@@ -9,7 +11,7 @@
 
 
 
-<title>t-tests.knit</title>
+<title>t-tests-new.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -441,6 +443,9 @@ Contents
 <!--    <li>1.2 First Sub Point 2</li> --> <!-- </ul> -->
 </li>
 <li>
+<a href="#t-tests-in-r">T-tests in R</a>
+<ul>
+<li>
 <a href="#two-sample-t-test">Two-sample t-test</a>
 </li>
 <li>
@@ -450,10 +455,28 @@ Contents
 <a href="#full-code-block">Full code block</a>
 </li>
 </ul>
+</li>
+<li>
+<a href="#t-tests-in-r">T-tests in R</a>
+<ul>
+<li>
+<a href="#two-sample-t-test2">Two-sample t-test</a>
+</li>
+<li>
+<a href="#paired-t-test2">Paired t-test</a>
+</li>
+<li>
+<a href="#full-code-block2">Full code block</a>
+</li>
+</ul>
+</li>
+</ul>
 </div>
 </aside>
-<div id="t-test-for-one-mean" class="section level1">
-<h1>T-test for one mean</h1>
+<div id="t-tests-in-r" class="section level1">
+<h1>T-tests in R</h1>
+<div id="t-test-for-one-mean" class="section level2">
+<h2>T-test for one mean</h2>
 <p>The simplest form of the t-test is when we want to test the
 distribution of one sample against some predetermined value. For
 example, say we designed a study to determine if the average student at
@@ -507,8 +530,8 @@ at the beginning of the semester is less than 200 mg/dL. The
 <code>t.test()</code> function also returns the mean of our sample,
 168.9 mg/dL.</p>
 </div>
-<div id="two-sample-t-test" class="section level1">
-<h1>Two-sample t-test</h1>
+<div id="two-sample-t-test" class="section level2">
+<h2>Two-sample t-test</h2>
 <p>Now let us say that we want to compare the average PSU student’s
 blood cholesterol with the faculty at Penn State. We similarly input
 their data into R as follows:</p>
@@ -558,8 +581,8 @@ the mean difference between the two groups is somewhere between -43 and
 -6.5. Higher (or lower) ranges for the confidence interval can be set
 through the <code>conf.level</code> option.</p>
 </div>
-<div id="paired-t-test" class="section level1">
-<h1>Paired t-test</h1>
+<div id="paired-t-test" class="section level2">
+<h2>Paired t-test</h2>
 <p>Now let us say that we collected samples from the same group of
 students during finals week to see if their blood cholesterol levels
 might have changed due to the stress of the semester. We can compare the
@@ -599,8 +622,9 @@ confidence interval around the mean of the differences (-4.08) includes
 0. Therefore, we accept the null hypothesis that there is not a
 difference in student blood cholesterol between the beginning of the
 semester and final’s week.</p>
-<div id="full-code-block" class="section level3">
-<h3>Full code block</h3>
+</div>
+<div id="full-code-block" class="section level2">
+<h2>Full code block</h2>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Input student blood cholesterol data from the beginning of the semester</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>PSU_student <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">170</span>, <span class="dv">230</span>, <span class="dv">175</span>, <span class="dv">145</span>, <span class="dv">149</span>, <span class="dv">165</span>, <span class="dv">164</span>, <span class="dv">150</span>, <span class="dv">167</span>, <span class="dv">151</span>, <span class="dv">178</span>, <span class="dv">183</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -619,6 +643,85 @@ semester and final’s week.</p>
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a paired t-test to compare student cholesterol levels at the beginning and end of</span></span>
 <span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co"># the semester</span></span>
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(PSU_student, PSU_student2, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="t-tests-using-tidyverse-and-rstatix" class="section level1">
+<h1>T-tests using <code>tidyverse</code> and <code>rstatix</code></h1>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div id="t-test-for-one-mean-1" class="section level2">
+<h2>T-test for one mean</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>bps <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">stu_bp =</span> <span class="fu">c</span>(<span class="dv">170</span>, <span class="dv">230</span>, <span class="dv">175</span>, <span class="dv">145</span>, <span class="dv">149</span>, <span class="dv">165</span>, <span class="dv">164</span>, <span class="dv">150</span>, <span class="dv">167</span>, <span class="dv">151</span>, <span class="dv">178</span>, <span class="dv">183</span>))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>bps <span class="sc">%&gt;%</span> <span class="fu">t_test</span>(stu_bp <span class="sc">~</span> <span class="dv">1</span>, <span class="at">mu =</span> <span class="dv">200</span>, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 7
+##   .y.    group1 group2         n statistic    df        p
+## * &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;      &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+## 1 stu_bp 1      null model    12     -4.71    11 0.000318</code></pre>
+</div>
+<div id="two-sample-t-test-1" class="section level2">
+<h2>Two-sample t-test</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>bps <span class="ot">&lt;-</span> bps <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fac_bp =</span> <span class="fu">c</span>(<span class="dv">189</span>, <span class="dv">165</span>, <span class="dv">191</span>, <span class="dv">193</span>, <span class="dv">177</span>, <span class="dv">200</span>, <span class="dv">179</span>, <span class="dv">189</span>, <span class="dv">202</span>, <span class="dv">235</span>, <span class="dv">178</span>, <span class="dv">226</span>))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>bps <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t_test</span>(value <span class="sc">~</span> name, <span class="at">detailed =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 15
+##   estimate estimate1 estimate2 .y.   group1 group2    n1    n2 statistic      p    df conf.low
+## *    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+## 1     24.8      194.      169. value fac_bp stu_bp    12    12      2.81 0.0102  21.7     6.49
+## # … with 3 more variables: conf.high &lt;dbl&gt;, method &lt;chr&gt;, alternative &lt;chr&gt;</code></pre>
+</div>
+<div id="paired-t-test-1" class="section level2">
+<h2>Paired t-test</h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>bps <span class="ot">&lt;-</span> bps <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">stu_bp2 =</span> <span class="fu">c</span>(<span class="dv">179</span>, <span class="dv">224</span>, <span class="dv">175</span>, <span class="dv">140</span>, <span class="dv">148</span>, <span class="dv">181</span>, <span class="dv">179</span>, <span class="dv">142</span>, <span class="dv">180</span>, <span class="dv">169</span>, <span class="dv">170</span>, <span class="dv">189</span>))</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>bps <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(stu_bp, stu_bp2)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t_test</span>(value <span class="sc">~</span> name, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 8
+##   .y.   group1 group2     n1    n2 statistic    df     p
+## * &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;int&gt; &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 value stu_bp stu_bp2    12    12     -1.43    11 0.181</code></pre>
+<div id="full-code-block-1" class="section level3">
+<h3>Full code block</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># T-test for one mean</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Input student blood cholesterol data from the beginning of the semester as a tibble</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>bps <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">stu_bp =</span> <span class="fu">c</span>(<span class="dv">170</span>, <span class="dv">230</span>, <span class="dv">175</span>, <span class="dv">145</span>, <span class="dv">149</span>, <span class="dv">165</span>, <span class="dv">164</span>, <span class="dv">150</span>, <span class="dv">167</span>, <span class="dv">151</span>, <span class="dv">178</span>, <span class="dv">183</span>))</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Perform a one-mean t-test to determine if the average blood pressure is less than 200</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>bps <span class="sc">%&gt;%</span> <span class="fu">t_test</span>(stu_bp <span class="sc">~</span> <span class="dv">1</span>, <span class="at">mu =</span> <span class="dv">200</span>, <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 7
+##   .y.    group1 group2         n statistic    df        p
+## * &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;      &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+## 1 stu_bp 1      null model    12     -4.71    11 0.000318</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Two-sample t-test</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Add the blood cholesterol data from faculty</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>bps <span class="ot">&lt;-</span> bps <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fac_bp =</span> <span class="fu">c</span>(<span class="dv">189</span>, <span class="dv">165</span>, <span class="dv">191</span>, <span class="dv">193</span>, <span class="dv">177</span>, <span class="dv">200</span>, <span class="dv">179</span>, <span class="dv">189</span>, <span class="dv">202</span>, <span class="dv">235</span>, <span class="dv">178</span>, <span class="dv">226</span>))</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Compare student and faculty cholesterol levels with a two-sample t-test</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>bps <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t_test</span>(value <span class="sc">~</span> name, <span class="at">detailed =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 15
+##   estimate estimate1 estimate2 .y.   group1 group2    n1    n2 statistic      p    df conf.low
+## *    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+## 1     24.8      194.      169. value fac_bp stu_bp    12    12      2.81 0.0102  21.7     6.49
+## # … with 3 more variables: conf.high &lt;dbl&gt;, method &lt;chr&gt;, alternative &lt;chr&gt;</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paired t-test</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Add cholesterol levels from the same students during finals week</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>bps <span class="ot">&lt;-</span> bps <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">stu_bp2 =</span> <span class="fu">c</span>(<span class="dv">179</span>, <span class="dv">224</span>, <span class="dv">175</span>, <span class="dv">140</span>, <span class="dv">148</span>, <span class="dv">181</span>, <span class="dv">179</span>, <span class="dv">142</span>, <span class="dv">180</span>, <span class="dv">169</span>, <span class="dv">170</span>, <span class="dv">189</span>))</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Use a paired t-test to compare student cholesterol levels at the beginning and end of</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="do">## the semester</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>bps <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(stu_bp, stu_bp2)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t_test</span>(value <span class="sc">~</span> name, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 8
+##   .y.   group1 group2     n1    n2 statistic    df     p
+## * &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;int&gt; &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 value stu_bp stu_bp2    12    12     -1.43    11 0.181</code></pre>
+</div>
 </div>
 </div>
 
