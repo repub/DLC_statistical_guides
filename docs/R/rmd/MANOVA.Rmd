@@ -211,7 +211,7 @@ Now that we have checked our assumptions and decided to continue with our analys
 
 To perform a MANOVA test we can use the `manova()` function with two necessary arguments, `formula` and `data`.  In the `formula` argument we will list each of our variables in the `cbind()` function to combine their columns, followed by `~` then our independent variable, `quality`.  We then add our data set, `wine`, to the `data` argument.  We will also assign the results of the test to a new object names `wine_manova1`.  We will observe these results with the `Manova()` function, which will print a MANOVA table using one of four test statistics.  The default test statistic is the Pillai's trace, though the Wilk's lambda, Hotelling's trace, or Roy's largest root statistics can instead be used by changing the `test.statistic` option.  Each statistic has advantages and disadvantages against the other statistics depending on design balanced and violations of assumptions, and it is usually a good idea to asses them all (more information on these statistics can be found [here](https://www.hindawi.com/journals/cmmm/2019/2173638/)).
 
-```{r one-way-manova, collapse = TRUE}
+```{r one-way-manova}
 wine_manova1 <- manova(cbind(pH, alcohol, residual_sugar, chlorides, sulphates) ~ quality,
                        data = wine)
 
