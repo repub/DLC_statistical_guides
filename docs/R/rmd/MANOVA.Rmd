@@ -40,7 +40,7 @@ options(width = 100)
   </div>
 </aside>
 
-# [MANOVA in R](https://online.stat.psu.edu/stat505/lesson/8/8.2)
+# [MANOVA](https://online.stat.psu.edu/stat505/lesson/8/8.2) in `R`
 
 In this tutorial we will analyze a data set where red and white wines (`type`) were identified as one of three quality levels (`quality`) along with five measures of their chemical attributes:
 

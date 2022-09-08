@@ -451,8 +451,8 @@ Contents
 </div>
 </aside>
 <div id="manova-in-r" class="section level1">
-<h1><a href="https://online.stat.psu.edu/stat505/lesson/8/8.2">MANOVA in
-R</a></h1>
+<h1><a href="https://online.stat.psu.edu/stat505/lesson/8/8.2">MANOVA</a> in
+<code>R</code></h1>
 <p>In this tutorial we will analyze a data set where red and white wines
 (<code>type</code>) were identified as one of three quality levels
 (<code>quality</code>) along with five measures of their chemical
