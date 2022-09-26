@@ -339,9 +339,9 @@ pre code {
 <table style="width:100%">
 <tbody>
 <tr>
-<td colspan="3">
+<td colspan="3" style="font-size:120%;">
 <center>
-<b>Data Handling and Manipulation</b>
+<b><br>Data Handling and Manipulation</b>
 </center>
 </td>
 </tr>
@@ -454,9 +454,9 @@ with missing values.
 </td>
 </tr>
 <tr>
-<td colspan="3">
+<td colspan="3" style="font-size:120%;">
 <center>
-<b>Data Visualization</b>
+<b><br>Data Visualization</b>
 </center>
 </td>
 </tr>
@@ -485,9 +485,9 @@ based on “The Grammar of Graphics.”
 </td>
 </tr>
 <tr>
-<td colspan="3">
+<td colspan="3" style="font-size:120%;">
 <center>
-<b>Statistical Analysis</b>
+<b><br>Statistical Analysis</b>
 </center>
 </td>
 </tr>
