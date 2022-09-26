@@ -339,6 +339,13 @@ pre code {
 <table style="width:100%">
 <tbody>
 <tr>
+<td colspan="3">
+<center>
+<b>Data Handling and Manipulation</b>
+</center>
+</td>
+</tr>
+<tr>
 <td>
 <b>Package</b>
 </td>
@@ -349,6 +356,7 @@ pre code {
 <b>Sample functions</b>
 </td>
 </tr>
+<!-- dplyr -->
 <tr>
 <td>
 <a href="https://dplyr.tidyverse.org/">dplyr</a>
@@ -357,13 +365,15 @@ pre code {
 data manipulation
 </td>
 <td>
-mutate() – adds new variables using functions on existing variables.<br>
-select() – picks variables (columns) based on their name.<br> filter()
-picks rows based on their values.<br> summarize() – reduced multiple
-values down to a single summary.<br> arrange() – changes the ordering of
+<code>mutate()</code> – adds new variables using functions on existing
+variables.<br> <code>select()</code> – picks variables (columns) based
+on their name.<br> <code>filter()</code> picks rows based on their
+values.<br> <code>summarize()</code> – reduced multiple values down to a
+single summary.<br> <code>arrange()</code> – changes the ordering of
 rows.
 </td>
 </tr>
+<!-- forcats -->
 <tr>
 <td>
 <a href="https://forcats.tidyverse.org/">forcats</a>
@@ -372,22 +382,11 @@ rows.
 handling categorical variables
 </td>
 <td>
-fct_reorder() – reorders a factor by another variable.<br> fct_relevel()
-– changes the order of factors manually.
+<code>fct_reorder()</code> – reorders a factor by another variable.<br>
+<code>fct_relevel()</code> – changes the order of factors manually.
 </td>
 </tr>
-<tr>
-<td>
-<a href="https://ggplot2.tidyverse.org/">ggplot2</a>
-</td>
-<td>
-data visualization
-</td>
-<td>
-ggplot() – system for declaratively creating graphics, based on “The
-Grammar of Graphics.”
-</td>
-</tr>
+<!-- purrr -->
 <tr>
 <td>
 <a href="https://purrr.tidyverse.org/">purrr</a>
@@ -396,10 +395,11 @@ Grammar of Graphics.”
 tools for working with vectors and functions
 </td>
 <td>
-map() – allows you to replace many ‘for’ loops with code that is both
-more succinct and easier to read.
+<code>map()</code> – allows you to replace many ‘for’ loops with code
+that is both more succinct and easier to read.
 </td>
 </tr>
+<!-- readr -->
 <tr>
 <td>
 <a href="https://readr.tidyverse.org/">readr</a>
@@ -408,9 +408,10 @@ more succinct and easier to read.
 read data files (csv, tsv, etc.) in tidy format
 </td>
 <td>
-read_csv() – reads .csv files and loads them as tibbles.
+<code>read_csv()</code> – reads .csv files and loads them as tibbles.
 </td>
 </tr>
+<!-- stringr -->
 <tr>
 <td>
 <a href="https://stringr.tidyverse.org/">stringr</a>
@@ -419,11 +420,13 @@ read_csv() – reads .csv files and loads them as tibbles.
 working with strings
 </td>
 <td>
-str_replace() – replaces matching text in a string with new text.<br>
-str_extract() – extracts matching text from a string.<br> str_split() –
-splits strings into multiple strings.
+<code>str_replace()</code> – replaces matching text in a string with new
+text.<br> <code>str_extract()</code> – extracts matching text from a
+string.<br> <code>str_split()</code> – splits strings into multiple
+strings.
 </td>
 </tr>
+<!-- tibble -->
 <tr>
 <td>
 <a href="https://tibble.tidyverse.org/">tibble</a>
@@ -432,10 +435,11 @@ splits strings into multiple strings.
 data classification and handling
 </td>
 <td>
-tibble() – constructs a data frame with special behaviors, such as
-enhanced printing.
+<code>tibble()</code> – constructs a data frame with special behaviors,
+such as enhanced printing.
 </td>
 </tr>
+<!-- tidyr -->
 <tr>
 <td>
 <a href="https://tidyr.tidyverse.org/">tidyr</a>
@@ -444,8 +448,87 @@ enhanced printing.
 data cleaning (creating tidy data)
 </td>
 <td>
-pivot_longer() and pivot_wider() – convert between long and wide
-formats.<br> drop_na() – removes rows with missing values
+<code>pivot_longer()</code> and <code>pivot_wider()</code> – convert
+between long and wide formats.<br> <code>drop_na()</code> – removes rows
+with missing values.
+</td>
+</tr>
+<tr>
+<td colspan="3">
+<center>
+<b>Data Visualization</b>
+</center>
+</td>
+</tr>
+<tr>
+<td>
+<b>Package</b>
+</td>
+<td>
+<b>Main use</b>
+</td>
+<td>
+<b>Sample functions</b>
+</td>
+</tr>
+<!-- ggplot2 -->
+<tr>
+<td>
+<a href="https://ggplot2.tidyverse.org/">ggplot2</a>
+</td>
+<td>
+data visualization
+</td>
+<td>
+<code>ggplot()</code> – system for declaratively creating graphics,
+based on “The Grammar of Graphics.”
+</td>
+</tr>
+<tr>
+<td colspan="3">
+<center>
+<b>Statistical Analysis</b>
+</center>
+</td>
+</tr>
+<tr>
+<td>
+<b>Package</b>
+</td>
+<td>
+<b>Main use</b>
+</td>
+<td>
+<b>Sample functions</b>
+</td>
+</tr>
+<!-- car -->
+<tr>
+<td>
+<a href="https://cran.r-project.org/web/packages/car/car.pdf">car</a>
+</td>
+<td>
+expands statistical toolset for regression and analysis of variance
+models
+</td>
+<td>
+<code>Anova()</code> – calculates type 2 or type 3 sum of square tables.
+<code>vif()</code> – calculates variance inflation factors to assess
+multicollinearity.
+</td>
+</tr>
+<!-- rstatix -->
+<tr>
+<td>
+<a href="https://rdrr.io/cran/rstatix/man/">rstatix</a>
+</td>
+<td>
+pipe-friendly framework for performing basic statistical tests
+</td>
+<td>
+<code>adjust_pvalue()</code> – adds and adjusted p-value into a data
+frame.<br> <code>add_significance()</code> – adds p-value significance
+symbols to a data frame.
 </td>
 </tr>
 </tbody>
