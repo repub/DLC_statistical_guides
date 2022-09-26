@@ -178,11 +178,10 @@
 <br>
 <br>
 <h1>Other Resources for R</h1>
-<p style="indent:0px">
+<p style="text-indent:0px">
     <a href="https://repub.github.io/DLC_statistical_guides/docs/Info/common-R-packages">Common R Packages</a><br>
     <a href="https://repub.github.io/DLC_statistical_guides/docs/Info/useful-R-scripts">Useful R Scripts</a>
 </p>
-<br>
 <br>
 <br>
 <h1>Software Access</h1>
