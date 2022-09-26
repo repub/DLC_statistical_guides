@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <html>
 
 <head>
@@ -344,7 +342,7 @@ pre code {
 Contents
 </p>
 <ul class="toc_list">
-<a href="#data-wrangling">Data Wrangling and  Manipulation</a><br>
+<a href="#data-wrangling">Data Wrangling and<br> Manipulation</a><br>
 <a href="#data-visualization">Data Visualization</a><br>
 <a href="#statistical-analysis">Statistical Analysis</a><br>
 </ul>
@@ -356,11 +354,10 @@ Contents
 <table style="width:100%">
 <tbody>
 <!-- Data Wrangling and Manipulation -->
-<a id="data-wrangling"></a>
 <tr>
 <td colspan="3" style="font-size:150%;">
 <center>
-<b>Data Wrangling and Manipulation</b>
+<b><a id="data-wrangling">Data Wrangling and Manipulation</a></b>
 </center>
 </td>
 </tr>
@@ -485,11 +482,10 @@ with missing values.
 </td>
 </tr>
 <!-- Data Visualization -->
-<a id="data-visualization"></a>
 <tr>
 <td colspan="3" style="font-size:150%;">
 <center>
-<b><br><br>Data Visualization</b>
+<b><br><br><a id="data-visualization">Data Visualization</a></b>
 </center>
 </td>
 </tr>
@@ -543,11 +539,10 @@ can be printed as LaTeX or HTML.
 </td>
 </tr>
 <!-- Statistical Analysis -->
-<a id="statistical-analysis"></a>
 <tr>
 <td colspan="3" style="font-size:150%;">
 <center>
-<b><br><br>Statistical Analysis</b>
+<b><br><br><a id="statistical-analysis">Statistical Analysis</a></b>
 </center>
 </td>
 </tr>
