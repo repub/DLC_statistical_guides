@@ -1,0 +1,46 @@
+---
+knit: (function(input_file, encoding) {
+  out_dir <- '/docs/Info';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='../common-R-packages.md') })
+output:
+  html_document:
+    highlight: tango
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE,
+                      fig.path = "../img/common-R-packages/",
+                      fig.width = 6, fig.height = 4,
+                      fig.show = 'hold', fig.align = 'center')
+options(width=100)
+```
+
+# Common R Packages
+
+<table style="width:90%">
+  <tbody>
+    <tr>
+      <td>Package</td>
+      <td>Main use</td>
+      <td>Sample functions</td>
+    </tr>
+    <tr>
+      <td><a href="https://ggplot2.tidyverse.org/">ggplot2</a></td>
+      <td>data visualization</td>
+      <td>ggplot() – system for declaratively creating graphics, based on “The Grammar of Graphics.”</td>
+    </tr>
+    <tr>
+      <td><a href="https://dplyr.tidyverse.org/">dplyr</a></td>
+      <td>data manipulation</td>
+      <td>mutate() – adds new variables using functions on existing variables.<br>
+select() – picks variables (columns) based on their name.<br>
+filter() picks rows based on their values.<br>
+summarize() – reduced multiple values down to a single summary.<br>
+arrange() – changes the ordering of rows.</td>
+    </tr>
+  </tbody>
+</table>
