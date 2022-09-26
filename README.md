@@ -174,7 +174,7 @@
 <br>
 <br>
 <h1>Other Resources for R</h1>
-<a href="https://repub.github.io/DLC_statistical_guides/docs/Info/common-R-packages">Common R Packages</a>
+<a href="https://repub.github.io/DLC_statistical_guides/docs/Info/common-R-packages">Common R Packages</a><br>
 <a href="https://repub.github.io/DLC_statistical_guides/docs/Info/useful-R-scripts">Useful R Scripts</a>
 <br>
 <br>
