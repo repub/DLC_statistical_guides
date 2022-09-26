@@ -1,0 +1,58 @@
+---
+knit: (function(input_file, encoding) {
+  out_dir <- '/docs/Info';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='../useful-R-scripts.md') })
+output:
+  html_document:
+    highlight: tango
+    css: style.scss
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE,
+                      fig.path = "../img/useful-R-scripts/",
+                      fig.width = 6, fig.height = 4,
+                      fig.show = 'hold', fig.align = 'center')
+options(width=100)
+```
+
+# Useful R Scripts
+
+### Loading multiple libraries
+
+Unfortunately in base R both the `library()` and `require()` functions used to load packages only take single arguments, meaning that if you have multiple packages you plan to use then you have to call each of them in their own function.  This can be very tedious when you have many packages you plan to use, so instead of making a new line of code for each package we can use loop functions to load all of the packages for us.
+
+First, we create a list of libraries we want to load using the `c()` function and assigning it to an object, which we will call `libs`.  Then, we will pass that object into the `sapply()` function, which can apply a function, in this case `require()`, over our list.  We will also set the argument `character.only` to `TRUE` which will be passed to `require()` to read each indicie of our list as a character.  Running the code, `sapply()` will then attempt to load each library, returning `TRUE` if successful or `FALSE` if the library is not currently installed.
+
+```{r}
+# Create a list of the libraries you want to load
+libs <- c("dplyr", "forcats", "purrr", "readr", "tidyr")
+
+# Loop through the list of libraries to load each
+sapply(libs, require, character.only = TRUE)
+```
+
+### Installing and loading multiple libraries
+
+The script above only works when the libraries are already installed in the system library.  In some cases, we may not be able to assume eac package is installed and may need to install missing packages before attempted to load them.  We can do so by adding a couple of lines to our code above.
+
+After creating our list of packages, we can create a new object that checks whether each package in `libs` is installed in the system library.  The wrapping of `rownames(installed.packages())` will return the name of each package installed in the system library, from which the `%in%` function will return `TRUE` if the package is installed or `FALSE` if not installed for each index in the `libs` object.  We then use an `if()` statement to check whether any of the desired packages are not installed, and if so install those packages.  We then use the same `sapply()` function and arguments as above to load each package.
+
+```{r}
+# Create a list of the libraries you want to install and load
+libs <- c("dplyr", "forcats", "purrr", "readr", "tidyr")
+
+# Check whether each library is already installed
+installed_libs <- libs %in% rownames(installed.packages())
+
+# Install any libraries that are not already installed
+if(any(!installed_libs)) install.packages(libs[!installed_libs])
+
+# Loop through the list of libraries to load each
+sapply(libs, require, character.only = TRUE)
+```
+
