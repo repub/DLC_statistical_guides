@@ -336,68 +336,118 @@ pre code {
 
 <div id="common-r-packages" class="section level1">
 <h1>Common R Packages</h1>
-<table style="width:90%">
+<table style="width:100%">
 <tbody>
 <tr>
-<b>
 <td>
-Package
+<b>Package</b>
 </td>
-<pre><code>  &lt;td&gt;Main use&lt;/td&gt;
-  &lt;td&gt;Sample functions&lt;/td&gt;
-&lt;/b&gt;&lt;/tr&gt;
-&lt;tr&gt;
-  &lt;td&gt;&lt;a href=&quot;https://dplyr.tidyverse.org/&quot;&gt;dplyr&lt;/a&gt;&lt;/td&gt;
-  &lt;td&gt;data manipulation&lt;/td&gt;
-  &lt;td&gt;mutate() – adds new variables using functions on existing variables.&lt;br&gt;</code></pre>
+<td>
+<b>Main use</b>
+</td>
+<td>
+<b>Sample functions</b>
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://dplyr.tidyverse.org/">dplyr</a>
+</td>
+<td>
+data manipulation
+</td>
+<td>
+mutate() – adds new variables using functions on existing variables.<br>
 select() – picks variables (columns) based on their name.<br> filter()
 picks rows based on their values.<br> summarize() – reduced multiple
 values down to a single summary.<br> arrange() – changes the ordering of
 rows.
 </td>
-<pre><code>&lt;/tr&gt;
-&lt;tr&gt;
-  &lt;td&gt;&lt;a href=&quot;https://forcats.tidyverse.org/&quot;&gt;forcats&lt;/a&gt;&lt;/td&gt;
-  &lt;td&gt;handling categorical variables&lt;/td&gt;
-  &lt;td&gt;fct_reorder() – reorders a factor by another variable.&lt;br&gt;</code></pre>
-fct_relevel() – changes the order of factors manually.
+</tr>
+<tr>
+<td>
+<a href="https://forcats.tidyverse.org/">forcats</a>
 </td>
-<pre><code>&lt;/tr&gt;
-&lt;tr&gt;
-  &lt;td&gt;&lt;a href=&quot;https://ggplot2.tidyverse.org/&quot;&gt;ggplot2&lt;/a&gt;&lt;/td&gt;
-  &lt;td&gt;data visualization&lt;/td&gt;
-  &lt;td&gt;ggplot() – system for declaratively creating graphics, based on “The Grammar of Graphics.”&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-  &lt;td&gt;&lt;a href=&quot;https://purrr.tidyverse.org/&quot;&gt;purrr&lt;/a&gt;&lt;/td&gt;
-  &lt;td&gt;tools for working with vectors and functions&lt;/td&gt;
-  &lt;td&gt;map() – allows you to replace many ‘for’ loops with code that is both more succinct and easier to read.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-  &lt;td&gt;&lt;a href=&quot;https://readr.tidyverse.org/&quot;&gt;readr&lt;/a&gt;&lt;/td&gt;
-  &lt;td&gt;read data files (csv, tsv, etc.) in tidy format&lt;/td&gt;
-  &lt;td&gt;read_csv() – reads .csv files and loads them as tibbles.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-  &lt;td&gt;&lt;a href=&quot;https://stringr.tidyverse.org/&quot;&gt;stringr&lt;/a&gt;&lt;/td&gt;
-  &lt;td&gt;working with strings&lt;/td&gt;
-  &lt;td&gt;str_replace() – replaces matching text in a string with new text.&lt;br&gt;</code></pre>
+<td>
+handling categorical variables
+</td>
+<td>
+fct_reorder() – reorders a factor by another variable.<br> fct_relevel()
+– changes the order of factors manually.
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://ggplot2.tidyverse.org/">ggplot2</a>
+</td>
+<td>
+data visualization
+</td>
+<td>
+ggplot() – system for declaratively creating graphics, based on “The
+Grammar of Graphics.”
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://purrr.tidyverse.org/">purrr</a>
+</td>
+<td>
+tools for working with vectors and functions
+</td>
+<td>
+map() – allows you to replace many ‘for’ loops with code that is both
+more succinct and easier to read.
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://readr.tidyverse.org/">readr</a>
+</td>
+<td>
+read data files (csv, tsv, etc.) in tidy format
+</td>
+<td>
+read_csv() – reads .csv files and loads them as tibbles.
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://stringr.tidyverse.org/">stringr</a>
+</td>
+<td>
+working with strings
+</td>
+<td>
+str_replace() – replaces matching text in a string with new text.<br>
 str_extract() – extracts matching text from a string.<br> str_split() –
 splits strings into multiple strings.
 </td>
-<pre><code>&lt;/tr&gt;
-&lt;tr&gt;
-  &lt;td&gt;&lt;a href=&quot;https://tibble.tidyverse.org/&quot;&gt;tibble&lt;/a&gt;&lt;/td&gt;
-  &lt;td&gt;data classification and handling&lt;/td&gt;
-  &lt;td&gt;tibble() – constructs a data frame with special behaviors, such as enhanced printing.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-  &lt;td&gt;&lt;a href=&quot;https://tidyr.tidyverse.org/&quot;&gt;tidyr&lt;/a&gt;&lt;/td&gt;
-  &lt;td&gt;data cleaning (creating tidy data)&lt;/td&gt;
-  &lt;td&gt;pivot_longer() and pivot_wider() – convert between long and wide formats.&lt;br&gt;</code></pre>
-drop_na() – removes rows with missing values
+</tr>
+<tr>
+<td>
+<a href="https://tibble.tidyverse.org/">tibble</a>
 </td>
-<pre><code>&lt;/tr&gt;</code></pre>
+<td>
+data classification and handling
+</td>
+<td>
+tibble() – constructs a data frame with special behaviors, such as
+enhanced printing.
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://tidyr.tidyverse.org/">tidyr</a>
+</td>
+<td>
+data cleaning (creating tidy data)
+</td>
+<td>
+pivot_longer() and pivot_wider() – convert between long and wide
+formats.<br> drop_na() – removes rows with missing values
+</td>
+</tr>
 </tbody>
 </table>
 </div>

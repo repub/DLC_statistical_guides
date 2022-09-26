@@ -21,13 +21,13 @@ options(width=100)
 
 # Common R Packages
 
-<table style="width:90%">
+<table style="width:100%">
   <tbody>
-    <tr><b>
-      <td>Package</td>
-      <td>Main use</td>
-      <td>Sample functions</td>
-    </b></tr>
+    <tr>
+      <td><b>Package</b></td>
+      <td><b>Main use</b></td>
+      <td><b>Sample functions</b></td>
+    </tr>
     <tr>
       <td><a href="https://dplyr.tidyverse.org/">dplyr</a></td>
       <td>data manipulation</td>
