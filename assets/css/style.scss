@@ -61,7 +61,7 @@ a:hover {
 
 /* below requires the highlight: tango option when knitting document in R Markdown */
 
-pre.sourceCode, p code, li code {
+pre.sourceCode, p code, li code, td code {
   background-color: #E4EDF5;
 }
 
