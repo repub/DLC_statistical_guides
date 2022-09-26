@@ -26,6 +26,7 @@
             <td><center></center></td>
         </tr>
         <tr>
+            <br>
             <td colspan=5 style="font-size:150%;"><center><b>Parametric Tests</b></center></td>
         </tr>
         <tr>
@@ -71,7 +72,8 @@
             <td><center></center></td>
         </tr>
         <tr>
-    <td colspan=5 style="font-size:150%;"><center><b>Non-parametric Tests</b></center></td>
+            <br>
+            <td colspan=5 style="font-size:150%;"><center><b>Non-parametric Tests</b></center></td>
         </tr>
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/Mann-Whitney-Wilcoxon">Mann Whitney & Wilcoxon Tests</a></td>
@@ -88,6 +90,7 @@
             <td><center></center></td>
         </tr>
         <tr>
+            <br>
             <td colspan=5 style="font-size:150%;"><center><b>Linear Regression & Generalized Linear Models (GLMs)</b></center></td>
         </tr>
         <tr>
@@ -143,7 +146,8 @@
             <td><center></center></td>
         </tr>
         <tr>
-        <td colspan=5 style="font-size:150%;"><center><b>Survey Analysis</b></center></td>
+            <br>
+            <td colspan=5 style="font-size:150%;"><center><b>Survey Analysis</b></center></td>
         </tr>
         <tr>
             <td colspan=5><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/Likert">Likert Scale Questions</a></center></td>
@@ -174,8 +178,10 @@
 <br>
 <br>
 <h1>Other Resources for R</h1>
-<a href="https://repub.github.io/DLC_statistical_guides/docs/Info/common-R-packages">Common R Packages</a><br>
-<a href="https://repub.github.io/DLC_statistical_guides/docs/Info/useful-R-scripts">Useful R Scripts</a>
+<p style="indent:0px">
+    <a href="https://repub.github.io/DLC_statistical_guides/docs/Info/common-R-packages">Common R Packages</a><br>
+    <a href="https://repub.github.io/DLC_statistical_guides/docs/Info/useful-R-scripts">Useful R Scripts</a>
+</p>
 <br>
 <br>
 <h1>Software Access</h1>
