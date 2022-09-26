@@ -3,8 +3,10 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs/JMP';
   rmarkdown::render(input_file,
     encoding=encoding,
-    output_file='Kruskal-Wallis.md') })
-output: github_document
+    output_file='../Kruskal-Wallis.md') })
+output:
+  html_document:
+    highlight: tango
 editor_options:
   chunk_output_type: console
 ---
@@ -20,7 +22,7 @@ knitr::opts_chunk$set(echo = TRUE)
 &emsp;For this example we will be using the `chickwts` data set that is supplied in R but provided in [JMP format here](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/JMP/dat/chickwts.jmp).  The data set includes chick weights measured in grams (*weight*) for 71 chicks after being fed one of six supplemented feeds (*feed*) for six weeks and are presented in the figure below.
 
 <center>
-<img src="img/Kruskal-Wallis/chickwts_boxplot.png" style="display: block; margin: auto;" />
+<img src="../img/Kruskal-Wallis/chickwts_boxplot.png" style="display: block; margin: auto;" />
 </center>
 <br>
 
@@ -29,21 +31,21 @@ knitr::opts_chunk$set(echo = TRUE)
 &emsp;To use the Kruskal-Wallis test we can select `Analyze -> Fit Y by X` then add *weight* to the *Y, Response* box and *feed* to the *X, Factor* box.  After selecting *OK* we are given a dot plot with a horizontal line representing the grand mean of the data.
 
 <center>
-<img src="img/Kruskal-Wallis/chickwts_KW.PNG" style="display: block; margin: auto;" />
+<img src="../img/Kruskal-Wallis/chickwts_KW.PNG" style="display: block; margin: auto;" />
 </center>
 <br>
 
 &emsp;To get summary statistics from a Kruskal-Wallis test we can select the red down arrow next to *Oneway Analysis of weight By feed* then select `Nonparametric -> Wilcoxen Test`.
 
 <center>
-<img src="img/Kruskal-Wallis/chickwts_KW2.PNG" style="display: block; margin: auto;" />
+<img src="../img/Kruskal-Wallis/chickwts_KW2.PNG" style="display: block; margin: auto;" />
 </center>
 <br>
 
 &emsp;From the results presented in the *1-Way Test, ChiSqaure Approximation* table we can see that at least one of the variables has a distribution that is significantly different from at least one of the other variables.  Like the one-way ANOVA however, while the Kruskal-Wallis test indicaets that there are statistically significant differences among some of the variables it does not identify which variables are different from one another.  We will need to use a post-hoc pairwise comparison test, for which the Dunn's test is a commonly used post-hoc test for nonparametric tests.  To use the Dunn's test, we need to click the red arrow again next to *Oneway Analysis of weight By feed* then select `Nonparametric -> Nonparametric Multiple Comparisons -> Dunn All Pairs for Joint Ranks`.
 
 <center>
-<img src="img/Kruskal-Wallis/chickwts_Dunn.PNG" style="display: block; margin: auto;" />
+<img src="../img/Kruskal-Wallis/chickwts_Dunn.PNG" style="display: block; margin: auto;" />
 </center>
 <br>
 

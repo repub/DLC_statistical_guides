@@ -3,8 +3,10 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs/JMP';
   rmarkdown::render(input_file,
     encoding=encoding,
-    output_file='Poisson-regression.md') })
-output: github_document
+    output_file='../Poisson-regression.md') })
+output:
+  html_document:
+    highlight: tango
 editor_options:
   chunk_output_type: console
 ---
@@ -22,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
 &emsp;To fit a Poisson regression model we first select *Analyze* -> *Fit Model* and add the *Satellites* variable to the *Y* box and the remaining variables to the *Construct Model Effects* box.  Then, under the *Personality:* drop-down menu we select *Generalized Linear Model*.  Two new drop-down menus titled *Distribution:* and *Link Function:* should appear below, from which we select *Poisson* and *Log*, respectively.  We can then select *Run* to fit a Poisson regression model.
 
 <center>
-<img src="img/Poisson-regression/crab_Poisson.png" style="display: block; margin: auto;" />
+<img src="../img/Poisson-regression/crab_Poisson.png" style="display: block; margin: auto;" />
 </center>
 
 &emsp;Under both the *Effect Summary* and *Effect Tests* tables we can see summary statistics for the four predictor variables within the model, which indicate that the *Color* and *Weight* variables are statistically significant predictors.  The *Parameter Estimates* also shows that *Weight* is statistically significant in the model with a positive relationship with the number of satellites as noted by the positive coefficient under *Estimate*.  However, in this tab *Color* (as well as *Spine*) is separated into multiple rows.  This is because the *Color* variable is a factor with four levels (*1*, *2*, *3*, and *4*), and the model is using contrasts to compare each of the first three levels against the fourth level.

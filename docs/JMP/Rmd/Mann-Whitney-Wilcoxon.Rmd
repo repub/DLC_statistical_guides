@@ -3,8 +3,10 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs/JMP';
   rmarkdown::render(input_file,
     encoding=encoding,
-    output_file='Mann-Whitney-Wilcoxon.md') })
-output: github_document
+    output_file='../Mann-Whitney-Wilcoxon.md') })
+output:
+  html_document:
+    highlight: tango
 editor_options:
   chunk_output_type: console
 ---
@@ -22,14 +24,14 @@ knitr::opts_chunk$set(echo = TRUE)
 &emsp;To statistically determine if there are differences between these two types of transmissions we will use the Mann-Whitney U test.  First, we select `Analyze -> Fit Y by X` and add *mpg* to the *Y, Response* box and *am* to the *X, Factor* box then select *OK*.
 
 <center>
-<img src="img/Mann-Whitney-Wilcoxon/mtcars_MW.png" style="display: block; margin: auto;" />
+<img src="../img/Mann-Whitney-Wilcoxon/mtcars_MW.png" style="display: block; margin: auto;" />
 </center>
 <br>
 
 &emsp;Next, we can select the red down arrow next to *Oneway Analysis of mpg By am* then select `Nonparametric -> Wilcoxon Test`.
 
 <center>
-<img src="img/Mann-Whitney-Wilcoxon/mtcars_MW2.PNG" style="display: block; margin: auto;" />
+<img src="../img/Mann-Whitney-Wilcoxon/mtcars_MW2.PNG" style="display: block; margin: auto;" />
 </center>
 <br>
 
@@ -44,14 +46,14 @@ knitr::opts_chunk$set(echo = TRUE)
 &emsp;Now we can run the Wilcoxon signed-rank test by selecting `Analyze -> Specialized Modeling -> Matched Pairs` then placing the *1* and *2* columns (prefereably in order) into the *Y, Paired Response* box and selecting *OK*.
 
 <center>
-<img src="img/Mann-Whitney-Wilcoxon/sleep_Wilcoxon.png" style="display: block; margin: auto;" />
+<img src="../img/Mann-Whitney-Wilcoxon/sleep_Wilcoxon.png" style="display: block; margin: auto;" />
 </center>
 <br>
 
 &emsp;In the print out we are given a plot with points for the differences between the two treatments for each participant with red lines representing the mean of those differences and upper and lower 95% confidence intervals.  Below the plot we are provided summary statistics for those differences and the results from a paired t-test.  To run a Wilcoxon signed-rank test we need to click the red arrow next to *Matched Pairs* then select `Wilcoxon Signed Rank`.
 
 <center>
-<img src="img/Mann-Whitney-Wilcoxon/sleep_Wilcoxon2.png" style="display: block; margin: auto;" />
+<img src="../img/Mann-Whitney-Wilcoxon/sleep_Wilcoxon2.png" style="display: block; margin: auto;" />
 </center>
 <br>
 
