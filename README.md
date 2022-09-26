@@ -233,5 +233,3 @@
             <td> </td>
             <td><center><a href="https://www.ibm.com/support/pages/downloading-ibm-spss-statistics-26">SPSS 26</a></center></td>
         </tr>
-    </tbody>
-</table>
