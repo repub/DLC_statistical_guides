@@ -490,7 +490,7 @@ with missing values.
 <a href="https://ggplot2.tidyverse.org/">ggplot2</a>
 </td>
 <td>
-data visualization
+drawing figures
 </td>
 <td>
 <code>ggplot()</code> – system for declaratively creating graphics,
@@ -506,7 +506,7 @@ based on “The Grammar of Graphics.”
 working with graphical objects (grobs) on a grid
 </td>
 <td>
-<code>arrangeGrob</code> - arrange multiple grobs on a page.
+<code>arrangeGrob()</code> - arrange multiple grobs on a page.
 </td>
 </tr>
 <!-- xtable -->
@@ -518,8 +518,8 @@ working with graphical objects (grobs) on a grid
 formatting tables into LaTeX and HTML
 </td>
 <td>
-<code>xtable</code> - convert an R object into an xtable object that can
-be printed as LaTeX or HTML
+<code>xtable()</code> - convert an R object into an xtable object that
+can be printed as LaTeX or HTML.
 </td>
 </tr>
 <tr>
@@ -550,9 +550,9 @@ expands statistical toolset for regression and analysis of variance
 models
 </td>
 <td>
-<code>Anova()</code> – calculates type 2 or type 3 sum of square tables.
-<code>vif()</code> – calculates variance inflation factors to assess
-multicollinearity.
+<code>Anova()</code> – calculates type 2 or type 3 sum of square
+tables.<br> <code>vif()</code> – calculates variance inflation factors
+to assess multicollinearity.
 </td>
 </tr>
 <!-- caret -->
@@ -583,7 +583,7 @@ specified factors or factor combinations in a linear model; and
 optionally, comparisons or contrasts among them.<br> <code>glht()</code>
 – general linear hypotheses and multiple comparisons for parametric
 models, including generalized linear models, linear mixed effects
-models, and survival models
+models, and survival models.
 </td>
 </tr>
 <!-- lme4 & nlme -->
