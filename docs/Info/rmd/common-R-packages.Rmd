@@ -50,6 +50,12 @@ options(width=100)
 <code>fct_relevel()</code> – changes the order of factors manually.
 </td>
     </tr>
+    <!-- lubridate-->
+    <tr>
+      <td><a href="https://lubridate.tidyverse.org/">lubridate</a></td>
+      <td>tools to work with date-time data</td>
+      <td><code>now()</code> – current time in time zone.</td>
+    </tr>
     <!-- purrr -->
     <tr>
       <td><a href="https://purrr.tidyverse.org/">purrr</a></td>
@@ -99,6 +105,18 @@ options(width=100)
       <td>data visualization</td>
       <td><code>ggplot()</code> – system for declaratively creating graphics, based on “The Grammar of Graphics.”</td>
     </tr>
+    <!-- gridExtra -->
+    <tr>
+      <td><a href="https://rdrr.io/cran/gridExtra/">gridExtra</a></td>
+      <td>working with graphical objects (grobs) on a grid</td>
+      <td><code>arrangeGrob</code> - arrange multiple grobs on a page.</td>
+    </tr>
+    <!-- xtable -->
+    <tr>
+      <td><a href="https://rdrr.io/cran/xtable/">xtable</a></td>
+      <td>formatting tables into LaTeX and HTML</td>
+      <td><code>xtable</code> - convert an R object into an xtable object that can be printed as LaTeX or HTML</td>
+    </tr>
     <tr>
       <td colspan=3 style="font-size:150%;"><center><b><br><br>Statistical Analysis</b></center></td>
     </tr>
@@ -113,6 +131,30 @@ options(width=100)
       <td>expands statistical toolset for regression and analysis of variance models</td>
       <td><code>Anova()</code> – calculates type 2 or type 3 sum of square tables.
 <code>vif()</code> – calculates variance inflation factors to assess multicollinearity.
+</td>
+    </tr>
+    <!-- caret -->
+    <tr>
+      <td><a href="https://rdrr.io/cran/caret/man/">caret</a></td>
+      <td>tools for predictive modeling</td>
+      <td><code>train()</code> – fits predictive models over different tuning parameters</td>
+    </tr>
+    <!-- emmeans & multcomp -->
+    <tr>
+      <td><a href="https://rdrr.io/cran/emmeans/man/">emmeans</a><br>
+      <a href="https://rdrr.io/cran/multcomp/man/">multcomp</a></td>
+      <td>tools for multiple comparison testing</td>
+      <td><code>emmeans()</code> – calculates estimated marginal means for specified factors or factor combinations in a linear model; and optionally, comparisons or contrasts among them.<br>
+<code>glht()</code> – general linear hypotheses and multiple comparisons for parametric models, including generalized linear models, linear mixed effects models, and survival models</td>
+    </tr>
+    <!-- lme4 & nlme -->
+    <tr>
+      <td><a href="https://rdrr.io/cran/lme4/man/">lme4</a><br>
+      <a href="https://rdrr.io/cran/nlme/man/">nlme</a></td>
+      <td>linear and non-linear mixed effect modeling</td>
+      <td><code>lmer()</code> – fits linear mixed models.<br>
+<code>glmer()</code> – fits generalized linear mixed models.<br>
+<code>nlme()</code> – fits non-linear mixed models.
 </td>
     </tr>
     <!-- rstatix -->
