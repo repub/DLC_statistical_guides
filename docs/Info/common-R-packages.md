@@ -344,7 +344,7 @@ pre code {
 Contents
 </p>
 <ul class="toc_list">
-<a href="#data-wrangling">Data Wrangling and Manipulation</a><br>
+<a href="#data-wrangling">Data Wrangling and  Manipulation</a><br>
 <a href="#data-visualization">Data Visualization</a><br>
 <a href="#statistical-analysis">Statistical Analysis</a><br>
 </ul>
@@ -356,7 +356,7 @@ Contents
 <table style="width:100%">
 <tbody>
 <!-- Data Wrangling and Manipulation -->
-&lt;a id=“data-wrangling&gt;</a>
+<a id="data-wrangling"></a>
 <tr>
 <td colspan="3" style="font-size:150%;">
 <center>
@@ -485,7 +485,7 @@ with missing values.
 </td>
 </tr>
 <!-- Data Visualization -->
-&lt;a id=“data-visualization&gt;</a>
+<a id="data-visualization"></a>
 <tr>
 <td colspan="3" style="font-size:150%;">
 <center>
@@ -543,7 +543,7 @@ can be printed as LaTeX or HTML.
 </td>
 </tr>
 <!-- Statistical Analysis -->
-&lt;a id=“statistical-analysis&gt;</a>
+<a id="statistical-analysis"></a>
 <tr>
 <td colspan="3" style="font-size:150%;">
 <center>

@@ -25,7 +25,7 @@ options(width=100)
   <div id="toc_container">
   <p class="toc_title">Contents</p>
   <ul class="toc_list">
-    <a href="#data-wrangling">Data Wrangling and Manipulation</a><br>
+    <a href="#data-wrangling">Data Wrangling and &emsp;Manipulation</a><br>
     <a href="#data-visualization">Data Visualization</a><br>
     <a href="#statistical-analysis">Statistical Analysis</a><br>
   </ul>
@@ -37,7 +37,7 @@ options(width=100)
 
 <table style="width:100%">
   <tbody>
-    <!-- Data Wrangling and Manipulation --><a id="data-wrangling></a>
+    <!-- Data Wrangling and Manipulation --><a id="data-wrangling"></a>
     <tr>
       <td colspan=3 style="font-size:150%;"><center><b>Data Wrangling and Manipulation</b></center></td>
     </tr>
@@ -105,7 +105,7 @@ options(width=100)
 <code>drop_na()</code> – removes rows with missing values.
 </td>
     </tr>
-    <!-- Data Visualization --><a id="data-visualization></a>
+    <!-- Data Visualization --><a id="data-visualization"></a>
     <tr>
       <td colspan=3 style="font-size:150%;"><center><b><br><br>Data Visualization</b></center></td>
     </tr>
@@ -132,7 +132,7 @@ options(width=100)
       <td>formatting tables into LaTeX and HTML</td>
       <td><code>xtable()</code> - convert an R object into an xtable object that can be printed as LaTeX or HTML.</td>
     </tr>
-    <!-- Statistical Analysis --><a id="statistical-analysis></a>
+    <!-- Statistical Analysis --><a id="statistical-analysis"></a>
     <tr>
       <td colspan=3 style="font-size:150%;"><center><b><br><br>Statistical Analysis</b></center></td>
     </tr>
