@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html>
 
 <head>
@@ -335,14 +337,30 @@ pre code {
 </div>
 
 
+<!-- TABLE OF CONTENTS -->
+<aside>
+<div id="toc_container">
+<p class="toc_title">
+Contents
+</p>
+<ul class="toc_list">
+<a href="#data-wrangling">Data Wrangling and Manipulation</a><br>
+<a href="#data-visualization">Data Visualization</a><br>
+<a href="#statistical-analysis">Statistical Analysis</a><br>
+</ul>
+</div>
+</aside>
+<!-- MAIN PAGE -->
 <div id="common-r-packages" class="section level1">
 <h1>Common R Packages</h1>
 <table style="width:100%">
 <tbody>
+<!-- Data Wrangling and Manipulation -->
+&lt;a id=“data-wrangling&gt;</a>
 <tr>
 <td colspan="3" style="font-size:150%;">
 <center>
-<b>Data Handling and Manipulation</b>
+<b>Data Wrangling and Manipulation</b>
 </center>
 </td>
 </tr>
@@ -466,6 +484,8 @@ between long and wide formats.<br> <code>drop_na()</code> – removes rows
 with missing values.
 </td>
 </tr>
+<!-- Data Visualization -->
+&lt;a id=“data-visualization&gt;</a>
 <tr>
 <td colspan="3" style="font-size:150%;">
 <center>
@@ -522,6 +542,8 @@ formatting tables into LaTeX and HTML
 can be printed as LaTeX or HTML.
 </td>
 </tr>
+<!-- Statistical Analysis -->
+&lt;a id=“statistical-analysis&gt;</a>
 <tr>
 <td colspan="3" style="font-size:150%;">
 <center>
