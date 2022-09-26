@@ -12,14 +12,129 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE,
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, results = 'hold',
                       fig.path = "../img/repeated-measures-ANOVA/",
                       fig.width = 6, fig.height = 4,
                       fig.show = 'hold', fig.align = 'center')
 options(width=100)
 ```
 
-# Repeated Measures ANOVA
+<!-- TABLE OF CONTENTS -->
+<aside>
+  <div id="toc_container">
+  <p class="toc_title">Contents</p>
+  <ul class="toc_list">
+    <a href="#repeated-measures-anova-in-r">Repeated measures ANOVA in R</a><br>
+    <a href="#checking-assumptions">Checking assumptions</a><br>
+       <a href="#sample-size">&emsp;Sample size</a><br>
+       <a href="#outliers">&emsp;Outliers</a><br>
+       <a href="#normality">&emsp;Normality</a><br>
+       <a href="#correlations">&emsp;Correlations</a><br>
+       <a href="#heteroskedasticity">&emsp;Heteroskedasticity</a><br>
+    <a href="#one-way-manova">One-way MANOVA</a><br>
+      <a href="#post-hoc-tests">&emsp;Post-hoc tests</a><br>
+    <a href="#two-way-manova">Two-way MANOVA</a><br>
+      <a href="#post-hoc2">&emsp;Post-hoc tests</a><br>
+  </ul>
+  </div>
+</aside>
+
+# [Repeated measures ANOVA](https://repub.github.io/DLC_statistical_guides/docs/Info/repeated-measures-ANOVA) in `R`
+
+In this guide we will be using a data set provided by [STAT 510 - Applied Time Series Analysis](https://online.stat.psu.edu/stat510/lesson/10/10.1), which contains observations from an experiment designed to detect phlebitis (venous inflammation) by measuring temperature during intravenous administration of a drug of interest in the ear of animals over time.  The data set has four variables:
+
+* `Animal` - the unique identifier for the 15 animals tested.
+* `Treatment` - the treatment that was administered.
+* `Time` - the timepoint in minutes when the temperature was recorded.
+* `Y` - the difference in temperature between the treated and untreated ears of the animal.
+
+<!-- Convert treatment to factor  -->
+
+<!-- ```{r} -->
+<!-- library(tidyverse) -->
+
+<!-- phleb <- phleb %>% -->
+<!--   mutate(Treatment = recode_factor(Treatment, -->
+<!--                                    `1` = "drug", -->
+<!--                                    `2` = "carrier", -->
+<!--                                    `3` = "saline")) -->
+<!-- phleb -->
+
+<!-- write_csv(phleb, "../../dat/phlebitis.csv") -->
+<!-- ``` -->
+
+# Split-plot method
+
+```{r}
+phleb <- read.csv("../../dat/phlebitis.csv")
+
+head(phleb)
+str(phleb)
+```
+
+```{r}
+phleb$Treatment <- factor(phleb$Treatment)
+phleb$Animal <- factor(phleb$Animal)
+phleb$Time <- factor(phleb$Time)
+```
+
+
+
+Each animal was only given one of the three treatments which was measured over four time points.  Therefore, the repeated measures are `Time` within `Animal`.  We can include this in the model using `Error()` with `Animal`.
+
+```{r}
+phleb_aov <- aov(Y ~ Treatment * Time + Error(Animal), data = phleb)
+
+summary(phleb_aov)
+```
+
+
+
+
+# Linear mixed-effects model method
+
+```{r}
+library(lme4)
+library(lmerTest)
+```
+
+```{r}
+phleb_lmer <- lmer(Y ~ Treatment * Time + (1 | Animal), data = phleb)
+
+summary(phleb_lmer)
+anova(phleb_lmer)
+```
+
+```{r}
+phleb_gls <- gls(Y ~ Treatment * Time, data = phleb, corr = corAR1(form = ~ 1 | Animal))
+
+summary(phleb_gls)
+anova(phleb_gls)
+```
+
+```{r}
+phleb_lme <- lme(Y ~ Treatment * Time,
+               data = phleb,
+               random = ~ 1 | Animal,
+               correlation = corAR1(form = ~ 1 | Animal),
+               control = lmeControl(opt = "optim"))
+
+
+summary(phleb_lme)
+anova(phleb_lme)
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```{r}
 df <- read.csv("../../dat/dog_experiment.csv")
