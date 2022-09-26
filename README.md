@@ -173,6 +173,10 @@
 </table>
 <br>
 <br>
+<h1>Other Resources for R</h1>
+<a href="https://repub.github.io/DLC_statistical_guides/docs/Info/common-R-packages">Common R Packages</a>
+<br>
+<br>
 <h1>Software Access</h1>
 <table style="width:90%">
     <tbody>
@@ -231,7 +235,3 @@
         </tr>
     </tbody>
 </table>
-<br>
-<br>
-<h1>Other Resources for R</h1>
-<a href="https://repub.github.io/DLC_statistical_guides/docs/Info/common-R-packages">Common R Packages</a>
