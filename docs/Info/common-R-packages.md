@@ -357,7 +357,7 @@ Contents
 <tr>
 <td colspan="3" style="font-size:150%;">
 <center>
-<b><a id="data-wrangling">Data Wrangling and Manipulation</a></b>
+<b><a id="data-wrangling"></a>Data Wrangling and Manipulation</b>
 </center>
 </td>
 </tr>
@@ -485,7 +485,7 @@ with missing values.
 <tr>
 <td colspan="3" style="font-size:150%;">
 <center>
-<b><br><br><a id="data-visualization">Data Visualization</a></b>
+<b><br><br><a id="data-visualization"></a>Data Visualization</b>
 </center>
 </td>
 </tr>
@@ -542,7 +542,7 @@ can be printed as LaTeX or HTML.
 <tr>
 <td colspan="3" style="font-size:150%;">
 <center>
-<b><br><br><a id="statistical-analysis">Statistical Analysis</a></b>
+<b><br><br><a id="statistical-analysis"></a>Statistical Analysis</b>
 </center>
 </td>
 </tr>
