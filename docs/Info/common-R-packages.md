@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html>
 
 <head>
@@ -221,6 +223,7 @@ window.buildTabsets = function(tocID) {
 
 
 
+<link rel="stylesheet" href="common-R-packages_files/sass8604e3801524c677751990e8ccc7a6a6/style.min.css" type="text/css" />
 
 
 
@@ -339,9 +342,9 @@ pre code {
 <table style="width:100%">
 <tbody>
 <tr>
-<td colspan="3" style="font-size:120%;">
+<td colspan="3" style="font-size:150%;">
 <center>
-<b><br>Data Handling and Manipulation</b>
+<b>Data Handling and Manipulation</b>
 </center>
 </td>
 </tr>
@@ -454,9 +457,9 @@ with missing values.
 </td>
 </tr>
 <tr>
-<td colspan="3" style="font-size:120%;">
+<td colspan="3" style="font-size:150%;">
 <center>
-<b><br>Data Visualization</b>
+<b><br><br>Data Visualization</b>
 </center>
 </td>
 </tr>
@@ -485,9 +488,9 @@ based on “The Grammar of Graphics.”
 </td>
 </tr>
 <tr>
-<td colspan="3" style="font-size:120%;">
+<td colspan="3" style="font-size:150%;">
 <center>
-<b><br>Statistical Analysis</b>
+<b><br><br>Statistical Analysis</b>
 </center>
 </td>
 </tr>

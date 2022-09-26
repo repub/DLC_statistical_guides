@@ -7,6 +7,7 @@ knit: (function(input_file, encoding) {
 output:
   html_document:
     highlight: tango
+    css: style.scss
 editor_options:
   chunk_output_type: console
 ---
@@ -24,7 +25,7 @@ options(width=100)
 <table style="width:100%">
   <tbody>
     <tr>
-      <td colspan=3 style="font-size:120%;"><center><b><br>Data Handling and Manipulation</b></center></td>
+      <td colspan=3 style="font-size:150%;"><center><b>Data Handling and Manipulation</b></center></td>
     </tr>
     <tr>
       <td><b>Package</b></td>
@@ -85,7 +86,7 @@ options(width=100)
 </td>
     </tr>
     <tr>
-      <td colspan=3 style="font-size:120%;"><center><b><br>Data Visualization</b></center></td>
+      <td colspan=3 style="font-size:150%;"><center><b><br><br>Data Visualization</b></center></td>
     </tr>
     <tr>
       <td><b>Package</b></td>
@@ -99,7 +100,7 @@ options(width=100)
       <td><code>ggplot()</code> – system for declaratively creating graphics, based on “The Grammar of Graphics.”</td>
     </tr>
     <tr>
-      <td colspan=3 style="font-size:120%;"><center><b><br>Statistical Analysis</b></center></td>
+      <td colspan=3 style="font-size:150%;"><center><b><br><br>Statistical Analysis</b></center></td>
     </tr>
     <tr>
       <td><b>Package</b></td>
