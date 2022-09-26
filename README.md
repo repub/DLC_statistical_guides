@@ -232,3 +232,7 @@
             <td> </td>
             <td><center><a href="https://www.ibm.com/support/pages/downloading-ibm-spss-statistics-26">SPSS 26</a></center></td>
         </tr>
+
+<h1>Other Resources for R</h1>
+
+<a href="https://repub.github.io/DLC_statistical_guides/docs/Info/common-R-packages">Common R Packages</a>
