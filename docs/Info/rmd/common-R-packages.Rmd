@@ -78,6 +78,13 @@ options(width=100)
       <td>tools to work with date-time data</td>
       <td><code>now()</code> – current time in time zone.</td>
     </tr>
+    <!-- magrittr -->
+    <tr>
+      <td><a href="https://magrittr.tidyverse.org/">magrittr</a></td>
+      <td>useful operators for easier more readable code</td>
+      <td><code>%>%</code> – pipe the left-hand side values forward into expressions on the right hand side of the operator.<br>
+<code>%<>%</code> - pipe and assign a data frame in place.</td>
+    </tr>
     <!-- purrr -->
     <tr>
       <td><a href="https://purrr.tidyverse.org/">purrr</a></td>
@@ -144,7 +151,7 @@ options(width=100)
     <!-- kableExtra -->
     <tr>
       <td><a href="https://rdrr.io/cran/kableExtra/">kableExtra</a></td>
-      <td>builds on the <a href="https://rdrr.io/cran/knitr/man/">knitr</a> package to construct complex and customizable tables</td>
+      <td>builds on the <a href="https://rdrr.io/cran/knitr">knitr</a> package to construct complex and customizable tables</td>
       <td><code>kable()</code> - create tables in LaTeX, HTML, Markdown, and reStructuredText.</td>
     </tr>
     <!-- xtable -->
@@ -172,14 +179,14 @@ options(width=100)
     </tr>
     <!-- caret -->
     <tr>
-      <td><a href="https://rdrr.io/cran/caret/man/">caret</a></td>
+      <td><a href="https://rdrr.io/cran/caret">caret</a></td>
       <td>tools for predictive modeling</td>
       <td><code>train()</code> – fits predictive models over different tuning parameters</td>
     </tr>
     <!-- emmeans & multcomp -->
     <tr>
-      <td><a href="https://rdrr.io/cran/emmeans/man/">emmeans</a><br>
-      <a href="https://rdrr.io/cran/multcomp/man/">multcomp</a></td>
+      <td><a href="https://rdrr.io/cran/emmeans">emmeans</a><br>
+      <a href="https://rdrr.io/cran/multcomp">multcomp</a></td>
       <td>tools for multiple comparison testing</td>
       <td><code>emmeans()</code> – calculates estimated marginal means for specified factors or factor combinations in a linear model; and optionally, comparisons or contrasts among them.<br>
 <code>glht()</code> – general linear hypotheses and multiple comparisons for parametric models, including generalized linear models, linear mixed effects models, and survival models.</td>
@@ -193,8 +200,8 @@ options(width=100)
     </tr>
     <!-- lme4 & nlme -->
     <tr>
-      <td><a href="https://rdrr.io/cran/lme4/man/">lme4</a><br>
-      <a href="https://rdrr.io/cran/nlme/man/">nlme</a></td>
+      <td><a href="https://rdrr.io/cran/lme4">lme4</a><br>
+      <a href="https://rdrr.io/cran/nlme">nlme</a></td>
       <td>linear and non-linear mixed effect modeling</td>
       <td><code>lmer()</code> – fits linear mixed models.<br>
 <code>glmer()</code> – fits generalized linear mixed models.<br>
@@ -203,7 +210,7 @@ options(width=100)
     </tr>
     <!-- rstatix -->
     <tr>
-      <td><a href="https://rdrr.io/cran/rstatix/man/">rstatix</a></td>
+      <td><a href="https://rdrr.io/cran/rstatix">rstatix</a></td>
       <td>pipe-friendly framework for performing basic statistical tests</td>
       <td><code>adjust_pvalue()</code> – adds and adjusted p-value into a data frame.<br>
 <code>add_significance()</code> – adds p-value significance symbols to a data frame.

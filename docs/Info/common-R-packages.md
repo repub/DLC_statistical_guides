@@ -428,6 +428,20 @@ tools to work with date-time data
 <code>now()</code> – current time in time zone.
 </td>
 </tr>
+<!-- magrittr -->
+<tr>
+<td>
+<a href="https://magrittr.tidyverse.org/">magrittr</a>
+</td>
+<td>
+useful operators for easier more readable code
+</td>
+<td>
+<code>%&gt;%</code> – pipe the left-hand side values forward into
+expressions on the right hand side of the operator.<br>
+<code>%&lt;&gt;%</code> - pipe and assign a data frame in place.
+</td>
+</tr>
 <!-- purrr -->
 <tr>
 <td>
@@ -558,8 +572,8 @@ working with graphical objects (grobs) on a grid
 <a href="https://rdrr.io/cran/kableExtra/">kableExtra</a>
 </td>
 <td>
-builds on the <a href="https://rdrr.io/cran/knitr/man/">knitr</a>
-package to construct complex and customizable tables
+builds on the <a href="https://rdrr.io/cran/knitr">knitr</a> package to
+construct complex and customizable tables
 </td>
 <td>
 <code>kable()</code> - create tables in LaTeX, HTML, Markdown, and
@@ -616,7 +630,7 @@ to assess multicollinearity.
 <!-- caret -->
 <tr>
 <td>
-<a href="https://rdrr.io/cran/caret/man/">caret</a>
+<a href="https://rdrr.io/cran/caret">caret</a>
 </td>
 <td>
 tools for predictive modeling
@@ -629,8 +643,8 @@ parameters
 <!-- emmeans & multcomp -->
 <tr>
 <td>
-<a href="https://rdrr.io/cran/emmeans/man/">emmeans</a><br>
-<a href="https://rdrr.io/cran/multcomp/man/">multcomp</a>
+<a href="https://rdrr.io/cran/emmeans">emmeans</a><br>
+<a href="https://rdrr.io/cran/multcomp">multcomp</a>
 </td>
 <td>
 tools for multiple comparison testing
@@ -661,8 +675,8 @@ matrix, data frame, or formula.
 <!-- lme4 & nlme -->
 <tr>
 <td>
-<a href="https://rdrr.io/cran/lme4/man/">lme4</a><br>
-<a href="https://rdrr.io/cran/nlme/man/">nlme</a>
+<a href="https://rdrr.io/cran/lme4">lme4</a><br>
+<a href="https://rdrr.io/cran/nlme">nlme</a>
 </td>
 <td>
 linear and non-linear mixed effect modeling
@@ -676,7 +690,7 @@ non-linear mixed models.
 <!-- rstatix -->
 <tr>
 <td>
-<a href="https://rdrr.io/cran/rstatix/man/">rstatix</a>
+<a href="https://rdrr.io/cran/rstatix">rstatix</a>
 </td>
 <td>
 pipe-friendly framework for performing basic statistical tests
