@@ -1,8 +1,8 @@
-<h1>Links to Statistical Guides</h1>
+<h1 style="font-weight: normal;">Links to Statistical Guides</h1>
 <table style="width:90%">
     <tbody>
         <tr>
-            <td colspan=5><center><h3>Proportion Tests</h3></center></td>
+            <td colspan=5><center><h3 style="font-weight: normal;">Proportion Tests</h3></center></td>
         </tr>
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/two-proportions">Comparing Two Proportions</a></td>
@@ -26,7 +26,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td colspan=5><center><br><h3>Parametric Tests</h3></center></td>
+            <td colspan=5><center><br><h3 style="font-weight: normal;">Parametric Tests</h3></center></td>
         </tr>
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/t-tests">T-tests</a></td>
@@ -71,7 +71,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td colspan=5><center><br><h3>Non-parametric Tests</h3></center></td>
+            <td colspan=5><center><br><h3 style="font-weight: normal;">Non-parametric Tests</h3></center></td>
         </tr>
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/Mann-Whitney-Wilcoxon">Mann Whitney & Wilcoxon Tests</a></td>
@@ -88,7 +88,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td colspan=5><center><br><h3>Linear Regression & Generalized Linear Models (GLMs)</h3></center></td>
+            <td colspan=5><center><br><h3 style="font-weight: normal;">Linear Regression & Generalized Linear Models (GLMs)</h3></center></td>
         </tr>
         <tr>
             <td colspan=5><center><a href="https://online.stat.psu.edu/stat504/lesson/6/6.1">Introduction to GLMs</a></center></td>
@@ -143,7 +143,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td colspan=5><center><br><h3>Survey Analysis</h3></center></td>
+            <td colspan=5><center><br><h3 style="font-weight: normal;">Survey Analysis</h3></center></td>
         </tr>
         <tr>
             <td colspan=5><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/Likert">Likert Scale Questions</a></center></td>
@@ -173,24 +173,24 @@
 </table>
 <br>
 <br>
-<h1>Other Resources for R</h1>
+<h1 style="font-weight: normal;">Other Resources for R</h1>
 <p style="text-indent:0px">
     <a href="https://repub.github.io/DLC_statistical_guides/docs/Info/common-R-packages">Common R Packages</a><br>
     <a href="https://repub.github.io/DLC_statistical_guides/docs/Info/useful-R-scripts">Useful R Scripts</a>
 </p>
 <br>
 <br>
-<h1>Software Access</h1>
+<h1 style="font-weight: normal;">Software Access</h1>
 <table style="width:90%">
     <tbody>
         <tr>
             <td> </td>
-            <td><center><h3>Free Software</h3></center></td>
+            <td><center><h3 style="font-weight: normal;">Free Software</h3></center></td>
             <td> </td>
             <td> </td>
             <td> </td>
             <td> </td>
-            <td><center><h3>Paid Software</h3></center></td>
+            <td><center><h3 style="font-weight: normal;">Paid Software</h3></center></td>
         <tr>
             <td> </td>
             <td><center><a href="https://softwarerequest.psu.edu/Home/AllReleases">AMOS 28 (PSU)</a></center></td>
