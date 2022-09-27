@@ -372,6 +372,20 @@ Contents
 <b>Sample functions</b>
 </td>
 </tr>
+<!-- data.table -->
+<tr>
+<td>
+<a href="https://rdatatable.gitlab.io/data.table/">data.table</a>
+</td>
+<td>
+high-speed data wrangling
+</td>
+<td>
+<code>fread()</code> – read data from a flat file such as .csv or
+.tsv.<br> <code>dcast()</code> and <code>melt()</code> – reshape between
+long and wide formats.<br> <code>join()</code> - combine data tables.
+</td>
+</tr>
 <!-- dplyr -->
 <tr>
 <td>
@@ -437,6 +451,19 @@ read data files (csv, tsv, etc.) in tidy format
 </td>
 <td>
 <code>read_csv()</code> – reads .csv files and loads them as tibbles.
+</td>
+</tr>
+<!-- readxl -->
+<tr>
+<td>
+<a href="https://readxl.tidyverse.org/">readxl</a>
+</td>
+<td>
+read Excel files in tidy format
+</td>
+<td>
+<code>read_excel()</code> – read a .xls or .xlsx file.<br>
+<code>excel_sheets()</code> - return a vector of sheet names.
 </td>
 </tr>
 <!-- stringr -->
@@ -525,6 +552,20 @@ working with graphical objects (grobs) on a grid
 <code>arrangeGrob()</code> - arrange multiple grobs on a page.
 </td>
 </tr>
+<!-- kableExtra -->
+<tr>
+<td>
+<a href="https://rdrr.io/cran/kableExtra/">kableExtra</a>
+</td>
+<td>
+builds on the <a href="https://rdrr.io/cran/knitr/man/">knitr</a>
+package to construct complex and customizable tables
+</td>
+<td>
+<code>kable()</code> - create tables in LaTeX, HTML, Markdown, and
+reStructuredText.
+</td>
+</tr>
 <!-- xtable -->
 <tr>
 <td>
@@ -601,6 +642,20 @@ optionally, comparisons or contrasts among them.<br> <code>glht()</code>
 – general linear hypotheses and multiple comparisons for parametric
 models, including generalized linear models, linear mixed effects
 models, and survival models.
+</td>
+</tr>
+<!-- Hmisc -->
+<tr>
+<td>
+<a href="https://rdrr.io/cran/Hmisc">Hmisc</a>
+</td>
+<td>
+useful functions for data analysis and statistics
+</td>
+<td>
+<code>Cs()</code> – creates character strings from unquoted names.<br>
+<code>describe()</code> - concise statistical description of a vector,
+matrix, data frame, or formula.
 </td>
 </tr>
 <!-- lme4 & nlme -->
