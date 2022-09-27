@@ -355,10 +355,12 @@ Contents
 <tbody>
 <!-- Data Wrangling and Manipulation -->
 <tr>
-<td colspan="3" style="font-size:150%;">
+<td colspan="3">
+<h3>
 <center>
-<b><a id="data-wrangling"></a>Data Wrangling and Manipulation</b>
+<a id="data-wrangling"></a>Data Wrangling and Manipulation
 </center>
+</h3>
 </td>
 </tr>
 <tr>
@@ -524,9 +526,11 @@ with missing values.
 </tr>
 <!-- Data Visualization -->
 <tr>
-<td colspan="3" style="font-size:150%;">
+<td colspan="3">
 <center>
-<b><br><br><a id="data-visualization"></a>Data Visualization</b>
+<h3>
+<br><br><a id="data-visualization"></a>Data Visualization
+</h3>
 </center>
 </td>
 </tr>
@@ -595,9 +599,11 @@ can be printed as LaTeX or HTML.
 </tr>
 <!-- Statistical Analysis -->
 <tr>
-<td colspan="3" style="font-size:150%;">
+<td colspan="3">
 <center>
-<b><br><br><a id="statistical-analysis"></a>Statistical Analysis</b>
+<h3>
+<br><br><a id="statistical-analysis"></a>Statistical Analysis
+</h3>
 </center>
 </td>
 </tr>

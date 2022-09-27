@@ -39,7 +39,7 @@ options(width=100)
   <tbody>
     <!-- Data Wrangling and Manipulation -->
     <tr>
-      <td colspan=3 style="font-size:150%;"><center><b><a id="data-wrangling"></a>Data Wrangling and Manipulation</b></center></td>
+      <td colspan=3><h3><center><a id="data-wrangling"></a>Data Wrangling and Manipulation</center></h3></td>
     </tr>
     <tr>
       <td><b>Package</b></td>
@@ -129,7 +129,7 @@ options(width=100)
     </tr>
     <!-- Data Visualization -->
     <tr>
-      <td colspan=3 style="font-size:150%;"><center><b><br><br><a id="data-visualization"></a>Data Visualization</b></center></td>
+      <td colspan=3><center><h3><br><br><a id="data-visualization"></a>Data Visualization</h3></center></td>
     </tr>
     <tr>
       <td><b>Package</b></td>
@@ -162,7 +162,7 @@ options(width=100)
     </tr>
     <!-- Statistical Analysis -->
     <tr>
-      <td colspan=3 style="font-size:150%;"><center><b><br><br><a id="statistical-analysis"></a>Statistical Analysis</b></center></td>
+      <td colspan=3><center><h3><br><br><a id="statistical-analysis"></a>Statistical Analysis</h3></center></td>
     </tr>
     <tr>
       <td><b>Package</b></td>
