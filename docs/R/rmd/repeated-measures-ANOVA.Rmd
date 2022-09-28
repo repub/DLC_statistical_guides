@@ -25,16 +25,10 @@ options(width=100)
   <p class="toc_title">Contents</p>
   <ul class="toc_list">
     <a href="#repeated-measures-anova-in-r">Repeated measures ANOVA in R</a><br>
-    <a href="#checking-assumptions">Checking assumptions</a><br>
-       <a href="#sample-size">&emsp;Sample size</a><br>
-       <a href="#outliers">&emsp;Outliers</a><br>
-       <a href="#normality">&emsp;Normality</a><br>
-       <a href="#correlations">&emsp;Correlations</a><br>
-       <a href="#heteroskedasticity">&emsp;Heteroskedasticity</a><br>
-    <a href="#one-way-manova">One-way MANOVA</a><br>
-      <a href="#post-hoc-tests">&emsp;Post-hoc tests</a><br>
-    <a href="#two-way-manova">Two-way MANOVA</a><br>
-      <a href="#post-hoc2">&emsp;Post-hoc tests</a><br>
+    <a href="#split-plot-anova-approach">Split-plot ANOVA approach</a><br>
+       <a href="#time-as-a-factor">&emsp;Time as a factor</a><br>
+       <a href="#time-as-a-numeric-variable">&emsp;Time as a numeric variable</a><br>
+    <a href="#autoregressive-model-of-order-1-approach">Autoregressive model of order 1 approach</a><br>
   </ul>
   </div>
 </aside>
@@ -43,27 +37,15 @@ options(width=100)
 
 In this guide we will be using a data set provided by [STAT 510 - Applied Time Series Analysis](https://online.stat.psu.edu/stat510/lesson/10/10.1), which contains observations from an experiment designed to detect phlebitis (venous inflammation) by measuring temperature during intravenous administration of a drug of interest in the ear of animals over time.  The data set has four variables:
 
-* `Animal` - the unique identifier for the 15 animals tested.
-* `Treatment` - the treatment that was administered.
-* `Time` - the timepoint in minutes when the temperature was recorded.
-* `Y` - the difference in temperature between the treated and untreated ears of the animal.
+* *Animal* - the unique identifier for the 15 animals tested.
+* *Treatment* - one of three treatments administered:
+  * the *drug* in a carrier solution,
+  * only *carrier* solution, or
+  * *saline* solution.
+* *Time* - the time point in minutes when the temperature was recorded.
+* *Y* - the difference in temperature between the treated and untreated ears of the animal.
 
-<!-- Convert treatment to factor  -->
-
-<!-- ```{r} -->
-<!-- library(tidyverse) -->
-
-<!-- phleb <- phleb %>% -->
-<!--   mutate(Treatment = recode_factor(Treatment, -->
-<!--                                    `1` = "drug", -->
-<!--                                    `2` = "carrier", -->
-<!--                                    `3` = "saline")) -->
-<!-- phleb -->
-
-<!-- write_csv(phleb, "../../dat/phlebitis.csv") -->
-<!-- ``` -->
-
-First, we will load the data set using `read.csv()` and assign the resulting data frame to `phelb`, then we will use the `head()` and `str()` functions to take a peak at the data and its structure.
+First, we will load the data set using `read.csv()`, then we will use the `head()` and `str()` functions to take a peak at the data and its structure.
 
 ```{r}
 phleb <- read.csv("../../dat/phlebitis.csv")
@@ -72,20 +54,22 @@ head(phleb)
 str(phleb)
 ```
 
-
+From the output we see that *Animal* was assigned as an integer while *Treatment* was classified as a character, when we would actually want them to be of the factor type.  We will then reassign both variables using `factor()`.
 
 ```{r}
 phleb$Treatment <- factor(phleb$Treatment)
 phleb$Animal <- factor(phleb$Animal)
 ```
 
+Now that our variables are in the formats we want we can move on to our analysis.  There are multiple statistical approaches to choose from when analyzing repeated measures experiments, so for this guide we will focus on just a few of them. 
 
-<!-- For *Time*, since there are four time points we could also code it as a factor or keep it as numeric -->
+## Split-plot ANOVA approach
 
-## Linear mixed effect (LME) approach
-### Time as a numeric variable
+The split-plot ANOVA is the most commonly used approach for repeated measure designs.  For our phlebitis data we can use the split-plot ANOVA in two ways: 1) reassigning *Time* as a factor to perform a two-way ANOVA, or 2) keep *Time* as a numerical variable to perform an ANCOVA.
 
-Although the repeated measures ANOVA can be performed in base `R`, to reduce complexity we will instead use the `lme4`package, which contains functions built around mixed-effect modeling.  Additionally, we will load the `lmerTest` package which expands on the `lme4` package by including more readable statistical output.
+### Time as a factor
+
+Although the repeated measures ANOVA can be performed in base `R`, to reduce complexity we will instead use the `lme4`package, which contains functions built around mixed-effect modeling.  Additionally, we will load the `lmerTest` package which expands on the `lme4` package by including more readable statistical output and the `car` package which will can easily perform type 2 and type 3 sum of squares.
 
 ```{r}
 library(lme4)
@@ -93,10 +77,10 @@ library(lmerTest)
 library(car)
 ```
 
-Each animal was only given one of the three treatments which was measured over four time points.  Therefore, the repeated measures are `Time` within `Animal`.  From the `lme4` package we will use the `lmer()` function to fit our model, in which we will code a model formula with the response varaible *Y* on the left side of a `~` and the predictor variables on thr right side.  In the predictor variables we will include *Treatment* and *Time* with their interaction.  To include our repeated measure, we will add `(1 | Animal)` to the model formula to indicate that measurements were repeated on each animal and is therefore our random effect.  We will then use the `anova()` function to print out the resulting ANOVA table.
+From the `lme4` package we will use the `lmer()` function to fit our model, in which we will code a model formula with the response varaible *Y* on the left side of a `~` and the predictor variables on thr right side.  In the predictor variables we will include *Treatment* and *Time* with their interaction, where rather than recoding *Time* as a factor within the data set we can assign it as a factor using `factor()` within the model formula..  To include our repeated measure, we will add `(1 | Animal)` to the model formula to indicate that measurements were repeated on each animal.  We will then use the `Anova()` function from the `car` package to print out the resulting type 3 sum of squares table.
 
 ```{r}
-phleb_lmer <- lmer(Y ~ Treatment * Time + (1 | Animal), data = phleb)
+phleb_lmer <- lmer(Y ~ Treatment * factor(Time) + (1 | Animal), data = phleb)
 
 Anova(phleb_lmer, type = 3)
 ```
@@ -108,11 +92,35 @@ with(phleb,
      interaction.plot(Time, Treatment, Y))
 ```
 
-From the interaction plot it appears that both saline and carrier have somewhat similar responses, while the drug increases the mean difference in ear temperature over time.  However, as we have multiple comparisons to make here the results above of a significant interaction term do not inform us of exactly what comparisons are statistically different or not.  To make these pairwise comparisons we can use the `emmeans()` package.
+From the interaction plot it appears that the differences in ear temperatures for both the *carrier* and *saline* groups remain relatively flat over the time points while the *drug* treatment rises over time.  However, while we know from the ANOVA table that there is a significant interaction, we are given no information regarding which comparisons between *Treatment* and *Time* are statistically different.  There are a few methods available to perform post-hoc pairwise tests to determine which comparisons differ statistically, but for this guide we will compute estimate marginal means (EMMs), or least-squares means, using the `emmeans` package.
+
+After loading the `emmeans` package we will use the `emmeans()` function to compute the EMMs and pairwise comparisons on our model.  In the function we will include `list(pairwise ~ Treatment * factor(Time))` to specify that we want to calculate the pairwise comparisons among our two factors, *Treatment* and *Time*.  We will additionally include `adjust = "tukey"` to perform Tukey's multiple comparisons adjustments.  We will then use the `$` operator on the results to only print out the pairwise differences in the interaction between *Treatment* and *Time* rather than all pairwise comparisons.
 
 ```{r}
 library(emmeans)
+
+phleb_emm <- emmeans(phleb_lmer, list(pairwise ~ Treatment * factor(Time)), adjust = "tukey")
+
+phleb_emm$`pairwise differences of Treatment, Time`
 ```
+
+With *Time* set as a factor, to look at all pairwise comparisons in the interaction between *Time* with 4 levels and *Treatment* with 3 levels we have a number of comparisons equal to:
+
+$$\frac{k_{Time}*k_{Treatment}*(k_{Time}*k_{Treatment}-1)}{2} = 66$$
+
+Though this information could be useful depending on the purpose of the experiment, it can be fairly tedious to analyze and interpret 66 comparisons.  Instead, for this experiment it may be best to interpret the results as the *drug* significantly increases the ear temperatures at the 30, 60, and 90 minute time points compared to the *saline* and *carrier* groups.
+
+### Time as a numeric variable
+
+As *Time* is continuous it may be more suitable to code it as a numeric variable rather than a factor in the split-plot model, therefore performing an ANCOVA with repeated measures rather than a two-way ANOVA.  We can then fit and summarize a similar model as above but without wrapping *Time* in `factor()`.
+
+```{r}
+phleb_lmer <- lmer(Y ~ Treatment * Time + (1 | Animal), data = phleb)
+
+Anova(phleb_lmer, type = 3)
+```
+
+Note that from the results we again have a statistically significant interaction term.  However, it also does not give us information regarding which comparisons in *Treatment* and *Time* are statistically different, so we will again employ the `emmeans()` function to test these pairwise comparisons and use the `$` operator to only print out the comparisons for the interaction.
 
 ```{r}
 phleb_emm <- emmeans(phleb_lmer, list(pairwise ~ Treatment * Time), adjust = "tukey")
@@ -120,60 +128,45 @@ phleb_emm <- emmeans(phleb_lmer, list(pairwise ~ Treatment * Time), adjust = "tu
 phleb_emm$`pairwise differences of Treatment, Time`
 ```
 
-From the results of the Tukey's pairwise comparisons we can see that the drug treatment is significantly higher than both the carrier and saline treatments, of which are not statistically different from one another.  However, it is important to note that since we used *Time* as a continuous variable this comparison was made over the average of the time measures and not for each time point.  If we are interested at what time points the differences in ear temperature vary then we should code *Time* as a factor.
+From the results of the Tukey-adjusted pairwise comparisons we can see that the drug treatment is significantly higher than both the carrier and saline treatments, of which are not statistically different from one another.  However, it is important to note that since we used *Time* as a continuous variable this comparison was made over the average of the time measures and not for each time point.  So, while we do have simpler statistical results to interpret compared to the previous model, we do lose some information on which time points the effect of the *drug* is significant.  Specifically, the results here do not show that at the first time point (0) there was not a significant difference between any of the treatments, something we would expect in a good experiemntal design.
 
-### Time as a factor variable
+## Autoregressive model of order 1 approach
 
-Now we will perform the same analysis but with *Time* as a factor rather than a continuous variable.  We will first use `factor()` to reassign *Time* then use the same code as above to fit and display the results of the repeated measures ANOVA.
+With some experiments where the response is expected to change over time we may also make the assumption that those changes per time point rely on their values at the previous time point.  In these cases we may want to use an autoregressive model of order 1 (AR(1)) structured model to account for measurements at the previous time point.
 
-```{r}
-phleb_lmer <- lmer(Y ~ Treatment * factor(Time) + (1 | Animal), data = phleb)
-
-Anova(phleb_lmer, type = 3)
-```
-
-Note that from the results we again have a statistically significant interaction term.  However, it also does not give us information regarding which comparisons in *Treatment* and *Time* are statistically different, so we will again employ the `emmeans()` function to test these pairwise comparisons.
-
-```{r}
-phleb_emm <- emmeans(phleb_lmer, list(pairwise ~ Treatment * factor(Time)), adjust = "tukey")
-
-phleb_emm$`pairwise differences of Treatment, Time`
-```
-
-After setting *Time* to a factor and looking at all pairwise comparisons at each of the 4 levels of *Time* and 3 levels of *Treatment* we have a number of comparisons equal to:
-
-$$\frac{k_{Time}*k_{Treatment}*(k_{Time}*k_{Treatment}-1)}{2} = 66$$
+To do so, we will need to employ another library, `nlme`, to fit a linear model using generalized least squares (GLS) that includes the AR(1) component.  We will use the `gls()` function to fit this model with a similar model formula as above, however we will add the random effects component in `corAR1()` to specify the AR(1) correlation structure for the model.  We will also assign *Time* as a factor so that we can assess the differences among the drugs at each time point.  We then similarly use the `Anova()` function from the `car` package to print a summary of the results.
 
 
-
-
-
-## Autoregressive model of order 1 (AR1) approach
-
-With some experiments where the response is expected to change over time we may also make the assumption that those changes per time point rely on their values at the previous timepoint.  In these cases we may want to use an AR(1) structured model to account for measurements at the previous time point.
-
-To do so, we will need to employ another library, `nlme`, to fit a linear model using generalized least squares that includes the AR(1) component.  We will use the `gls()` function to fit this model with a similar model formula as above, however we will add the random effects component in `corAR1()` to specifiy the AR(1) structure for the model.  We then use the `anova()` function to print a summary of the results.
-
-
-```{r fit_gls}
+```{r fit_gls, eval = FALSE}
 library(nlme)
 
-phleb_gls <- gls(Y ~ Treatment * Time, data = phleb, correlation = corAR1(form = ~ 1 | Animal))
+phleb_gls <- gls(Y ~ Treatment * factor(Time), data = phleb, correlation = corAR1(form = ~ 1 | Animal))
+
+Anova(phleb_gls, type = 3)
+```
+
+```{r fit_gls_copy, echo = FALSE}
+library(nlme)
+
+phleb_gls <- gls(Y ~ Treatment * factor(Time), data = phleb, correlation = corAR1(form = ~ 1 | Animal))
 
 anova(phleb_gls)
-
-Anova(phleb_gls, type = 3, data = phleb)
 ```
+
 
 From the ANOVA table above we see again that there is a statistically significant interaction between *Treatment* and *Time*.  To test which groups vary from one another we will again employ the `emmeans()` function to perform Tukey-adjusted pairwise comparisons.
 
-```{r gls_emm}
-phleb_emm <- emmeans(phleb_gls, list(pairwise ~ Treatment * Time), adjust = "tukey", data = phleb)
+```{r gls_emm, eval = FALSE}
+phleb_emm <- emmeans(phleb_gls, list(pairwise ~ Treatment * Time), adjust = "tukey")
 
 phleb_emm$`pairwise differences of Treatment, Time`
 ```
 
-Similar to the LME model above the drug treatment causes higher differences in ear temperature on average compared to the carrier and saline treatments which are not statistically different from one another.  
+```{r fit_emm_copy, echo = FALSE}
+anova(phleb_gls)
+```
+
+Similar to the split-plot models above the *drug* treatment causes higher differences in ear temperature on average at the 30, 60, and 90 minute time points compared to the *carrier* and *saline* treatments, which are not statistically different from one another at any time point.  
 
 
 
