@@ -153,26 +153,17 @@ phleb_gls <- gls(Y ~ Treatment * factor(Time), data = phleb, correlation = corAR
 anova(phleb_gls)
 ```
 
-
 From the ANOVA table above we see again that there is a statistically significant interaction between *Treatment* and *Time*.  To test which groups vary from one another we will again employ the `emmeans()` function to perform Tukey-adjusted pairwise comparisons.
 
 ```{r gls_emm, eval = FALSE}
 phleb_emm <- emmeans(phleb_gls, list(pairwise ~ Treatment * Time), adjust = "tukey")
 
-phleb_emm$`pairwise differences of Treatment, Time`
+phleb_emm$`pairwise differences of Treatment, Time` 
 ```
+
 
 ```{r fit_emm_copy, echo = FALSE}
 anova(phleb_gls)
 ```
 
 Similar to the split-plot models above the *drug* treatment causes higher differences in ear temperature on average at the 30, 60, and 90 minute time points compared to the *carrier* and *saline* treatments, which are not statistically different from one another at any time point.  
-
-
-
-
-
-
-
-
-

@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <html>
 
 <head>
@@ -738,12 +736,16 @@ similarly use the <code>Anova()</code> function from the
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>phleb_gls <span class="ot">&lt;-</span> <span class="fu">gls</span>(Y <span class="sc">~</span> Treatment <span class="sc">*</span> <span class="fu">factor</span>(Time), <span class="at">data =</span> phleb, <span class="at">correlation =</span> <span class="fu">corAR1</span>(<span class="at">form =</span> <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> Animal))</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">Anova</span>(phleb_gls, <span class="at">type =</span> <span class="dv">3</span>)</span></code></pre></div>
-<pre><code>## Denom. DF: 48 
-##                        numDF   F-value p-value
-## (Intercept)                1  5.485687  0.0234
-## Treatment                  2 17.251192  &lt;.0001
-## factor(Time)               3  8.645712  0.0001
-## Treatment:factor(Time)     6  2.777399  0.0212</code></pre>
+<pre><code>## Analysis of Deviance Table (Type III tests)
+##
+## Response: Y
+##                        Df   Chisq Pr(>Chisq)  
+## (Intercept)             1  2.5675     0.1091  
+## Treatment               2  0.8121     0.6663  
+## factor(Time)            3  1.9670     0.5793  
+## Treatment:factor(Time)  6 16.6644     0.0106 *
+## ---
+## Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</code></pre>
 <p>From the ANOVA table above we see again that there is a statistically
 significant interaction between <em>Treatment</em> and <em>Time</em>. To
 test which groups vary from one another we will again employ the
@@ -752,12 +754,76 @@ comparisons.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>phleb_emm <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(phleb_gls, <span class="fu">list</span>(pairwise <span class="sc">~</span> Treatment <span class="sc">*</span> Time), <span class="at">adjust =</span> <span class="st">&quot;tukey&quot;</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>phleb_emm<span class="sc">$</span><span class="st">`</span><span class="at">pairwise differences of Treatment, Time</span><span class="st">`</span></span></code></pre></div>
-<pre><code>## Denom. DF: 48 
-##                        numDF   F-value p-value
-## (Intercept)                1  5.485687  0.0234
-## Treatment                  2 17.251192  &lt;.0001
-## factor(Time)               3  8.645712  0.0001
-## Treatment:factor(Time)     6  2.777399  0.0212</code></pre>
+<pre><code>## 1                               estimate    SE   df t.ratio p.value
+## carrier Time0 - drug Time0         -0.34 0.512 43.2  -0.664  0.9999
+## carrier Time0 - saline Time0        0.10 0.512 43.2   0.195  1.0000
+## carrier Time0 - carrier Time30     -0.06 0.432 33.3  -0.139  1.0000
+## carrier Time0 - drug Time30        -1.96 0.512 43.2  -3.829  0.0186
+## carrier Time0 - saline Time30      -0.82 0.512 43.2  -1.602  0.8990
+## carrier Time0 - carrier Time60     -0.52 0.490 47.4  -1.060  0.9950
+## carrier Time0 - drug Time60        -2.46 0.512 43.2  -4.806  0.0010
+## carrier Time0 - saline Time60      -0.16 0.512 43.2  -0.313  1.0000
+## carrier Time0 - carrier Time90     -0.58 0.506 46.9  -1.147  0.9905
+## carrier Time0 - drug Time90        -3.16 0.512 43.2  -6.173  <.0001
+## carrier Time0 - saline Time90      -0.80 0.512 43.2  -1.563  0.9129
+## drug Time0 - saline Time0           0.44 0.512 43.2   0.860  0.9992
+## drug Time0 - carrier Time30         0.28 0.512 43.2   0.547  1.0000
+## drug Time0 - drug Time30           -1.62 0.432 33.3  -3.747  0.0280
+## drug Time0 - saline Time30         -0.48 0.512 43.2  -0.938  0.9982
+## drug Time0 - carrier Time60        -0.18 0.512 43.2  -0.352  1.0000
+## drug Time0 - drug Time60           -2.12 0.490 47.4  -4.323  0.0040
+## drug Time0 - saline Time60          0.18 0.512 43.2   0.352  1.0000
+## drug Time0 - carrier Time90        -0.24 0.512 43.2  -0.469  1.0000
+## drug Time0 - drug Time90           -2.82 0.506 46.9  -5.575  0.0001
+## drug Time0 - saline Time90         -0.46 0.512 43.2  -0.899  0.9988
+## saline Time0 - carrier Time30      -0.16 0.512 43.2  -0.313  1.0000
+## saline Time0 - drug Time30         -2.06 0.512 43.2  -4.024  0.0108
+## saline Time0 - saline Time30       -0.92 0.432 33.3  -2.128  0.6079
+## saline Time0 - carrier Time60      -0.62 0.512 43.2  -1.211  0.9852
+## saline Time0 - drug Time60         -2.56 0.512 43.2  -5.001  0.0006
+## saline Time0 - saline Time60       -0.26 0.490 47.4  -0.530  1.0000
+## saline Time0 - carrier Time90      -0.68 0.512 43.2  -1.328  0.9704
+## saline Time0 - drug Time90         -3.26 0.512 43.2  -6.368  <.0001
+## saline Time0 - saline Time90       -0.90 0.506 46.9  -1.779  0.8206
+## carrier Time30 - drug Time30       -1.90 0.512 43.2  -3.712  0.0255
+## carrier Time30 - saline Time30     -0.76 0.512 43.2  -1.485  0.9369
+## carrier Time30 - carrier Time60    -0.46 0.432 33.3  -1.064  0.9944
+## carrier Time30 - drug Time60       -2.40 0.512 43.2  -4.688  0.0015
+## carrier Time30 - saline Time60     -0.10 0.512 43.2  -0.195  1.0000
+## carrier Time30 - carrier Time90    -0.52 0.490 47.4  -1.060  0.9950
+## carrier Time30 - drug Time90       -3.10 0.512 43.2  -6.056  <.0001
+## carrier Time30 - saline Time90     -0.74 0.512 43.2  -1.446  0.9470
+## drug Time30 - saline Time30         1.14 0.512 43.2   2.227  0.5403
+## drug Time30 - carrier Time60        1.44 0.512 43.2   2.813  0.2105
+## drug Time30 - drug Time60          -0.50 0.432 33.3  -1.156  0.9890
+## drug Time30 - saline Time60         1.80 0.512 43.2   3.516  0.0425
+## drug Time30 - carrier Time90        1.38 0.512 43.2   2.696  0.2626
+## drug Time30 - drug Time90          -1.20 0.490 47.4  -2.447  0.3967
+## drug Time30 - saline Time90         1.16 0.512 43.2   2.266  0.5143
+## saline Time30 - carrier Time60      0.30 0.512 43.2   0.586  1.0000
+## saline Time30 - drug Time60        -1.64 0.512 43.2  -3.204  0.0912
+## saline Time30 - saline Time60       0.66 0.432 33.3   1.527  0.9222
+## saline Time30 - carrier Time90      0.24 0.512 43.2   0.469  1.0000
+## saline Time30 - drug Time90        -2.34 0.512 43.2  -4.571  0.0021
+## saline Time30 - saline Time90       0.02 0.490 47.4   0.041  1.0000
+## carrier Time60 - drug Time60       -1.94 0.512 43.2  -3.790  0.0207
+## carrier Time60 - saline Time60      0.36 0.512 43.2   0.703  0.9999
+## carrier Time60 - carrier Time90    -0.06 0.432 33.3  -0.139  1.0000
+## carrier Time60 - drug Time90       -2.64 0.512 43.2  -5.157  0.0003
+## carrier Time60 - saline Time90     -0.28 0.512 43.2  -0.547  1.0000
+## drug Time60 - saline Time60         2.30 0.512 43.2   4.493  0.0027
+## drug Time60 - carrier Time90        1.88 0.512 43.2   3.673  0.0283
+## drug Time60 - drug Time90          -0.70 0.432 33.3  -1.619  0.8898
+## drug Time60 - saline Time90         1.66 0.512 43.2   3.243  0.0833
+## saline Time60 - carrier Time90     -0.42 0.512 43.2  -0.820  0.9995
+## saline Time60 - drug Time90        -3.00 0.512 43.2  -5.861  <.0001
+## saline Time60 - saline Time90      -0.64 0.432 33.3  -1.480  0.9358
+## carrier Time90 - drug Time90       -2.58 0.512 43.2  -5.040  0.0005
+## carrier Time90 - saline Time90     -0.22 0.512 43.2  -0.430  1.0000
+## drug Time90 - saline Time90         2.36 0.512 43.2   4.610  0.0019
+## 
+## Degrees-of-freedom method: satterthwaite 
+## P value adjustment: tukey method for comparing a family of 12 estimates</code></pre>
 <p>Similar to the split-plot models above the <em>drug</em> treatment
 causes higher differences in ear temperature on average at the 30, 60,
 and 90 minute time points compared to the <em>carrier</em> and
