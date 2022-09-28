@@ -2,7 +2,7 @@
 <table style="width:90%">
     <tbody>
         <tr>
-            <td colspan=5><center><h3 style="font-weight: normal;">Proportion Tests</h3></center></td>
+            <td colspan=5><center><h3 style="font-weight: normal;font-size: 150%;">Proportion Tests</h3></center></td>
         </tr>
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/two-proportions">Comparing Two Proportions</a></td>
@@ -26,7 +26,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td colspan=5><center><br><h3 style="font-weight: normal;">Parametric Tests</h3></center></td>
+            <td colspan=5><center><br><h3 style="font-weight: normal;font-size: 150%;">Parametric Tests</h3></center></td>
         </tr>
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/t-tests">T-tests</a></td>
@@ -60,7 +60,7 @@
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/repeated-measures-ANOVA">Repeated Measures ANOVA</a></td>
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/anova/supporting-topics/basics/analyzing-a-repeated-measures-design/">Minitab</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/repeated-measures-ANOVA">R</a></center></td>
             <td><center></center></td>
         </tr>
         <tr>
@@ -71,7 +71,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td colspan=5><center><br><h3 style="font-weight: normal;">Non-parametric Tests</h3></center></td>
+            <td colspan=5><center><br><h3 style="font-weight: normal;font-size: 150%;">Non-parametric Tests</h3></center></td>
         </tr>
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/Mann-Whitney-Wilcoxon">Mann Whitney & Wilcoxon Tests</a></td>
@@ -88,7 +88,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td colspan=5><center><br><h3 style="font-weight: normal;">Linear Regression & Generalized Linear Models (GLMs)</h3></center></td>
+            <td colspan=5><center><br><h3 style="font-weight: normal;font-size: 150%;">Linear Regression & Generalized Linear Models (GLMs)</h3></center></td>
         </tr>
         <tr>
             <td colspan=5><center><a href="https://online.stat.psu.edu/stat504/lesson/6/6.1">Introduction to GLMs</a></center></td>
@@ -143,7 +143,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td colspan=5><center><br><h3 style="font-weight: normal;">Survey Analysis</h3></center></td>
+            <td colspan=5><center><br><h3 style="font-weight: normal;font-size: 150%;">Survey Analysis</h3></center></td>
         </tr>
         <tr>
             <td colspan=5><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/Likert">Likert Scale Questions</a></center></td>
@@ -185,12 +185,12 @@
     <tbody>
         <tr>
             <td> </td>
-            <td><center><h3 style="font-weight: normal;">Free Software</h3></center></td>
+            <td><center><h3 style="font-weight: normal;font-size: 150%;">Free Software</h3></center></td>
             <td> </td>
             <td> </td>
             <td> </td>
             <td> </td>
-            <td><center><h3 style="font-weight: normal;">Paid Software</h3></center></td>
+            <td><center><h3 style="font-weight: normal;font-size: 150%;">Paid Software</h3></center></td>
         <tr>
             <td> </td>
             <td><center><a href="https://softwarerequest.psu.edu/Home/AllReleases">AMOS 28 (PSU)</a></center></td>
