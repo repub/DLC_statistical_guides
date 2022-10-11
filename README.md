@@ -59,14 +59,14 @@
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/repeated-measures-ANOVA">Repeated Measures ANOVA</a></td>
             <td><center></center></td>
-            <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/anova/supporting-topics/basics/analyzing-a-repeated-measures-design/">Minitab</a></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistical-modeling/anova/supporting-topics/basics/analyzing-a-repeated-measures-design/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/repeated-measures-ANOVA">R</a></center></td>
             <td><center></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat505/lesson/8/8.2">MANOVA</a></td>
             <td><center></center></td>
-            <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/anova/how-to/general-manova/before-you-start/example/">Minitab</a></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/20/help-and-how-to/statistical-modeling/anova/how-to/general-manova/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/MANOVA">R</a></center></td>
             <td><center></center></td>
         </tr>
@@ -83,7 +83,7 @@
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/Kruskal-Wallis">Kruskal Wallis rank sum</a></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/JMP/Kruskal-Wallis">JMP</a></center></td>
-            <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/anova/how-to/kruskal-wallis-test/before-you-start/example/">Minitab</a></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistics/nonparametrics/how-to/kruskal-wallis-test/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/Kruskal-Wallis">R</a></center></td>
             <td><center></center></td>
         </tr>
@@ -96,7 +96,7 @@
         <tr>
             <td><a href="https://online.stat.psu.edu/stat501/lesson/1">Simple Linear Regression</a></td>
             <td><center></center></td>
-            <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/regression/how-to/simple-regression/before-you-start/example/">Minitab</a></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/20/help-and-how-to/statistical-modeling/regression/how-to/fit-regression-model/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/simple-linear-regression">R</a></center></td>
             <td><center></center></td>
         </tr>
@@ -110,28 +110,28 @@
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/binary-logistic-regression">Binary Logistic (Logit) Regression</a></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/JMP/binary-logistic-regression">JMP</a></center></td>
-            <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/regression/how-to/binary-logistic-regression/before-you-start/example/">Minitab</a></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistical-modeling/regression/how-to/fit-binary-logistic-model/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/binary-logistic-regression">R</a></center></td>
             <td><center></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat501/lesson/15/15.2">Multinomial Logistic Regression</a></td>
             <td><center></center></td>
-            <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/regression/how-to/nominal-logistic-regression/before-you-start/example/">Minitab</a></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistical-modeling/regression/how-to/nominal-logistic-regression/before-you-start/example/">Minitab</a></center></td>
             <td><center></center></td>
             <td><center></center></td>
         </tr>
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/ordinal-logistic-regression">Ordinal Logistic Regression</a></td>
             <td><center></center></td>
-            <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/regression/how-to/ordinal-logistic-regression/before-you-start/example/">Minitab</a></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistical-modeling/regression/how-to/ordinal-logistic-regression/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/ordinal-logistic-regression">R</a></center></td>
             <td><center></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat501/lesson/15/15.4">Poisson Regression</a></td>
             <td><center></center></td>
-            <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/regression/how-to/fit-poisson-model/before-you-start/example/">Minitab</a></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistical-modeling/regression/how-to/fit-poisson-model/before-you-start/example/">Minitab</a></center></td>
             <td><center></center></td>
             <td><center></center></td>
         </tr>
@@ -151,7 +151,7 @@
         <tr>
             <td>Likert-Type Scale</td>
             <td><center></center></td>
-            <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/multivariate/how-to/item-analysis/before-you-start/example/">Minitab</a></center></td>
+            <td><center></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/Likert-type">R</a></center></td>
             <td><center></center></td>
         </tr>
