@@ -1,0 +1,23 @@
+---
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs/Minitab';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='../Kruskal-Wallis.md') })
+output:
+  html_document:
+    highlight: tango
+editor_options:
+  chunk_output_type: console
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE,
+                      fig.path = "../img/Kruskal-Wallis/",
+                      fig.width = 6, fig.height = 4,
+                      fig.show = 'hold', fig.align = 'center')
+options(width = 100)
+```
+
+# Kruskal-Wallis rank sum test in Minitab
+

@@ -1,0 +1,37 @@
+---
+knit: (function(input_file, encoding) {
+  out_dir <- '/docs/Info';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='../multinomial-logistic-regression.md') })
+output:
+  html_document:
+    highlight: tango
+    css: style.scss
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE,
+                      fig.path = "../img/multinomial-logistic-regression/",
+                      fig.width = 6, fig.height = 4,
+                      fig.show = 'hold', fig.align = 'center')
+options(width=100)
+```
+
+# Multinomial Logistic Regression
+
+In cases where our response variable has more than 2 categorical outcomes we can extend the simple binary logistic regression model to use maximum likelihood estimation to estimate categorical membership in 3 or more categories.
+
+Multinomial logistic regression, also termed multiple nominal logistic regression,
+
+Examples of when you might use multinomial logistic regression include:
+
+* A biologist wants to identify what characteristics of leaves are different among 5 species of maple trees.  
+
+* The admissions office of a university wants to predict which field of study incoming freshman are likely to enter based on their high school GPA and test scores.
+
+* A fitness trainer wants to assess which modes of aerobic exercise their clients are most likely to do at home based on their socioeconomic attributes.  The forms of exercise offered include jogging, biking, and walking.
+
+The multinomial logistic regression model has similar assumptions to binary logistic regression.  However, if used to model choices, such as in the third example above where clients choose one of three exercise modes, then the assumption of **independence of irrelevant alternatives (IIA)** should also be valid.  The IIA assumption states that the odds of selecting one choice over another is not dependent on the presence or absence of one or more irrelevant alternative choices.  For example, if the fitness trainer were to add running to their list of exercise modes to choose from some of their clients may be indifferent to the differences between jogging and running.
