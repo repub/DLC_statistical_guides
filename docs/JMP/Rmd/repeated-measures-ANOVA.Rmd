@@ -31,3 +31,5 @@ In this guide we will be using a data set provided by [STAT 510 - Applied Time S
 * *Time* - the time point in minutes when the temperature was recorded.
 * *Y* - the difference in temperature between the treated and untreated ears of the animal.
 
+After loading in the data table we should check that each variable is set to the modeling type we want.  To start, we will want both the *Animal* and *Treatment* variables to be set as *Nominal* and *Time* and *Y* as *Continuous*.  To change the variable type, right-click on the column of interest and select `Column Info...`, then in the pop up window you can use the drop-down list next to `Modeling Type` to change the type of variable.
+

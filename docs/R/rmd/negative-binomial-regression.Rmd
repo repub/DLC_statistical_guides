@@ -1,0 +1,82 @@
+---
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs/R';
+  rmarkdown::render(input_file,
+    encoding=encoding,
+    output_file='../negative-binomial-regression.md') })
+output:
+  html_document:
+    highlight: tango
+editor_options:
+  chunk_output_type: console
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE,
+                      fig.path="../img/negative-binomial-regression/",
+                      fig.width = 6, fig.height = 4,
+                      fig.show = 'hold', fig.align = 'center')
+options(width = 100)
+```
+
+# Negative Binomial Regression in `R`
+
+For this guide we will revisit the [crab data set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/R/dat/crab.csv) that we used for [Poisson regressions](https://online.stat.psu.edu/stat504/lesson/9/9.2), which observed the relationship between the number of male crabs attaching to a female crab's nest (*Satellites*) and the characteristics of the female crab that include the color (*Color*), spine condition (*Spine*), weight (*Weight*), and carapace width (*Width*).
+
+We will again read the data into `R` using the `read.table()` function.  We will also go ahead and reassign the *Color* and *Spine* variables to factors.
+
+```{r}
+crab <- read.csv("../../dat/crab.csv")
+
+crab$Color <- factor(crab$Color)
+crab$Spine <- factor(crab$Spine)
+```
+
+To fit a negative binomial model in `R` we will need to load in an external package.  We will use the `MASS` package for this guide which includes the `glm.nb()` function that builds upon `glm()` to include negative binomial estimation by adding the &theta; parameter.  After loading the library we can fit a negative binomial model similarly to how we did for the Poisson model, except we do not need to define a `family` option.
+
+```{r}
+library(MASS)
+
+crab.nb <- glm.nb(Satellites ~ Color + Spine + Weight + Width,
+                 data = crab)
+```
+
+Before diving into analyzing the results of the model, we will first check if the model fits well, both against a null model (one with only an intercept and no predictor variables) and against the Poisson model with the same model formula.
+
+For the null model we can use the `update()` function to take our original model, `crab.nb`, and change the model formula where we keep the response variable with `.` to the left of a `~` and include only `1` on the right side so that the model includes an intercept but no predictor variables.  Then, we can use `anova()` to compare our null model and full model.
+
+
+```{r}
+crab.nb0 <- update(crab.nb, . ~ 1)
+
+anova(crab.nb0, crab.nb)
+```
+
+From the results we can see that the full model has a significantly higher log likelihood, and therefore is a better fit on the data than the null model.
+
+Next, we should compare the negative binomial model with its Poisson counter part.  To do so, we will fit a Poisson regression model with the same model formula.  Then, we can use the `pchisq()` function to provide the associated p-value for the associated &chi;^2 statistic which we calculate by taking the difference of the log likelihoods of the two models and multiplying by 2.  Note that it is important that we subtract the log likelihood of the Poisson model from the log likelihood of the negative binomial when calculating the &chi;^2 statistic and not the other way around.
+
+```{r}
+crab.pois <- glm(Satellites ~ Color + Spine + Weight + Width,
+                 data = crab,
+                 family = "poisson")
+
+pchisq(2 * (logLik(crab.nb) - logLik(crab.pois)), df = 1, lower.tail = FALSE)
+```
+
+The associated p-value is extremely small, indicating that the negative binomial model is better over the Poisson model.
+
+Now that we have evidence that the negative binomial model is appropriate for this data, we can use the `anova()` and `summary()` functions to get results from the fitted model.
+
+```{r}
+anova(crab.nb)
+summary(crab.nb)
+```
+
+We again see that *Weight* is a statistically significant predictor of *Satellites*.  However, unlike the Poisson model, when including the dispersion parameter the *Color* variable is no longer statistically significant.  Therefore, with a positive estimated coefficient, we can conclude that female crab *Weight* has a positive relationship with the number of male *Satellites* attached to the nest.  If we are interested in the strength of this effect we can take the exponential of the coefficient to see the incident rate ratio.  To do so, we can use the `exp()` function to return the exponentials of the coefficients (`coef()`) and their confidence intervals (`confint()`) which we will merge into a table using `cbind()`.
+
+```{r}
+exp(cbind(est = coef(crab.nb), confint(crab.nb)))
+```
+
+From the resulting table and knowing that only *Weight* was statistically significant in the model, we can conclude with 95% certainty that for every 1 unit increase in female crab weight the number of expected male *Satellites* on its nest increases by 2.015 times.
