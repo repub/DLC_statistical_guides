@@ -139,7 +139,7 @@
             <td>Negative Binomial Regression</td>
             <td><center></center></td>
             <td><center></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/negative-binomial-regression">R</a></center></td>
             <td><center></center></td>
         </tr>
         <tr>
