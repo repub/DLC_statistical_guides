@@ -18,15 +18,43 @@ knitr::opts_chunk$set(echo=TRUE, fig.path="../img/multinomial-logistic-regressio
 options(width=100)
 ```
 
-# Multinomial Logistic Regression in R
+# Multinomial Logistic Regression in `R`
 
-For this example we will be using [this data set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/R/dat/cheese.csv) provided by the [STAT 504 Analysis of Discrete Data](https://online.stat.psu.edu/stat504/lesson/8/8.1) course.
+For this guide we will be using a [data set](https://github.com/tylerbg/DLC_stat_resources/tree/master/docs/R/dat/teaching-methods.csv) that assesses different teaching methods, originally provided by [Minitab](https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistical-modeling/regression/how-to/nominal-logistic-regression/before-you-start/example/).  This data set was collected by a school administrator who asked 30 different children their favorite subject and teaching method, who wanted to know if children's favorite subjects varied on their age and favored teaching method.  The data set includes 3 variables:
 
-The data set includes three variables:
+* *Subject* - the child's favorite subject of either *Arts*, *Math*, or *Science*.
+* *Teaching.Method* - the child's favorite teaching methods of either *Demonstrate* or *Explain*.
+* *Age* - the age of the child surveyed.
+
+To begin we will load in the data using `read.csv()`, then take a quick look at the first few rows with `head()`
+
+```{r}
+teach <- read.csv("../../dat-source/teaching-methods.csv")
+
+head(teach)
+```
+
+As we can see from the output above, each row is an individual observation.  To fit our data into a multinomial logistic model we will need to employ an external package.  The `nnet` package, which includes a host of tools for classification and neural network models, is a commonly used library for multinominal models, however here we will instead use the `VGAM` package.
+
+After loading the `VGAM` package we can fit the multinomial model using `vglm()` where we include the typical model formula with the response variable *Subject* on the left and the predictor variables *Teaching.Method* and *Age* (using `.` as shorthand to include all other columns in the data set) on the right of a `~`.  Additionally, we will set the `family` argument to `multinomial`.
+
+```{r}
+library(VGAM)
+
+teach_mlr <- vglm(Subject ~ Teaching.Method * Age, data = teach, family = multinomial)
+```
+
+```{r}
+summary(teach_mlr)
+
+anova(teach_mlr, test = "LR")
+```
+
+
 
 
 ```{r}
-teach <- read.csv("../../dat/teaching-methods.csv")
+teach <- read.csv("../../dat-source/teaching-methods.csv")
 
 head(teach)
 
@@ -84,16 +112,8 @@ iris_mlr <- multinom(Species ~ ., data = iris)
 
 summary(iris_mlr)
 logLik(iris_mlr)
-
 ```
 
 
 
-
-
-
-```{r}
-cheese %>%
-  pivot_wider(names_from = Cheese, values_from = Count)
-```
 
