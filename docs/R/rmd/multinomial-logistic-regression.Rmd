@@ -13,7 +13,7 @@ editor_options:
   
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, fig.path="../img/multinomial-logistic-regression/",
-                      fig.width=6, fig.height=4,
+                      fig.width=6, fig.height=3,
                       fig.show='hold', fig.align='center')
 options(width=100)
 ```
@@ -67,18 +67,18 @@ health_mlr0 <- update(health_mlr, . ~ 1)
 lrtest(health_mlr0, health_mlr)
 ```
 
-From the results of the likelihood ratio test we can see that the log-likelihood (`LogLik`) is higher in the model that includes our variables (second model in the output) compared to the null model. Importantly, this difference is significant with a very low p-value (`Pr(>Chisq)` = `1.228e-08`). We then have evidence that our model explains some of the variance compared to the null model and follow-up with the `summary()` function to assess some of the model's results.
+From the results of the likelihood ratio test we can see that the log-likelihood (<code class="out">LogLik</code>) is higher in the model that includes our variables (second model in the output) compared to the null model. Importantly, this difference is significant with a very low p-value (<code class="out">Pr(>Chisq)</code> = <code class="out">1.228e-08</code>). We then have evidence that our model explains some of the variance compared to the null model and follow-up with the `summary()` function to assess some of the model's results.
 
 ```{r mlr-summary}
 summary(health_mlr)
 ```
 
-In the output we should first note the bottom line that says <code class="out">Reference group is level  3  of the response</code>, which corresponds to plan `C`. This line is telling us that the other levels, plans `A` (level 1) and `B` (level 2), are being compared to plan `C` in the `Coefficients` table. In that table we see that two coefficients are statistically significant, `age:1` and `genderMale:2`. As both have negative coefficients we can interpret these results as:
+In the output we should first note the bottom line that says <code class="out">Reference group is level  3  of the response</code>, which corresponds to plan `C`. This line is telling us that the other levels, plans `A` (level 1) and `B` (level 2), are being compared to plan `C` in the <code class="out">Coefficients</code> table. In that table we see that two coefficients are statistically significant, <code class="out">age:1</code> and <code class="out">genderMale:2</code>. As both have negative coefficients we can interpret these results as:
 
 * As *age* increases the log-likelood of an employee choosing plan `A` over plan `C` decreases.
 * `Male` employees are less likely to choose plan `B` over plan `C` compared to `Female` employees.
 
-We can look at some plots of the data to see these differences more clearly.
+We can look at plots of the data to see these differences more clearly.
 
 ```{r plots, echo = FALSE}
 library(tidyverse)
@@ -95,7 +95,7 @@ p1 <- ggplot(health, aes(x = plan, y = age)) +
               alpha = 0.2) +
   labs(x = "Plan",
        y = "Age",
-       title = "Employees who pick one of three health\ninsurance plans based on their age.") +
+       title = "Employees who pick one of three health\ninsurance plans based on their age") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5))
 
@@ -104,7 +104,7 @@ p2 <- ggplot(health, aes(x = plan, fill = gender, color = gender)) +
   geom_bar(position = "dodge", alpha= 0.5) +
   labs(x = "Plan",
        y = "Count",
-       title = "Number of employees who pick one of three health\ninsurance plans separated by gender.") +
+       title = "Number of employees who pick one of three health\ninsurance plans separated by gender") +
   theme_bw() +
   scale_fill_discrete(name = "Gender") +
   scale_color_discrete(name = "Gender") +
@@ -115,26 +115,52 @@ library(gridExtra)
 grid.arrange(p1, p2, nrow = 1)
 ```
 
+In the plot to the left we see how employees choose each health insurance plan by their age, where the black points represent the means and the bars the standard deviations for each *plan* and each grey point is an individual employee. It is pretty clear from the plot and with statistical evidence from our multinomial model that older employees favor plan `C` over plan `A`, while plans `B` and `C` are relatively similar in their age distributions. In the right bar plot, we can also clearly see, with statistical evidence, that `Male` employees tend to choose plan `C` over plan `B` compared to `Female` employees.
 
+What about our other variable, *absent*, which did not have a significant coefficient? We can also graph it against *plan* to see if our statsitical results hold against observational scrutiny.
 
-```{r contrasts-age}
+```{r absent-plot, echo = FALSE, fig.width = 3}
+ggplot(health, aes(x = plan, y = absent)) +
+  stat_summary(geom = "pointrange",
+               fun.data = mean_sdl,
+               fun.args = list(mult = 1)) +
+  stat_summary(geom = "errorbar",
+               fun.data = mean_sdl,
+               fun.args = list(mult = 1),
+               width = 0.2) +
+  geom_jitter(width = 0.1, height = 0,
+              alpha = 0.2) +
+  labs(x = "Plan",
+       y = "Number of days absent",
+       title = "Employees who pick one of three health insurance plans based on the\nnumber of days absent in the past year") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+Again, it appears that the plot of our variables against one another agree with our statistical results, where the number of days absent does not significantly influence the choice of health insurance plan.
+
+We should note that so far we have only compared two of our *plan* levels, `A` and `B`, against `C`, but we have not compared plans `A` and `B` for any of the three predictor variables. Since our levels are unordered in multinomial regression we likely want to compare each level of our response variable against all other levels. To do so, we can change the contrasts, which is a linear combination of parameters (that add to 0) which allow different comparisons of treatments.
+
+To change our contrasts to compare plans `A` and `B` we will make a vector of parameters for each variable, then use the `ghlt()` function from the `multcomp` package to print out test results on those comparisons.
+
+First, to make the vector of parameters we with wrap `c()`, which lists each parameter separated by a comma, into `matrix()` with `1` to indicate we want one 1 row. The parameters we include are going to be based on which levels we want to compare (`A` vs. `B`), the predictor variable to compare on, and where they are 'located.' If we look back at the coefficients table from the summary of our multinomial regression model we can see a list of 8 coefficients (the intercepts are included). So, to compare *age* between plans `A` and `B` we will need to change the 3rd and 4th contrast parameters, which we will make `-1` and `1`, respectively, so that their sum = 0. All of the other parameters we will leave at 0, so our final vectore to compare plans `A` and `B` by *age* is: `c(0, 0, -1, 1, 0, 0, 0, 0)`.
+
+After loading the `multcomp` package, we will then make vectors to compare plans `A` and `B` on the *gender* and *absent* variables as well, then assign it to `linfct` in the `ghlt()` function which also wraps our original model. We will also wrap `ghlt()` in `summary()` to print out the results of each test.
+
+```{r contrasts}
 library(multcomp)
 
-K <- matrix(c(0, 0, -1, 1, 0, 0, 0, 0), 1)
+con_age <- matrix(c(0, 0, -1, 1, 0, 0, 0, 0), 1)
+con_gender <- matrix(c(0, 0, 0, 0, -1, 1, 0, 0), 1)
+con_absent <- matrix(c(0, 0, 0, 0, 0, 0, -1, 1), 1)
 
-summary(glht(health_mlr, linfct = K))
+summary(glht(health_mlr, linfct = con_age))
+summary(glht(health_mlr, linfct = con_gender))
+summary(glht(health_mlr, linfct = con_absent))
 ```
 
-```{r contrasts-gender}
+From these results we can see that only the first two comparisons, for *age* and *gender*, are statitically significant and therefore can condlue:
 
-K <- matrix(c(0, 0, 0, 0, -1, 1, 0, 0), 1)
-
-summary(glht(health_mlr, linfct = K))
-```
-
-```{r contrasts-absent}
-
-K <- matrix(c(0, 0, 0, 0, 0, 0, -1, 1), 1)
-
-summary(glht(health_mlr, linfct = K))
-```
+* Younger employees have a higher log-likelihood of choosing plan `A` over plan `B`.
+* `Male` employees are more likely to choose plan `A` over plan `B`.
+* The number of days absent does not affect how likely an employee will choose between plans `A` and `B`.
