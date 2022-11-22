@@ -106,7 +106,7 @@ p2 <- ggplot(health, aes(x = plan, fill = gender, color = gender)) +
   geom_bar(position = "dodge", alpha= 0.5) +
   labs(x = "Plan",
        y = "Count",
-       title = "Number of employees who pick one of three health\ninsurance plans separated by gender") +
+       title = "Number of employees who pick one of three\nhealth insurance plans separated by gender") +
   theme_bw() +
   scale_fill_discrete(name = "Gender") +
   scale_color_discrete(name = "Gender") +
@@ -134,7 +134,7 @@ ggplot(health, aes(x = plan, y = absent)) +
               alpha = 0.2) +
   labs(x = "Plan",
        y = "Number of days absent",
-       title = "Employees who pick one of three health insurance plans based on the\nnumber of days absent in the past year") +
+       title = "Employees who pick one of three health insurance plans based\non the number of days absent in the past year") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5))
 ```
