@@ -231,11 +231,11 @@ df <- df %>%
 
 df_f <- df %>%
   filter(gender == "Female") %>%
-  slice_sample(n = 50)
+  slice_sample(n = 25)
 
 df_m <- df %>%
   filter(gender == "Male") %>%
-  slice_sample(n = 50)
+  slice_sample(n = 25)
 
 df <- rbind(df_f, df_m)
 
@@ -245,46 +245,112 @@ summary(df)
 head(df)
 dim(df)
 
-df_mlr <- multinom(plan ~ ., data = df)
+# df_mlr <- multinom(plan ~ ., data = df)
+# 
+# Anova(df_mlr)
+# summary(df_mlr)
+# 
+# coeftest(df_mlr)
+# 
+# df %>%
+#   ggplot(aes(x = plan,
+#              y = age)) +
+#   geom_boxplot()
+# 
+# df %>%
+#   ggplot(aes(x = plan,
+#              y = absent)) +
+#   geom_boxplot()
+# 
+# df %>%
+#   group_by(product) %>%
+#   summarise(mean = mean(absent),
+#             sd = sd(absent))
+# 
+# df %>%
+#   ggplot(aes(x = plan)) +
+#     geom_bar(aes(fill = gender),
+#              position = "dodge")
+# 
+# 
+# df %>%
+#   group_by(plan, gender) %>%
+#   summarize(n = n())
+# 
+# (26 / (26 + 13))
+# 2 / 27
 
-Anova(df_mlr)
-summary(df_mlr)
-
-coeftest(df_mlr)
-
-df %>%
-  ggplot(aes(x = plan,
-             y = age)) +
-  geom_boxplot()
-
-df %>%
-  ggplot(aes(x = plan,
-             y = absent)) +
-  geom_boxplot()
-
-df %>%
-  group_by(product) %>%
-  summarise(mean = mean(absent),
-            sd = sd(absent))
-
-df %>%
-  ggplot(aes(x = plan)) +
-    geom_bar(aes(fill = gender),
-             position = "dodge")
-
-
-df %>%
-  group_by(plan, gender) %>%
-  summarize(n = n())
-
-(26 / (26 + 13))
-2 / 27
-
-coef(df_mlr)
-exp(coef(df_mlr))
-
+# coef(df_mlr)
+# exp(coef(df_mlr))
+# 
 df %>%
   write_csv("../../dat/health_insurance.csv")
 
 ```
 
+
+
+
+
+```{r}
+health <- read.csv("../../dat/health_insurance.csv")
+
+head(health)
+summary(health)
+```
+
+```{r}
+health$gender = factor(health$gender)
+health$plan = factor(health$plan)
+
+summary(health)
+```
+
+```{r}
+library(VGAM)
+
+health_mlr <- vglm(plan ~ .,
+                       data = health,
+                   family = multinomial)
+
+summary(health_mlr)
+
+health_mlr@y
+```
+
+```{r}
+library(car)
+
+coeftest(health_mlr)
+```
+
+```{r}
+ggplot(health, aes(x = plan, y = age)) +
+  geom_boxplot()
+
+ggplot(health, aes(x = plan, fill = gender)) +
+  geom_bar(position = "dodge")
+
+ggplot(health, aes(x = plan, y = absent)) +
+  geom_boxplot()
+```
+
+```{r}
+K <- matrix(c(0, 0, -1, 1, 0, 0, 0, 0), 1)
+
+summary(glht(health_mlr, linfct = K))
+```
+
+```{r}
+
+K <- matrix(c(0, 0, 0, 0, -1, 1, 0, 0), 1)
+
+summary(glht(health_mlr, linfct = K))
+```
+
+```{r}
+
+K <- matrix(c(0, 0, 0, 0, 0, 0, -1, 1), 1)
+
+summary(glht(health_mlr, linfct = K))
+```
