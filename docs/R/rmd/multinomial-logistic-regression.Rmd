@@ -15,7 +15,7 @@ editor_options:
 knitr::opts_chunk$set(echo=TRUE, fig.path="../img/multinomial-logistic-regression/",
                       message = FALSE,
                       warning = FALSE,
-                      fig.width=6, fig.height=3,
+                      fig.width=6, fig.height=4,
                       fig.show='hold', fig.align='center')
 options(width=100)
 ```
@@ -82,7 +82,7 @@ In the output we should first note the bottom line that says <code class="out">R
 
 We can look at plots of the data to see these differences more clearly.
 
-```{r plots, echo = FALSE, fig.width = 7}
+```{r plots, echo = FALSE, fig.width = 8}
 library(tidyverse)
 
 p1 <- ggplot(health, aes(x = plan, y = age)) +
@@ -121,7 +121,7 @@ In the plot to the left we see how employees choose each health insurance plan b
 
 What about our other variable, *absent*, which did not have a significant coefficient? We can also graph it against *plan* to see if our statsitical results hold against observational scrutiny.
 
-```{r absent-plot, echo = FALSE, fig.width = 4}
+```{r absent-plot, echo = FALSE, fig.width = 5.5}
 ggplot(health, aes(x = plan, y = absent)) +
   stat_summary(geom = "pointrange",
                fun.data = mean_sdl,
