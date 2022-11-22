@@ -118,7 +118,7 @@
             <td><a href="https://online.stat.psu.edu/stat501/lesson/15/15.2">Multinomial Logistic Regression</a></td>
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistical-modeling/regression/how-to/nominal-logistic-regression/before-you-start/example/">Minitab</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/multinomial-logistic-regression">R</a></center></td>
             <td><center></center></td>
         </tr>
         <tr>
