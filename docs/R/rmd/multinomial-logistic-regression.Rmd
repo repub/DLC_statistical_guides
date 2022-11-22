@@ -112,8 +112,54 @@ iris_mlr <- multinom(Species ~ ., data = iris)
 
 summary(iris_mlr)
 logLik(iris_mlr)
+
+library(AER)
+
+coeftest(iris_mlr)
+
+library(afex)
+
+Anova(iris_mlr, type = "III")
+
+library(emmeans)
+
+emmeans(iris_mlr, ~ Petal.Width)
 ```
 
 
 
+```{r}
+z <- summary(iris_mlr)$coefficients/summary(iris_mlr)$standard.errors
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+
+
+iris_train <- iris[c(1:40, 51:90, 101:140), ]
+
+iris_mlr <- multinom(Species ~ ., data = iris_train)
+
+Anova(iris_mlr)
+
+emmeans(iris_mlr, ~ Species | Petal.Width)
+emmeans(iris_mlr, ~ Species | Petal.Length)
+
+emmeans(iris_mlr, ~ Petal.Length | Species)
+
+library(multcomp)
+
+
+glht(iris_mlr, mcp(Sepal.Length = "Tukey"))
+
+```
+
+```{r}
+iris_mlr <- multinom(cbind(Petal.Length, Petal.Width, Sepal.Length, Sepal.Width) ~ Species,
+                     data = iris)
+
+Anova(iris_mlr)
+
+emmeans(iris_mlr, ~ Species)
+
+glht(iris_mlr, mcp(Sepal.Length = "Tukey"))
+```
 
