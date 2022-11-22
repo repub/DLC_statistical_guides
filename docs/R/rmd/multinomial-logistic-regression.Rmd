@@ -65,6 +65,7 @@ teach_long <- teach %>% group_by_all() %>%
   pivot_wider(names_from = Subject,
               values_from = n_subject,
               values_fill = 0)
+teach_long
 
 library(nnet)
 teach_mlr <- multinom(Subject ~ ., data = teach)
@@ -123,7 +124,10 @@ Anova(iris_mlr, type = "III")
 
 library(emmeans)
 
-emmeans(iris_mlr, ~ Petal.Width)
+emmeans(iris_mlr, ~ Species | Petal.Length)
+
+glht(iris_mlr, mcp(Species = "Tukey"))
+
 ```
 
 
@@ -161,5 +165,126 @@ Anova(iris_mlr)
 emmeans(iris_mlr, ~ Species)
 
 glht(iris_mlr, mcp(Sepal.Length = "Tukey"))
+```
+
+
+
+
+
+
+```{r}
+library(tidyverse)
+cars_df <- read.csv("../../dat-source/car.data", header = FALSE)
+
+head(cars_df)
+
+colnames(cars_df) <- c("Buying Price", "Maintenance Price", "Doors", "Capacity", "Luggage Size", "Safety","Acceptability")
+
+cars_df <- cars_df %>%
+  select(-c(`Maintenance Price`:`Luggage Size`))
+
+cars_df %>%
+  group_by_all() %>%
+  summarize(n = n()) %>%
+  pivot_wider(names_from = Acceptability,
+              values_from = n,
+              values_fill = 0)
+
+## Ordinal!
+```
+
+
+
+
+
+```{r}
+detergent <- read.csv("../../dat-source/detergent.csv")
+
+head(detergent)
+
+detergent_wide <- detergent %>%
+  pivot_wider(names_from = Brand,
+              values_from = Count,
+              values_fill = 0)
+
+detergent_mlr <- multinom(cbind(x, m, c) ~ ., data = detergent_wide)
+
+Anova(detergent_mlr)
+```
+
+
+
+
+
+```{r}
+df <- read.csv("http://peopleanalytics-regression-book.org/data/health_insurance.csv")
+
+df <- df %>%
+  tibble() %>%
+  filter(gender != "Non-binary") %>%
+  select(!c(position_level, household)) %>%
+  mutate(product = factor(product),
+         gender = factor(gender),
+         plan = product) %>%
+  select(!product)
+
+
+df_f <- df %>%
+  filter(gender == "Female") %>%
+  slice_sample(n = 50)
+
+df_m <- df %>%
+  filter(gender == "Male") %>%
+  slice_sample(n = 50)
+
+df <- rbind(df_f, df_m)
+
+
+str(df)
+summary(df)
+head(df)
+dim(df)
+
+df_mlr <- multinom(plan ~ ., data = df)
+
+Anova(df_mlr)
+summary(df_mlr)
+
+coeftest(df_mlr)
+
+df %>%
+  ggplot(aes(x = plan,
+             y = age)) +
+  geom_boxplot()
+
+df %>%
+  ggplot(aes(x = plan,
+             y = absent)) +
+  geom_boxplot()
+
+df %>%
+  group_by(product) %>%
+  summarise(mean = mean(absent),
+            sd = sd(absent))
+
+df %>%
+  ggplot(aes(x = plan)) +
+    geom_bar(aes(fill = gender),
+             position = "dodge")
+
+
+df %>%
+  group_by(plan, gender) %>%
+  summarize(n = n())
+
+(26 / (26 + 13))
+2 / 27
+
+coef(df_mlr)
+exp(coef(df_mlr))
+
+df %>%
+  write_csv("../../dat/health_insurance.csv")
+
 ```
 
