@@ -73,7 +73,7 @@ From the results of the likelihood ratio test we can see that the log-likelihood
 summary(health_mlr)
 ```
 
-In the output we should first note the bottom line that says `Reference group is level  3  of the response`, which corresponds to plan `C`. This line is telling us that the other levels, plans `A` (level 1) and `B` (level 2), are being compared to plan `C` in the `Coefficients` table. In that table we see that two coefficients are statistically significant, `age:1` and `genderMale:2`. As both have negative coefficients we can interpret these results as:
+In the output we should first note the bottom line that says <code class="out">Reference group is level  3  of the response</code>, which corresponds to plan `C`. This line is telling us that the other levels, plans `A` (level 1) and `B` (level 2), are being compared to plan `C` in the `Coefficients` table. In that table we see that two coefficients are statistically significant, `age:1` and `genderMale:2`. As both have negative coefficients we can interpret these results as:
 
 * As *age* increases the log-likelood of an employee choosing plan `A` over plan `C` decreases.
 * `Male` employees are less likely to choose plan `B` over plan `C` compared to `Female` employees.
@@ -115,22 +115,26 @@ library(gridExtra)
 grid.arrange(p1, p2, nrow = 1)
 ```
 
-# ```{r contrasts-age}
-# K <- matrix(c(0, 0, -1, 1, 0, 0, 0, 0), 1)
-# 
-# summary(glht(health_mlr, linfct = K))
-# ```
-# 
-# ```{r contrasts-gender}
-# 
-# K <- matrix(c(0, 0, 0, 0, -1, 1, 0, 0), 1)
-# 
-# summary(glht(health_mlr, linfct = K))
-# ```
-# 
-# ```{r contrasts-absent}
-# 
-# K <- matrix(c(0, 0, 0, 0, 0, 0, -1, 1), 1)
-# 
-# summary(glht(health_mlr, linfct = K))
-# ```
+
+
+```{r contrasts-age}
+library(multcomp)
+
+K <- matrix(c(0, 0, -1, 1, 0, 0, 0, 0), 1)
+
+summary(glht(health_mlr, linfct = K))
+```
+
+```{r contrasts-gender}
+
+K <- matrix(c(0, 0, 0, 0, -1, 1, 0, 0), 1)
+
+summary(glht(health_mlr, linfct = K))
+```
+
+```{r contrasts-absent}
+
+K <- matrix(c(0, 0, 0, 0, 0, 0, -1, 1), 1)
+
+summary(glht(health_mlr, linfct = K))
+```
