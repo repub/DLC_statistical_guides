@@ -169,6 +169,19 @@
             <td><center></center></td>
             <td><center></center></td>
         </tr>
+        <tr>
+            <td colspan=5><center><br><h3 style="font-weight: normal;font-size: 150%;">Correlation Analysis</h3></center></td>
+        </tr>
+        <tr>
+        <td><center></center></td>
+        </tr>
+        <tr>
+            <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/correlation-analysis">Correlation Coefficients</a></td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
+            <td><center></center></td>
+        </tr>
     </tbody>
 </table>
 <br>
