@@ -10,8 +10,16 @@ relationship.
 
 ## Hypotheses for Pearson’s correlation:
 
-$$H_0 : \text{There is no linear correlation between the two variables }(\rho=0).$$
-$$H_a : \text{There is no linear correlation between the two variables }(\rho≠0).$$
+<center>
+<i>H<sub>0</sub></i>: There is no linear correlation between the two
+variables (<i>ρ = 0).
+</center>
+<center>
+<i>H<sub>a</sub></i>: There is no linear correlation between the two
+variables (<i>ρ ≠ 0).
+</center>
+
+<br>
 
 ## Assumptions for Pearson’s correlation
 
@@ -22,7 +30,7 @@ $$H_a : \text{There is no linear correlation between the two variables }(\rho≠
 - Data for each variable is normally distributed.
 - A linear relationship is expected between the two variables.
 
-# Spearman’s Rank Correlation ($\rho$)
+# Spearman’s Rank Correlation
 
 Spearman’s rank correlation is a non-parametric test that measures the
 strength and direction of association between two ranked or ordinal
@@ -30,8 +38,16 @@ variables. Like Pearson’s, the coefficient ranges from -1 to 1.
 
 ## Hypotheses
 
-$$H_0 : \text{There is no monotonic relationship between the two variables }(\rho=0).$$
-$$H_a : \text{There is a monotonic relationship between the two variables }(\rho≠0).$$
+<center>
+<i>H<sub>0</sub></i>: There is no monotonic relationship between the two
+variables (<i>ρ = 0).
+</center>
+<center>
+<i>H<sub>a</sub></i>: There is no monotonic relationship between the two
+variables (<i>ρ ≠ 0).
+</center>
+
+<br>
 
 ## Assumptions
 
