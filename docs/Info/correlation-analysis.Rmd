@@ -20,9 +20,9 @@ Pearson's correlation coefficient is a measure that quantifies the strength and 
 
 ## Hypotheses for Pearson's correlation:
 
-<center><i>H<sub>0</sub></i>: There is no linear correlation between the two variables (<i>&rho; = 0).</center>
-<center><i>H<sub>a</sub></i>: There is no linear correlation between the two variables (<i>&rho; ≠ 0).</center>
-<br>
+<center><i>H<sub>0</sub></i>: There is no linear correlation between the two variables (<i>&rho;</i> = 0).</center>
+<center><i>H<sub>a</sub></i>: There is no linear correlation between the two variables (<i>&rho;</i> ≠ 0).</center><br>
+
 
 ## Assumptions for Pearson's correlation
 
@@ -38,9 +38,9 @@ Spearman's rank correlation is a non-parametric test that measures the strength 
 
 ## Hypotheses
 
-<center><i>H<sub>0</sub></i>: There is no monotonic relationship between the two variables (<i>&rho; = 0).</center>
-<center><i>H<sub>a</sub></i>: There is no monotonic relationship between the two variables (<i>&rho; ≠ 0).</center>
-<br>
+<center><i>H<sub>0</sub></i>: There is no monotonic relationship between the two variables (<i>&rho;</i> = 0).</center>
+<center><i>H<sub>a</sub></i>: There is no monotonic relationship between the two variables (<i>&rho;</i> ≠ 0).</center><br>
+
 
 ## Assumptions
 
