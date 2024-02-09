@@ -33,28 +33,28 @@
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/JMP/t-tests">JMP</a></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/inference/how-to/two-samples/2-sample-t/before-you-start/example/ ">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/t-tests">R</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://statistics.laerd.com/spss-tutorials/independent-t-test-using-spss-statistics.php">SPSS</a></center></td>
         </tr>
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/one-way-ANOVA">One-way ANOVA</a></td>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/JMP/one-way-ANOVA"><center>JMP</center></a></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/anova/how-to/one-way-anova/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/one-way-ANOVA">R</a></center></td>
-            <td><center>SPSS</center></td>
+            <td><center><a href="https://statistics.laerd.com/spss-tutorials/one-way-anova-using-spss-statistics.php">SPSS</a></center></td>
         </tr>
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/two-way-ANOVA">Two-way ANOVA</a></td>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/JMP/two-way-ANOVA"><center>JMP</center></a></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/anova/how-to/two-way-anova/before-you-start/example/ ">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/two-way-ANOVA">R</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://statistics.laerd.com/spss-tutorials/two-way-anova-using-spss-statistics.php">SPSS</a></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat502_fa21/lesson/9">ANCOVA</a></td>
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/18/help-and-how-to/modeling-statistics/anova/supporting-topics/anova-models/understanding-covariates/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/ANCOVA">R</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://statistics.laerd.com/spss-tutorials/ancova-using-spss-statistics.php">SPSS</a></center></td>
         </tr>
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/repeated-measures-ANOVA">Repeated Measures ANOVA</a></td>
@@ -171,9 +171,6 @@
         </tr>
         <tr>
             <td colspan=5><center><br><h3 style="font-weight: normal;font-size: 150%;">Correlation Analysis</h3></center></td>
-        </tr>
-        <tr>
-        <td><center></center></td>
         </tr>
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/correlation-analysis">Correlation Coefficients</a></td>
