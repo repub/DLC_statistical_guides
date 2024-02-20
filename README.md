@@ -61,14 +61,14 @@
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistical-modeling/anova/supporting-topics/basics/analyzing-a-repeated-measures-design/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/repeated-measures-ANOVA">R</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://statistics.laerd.com/spss-tutorials/one-way-anova-repeated-measures-using-spss-statistics.php">SPSS</a></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat505/lesson/8/8.2">MANOVA</a></td>
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/20/help-and-how-to/statistical-modeling/anova/how-to/general-manova/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/MANOVA">R</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://statistics.laerd.com/spss-tutorials/one-way-manova-using-spss-statistics.php">SPSS</a></center></td>
         </tr>
         <tr>
             <td colspan=5><center><br><h3 style="font-weight: normal;font-size: 150%;">Non-parametric Tests</h3></center></td>
@@ -115,11 +115,11 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td><a href="https://online.stat.psu.edu/stat501/lesson/15/15.2">Multinomial Logistic Regression</a></td>
+            <td><a href="https://online.stat.psu.edu/stat504/lesson/8/8.1">Multinomial Logistic Regression</a></td>
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistical-modeling/regression/how-to/nominal-logistic-regression/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/multinomial-logistic-regression">R</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://statistics.laerd.com/spss-tutorials/multinomial-logistic-regression-using-spss-statistics.php">SPSS</a></center></td>
         </tr>
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/ordinal-logistic-regression">Ordinal Logistic Regression</a></td>
@@ -129,7 +129,7 @@
             <td><center></center></td>
         </tr>
         <tr>
-            <td><a href="https://online.stat.psu.edu/stat501/lesson/15/15.4">Poisson Regression</a></td>
+            <td><a href="https://online.stat.psu.edu/stat504/lesson/9">Poisson Regression</a></td>
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistical-modeling/regression/how-to/fit-poisson-model/before-you-start/example/">Minitab</a></center></td>
             <td><center></center></td>
