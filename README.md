@@ -78,14 +78,14 @@
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/JMP/Mann-Whitney-Wilcoxon">JMP</a></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistics/nonparametrics/how-to/mann-whitney-test/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/Mann-Whitney-Wilcoxon">R</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://statistics.laerd.com/spss-tutorials/mann-whitney-u-test-using-spss-statistics.php">SPSS</a></center></td>
         </tr>
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/Kruskal-Wallis">Kruskal Wallis rank sum</a></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/JMP/Kruskal-Wallis">JMP</a></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistics/nonparametrics/how-to/kruskal-wallis-test/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/Kruskal-Wallis">R</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://statistics.laerd.com/spss-tutorials/kruskal-wallis-h-test-using-spss-statistics.php">SPSS</a></center></td>
         </tr>
         <tr>
             <td colspan=5><center><br><h3 style="font-weight: normal;font-size: 150%;">Linear Regression & Generalized Linear Models (GLMs)</h3></center></td>
@@ -98,21 +98,21 @@
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/20/help-and-how-to/statistical-modeling/regression/how-to/fit-regression-model/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/simple-linear-regression">R</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://statistics.laerd.com/spss-tutorials/linear-regression-using-spss-statistics.php">SPSS</a></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat501/lesson/5">Multiple Linear Regression</a></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/JMP/multiple-linear-regression">JMP</a></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/regression/how-to/multiple-regression/before-you-start/example/ ">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/multiple-linear-regression">R</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://statistics.laerd.com/spss-tutorials/multiple-regression-using-spss-statistics.php">SPSS</a></center></td>
         </tr>
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/binary-logistic-regression">Binary Logistic (Logit) Regression</a></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/JMP/binary-logistic-regression">JMP</a></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistical-modeling/regression/how-to/fit-binary-logistic-model/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/binary-logistic-regression">R</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://statistics.laerd.com/spss-tutorials/binomial-logistic-regression-using-spss-statistics.php">SPSS</a></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat504/lesson/8/8.1">Multinomial Logistic Regression</a></td>
@@ -126,14 +126,14 @@
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistical-modeling/regression/how-to/ordinal-logistic-regression/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/ordinal-logistic-regression">R</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://statistics.laerd.com/spss-tutorials/ordinal-regression-using-spss-statistics.php">SPSS</a></center></td>
         </tr>
         <tr>
             <td><a href="https://online.stat.psu.edu/stat504/lesson/9">Poisson Regression</a></td>
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistical-modeling/regression/how-to/fit-poisson-model/before-you-start/example/">Minitab</a></center></td>
             <td><center></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://statistics.laerd.com/spss-tutorials/poisson-regression-using-spss-statistics.php">SPSS</a></center></td>
         </tr>
         <tr>
             <td>Negative Binomial Regression</td>
@@ -175,7 +175,7 @@
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/correlation-analysis">Correlation Coefficients</a></td>
             <td><center></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/help-and-how-to/statistics/basic-statistics/how-to/correlation/perform-the-analysis/enter-your-data/">Minitab</a></center></td>
             <td><center></center></td>
             <td><center></center></td>
         </tr>
