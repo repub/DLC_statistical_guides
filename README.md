@@ -14,7 +14,7 @@
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/Fisher-exact-test">Fisher's Exact Test</a></td>
             <td><center></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/help-and-how-to/statistics/tables/how-to/cross-tabulation-and-chi-square/methods-and-formulas/test-for-2x2-tables/#fisher-s-exact-test">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/Fisher-exact-test">R</a></center></td>
             <td><center></center></td>
         </tr>
