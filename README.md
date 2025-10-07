@@ -6,7 +6,7 @@
         </tr>
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/two-proportions">Comparing Two Proportions</a></td>
-            <td><center></center></td>
+            <td><center><a href="https://www.jmp.com/support/help/en/19.0/index.shtml#page/jmp/example-of-a-two-sample-test-for-proportions.shtml#">JMP</a></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/20/help-and-how-to/statistics/basic-statistics/how-to/2-proportions/before-you-start/example/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/two-proportions">R</a></center></td>
             <td><center></center></td>
@@ -14,7 +14,7 @@
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/Fisher-exact-test">Fisher's Exact Test</a></td>
             <td><center></center></td>
-            <td><center><a href="https://support.minitab.com/en-us/minitab/help-and-how-to/statistics/tables/how-to/cross-tabulation-and-chi-square/methods-and-formulas/test-for-2x2-tables/#fisher-s-exact-test">Minitab</a></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/help-and-how-to/statistics/basic-statistics/how-to/2-proportions/methods-and-formulas/methods-and-formulas/#fisher-s-exact-test">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/Fisher-exact-test">R</a></center></td>
             <td><center></center></td>
         </tr>
@@ -23,7 +23,7 @@
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/JMP/chi-sq-test">JMP</a></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/19/help-and-how-to/statistics/tables/how-to/chi-square-test-for-association/before-you-start/example/ ">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/chi-sq-test">R</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://statistics.laerd.com/spss-tutorials/chi-square-test-for-association-using-spss-statistics.php">SPSS</a></center></td>
         </tr>
         <tr>
             <td colspan=5><center><br><h3 style="font-weight: normal;font-size: 150%;">Parametric Tests</h3></center></td>
@@ -132,7 +132,7 @@
             <td><a href="https://online.stat.psu.edu/stat504/lesson/9">Poisson Regression</a></td>
             <td><center></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/21/help-and-how-to/statistical-modeling/regression/how-to/fit-poisson-model/before-you-start/example/">Minitab</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://stats.oarc.ucla.edu/r/dae/poisson-regression/">R</a></center></td>
             <td><center><a href="https://statistics.laerd.com/spss-tutorials/poisson-regression-using-spss-statistics.php">SPSS</a></center></td>
         </tr>
         <tr>
@@ -140,7 +140,7 @@
             <td><center></center></td>
             <td><center></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/negative-binomial-regression">R</a></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://stats.oarc.ucla.edu/spss/dae/negative-binomial-regression/">SPSS</a></center></td>
         </tr>
         <tr>
             <td colspan=5><center><br><h3 style="font-weight: normal;font-size: 150%;">Survey Analysis</h3></center></td>
@@ -174,10 +174,10 @@
         </tr>
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/correlation-analysis">Correlation Coefficients</a></td>
-            <td><center></center></td>
+            <td><center><a href="https://www.jmp.com/en/statistics-knowledge-portal/what-is-correlation/correlation-coefficient">JMP</a></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/help-and-how-to/statistics/basic-statistics/how-to/correlation/perform-the-analysis/enter-your-data/">Minitab</a></center></td>
             <td><center></center></td>
-            <td><center></center></td>
+            <td><center><a href="https://www.spss-tutorials.com/spss-correlation-analysis/#spss">SPSS<a></center></td>
         </tr>
     </tbody>
 </table>
