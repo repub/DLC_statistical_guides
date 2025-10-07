@@ -14,7 +14,7 @@
         <tr>
             <td><a href="https://repub.github.io/DLC_statistical_guides/docs/Info/Fisher-exact-test">Fisher's Exact Test</a></td>
             <td><center></center></td>
-            <td><center><a href="https://support.minitab.com/en-us/minitab/help-and-how-to/statistics/basic-statistics/how-to/2-proportions/methods-and-formulas/methods-and-formulas/#fisher-s-exact-test">Minitab</a></center></td>
+            <td><center><a href="https://support.minitab.com/en-us/minitab/help-and-how-to/statistics/basic-statistics/how-to/2-proportions/methods-and-formulas/methods-and-formulas/">Minitab</a></center></td>
             <td><center><a href="https://repub.github.io/DLC_statistical_guides/docs/R/Fisher-exact-test">R</a></center></td>
             <td><center></center></td>
         </tr>
@@ -177,7 +177,7 @@
             <td><center><a href="https://www.jmp.com/en/statistics-knowledge-portal/what-is-correlation/correlation-coefficient">JMP</a></center></td>
             <td><center><a href="https://support.minitab.com/en-us/minitab/help-and-how-to/statistics/basic-statistics/how-to/correlation/perform-the-analysis/enter-your-data/">Minitab</a></center></td>
             <td><center></center></td>
-            <td><center><a href="https://www.spss-tutorials.com/spss-correlation-analysis/#spss">SPSS<a></center></td>
+            <td><center></center></td>
         </tr>
     </tbody>
 </table>
